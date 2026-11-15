@@ -14,7 +14,7 @@ Changes: [CHANGELOG.md](CHANGELOG.md). Older sessions: [archive/](archive/README
 
 ## Current state
 
-Last updated: 2026-11-14, session 1, on `main`: project formalized under The Manifold and Hypervisor. Base ROM verified; source tree decompile pending.
+Last updated: 2026-11-14, session 1, on `main` (`30e60e1`): project formalized under The Manifold and Hypervisor. Base ROM verified; source tree decompile pending.
 
 **Session owner:** Antigravity / Maintainer, on `main`, since 2026-11-14. Project formalization and toolchain setup.
 

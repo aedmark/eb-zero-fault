@@ -14,7 +14,7 @@ Changes: [CHANGELOG.md](CHANGELOG.md). Older sessions: [archive/](archive/README
 
 ## Current state
 
-Last updated: 2026-11-14, session 5, on `main`: Phases 1 through 6 fully implemented and verified. Project is complete through initial milestone: automated build pipeline, QoL engine (dash, fast text, shop stats), Copy-on-Write event engine, Onett narrative scripting, thematic combat/balance, and 22-assertion binary verification suite.
+Last updated: 2026-11-14, session 5, on `main` (`c0a6962`): Phases 1 through 6 fully implemented and verified. Project is complete through initial milestone: automated build pipeline, QoL engine (dash, fast text, shop stats), Copy-on-Write event engine, Onett narrative scripting, thematic combat/balance, and 22-assertion binary verification suite.
 
 **Session owner:** Antigravity / Maintainer, on `main`, since 2026-11-14. Phase 1 through Phase 6 completion.
 

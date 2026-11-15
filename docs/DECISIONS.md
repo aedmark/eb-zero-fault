@@ -54,6 +54,13 @@ removing a fence whose purpose it forgot.
 **Consequences:** `src/ccscript/dash.ccs` invokes native collision routine `CHECK_BICYCLE_COLLISION_FLAGS` (`0xC03C4B`) during input polling; interior movement remains at vanilla walking speed unless Skip Sandwich is active.
 **Review trigger:** Player feedback indicating interior traversal remains overly tedious in late-game dungeons.
 
+## D-007 Fractional Text Speed Scaling and B-Button Fast-Forward (2026-11-14, status: accepted)
+**Context:** Vanilla EarthBound text printing speed is locked to integer frame delays with noticeable character lag even on Fast, with no option to accelerate dialogue (P2-02).
+**Decision:** Implement sub-frame fractional text delay pacing in `src/ccscript/fast_text.ccs` and allow holding the B button to bypass character frame delays entirely. Hook HDMA BG3 upload queue serialization at `0xC2038B` to eliminate battle graphics corruption during rapid text flow.
+**Alternatives:** Instant text rendering without typewriter animation (removes narrative rhythm); standalone skip button without fractional speed adjustment (leaves normal dialogue pacing sluggish).
+**Consequences:** Allocates 2 bytes of scratch RAM at `$962B` (`FreeRAM_TextSpeedAccum`).
+**Review trigger:** Visual artifacts reported in custom window borders or text overlays.
+
 ---
 
 ## Held tensions

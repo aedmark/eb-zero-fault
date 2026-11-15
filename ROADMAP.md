@@ -22,7 +22,7 @@ Goal: Establish working CachyOS build environment, verify base ROM integrity, an
 Goal: Implement foundational ergonomics in CCScript and assembly prior to narrative branching.
 
 - [x] P2-01 Integrate B-Button Dash movement script with outdoor restriction (D-003, D-006; implemented src/ccscript/dash.ccs hooking C02F30, C031B8, and C07960, verified compile in 6.58s, 2026-11-14).
-- [ ] P2-02 Implement accelerated text printing routine and dialogue box skip flag.
+- [x] P2-02 Implement accelerated text printing routine and dialogue box skip flag (D-007; implemented src/ccscript/fast_text.ccs with sub-frame fractional delays, B-button bypass, and BG3 HDMA protection, verified build in 6.54s, 2026-11-14).
 - [ ] P2-03 Add shop equipment stat differential comparison display to purchase menus.
 - [ ] P2-04 Verify QoL enhancements in Mesen-S emulator without regression in existing town traversal.
 

@@ -1,0 +1,173 @@
+import "asm65816.ccs"
+
+// Accelerated Text Printing & B-Button Dialogue Fast-Forward (P2-02)
+// Based on cooprocks123e text speed optimization with B-button fast-forward.
+// Fast text adjusts fractional frame delays; holding B skips character delay entirely.
+
+define FreeRAM_TextSpeedAccum = 0x962B // 2 bytes in scratch RAM
+
+command _DefineTextSpeed(framesPerChar, hpPpRollerRate, framesForNextInBattle) {
+	long hpPpRollerRate
+	short framesPerChar
+	short framesForNextInBattle
+}
+
+TextSpeedData:
+	// Null entry for 1-based indexing
+TextSpeedData_hpPpRollerRate_lo:
+	short 0
+TextSpeedData_hpPpRollerRate_hi:
+	short 0
+TextSpeedData_framesPerChar:
+	short 0
+TextSpeedData_framesForNextInBattle:
+	short 0
+
+	// Speed settings: Faster (custom), Fast, Medium, Slow
+	_DefineTextSpeed(0x0080, 0x00010000, 15) // 0.50 frames/char (Fast)
+	_DefineTextSpeed(0x0100, 0x0000AAAA, -1) // 1.00 frames/char (Default fast)
+	_DefineTextSpeed(0x0200, 0x00009999, -1) // 2.00 frames/char (Medium)
+	_DefineTextSpeed(0x0300, 0x00008000,  0) // 3.00 frames/char (Slow)
+
+ROM[0xC1FEC9] = {
+	JSL(SetTextSpeedFromGameState)
+	BRA_a(0xC1FF19)
+}
+
+SetTextSpeedFromGameState: {
+	LDA_a(0x98B6)
+	AND_i(0x00FF)
+}
+
+SetTextSpeed: {
+	REP(0x31)
+	PHD
+	TAY
+	TDC
+	ADC_i(-2)
+	TCD
+	TYA
+
+	// One-based index multiplied by 8 (sizeof struct)
+	ASL
+	ASL
+	ASL
+	TAX
+	LDA_xl(TextSpeedData_hpPpRollerRate_lo)
+	STA_a(0x9627)
+	LDA_xl(TextSpeedData_hpPpRollerRate_hi)
+	STA_a(0x9629)
+	LDA_xl(TextSpeedData_framesPerChar)
+	STA_a(0x9625)
+	STA_d(0x00)
+	LDA_xl(TextSpeedData_framesForNextInBattle)
+	CMP_i(0xFFFF)
+	BNE_a(FFNIB_Set)
+
+	// FFNIB = 30 * FPC / 256
+	LDA_d(0x00)
+	ASL
+	ASL
+	ASL
+	ASL
+	SEC
+	SBC_d(0x00)
+	ASL
+	XBA
+	AND_i(0x00FF)
+
+FFNIB_Set:
+	STA_a(0x964B)
+	STZ_a(FreeRAM_TextSpeedAccum)
+	PLD
+	RTL
+}
+
+command _CommonHijack {
+	JSL(WaitTextOneTick)
+	BRA(13)
+	NOP NOP NOP NOP NOP
+	NOP NOP NOP NOP NOP
+	NOP NOP NOP
+}
+
+ROM[0xC10D4B] = { _CommonHijack }
+ROM[0xC44055] = { _CommonHijack }
+ROM[0xC444E3] = { _CommonHijack }
+
+WaitTextOneTick: {
+	REP(0x31)
+	PHD
+	TDC
+	ADC_i(-2)
+	TCD
+
+	// If B button is held (0x0080 at 0x0066), skip per-character delay entirely
+	LDA_a(0x0066)
+	AND_i(0x0080)
+	BNE_a(FrameWaitDone)
+
+	// Fractional frame delay calculation
+	LDA_a(FreeRAM_TextSpeedAccum)
+	CLC
+	ADC_a(0x9625)
+	TAY
+	AND_i(0x00FF)
+	STA_a(FreeRAM_TextSpeedAccum)
+	TYA
+	XBA
+	AND_i(0x00FF)
+	STA_d(0x00)
+	BEQ_a(FrameWaitDone)
+
+FrameWaitLoop:
+	JSL(0xC12DD5)
+	DEC_d(0x00)
+	BNE_a(FrameWaitLoop)
+
+FrameWaitDone:
+	PLD
+	RTL
+}
+
+// Prevent BG3 HDMA corruption during rapid text printing
+ROM[0xC2038B] = JML(HijackBg3Upload)
+
+HijackBg3Upload: {
+	LDA_a(0x00AB)
+	BEQ(1) RTL
+
+	REP(0x31)
+	PHD
+	TDC
+	ADC_i(-18)
+	TCD
+	LDA_i(0x007E)
+	STA_d(0x0E)
+	LDA_i(0x7C00)
+	STA_d(0x10)
+	LDY_i(0x7DFE)
+	LDX_i(0x0700)
+	JSL(0xC0862E)
+	INC_a(0x00AB)
+
+	LDA_a(0x0000)
+	AND_i(0x00FF)
+	STA_d(0x02)
+	LDA_a(0x0001)
+	AND_i(0x00FF)
+	CMP_d(0x02)
+	BNE(3) STZ_a(0x00AB)
+
+	LDA_i(0x7F80)
+	STA_d(0x10)
+	LDA_i(0x00C4)
+	STA_d(0x0E)
+	LDY_i(0x0BE8)
+	LDX_i(0x0040)
+	XBA
+	JSL(0xC0862E)
+
+	PLD
+	RTL
+}

@@ -14,7 +14,7 @@ Changes: [CHANGELOG.md](CHANGELOG.md). Older sessions: [archive/](archive/README
 
 ## Current state
 
-Last updated: 2026-11-14, session 4, on `main`: P2-02 completed. Implemented sub-frame fractional text speed and B-button dialogue fast-forward via `src/ccscript/fast_text.ccs` with BG3 HDMA corruption guard (D-007). Compiled cleanly in 6.54s.
+Last updated: 2026-11-14, session 4, on `main` (`3da583d`): P2-02 completed. Implemented sub-frame fractional text speed and B-button dialogue fast-forward via `src/ccscript/fast_text.ccs` with BG3 HDMA corruption guard (D-007). Compiled cleanly in 6.54s.
 
 **Session owner:** Antigravity / Maintainer, on `main`, since 2026-11-14. Phase 2 QoL implementation.
 

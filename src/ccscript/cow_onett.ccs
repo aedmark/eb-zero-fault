@@ -1,0 +1,111 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Onett Narrative Scripting (Phase 4)
+// ==============================================================================
+// Copy-on-Write parallel universe scenario, existential refcount dialogue,
+// and MMU boundary enforcement.
+// ==============================================================================
+
+// P4-01: Ness's House Awakening & Mom State Check
+cow_mom_awakening:
+    "[06 52 03 {e(cow_mom_already_dirty)}]" // Check flag 850 (FLAG_DIRTY_NESS_HOUSE)
+    "{sound(11)}{pause(15)}"
+    "{set(flag 850)}{set(flag 870)}{set(flag 840)}"
+    "{window_open(1)}@{name(1)}?{pause(20)} ...Wait." next
+    "@Why does looking at you feel like dereferencing a dangling pointer?" next
+    "@That violent impact on the hilltop...{pause(15)} it felt like an unhandled page fault echoing through the valley." next
+    "@Everything outside this room feels uncommitted...{pause(15)} like a shared memory segment waiting for the first write." next
+    "@Someone is hammering on the front door at an impossible clock frequency." next
+    "@If you're going out there,{pause(15)} grab the Cracked Bat from Tracy's room." next
+    "@You're going to need hardware-level collision detection.{wait}{window_closeall}" eob
+
+cow_mom_already_dirty:
+    "[06 60 00 {e(cow_mom_bat_reminder)}]@Pokey is still hammering on the door, generating CPU interrupts!" next
+    "@Could you go acknowledge the signal before the whole stack overflows?" end
+
+cow_mom_bat_reminder:
+    "{window_open(1)}@Remember to take {stat(3)} along to increment your party reference count." next
+    "@The Cracked Bat in Tracy's room will protect your stack frame.{wait}{window_closeall}" eob
+
+// P4-01: Pokey Bursting In
+cow_pokey_burst:
+    "{sound(11)}[1F 61]{pause(20)}{music(177)}{pause(60)}{music_resume}"
+    "{window_open(1)}@{name(1)}!{pause(15)} Hey,{pause(10)} {name(1)}!{pause(15)} Listen to this--{pause(15)}it's a critical system exception!" next
+    "@I took Picky up to where that anomaly crashed on the hilltop,{pause(15)} and the entire coordinate table began corrupting!" next
+    "[19 23 11 00 02 0E 00][1F 16 11 00 00]@Oh!{pause(20)} Good evening ma'am.{pause(20)} Your texture coordinates look remarkably coherent tonight. *snicker*" next
+    "[19 23 11 00 01 01 00][1F 16 11 00 00]@Anyway,{pause(15)} as I was executing," next
+    "@the police units guarding the perimeter got descheduled by the Sharks," next
+    "@and suddenly,{pause(20)} Picky's reference count dropped to zero!" next
+    "@He was dereferenced right off the map into unallocated heap!" next
+    "@If my dad finds out Picky was garbage-collected,{pause(15)} he's gonna SIGKILL me into swap space!" next
+    "@You've got to come with me to the crash site and fault him back into memory!" next
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_pokey_yes)} {e(cow_pokey_no)}]" goto(cow_pokey_no)
+
+cow_pokey_no:
+    "@If you reject my syscall,{pause(15)} I'll trigger an unhandled kernel panic right on your porch!" next
+    "@Will you come with me and commit the sector?" linebreak
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_pokey_yes)} {e(cow_pokey_no)}]" goto(cow_pokey_yes)
+
+cow_pokey_yes:
+    "@That's what I thought! Spawning child process now..." next
+    "@Let's climb the hill before our memory segment gets paged out to disk!{wait}"
+    "{set(flag 872)}{set(flag 841)}{set(flag 94)}"
+    goto(data_28.l_0xc75ebc)
+
+// P4-02: Mayor Pirkle at Town Hall
+cow_mayor_pirkle:
+    "[06 49 00 {e(cow_pirkle_post)}][06 50 00 {e(cow_pirkle_busy)}]"
+    "{sound(11)}{pause(10)}"
+    "{set(flag 853)}{set(flag 874)}"
+    "@Well,{pause(10)} well,{pause(10)} well!{pause(15)} I'm Mayor B.H. Pirkle." next
+    "@I maintain the master lookup table for the municipality of Onett." next
+    "@Ever since that meteorite triggered a page fault on the northern ridge," next
+    "@my citizens keep complaining about reference-count anomalies!" next
+    "@People are running into duplicates of themselves in the alleys..." next
+    "@existential dread is at an all-time high,{pause(15)} and property taxes are failing to dereference!" next
+    "@You neutralized the Sharks outside the arcade,{pause(15)} proving your thread has highest execution priority." next
+    "@Take this key to the Giant Step maintenance shack." next
+    "@Go resolve whatever race condition is corrupting our memory space!" next
+    "@Just make sure my administration isn't held liable for any segfaults." next
+    "[1D 03 FF][1B 02 {e(data_27.l_0xc72d6e)}][1D 0E 00 AA][1B 05]" call(data_33.l_0xc7dcb6) "{set(flag 80)}" end
+
+cow_pirkle_busy:
+    "@I'm currently optimizing my re-election thread.{pause(20)} No CPU cycles to spare!" end
+
+cow_pirkle_post:
+    "@Ah,{pause(10)} {stat(8)}!{pause(15)} The town's address space is running smoothly again." next
+    "@Thanks to my executive garbage-collection policies, of course! Wa ha ha!" end
+
+// P4-03: Police Roadblock to Twoson
+cow_police_roadblock:
+    "[06 69 00 {e(cow_roadblock_open)}]"
+    "@HALT! ACCESS VIOLATION at memory boundary 0x0002F000!" linebreak
+    "@This sector barrier is managed by the Onett Memory Protection Unit." next
+    "@No unprivileged threads may cross into the Twoson address space without root clearance from Captain Strong!" next
+    "@Attempting to squeeze through will trigger an immediate SIGSEGV!" end
+
+cow_roadblock_open:
+    "@Root clearance verified. Page table entry for Twoson mapped to active address space." next
+    "@Proceed with caution, {name(1)}." end
+
+// P4-04: Giant Step Race Condition & Memory Commitment
+cow_giant_step_commit:
+    ":---------------------[1F 15 6A 00 60 01 01]{unset(flag 2)}"
+    call(data_33.l_0xc7dd6b)
+    "{music(32)}"
+    call(data_32.l_0xc7c54b)
+    "{set(flag 2)}[1F 61]{sound(11)}{sound(97)}"
+    "{set(flag 855)}{set(flag 844)}"
+    "{window_open(1)}@The resonant frequency of Giant Step flushes the cache..." next
+    "@Sector 06 state has been committed to permanent non-volatile storage!" next
+    "@{name(1)}'s Sound Stone synchronized the melody of Giant Step.{wait}"
+    "{set(flag 182)}{set(flag 36)}{set(flag 449)}{set(flag 450)}{set(flag 634)}{window_closetop}"
+    goto(data_31.l_0xc7bf94)
+
+// Wire hooks into ROM addresses
+ROM[0xC74F56] = goto(cow_mom_awakening)
+ROM[0xC75C33] = goto(cow_pokey_burst)
+ROM[0xC72AF8] = goto(cow_mayor_pirkle)
+ROM[0xC66002] = goto(cow_police_roadblock)
+ROM[0xC7BEB9] = goto(cow_giant_step_commit)

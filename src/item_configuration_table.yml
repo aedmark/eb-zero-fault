@@ -1303,7 +1303,7 @@
   - ness can use
   - paula can use
   - poo can use
-  Name: Cookie
+  Name: Dirty Page
   Type: 32
 89:
   Action: 249
@@ -1320,7 +1320,7 @@
   - ness can use
   - paula can use
   - poo can use
-  Name: Bag of fries
+  Name: Garbage Collector
   Type: 32
 90:
   Action: 249
@@ -2259,7 +2259,7 @@
   - ness can use
   - paula can use
   - poo can use
-  Name: Bomb
+  Name: Fork Bomb
   Type: 52
 148:
   Action: 168

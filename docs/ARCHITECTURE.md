@@ -48,7 +48,7 @@ Rules that hold everywhere and that a change must not break. Each names what enf
 
 - The base ROM `EarthBound (USA).sfc` is read-only and never modified in-place. Enforced by: file permissions and AGENTS.md protected area rules (D-002).
 - All gameplay modifications must be reproducible from source files in `src/`. Enforced by: automated clean build from source.
-- Dirty page flags must reside in the allocated upper block `0x0300` through `0x03FF`. Enforced by: CCScript macro definitions (D-004).
+- Dirty page flags must reside in the allocated upper block `0x0344` through `0x03FF` (decimal 836 through 1023) within EarthBound's 1024-flag battery-backed SRAM structure at save offset `0x413` (WRAM `$7E9C08`). Enforced by: CCScript macro definitions (D-004, D-009).
 - Documentation cross-references and placeholders must pass consistency checks. Enforced by: `python3 tools/check_docs.py`.
 
 ## Boundaries

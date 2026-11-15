@@ -39,6 +39,7 @@ removing a fence whose purpose it forgot.
 **Alternatives:** Repurposing arbitrary unused vanilla flags (risks unintended side-effects when interacting with vanilla subsystem routines).
 **Consequences:** Constrains the total number of independent dirty-page state checks to 256 discrete flags unless extended banking is implemented.
 **Review trigger:** Flag exhaustion during mid-game scenario expansion.
+*Update, same session (2026-11-14):* Static verification of vanilla EarthBound scripts revealed flags 768 through 835 (0x0300 through 0x0343) are used by vanilla Winters and endgame triggers. The verified safe range within EarthBound's 1024-flag battery-backed SRAM structure (save offset 0x413, WRAM $7E9C08) is strictly flags 836 through 1023 (0x0344 through 0x03FF). All CoW state and sector dirty bits are allocated in ranges 840 through 889 (P3-01, D-009).
 
 ## D-005 Ephemeral 32-Mbit Intermediate Base ROM for Compilation (2026-11-14, status: accepted)
 **Context:** CoilSnake requires an expanded 32-Mbit (4 MB) base target for CCScript compilation starting at bank `F10000`, while the root reference ROM `EarthBound (USA).sfc` is protected as an unheadered 3 MB read-only invariant (P1-04, D-002).
@@ -60,6 +61,27 @@ removing a fence whose purpose it forgot.
 **Alternatives:** Instant text rendering without typewriter animation (removes narrative rhythm); standalone skip button without fractional speed adjustment (leaves normal dialogue pacing sluggish).
 **Consequences:** Allocates 2 bytes of scratch RAM at `$962B` (`FreeRAM_TextSpeedAccum`).
 **Review trigger:** Visual artifacts reported in custom window borders or text overlays.
+
+## D-008 Shop Equipment Stat Differential Comparison Display (2026-11-14, status: accepted)
+**Context:** When purchasing weapons and defensive gear in EarthBound vanilla shops, dialogue reports the new item's raw stat boost but does not display comparative differentials against currently equipped gear without manual menu checks (P2-03).
+**Decision:** Override vanilla shop equipment purchase formatting at `0xC5E277` and `0xC5E2F7` using `src/ccscript/shop_stats.ccs`. Formats the before-and-after stat display to explicitly show "changed from [old_stat] to [new_stat]" for the designated character's Offense or Defense before finalizing transactions.
+**Alternatives:** Adding a full custom VRAM window overlay (requires substantial assembly hook logic and dynamic tile generation); leaving shop dialogue vanilla (forces players to open status/equip menus manually to compare stats).
+**Consequences:** Overwrites text pointers at `$C5E277` and `$C5E2F7` redirecting to CCScript blocks that inspect character stats (`{stat(x)}`).
+**Review trigger:** Text overflow when weapon stat names or values exceed window borders on narrower font settings.
+
+## D-009 Copy-on-Write Memory Architecture and Glitch Dispatch Engine (2026-11-14, status: accepted)
+**Context:** The narrative core requires tracking dirty-page mutations across game sectors and dispatching system-level glitch audio/visual feedback when memory transitions occur (P3-01, P3-02, P3-03).
+**Decision:** Implement `src/ccscript/cow_engine.ccs` defining modular CCScript macros: `cow_touch(flag)` (`{set(flag)}`), `cow_clean(flag)` (`{unset(flag)}`), `cow_check(flag)` (`{isset(flag)}`), `cow_pulse` (`{sound(11)}`), and sector fault commit subroutines. Assign state flags within verified safe SRAM range 840 through 889.
+**Alternatives:** Silent flag setting without sensory feedback (diminishes the system-level metaphor); custom assembly VRAM corruption shaders (unstable across different SNES PPU revisions).
+**Consequences:** Reusable macros allow narrative scripts to cleanly wrap vanilla NPC scripts and sector boundaries without manual bytecode crafting.
+**Review trigger:** Flag allocation conflicts or sound queue conflicts during simultaneous map transitions.
+
+## D-010 System-Themed Entity and Consumable Item Rebalancing (2026-11-14, status: accepted)
+**Context:** Enemies and items in Onett need to embody the copy-on-write memory corruption premise rather than standard suburban wildlife (P5-01, P5-02, P5-04).
+**Decision:** Reskin early-game monsters in `src/enemy_configuration_table.yml`: Spiteful Crow to "Null Reference Crow" (159), Coil Snake to "Dangling Pointer" (55), Runaway Dog to "Runaway Thread" (121, 211), and Titanic Ant to "The OOM Killer" (37, 176). Reskin consumable items in `src/item_configuration_table.yml`: Cookie to "Dirty Page" (88), Bag of fries to "Garbage Collector" (89), and Bomb to "Fork Bomb" (147).
+**Alternatives:** Retaining vanilla enemy and item names while changing only dialogue (creates a disjointed ludonarrative experience); adding entirely new enemy IDs from scratch (requires extensive battle sprite and palette insertion).
+**Consequences:** Battle encounter text, item inventory windows, and status menus consistently reinforce system architecture metaphors.
+**Review trigger:** Encounter difficulty spikes or balance anomalies in early Onett progression.
 
 ---
 

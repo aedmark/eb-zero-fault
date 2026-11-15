@@ -1,0 +1,61 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Copy-on-Write (CoW) Memory Architecture Engine
+// ==============================================================================
+// State machine, flag definitions, and system glitch routines.
+// Flags 836-1023 (0x0344-0x03FF) in battery-backed SRAM ($7E9C08).
+// ==============================================================================
+
+// Global State Flags (840-849)
+// 840: COW Engine initialized / Player awakened in uncommitted branch
+// 841: Meteorite site dirtied (Sector 0 fault)
+// 842: Prologue sequence committed
+// 843: Refcount awareness active (NPCs perceive duplicate instances)
+// 844: MMU permission barrier down (Road to Twoson unblocked)
+
+// Sector Dirty Bits (850-869)
+// 850: Sector 01 - Ness's House (interior)
+// 851: Sector 02 - Onett Residential / Hilltop
+// 852: Sector 03 - Onett Downtown & Commercial
+// 853: Sector 04 - Onett Town Hall
+// 854: Sector 05 - Onett Arcade & South Road
+// 855: Sector 06 - Giant Step Footpath & Cave
+// 856: Sector 07 - Road to Twoson checkpoint
+
+// Entity Mutation Bits (870-889)
+// 870: Mom baseline dirtied (refcount = 2 awareness)
+// 871: Tracy baseline dirtied (memory buffer initialized)
+// 872: Pokey baseline dirtied (unbound pointer hijacked)
+// 873: Picky baseline dirtied (stack frame corruption)
+// 874: Mayor Pirkle baseline dirtied (address space dereferenced)
+// 875: Frank Fly baseline dirtied (deadlock state)
+// 876: Buzz Buzz baseline dirtied (debug daemon instance)
+// 877: Police Captain baseline dirtied (access violation obstacle)
+
+// Reusable Engine Commands
+command cow_touch(f) "{set(flag f)}"
+command cow_clean(f) "{unset(flag f)}"
+command cow_check(f) "{isset(flag f)}"
+
+// Glitch and Sensory Dispatch Routines
+command cow_pulse "{sound(11)}"
+command cow_fault_sfx "{sound(18)}"
+command cow_beam_sfx "{sound(97)}"
+
+// Reusable Fault Commitment Sequence
+// Triggers static sound, momentary pause, and commits dirty flag
+cow_fault_commit_house:
+    "{set(flag 850)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_hilltop:
+    "{set(flag 851)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_downtown:
+    "{set(flag 852)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_townhall:
+    "{set(flag 853)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_giantstep:
+    "{set(flag 855)}{sound(11)}{pause(15)}" eob

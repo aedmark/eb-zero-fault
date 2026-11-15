@@ -1,0 +1,41 @@
+command e(label) "{long label}"
+
+// Shop Equipment Stat Differential & Display (P2-03)
+// Overrides 0xC5E277 and 0xC5E2F7 to format before-and-after stat differentials cleanly.
+
+shop_equip_part_1:
+    "{load_registers}{rtoarg}@({name(0)}'s[06 92 02 {e(shop_equip_offense_from)}] defense" linebreak
+    "  changed from [09 04 {e(def_ness_from)} {e(def_paula_from)} {e(def_jeff_from)} {e(def_poo_from)}]" goto(def_ness_from)
+
+def_ness_from:  "{stat(18)}" eob
+def_paula_from: "{stat(40)}" eob
+def_jeff_from:  "{stat(62)}" eob
+def_poo_from:   "{stat(84)}" eob
+
+shop_equip_offense_from:
+    " offense" linebreak
+    "  changed from [09 04 {e(off_ness_from)} {e(off_paula_from)} {e(off_jeff_from)} {e(off_poo_from)}]" goto(off_ness_from)
+
+off_ness_from:  "{stat(17)}" eob
+off_paula_from: "{stat(39)}" eob
+off_jeff_from:  "{stat(61)}" eob
+off_poo_from:   "{stat(83)}" eob
+
+shop_equip_part_2:
+    " to [06 92 02 {e(shop_equip_offense_to)}][09 04 {e(def_ness_to)} {e(def_paula_to)} {e(def_jeff_to)} {e(def_poo_to)}]" goto(def_ness_to)
+
+def_ness_to:  "{stat(18)})" next eob
+def_paula_to: "{stat(40)})" next eob
+def_jeff_to:  "{stat(62)})" next eob
+def_poo_to:   "{stat(84)})" next eob
+
+shop_equip_offense_to:
+    "[09 04 {e(off_ness_to)} {e(off_paula_to)} {e(off_jeff_to)} {e(off_poo_to)}]" goto(off_ness_to)
+
+off_ness_to:  "{stat(17)})" next eob
+off_paula_to: "{stat(39)})" next eob
+off_jeff_to:  "{stat(61)})" next eob
+off_poo_to:   "{stat(83)})" next eob
+
+ROM[0xC5E277] = goto(shop_equip_part_1)
+ROM[0xC5E2F7] = goto(shop_equip_part_2)

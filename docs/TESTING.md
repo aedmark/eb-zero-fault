@@ -9,11 +9,12 @@ The results themselves live in HANDOFF's "Current state"; this file is how to ge
 | --- | --- | --- | --- | --- |
 | Documentation | `tools/check_docs.py` | Cross-references, decision IDs, roadmap items, no placeholders | That the code or ROM builds | Seconds, Python standard library |
 | Toolchain check | `coilsnake --version` | Python environment and CoilSnake CLI functionality | That project files compile | Seconds, active `.venv` |
-| ROM Compilation | `coilsnake compile` | CCScript syntax, YAML schema validity, VRAM graphics import | Runtime game logic or game balance | 10-30 seconds, CPU |
+| ROM Compilation | `tools/build.sh` | CCScript syntax, YAML schema validity, VRAM graphics import | Runtime game logic or game balance | 6-10 seconds, CPU |
+| Binary Verification | `tools/verify_rom.py` | Validates 22 binary assertions (header, dash hooks, text hooks, shop stats, CoW narrative, and thematic enemy/item names) | Interactive player control feel | Seconds, Python standard library |
 | Emulation test | Manual in Mesen-S | In-game behavior, dialogue formatting, music playback, collision | Full 40-hour game completion | Minutes, GUI emulator |
 
-**The fast set** (before every commit): `python3 tools/check_docs.py`.
-**The full set** (after modifying scripts or tables): `python3 tools/check_docs.py` and `coilsnake compile src/ build/eb_zero_fault.sfc`.
+**The fast set** (before every commit): `python3 tools/check_docs.py` and `python3 tools/verify_rom.py`.
+**The full set** (after modifying scripts or tables): `tools/build.sh`, `python3 tools/verify_rom.py`, and `python3 tools/check_docs.py`.
 
 **Expected results** live in HANDOFF's "Verified" table, with the date and commit they were measured on.
 

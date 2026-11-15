@@ -40,6 +40,13 @@ removing a fence whose purpose it forgot.
 **Consequences:** Constrains the total number of independent dirty-page state checks to 256 discrete flags unless extended banking is implemented.
 **Review trigger:** Flag exhaustion during mid-game scenario expansion.
 
+## D-005 Ephemeral 32-Mbit Intermediate Base ROM for Compilation (2026-11-14, status: accepted)
+**Context:** CoilSnake requires an expanded 32-Mbit (4 MB) base target for CCScript compilation starting at bank `F10000`, while the root reference ROM `EarthBound (USA).sfc` is protected as an unheadered 3 MB read-only invariant (P1-04, D-002).
+**Decision:** `tools/build.sh` provisions an ephemeral expanded intermediate base ROM in `build/base_32mbit.sfc` without modifying or overwriting the root reference ROM.
+**Alternatives:** Expanding `EarthBound (USA).sfc` in-place (violates protected area invariants); specifying custom sub-3MB script offsets (severely limits script capacity and risks collision with vanilla data).
+**Consequences:** Build directory requires 8 MB disk space for intermediate and final ROMs; cleanly isolated from version control.
+**Review trigger:** Switching to 48-Mbit expansion for large audio banks.
+
 ---
 
 ## Held tensions

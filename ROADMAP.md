@@ -13,9 +13,9 @@ Bugs are items too, filed under the phase they belong to.
 Goal: Establish working CachyOS build environment, verify base ROM integrity, and decompile into source tree.
 
 - [x] P1-01 Verify base ROM file size (3,145,728 bytes unheadered) and place in project root (2026-11-14).
-- [ ] P1-02 Configure Python virtual environment and install CoilSnake toolchain on CachyOS.
-- [ ] P1-03 Decompile clean EarthBound ROM into source directory structure via CoilSnake.
-- [ ] P1-04 Execute baseline dry-run compilation from clean source tree and verify binary parity against input ROM.
+- [x] P1-02 Configure Python virtual environment and install CoilSnake toolchain on CachyOS (D-001; installed git+https://github.com/pk-hack/CoilSnake.git, built ccscript and CCScriptWriter wheels on Python 3.14, 2026-11-14).
+- [x] P1-03 Decompile clean EarthBound ROM into source directory structure via CoilSnake (decompiled tables, maps, sprites, and dumped 62 CCScript data modules in 5.84s, 2026-11-14).
+- [x] P1-04 Execute baseline dry-run compilation from clean source tree and verify binary parity against input ROM (D-005; built 4,194,304-byte expanded ROM via tools/build.sh in 6.52s, 2026-11-14).
 
 ## Phase 2: Quality of Life Engine Base
 

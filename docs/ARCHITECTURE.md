@@ -10,7 +10,7 @@ Why things are this way lives in [DECISIONS.md](DECISIONS.md); this file says *w
 
 The build pipeline ingests plain text CCScript files, YAML balance tables, and indexed PNG graphics from `src/`,
 verifies them against hardware constraints, and compiles an expanded 32-Mbit SNES ROM binary into `build/` using
-CoilSnake (D-001). The game engine executes on SNES hardware or emulators, reading dirty-page event flags
+CoilSnake and `tools/build.sh` (D-001, D-005). The game engine executes on SNES hardware or emulators, reading dirty-page event flags
 (D-004) to conditionally fork narrative branches and entity behaviors dynamically whenever a player interacts
 with an uncommitted world sector.
 

@@ -156,8 +156,8 @@ Things an agent must not change without explicit permission. Every rule includes
 
 ## Run and verify
 
-- Setup: `python3 -m venv .venv && source .venv/bin/activate && pip install coilsnake`
-- Run: `coilsnake compile src/ build/eb_zero_fault.sfc`
+- Setup: `python3 -m venv .venv && source .venv/bin/activate && pip install git+https://github.com/pk-hack/CoilSnake.git`
+- Run: `./tools/build.sh`
 - Fast checks: `python3 tools/check_docs.py`
-- Full checks: `python3 tools/check_docs.py`
+- Full checks: `python3 tools/check_docs.py && ./tools/build.sh`
 - Detailed test guidance: `docs/TESTING.md`.

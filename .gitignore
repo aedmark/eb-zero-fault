@@ -1,0 +1,14 @@
+# Virtual Environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Build artifacts
+build/
+*.sfc
+*.smc
+
+# Editor directories
+.idea/
+.vscode/

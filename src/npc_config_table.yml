@@ -4639,7 +4639,7 @@
   Movement: 605
   Show Sprite: always
   Sprite: 119
-  Text Pointer 1: data_42.l_0xc8e14a
+  Text Pointer 1: cow_threed.cow_threed_greeter
   Text Pointer 2: $0
   Type: person
 516:
@@ -5539,7 +5539,7 @@
   Movement: 178
   Show Sprite: when event flag unset
   Sprite: 162
-  Text Pointer 1: data_23.l_0xc6b18d
+  Text Pointer 1: cow_winters.cow_dr_andonuts
   Text Pointer 2: $0
   Type: person
 616:
@@ -6277,7 +6277,7 @@
   Movement: 10
   Show Sprite: when event flag unset
   Sprite: 328
-  Text Pointer 1: data_56.l_0xef6446
+  Text Pointer 1: cow_belch.cow_master_belch
   Text Pointer 2: $0
   Type: person
 698:
@@ -6349,7 +6349,7 @@
   Movement: 693
   Show Sprite: when event flag unset
   Sprite: 333
-  Text Pointer 1: data_56.l_0xef679a
+  Text Pointer 1: cow_saturn.cow_trillionage_sprout
   Text Pointer 2: $0
   Type: person
 706:
@@ -6466,7 +6466,7 @@
   Movement: 13
   Show Sprite: when event flag unset
   Sprite: 171
-  Text Pointer 1: data_34.l_0xc7e819
+  Text Pointer 1: cow_saturn.cow_saturn_valley
   Text Pointer 2: $0
   Type: person
 719:

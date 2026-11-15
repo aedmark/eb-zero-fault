@@ -146,39 +146,19 @@ l_0xc79d7a:
     "{unset(flag 297)}{set(flag 298)}" eob
 
 l_0xc79d81:
-    "{lock_movement(255)}{event(5)}[19 10 01][1F 1C 00 03]{pause(60)}{hide_char_float(0)}[1F E9 ED 01][1F E9 EE 01][1F E9 EF 01][1F E9 F0 01]{music_effect(2)}{pause(10)}{music(111)}[1F 15 6A 00 8B 02 01][1F 61]{pause(120)}{window_open(1)}@(Oh,{pause(5)} oh...{pause(20)} you're losing consciousness..." next
-    "@What could be the fate of {name(1)} and his friend?){wait}{window_closeall}" call(data_45.l_0xc915f4) call(data_22.l_0xc69082) "{set(flag 11)}{hide_char(255)}[1F 15 10 00 96 02 FF][1F 15 89 01 97 02 FF]{warp(77)}{lock_movement(255)}{pause(240)}[1F 1F 10 00 06]{show_char(1, 1)}{pause(30)}[19 22 01 03 89 01]{char_direction(1, 0)}{pause(20)}[1F 1F 89 01 06][1F 15 02 00 08 00 01]{pause(60)}[1F F2 02 00 2F 00][1F 61][1F 1F 02 00 06]{show_party(1)}[1F E8 FF]" eob
+    goto(cow_threed.cow_threed_ambush)
 
 l_0xc79e55:
-    call(data_22.l_0xc69082) "{pause(60)}{char_direction(2, 5)}{pause(60)}{music_effect(3)}[1F 15 6A 00 FE 02 01][1F 61][1F E7 6A 00]{pause(120)}{window_open(1)}@I'm calling out to you who I've never met..." next
-    "@I'm calling our friend who we've never met..." next
-    "@{name(3)}!{pause(30)}  {name(3)}!{pause(20)}" linebreak
-    "  We need your help!" next
-    "@I am {name(2)} and I am with another friend,{pause(15)} {name(1)}..." next
-    "@We are trying to contact you...{wait}{pause(30)}{window_closeall}{pause(1)}[1F 1F 6A 00 06]{hide_char(255)}{warp(200)}[1F 15 6A 00 83 02 01]" call(data_53.l_0xc9b4b8) "{warp(201)}[1F 15 6A 00 84 02 01]" call(data_53.l_0xc9b4b8) "{unset(flag 11)}{event(6)}" goto(l_0xc79f33)
+    goto(cow_threed.cow_paula_broadcast)
 
 l_0xc79f32:
     eob
 
 l_0xc79f33:
-    "{warp(66)}{lock_movement(255)}[1F 64]{party_add(3)}[1D 08 02 00]{party_remove(1)}{party_remove(2)}{unset(flag 298)}{unset(flag 433)}{set(flag 636)}{pause(180)}{window_open(1)}@I am {name(2)},{pause(20)} and I am with another friend,{pause(15)} {name(1)}..." next
-    "@We are trying to contact you..." next
-    "@If you hear me,{pause(15)} please wake up and...{pause(20)} head south!" next
-    "@Only you,{pause(15)} though far away,{pause(15)} can save us, {name(3)}..." next
-    "@Please hear my call and begin heading south..." next
-    "@{name(3)}!{pause(20)}  You are a friend who we've never met..." next
-    "@But you are our one and only hope!...[03]{window_closeall}{music_effect(3)}{pause(120)}{pause(180)}[1F 1E 50 02 06]{show_party(1)}[1F E8 FF]{set(flag 128)}[19 26 06]{unset(flag 297)}{unset(flag 11)}{set(flag 212)}" eob
+    goto(cow_winters.cow_jeff_awakening)
 
 l_0xc7a04a:
-    "[1F 1A 4F 02 03]{pause(60)}[1F 1B 4F 02]{pause(30)}[1F 1E 4F 02 06][1F 15 B6 00 72 00 01]{pause(1)}[1F E7 B6 00]{window_open(1)}@{name(3)},{pause(20)} where are you going in the middle of the night?" next
-    "{window_closeall}[1F EA B6 00][1F 61][1F E7 B6 00]{window_open(1)}@You know the dorm rules, right?" next
-    "@If you get caught,{pause(15)} you'll get punished big time..." next
-    "@W.{pause(5)}.{pause(5)}.{pause(5)} what's wrong, {name(3)}." next
-    "[19 22 03 03 B6 00]{char_direction(3, 0)}@{pause(20)}...All right." next
-    "@There must be some reason that I don't understand.{pause(20)}  I won't stop you." next
-    "@But it's dangerous to leave without taking anything along." next
-    "@Hey,{pause(15)} I think there's some stuff in the locker room that you should get." next
-    "@I'll help you get out of here...[03]{window_closeall}{party_add(8)}{hide_char(8)}[1F F2 B6 00 2F 00][1F 61][1F 1F B6 00 06]{show_char(8, 1)}{music(123)}{pause(120)}{pause(60)}{window_open(1)}@(Tony joined you.)[03]{window_closeall}{set(flag 23)}{music_resume}" eob
+    goto(cow_winters.cow_tony_linter)
 
 l_0xc7a1ba:
     "{hasitem(255, 36)}[1B 03 {e(l_0xc7a20c)}]{char_direction(8, 5)}[19 22 03 01 08 00]{char_direction(3, 0)}{window_open(1)}@I think you can get out by going over the gate..." next
@@ -196,26 +176,7 @@ l_0xc7a2f7:
     "[1F 66 01 36 00 A3 C7 00]" eob
 
 l_0xc7a300:
-    call(data_33.l_0xc7dd8d) "[1B 03 {e(l_0xc7a2f7)}]{music(115)}{pause(60)}{wait}[1F 01 00]{sound(11)}{window_open(1)}@Hello, this is Apple Kid." next
-    "@I just wanted to let you know that I finished a pretty unique invention." next
-    "@I'm not sure if it will help you or not..." next
-    "@It's called <Zombie Paper,> and it can be used to trap zombies." next
-    "@It works kind of like fly paper..." next
-    "@All you need to do is place the paper on the floor of a tent or something..." next
-    "@You've seen at least one tent around, right?...." next
-    "@and then the zombies get stuck to the paper" next
-    "@when they move around inside the tent." next
-    "@You can catch a lot of zombies this way...  In fact," next
-    "@I bet you could get rid of all the zombies" next
-    "@that are terrorizing the area with this paper!" next
-    "{pause(60)}" linebreak
-    "@Anyway, I just asked the Mach Pizza delivery man" next
-    "@to deliver the Zombie Paper to you, {name(1)}." next
-    "@You should get it pretty soon." next
-    "@I've never actually seen a zombie, but if there really are any," next
-    "@Zombie Paper would be very useful..." next
-    "@I'll be calling you if I come up with anything else..." next
-    "@*Click!* Beeeeep!{wait}{sound(11)}{window_closeall}{music_resume}[1F D3 08]{set(flag 675)}{set(flag 754)}" eob
+    goto(cow_threed.cow_zombie_paper)
 
 l_0xc7a542:
     "{window_open(1)}@While delivering pizza, this weird guy asked me to help him out..." next

@@ -112,6 +112,20 @@ removing a fence whose purpose it forgot.
 **Consequences:** Selecting Use on the ATM card from the Goods menu cleanly launches the developer debug menu (`P-TiNStTI`, `IDU`, `IBNT`, etc.) without displaying the vanilla cash machine dialogue or crashing the CPU. All 45 binary assertions pass in `tools/verify_rom.py`.
 **Review trigger:** Final release packaging when debug hooks should be disabled for standard player distribution.
 
+## D-014 Mid-Game Scenarios: Defunct Process Leaks, Far-Jump Vectors, and Buffer Overflow Exploits (2026-11-15, status: accepted)
+**Context:** Expanding the Copy-on-Write parallel universe into Threed, Winters, Grapefruit Falls, and Saturn Valley (P8-01 through P8-06).
+**Decision:**
+1. Author `src/ccscript/cow_threed.ccs`: Threed entrance greeter at `$C8E14A` (NPC 515) framing zombies as uncollected child processes (PIDs) leaking file descriptors; hotel room trap at `$C79D81` executing an unhandled kernel exception (`SIGSEGV`) serializing Ness and Paula into a core dump cell; Paula's telepathy broadcast at `$C68D5A` and `$C79E55` as an asynchronous IPC packet across the network bus to remote node Jeff; and Apple Kid's Zombie Paper at `$C7A300` as an automated process scavenger daemon.
+2. Author `src/ccscript/cow_winters.ccs`: Jeff's diagnostic awakening at `$C79F33` and `$C7A04A` with Tony as an inline static linter; Dr. Andonuts at `$C6B18D` (NPC 615) framing the Sky Runner as a long-jump (`JSL`) far-jump vector into the faulted sector.
+3. Author `src/ccscript/cow_belch.ccs`: Waterfall password gate at `$C88875` as a zero-knowledge cryptographic proof-of-work protocol requiring 3 minutes of motionless idle execution; Master Belch at `$EF6446` (NPC 697) and `$EF6569` as a high-privilege memory leak daemon, with Fly Honey serving as a buffer overflow exploit payload.
+4. Author `src/ccscript/cow_saturn.ccs`: Mr. Saturn dialogue at `$C7E819` (NPC 718) reflecting immutable, unboxed primitive types ("All have same name! Boing!"); Trillionage Sprout at `$EF679A` (NPC 705) as an unauthorized rootkit interceptor; and Milky Well sanctuary commit at `$C7C12A` and `$C7C17B` synchronizing Sector 17 cache to permanent storage (`flag 866`).
+5. Update `src/ccscript/cow_engine.ccs` to allocate Sector dirty bits 862-866 and entity bits 883-888 with corresponding commit routines.
+6. Enforce dual-binding dispatch: update `src/npc_config_table.yml` for NPCs 515, 615, 697, 705, and 718, and update underlying `data_*.ccs` labels (`data_42.l_0xc8e14a`, `data_31.l_0xc79d81`, `data_31.l_0xc79e55`, `data_22.l_0xc68d5a`, `data_31.l_0xc79f33`, `data_31.l_0xc7a04a`, `data_31.l_0xc7a300`, `data_23.l_0xc6b18d`, `data_40.l_0xc88875`, `data_56.l_0xef6446`, `data_56.l_0xef6569`, `data_34.l_0xc7e819`, `data_56.l_0xef679a`, `data_32.l_0xc7c12a`, `data_32.l_0xc7c17b`) to redirect via `goto(cow_*)`.
+7. Rebalance regional monsters in `src/enemy_configuration_table.yml`: Putrid Moldyman to Buffer Overrun (30), Urban Zombie to Defunct Process (76, 189), Zombie Possessor to Zombie PID (77), Trillionage Sprout to Rootkit Sprout (90, 191), Master Belch to Memory Leak Daemon (93, 169, 192), Boogey Tent to Malicious Daemon (102, 197).
+**Alternatives:** Treating mid-game as traditional supernatural fantasy (breaks copy-on-write core narrative premise).
+**Consequences:** Extends coherent systems-level narrative across the entire second act up to the third sanctuary. Verification suite expanded to 71 binary assertions across ROM hooks, dynamic NPC table pointers, and thematic strings.
+**Review trigger:** Verification of party member serialization and inventory preservation across the Sky Runner far jump.
+
 ---
 
 ## Held tensions

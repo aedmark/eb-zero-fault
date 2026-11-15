@@ -202,7 +202,7 @@ l_0xc8886a:
     "[06 83 00 {e(l_0xc88875)}]@....." end
 
 l_0xc88875:
-    "@Say the password!{pause(120)}{pause(60)}[1F 15 6A 00 3D 01 01]" eob
+    goto(cow_belch.cow_waterfall_password)
 
 l_0xc8888d:
     "{window_open(1)}@Okay... you may enter.[03]{window_closeall}{pause(1)}{warp(100)}{set(flag 369)}" call(data_52.l_0xc9b112) eob

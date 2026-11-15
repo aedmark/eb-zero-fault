@@ -1,0 +1,43 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Grapefruit Falls & Master Belch (P8-04)
+// ==============================================================================
+// Proof-of-work waterfall gate and Master Belch memory leak daemon.
+// ==============================================================================
+
+cow_waterfall_password:
+    "{sound(11)}{pause(10)}"
+    "{set(flag 864)}"
+    "@Initiating zero-knowledge proof-of-work protocol..." next
+    "@Transmit the silence key! Stand completely motionless for 3 minutes without sending input interrupts.{pause(120)}{pause(60)}[1F 15 6A 00 3D 01 01]" eob
+
+cow_master_belch:
+    "[06 47 00 {e(data_32.l_0xc7c588)}]{music(134)}{sound(78)}@Buuuurp!" next
+    "@So you are the user thread designated {name(1)}?" next
+    "{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(cow_belch_other)}]"
+    "@Gyah ha ha! I am the Master Memory Leak Daemon!" next
+    "@I spawn uncollected zombie PIDs and flood the kernel heap with allocated null pointers!" next
+    "@No garbage collector can purge my bloated address space!" next
+    "@Garg! Ga! Ga! Prepare for catastrophic heap exhaustion!" next
+    "{sound(78)}{pause(40)}"
+    goto(cow_master_belch_battle)
+
+cow_belch_other:
+    "@...Whoever you are, you cannot patch this leak!" next
+    goto(cow_master_belch_battle)
+
+cow_master_belch_battle:
+    "@Taste the fatal nausea of unhandled memory corruption![03]"
+    call(data_21.l_0xc68554)
+    "[1B 03 {e(data_21.l_0xc683de)}]"
+    "{window_open(1)}{music(134)}@{sound(78)}{pause(40)}Im... impossible... Buuurp!" next
+    "@That Fly Honey was an unauthorized buffer overflow payload!" next
+    "@My internal instruction pointer... overwritten... heap stack collision..." next
+    "@Giygas has already staged the Mani Mani ROM into Fourside's root sector!" next
+    "@Enjoy your temporary patch... while user space collapses! Buuurp!{sound(78)}{pause(40)}"
+    "{window_closeall}{pause(1)}[1F F1 B9 02 7B 02]{set(flag 71)}{set(flag 366)}{set(flag 367)}{set(flag 368)}{set(flag 590)}{set(flag 623)}{set(flag 629)}{set(flag 489)}{set(flag 490)}{unset(flag 125)}{unset(flag 773)}{unset(flag 761)}[19 26 04]{music_resume}" eob
+
+ROM[0xC88875] = goto(cow_waterfall_password)
+ROM[0xEF6446] = goto(cow_master_belch)
+ROM[0xEF6569] = goto(cow_master_belch_battle)

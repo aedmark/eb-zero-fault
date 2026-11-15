@@ -172,11 +172,7 @@ l_0xc68d59:
     eob
 
 l_0xc68d5a:
-    "{window_open(1)}@You are a friend who I have never met before..." next
-    "@{name(3)}..." next
-    "@Head south..." next
-    "@I am {stat(30)}..." next
-    "@If you hear this message, go to the south...{wait}{window_closeall}{unset(flag 636)}" goto(data_44.l_0xc90f90)
+    goto(cow_threed.cow_paula_broadcast_ambient)
 
 l_0xc68db4:
     eob

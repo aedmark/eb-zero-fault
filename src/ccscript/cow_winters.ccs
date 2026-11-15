@@ -1,0 +1,54 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Winters Diagnostic Routines (P8-03)
+// ==============================================================================
+// Jeff static analyzer awakening, Tony runtime helper, and Dr. Andonuts far jump.
+// ==============================================================================
+
+cow_jeff_awakening:
+    "{warp(66)}{lock_movement(255)}[1F 64]{party_add(3)}[1D 08 02 00]{party_remove(1)}{party_remove(2)}{unset(flag 298)}{unset(flag 433)}{set(flag 636)}{pause(180)}"
+    "{sound(11)}{pause(10)}"
+    "{set(flag 863)}{set(flag 884)}"
+    "{window_open(1)}@Parsing incoming asynchronous IPC packet..." next
+    "@{name(3)}, static diagnostic routine initiated." next
+    "@Our threads in Sector 13 are locked in an unhandled page fault exception." next
+    "@We need your hardware disassembly kit and far-jump capability." next
+    "@Initialize system peripherals and execute long-jump south!...[03]{window_closeall}"
+    "{music_effect(3)}{pause(120)}{pause(180)}[1F 1E 50 02 06]{show_party(1)}[1F E8 FF]{set(flag 128)}[19 26 06]{unset(flag 297)}{unset(flag 11)}{set(flag 212)}" eob
+
+cow_tony_linter:
+    "[1F 1A 4F 02 03]{pause(60)}[1F 1B 4F 02]{pause(30)}[1F 1E 4F 02 06][1F 15 B6 00 72 00 01]{pause(1)}[1F E7 B6 00]"
+    "{window_open(1)}@{name(3)}, where are you migrating outside execution bounds?" next
+    "{window_closeall}[1F EA B6 00][1F 61][1F E7 B6 00]{window_open(1)}"
+    "@The compiler linter strictly forbids unbounded branches in the middle of the night." next
+    "@If the static analyzer flags an unhandled escape analysis, we will fail compilation!" next
+    "@...Wait.{pause(15)} You received an external interrupt signal?" next
+    "[19 22 03 03 B6 00]{char_direction(3, 0)}@{pause(20)}Understood. I will act as a temporary runtime helper." next
+    "@Equip your debugger tools from the locker room before branching beyond the perimeter." next
+    "@Let's bypass the boundary check together...[03]{window_closeall}"
+    "{party_add(8)}{hide_char(8)}[1F F2 B6 00 2F 00][1F 61][1F 1F B6 00 06]{show_char(8, 1)}{music(123)}{pause(120)}{pause(60)}"
+    "{window_open(1)}@(Tony attached as inline runtime helper.)[03]{window_closeall}{set(flag 23)}{music_resume}" eob
+
+cow_dr_andonuts:
+    "[06 0E 00 {e(data_23.l_0xc6b4bb)}][06 7F 00 {e(data_23.l_0xc6b492)}]"
+    "{sound(11)}{pause(10)}"
+    "{set(flag 863)}{set(flag 885)}"
+    "@Ah, the Brickroad sandbox framework forwarded your thread, did it?" next
+    "@Wait... that process signature... {name(3)}?! My own spawned child process!" next
+    "@Ten years since our address spaces bifurcated! You have compiled into a remarkably robust module." next
+    "@Those optical input filters suit your interface well." next
+    "@Did you come for donut byte buffers?" linebreak
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_andonuts_donut)} {e(cow_andonuts_donut)}]"
+
+cow_andonuts_donut:
+    "@No matter. That telepathic IPC signal from Sector 13 reached my telemetry array." next
+    "@My Phase Distorter is an incomplete quantum compilation pipeline." next
+    "@However, my legacy Sky Runner provides a high-voltage long-jump (JSL) far-jump vector!" next
+    "@It bypasses all intermediate physical network hops and vectors straight into the faulted swap cellar." next
+    "@Board the far-jump vector and synchronize your threads with {name(1)} and {name(2)}![03]"
+    goto(data_23.l_0xc6b492)
+
+ROM[0xC79F33] = goto(cow_jeff_awakening)
+ROM[0xC7A04A] = goto(cow_tony_linter)
+ROM[0xC6B18D] = goto(cow_dr_andonuts)

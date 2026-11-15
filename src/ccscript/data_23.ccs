@@ -199,13 +199,7 @@ l_0xc6b161:
     "@Do you think Sebastian's kidnapping will be in tomorrow's paper?" end
 
 l_0xc6b18d:
-    "[06 0E 00 {e(l_0xc6b4bb)}][06 7F 00 {e(l_0xc6b492)}]@Mr. Brickroad, the dungeon maker referred you, right?" next
-    "@And not only that...  What?{pause(15)}  Who?{pause(15)}  My son?{pause(20)}  Oh... I... can't... I can't believe it..." next
-    "@You're {name(3)}, my son.{pause(15)}  It's been maybe 10 years since I last saw you." next
-    "@I'm so glad you're such a healthy boy." next
-    "@Uh, those glasses look good on you." next
-    "@How about a donut?" linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc6b2a3)} {e(l_0xc6b28c)}]" goto(l_0xc6b28c)
+    goto(cow_winters.cow_dr_andonuts)
 
 l_0xc6b28c:
     "@Ah... fine,{pause(15)} fine." next

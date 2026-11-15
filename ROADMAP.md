@@ -69,3 +69,14 @@ Goal: Expand the Copy-on-Write narrative and mechanics into Twoson, Peaceful Res
 - [x] P7-02 Author Twoson scenario scripts reflecting algorithmic divergence between Apple Kid and Orange Kid and Everdred raw memory allocator in Burglin Park (D-011; implemented src/ccscript/cow_twoson.ccs overriding C81676 and C95C0E, 2026-11-14).
 - [x] P7-03 Transform Happy Happy Village and Mr. Carpainter into the Immutable State Cult rejecting dirty pages, and synchronize Lilliput Steps cache (D-011; implemented src/ccscript/cow_happy.ccs overriding C98024 and C7BF95, 2026-11-14).
 - [x] P7-04 Author Peaceful Rest Valley and Lilliput Steps memory leak encounters, reskinning regional enemies (Runaway Linter, Deadlock Tree, Stack Overflow Mole) in src/enemy_configuration_table.yml (D-011; updated entries 2435, 3845, 1965, 8498, 2026-11-14).
+
+## Phase 8: Threed, Winters, and Saturn Valley Scenarios
+
+Goal: Author mid-game Copy-on-Write narrative scenarios across Threed, Winters, Grapefruit Falls, and Saturn Valley, rebalancing regional daemon entities.
+
+- [x] P8-01 Author Threed narrative scenarios for defunct zombie processes, hotel trap exception, and underground core dump cell (D-014; implemented src/ccscript/cow_threed.ccs overriding C8E14A and C79D81, 2026-11-15).
+- [x] P8-02 Implement Paula's network telepathy broadcast to remote node Jeff and Apple Kid's Zombie Paper process scavenger daemon (D-014; implemented src/ccscript/cow_threed.ccs overriding C79E55, C68D5A, and C7A300, 2026-11-15).
+- [x] P8-03 Script Winters Snow Wood debugger routine and Dr. Andonuts' Sky Runner far-jump vector (D-014; implemented src/ccscript/cow_winters.ccs overriding C79F33, C7A04A, and C6B18D, 2026-11-15).
+- [x] P8-04 Author Grapefruit Falls waterfall zero-knowledge proof-of-work gate and Master Belch memory leak buffer overflow exploit (D-014; implemented src/ccscript/cow_belch.ccs overriding C88875, EF6446, and EF6569, 2026-11-15).
+- [x] P8-05 Script Saturn Valley alien primitive bytecode domain and synchronize Milky Well third sanctuary cache line (D-014; implemented src/ccscript/cow_saturn.ccs overriding C7E819, EF679A, C7C12A, and C7C17B, 2026-11-15).
+- [x] P8-06 Rebalance mid-game regional monsters in src/enemy_configuration_table.yml (Buffer Overrun, Defunct Process, Zombie PID, Rootkit Sprout, Memory Leak Daemon, Malicious Daemon) (D-014; updated entries 30, 76, 77, 90, 93, 102, 169, 189, 191, 192, 197, 2026-11-15).

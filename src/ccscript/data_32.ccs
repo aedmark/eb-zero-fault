@@ -24,12 +24,10 @@ l_0xc7c129:
     eob
 
 l_0xc7c12a:
-    "[1F 15 6A 00 60 01 01]    {unset(flag 2)}               " call(data_33.l_0xc7dd6b) "{music(35)}" call(l_0xc7c54b) "{set(flag 2)}               [1F 61]                      {counter(1)}" call(data_33.l_0xc7dc7f) "[1B 02 {e(l_0xc7c17b)}]{window_open(1)}@The power of Milkey Well" call(l_0xc7c55d) goto(l_0xc7c17b)
+    goto(cow_saturn.cow_milky_well_commit)
 
 l_0xc7c17b:
-    call(l_0xc7c57d) "{set(flag 4)}{music_resume}[06 B9 00 {e(l_0xc7c1f7)}]{window_open(1)}@{name(1)} thought he heard his mother from far away... she said" next
-    "@<Be a thoughtful, strong boy...>[03]{pause(60)}" linebreak
-    "@{name(1)}'s Sound Stone recorded the melody of the Milky Well.{wait}{set(flag 185)}{window_closetop}" goto(l_0xc7c1f7)
+    goto(cow_saturn.cow_milky_well_msg)
 
 l_0xc7c1f7:
     call(data_53.l_0xc9b226) "[06 80 01 {e(l_0xc7c204)}]" eob

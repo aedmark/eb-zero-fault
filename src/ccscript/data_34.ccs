@@ -107,14 +107,7 @@ l_0xc7e813:
     call(data_12.l_0xc5d37d) eob
 
 l_0xc7e819:
-    "{font_saturn}[06 4A 00 {e(l_0xc7e890)}][06 47 00 {e(l_0xc7e86c)}]@We feel" linebreak
-    "  groove!" next
-    "@Hi ho." linebreak
-    "  Me" linebreak
-    "  Mr. Saturn." next
-    "@This place," linebreak
-    "  all are" linebreak
-    "  Mr. Saturn.{wait}{font_normal}" eob
+    goto(cow_saturn.cow_saturn_valley)
 
 l_0xc7e86c:
     "@Impressed!" next

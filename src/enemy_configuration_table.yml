@@ -1445,7 +1445,7 @@
   Money: 53
   Movement pattern: 24
   Music: 98
-  Name: Putrid Moldyman
+  Name: Buffer Overrun
   Offense: 36
   Overworld Sprite: 285
   PP: 0
@@ -3607,7 +3607,7 @@
   Money: 58
   Movement pattern: 21
   Music: 96
-  Name: Urban Zombie
+  Name: Defunct Process
   Offense: 31
   Overworld Sprite: 308
   PP: 0
@@ -3654,7 +3654,7 @@
   Money: 81
   Movement pattern: 27
   Music: 102
-  Name: Zombie Possessor
+  Name: Zombie PID
   Offense: 28
   Overworld Sprite: 305
   PP: 0
@@ -4265,7 +4265,7 @@
   Money: 1358
   Movement pattern: 23
   Music: 103
-  Name: Trillionage Sprout
+  Name: Rootkit Sprout
   Offense: 54
   Overworld Sprite: 333
   PP: 240
@@ -4406,7 +4406,7 @@
   Money: 664
   Movement pattern: 29
   Music: 99
-  Name: Master Belch
+  Name: Memory Leak Daemon
   Offense: 50
   Overworld Sprite: 328
   PP: 0
@@ -4829,7 +4829,7 @@
   Money: 407
   Movement pattern: 0
   Music: 102
-  Name: Boogey Tent
+  Name: Malicious Daemon
   Offense: 43
   Overworld Sprite: 0
   PP: 56
@@ -7978,7 +7978,7 @@
   Money: 664
   Movement pattern: 29
   Music: 99
-  Name: Master Belch
+  Name: Memory Leak Daemon
   Offense: 50
   Overworld Sprite: 328
   PP: 0
@@ -8918,7 +8918,7 @@
   Money: 58
   Movement pattern: 21
   Music: 96
-  Name: Urban Zombie
+  Name: Defunct Process
   Offense: 31
   Overworld Sprite: 308
   PP: 0
@@ -9012,7 +9012,7 @@
   Money: 1358
   Movement pattern: 23
   Music: 103
-  Name: Trillionage Sprout
+  Name: Rootkit Sprout
   Offense: 54
   Overworld Sprite: 333
   PP: 240
@@ -9059,7 +9059,7 @@
   Money: 664
   Movement pattern: 29
   Music: 99
-  Name: Master Belch
+  Name: Memory Leak Daemon
   Offense: 50
   Overworld Sprite: 328
   PP: 0
@@ -9294,7 +9294,7 @@
   Money: 407
   Movement pattern: 0
   Music: 102
-  Name: Boogey Tent
+  Name: Malicious Daemon
   Offense: 43
   Overworld Sprite: 0
   PP: 56

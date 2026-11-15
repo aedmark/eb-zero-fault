@@ -27,6 +27,11 @@ command e(label) "{long label}"
 // 859: Sector 10 - Peaceful Rest Valley Stack
 // 860: Sector 11 - Happy Happy Village Immutable Domain
 // 861: Sector 12 - Lilliput Steps Cache
+// 862: Sector 13 - Threed Defunct Process Enclave
+// 863: Sector 14 - Winters Debug Facility & Snow Wood
+// 864: Sector 15 - Grapefruit Falls & Belch Factory
+// 865: Sector 16 - Saturn Valley Alien Primitive Domain
+// 866: Sector 17 - Milky Well Cache
 
 // Entity Mutation Bits (870-889)
 // 870: Mom baseline dirtied (refcount = 2 awareness)
@@ -42,6 +47,12 @@ command e(label) "{long label}"
 // 880: Everdred baseline dirtied (raw untyped allocator active)
 // 881: Carpainter baseline dirtied (immutable ROM cult dismantled)
 // 882: Paula baseline dirtied (mutex unlocked / thread synchronized)
+// 883: Threed Greeter baseline dirtied (defunct PID awareness)
+// 884: Jeff baseline dirtied (static analyzer initialized)
+// 885: Dr. Andonuts baseline dirtied (far-jump vector active)
+// 886: Master Belch baseline dirtied (buffer overflow exploited)
+// 887: Saturn Valley baseline dirtied (alien bytecode primitives parsed)
+// 888: Milky Well baseline dirtied (third sanctuary cache synchronized)
 
 // Reusable Engine Commands
 command cow_touch(f) "{set(flag f)}"
@@ -69,3 +80,18 @@ cow_fault_commit_townhall:
 
 cow_fault_commit_giantstep:
     "{set(flag 855)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_threed:
+    "{set(flag 862)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_winters:
+    "{set(flag 863)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_belch:
+    "{set(flag 864)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_saturn:
+    "{set(flag 865)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_milkywell:
+    "{set(flag 866)}{sound(11)}{pause(15)}" eob

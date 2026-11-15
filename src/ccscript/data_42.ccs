@@ -275,7 +275,7 @@ l_0xc8e144:
     call(data_12.l_0xc5d341) eob
 
 l_0xc8e14a:
-    "[06 47 00 {e(l_0xc8e176)}]@Zombies and ghosts are on the loose here.{pause(20)}  Welcome to Threed." end
+    goto(cow_threed.cow_threed_greeter)
 
 l_0xc8e176:
     "@Zombies and ghosts are{pause(20)} not on the loose anymore." next

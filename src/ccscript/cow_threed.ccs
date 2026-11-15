@@ -1,0 +1,67 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Threed Defunct Process Scenarios (P8-01, P8-02)
+// ==============================================================================
+// Zombie PID leaks, hotel trap exception, and Paula IPC network bus broadcast.
+// ==============================================================================
+
+cow_threed_greeter:
+    "[06 47 00 {e(cow_threed_greeter_cleared)}]"
+    "{sound(11)}{pause(10)}"
+    "{set(flag 862)}{set(flag 883)}"
+    "@Warning: Unhandled defunct zombie processes roaming Sector 13." next
+    "@Parent daemons crashed without calling waitpid(), leaking process IDs and file descriptors across Threed." next
+    "@The municipal heap is choking on zombie PIDs. Avoid memory traps near the hotel!" end
+
+cow_threed_greeter_cleared:
+    "@Defunct child processes reaped.{pause(15)} Process table stabilized." next
+    "@Sector 13 memory reclamation complete! All user threads restored." end
+
+cow_threed_ambush:
+    "{lock_movement(255)}{event(5)}[19 10 01][1F 1C 00 03]{pause(60)}{hide_char_float(0)}[1F E9 ED 01][1F E9 EE 01][1F E9 EF 01][1F E9 F0 01]{music_effect(2)}{pause(10)}{music(111)}[1F 15 6A 00 8B 02 01][1F 61]{pause(120)}"
+    "{sound(11)}{pause(10)}"
+    "{window_open(1)}@(FATAL: Unhandled trap exception at 0x7E0000!{pause(20)} Bus error / SIGSEGV." next
+    "@Hardware execution frozen. Serializing active thread contexts into core dump...){wait}{window_closeall}"
+    call(data_45.l_0xc915f4)
+    call(data_22.l_0xc69082)
+    "{set(flag 11)}{hide_char(255)}[1F 15 10 00 96 02 FF][1F 15 89 01 97 02 FF]{warp(77)}{lock_movement(255)}{pause(240)}[1F 1F 10 00 06]{show_char(1, 1)}{pause(30)}[19 22 01 03 89 01]{char_direction(1, 0)}{pause(20)}[1F 1F 89 01 06][1F 15 02 00 08 00 01]{pause(60)}[1F F2 02 00 2F 00][1F 61][1F 1F 02 00 06]{show_party(1)}[1F E8 FF]" eob
+
+cow_paula_broadcast:
+    call(data_22.l_0xc69082)
+    "{pause(60)}{char_direction(2, 5)}{pause(60)}{music_effect(3)}[1F 15 6A 00 FE 02 01][1F 61][1F E7 6A 00]{pause(120)}"
+    "{sound(97)}{pause(10)}"
+    "{window_open(1)}@Broadcasting asynchronous IPC packet across system network bus..." next
+    "@Calling remote thread node {name(3)}...{pause(30)} {name(3)}! Can you parse our packet?" next
+    "@We are trapped in the swap partition under Sector 13! Our mutex lock is jammed." next
+    "@Only your debugger routine can compute our far-jump return address!" next
+    "@Execute a far jump south and extract our threads!...{wait}{pause(30)}{window_closeall}{pause(1)}[1F 1F 6A 00 06]{hide_char(255)}{warp(200)}[1F 15 6A 00 83 02 01]"
+    call(data_53.l_0xc9b4b8)
+    "{warp(201)}[1F 15 6A 00 84 02 01]"
+    call(data_53.l_0xc9b4b8)
+    "{unset(flag 11)}{event(6)}"
+    goto(cow_winters.cow_jeff_awakening)
+
+cow_paula_broadcast_ambient:
+    "{window_open(1)}@Transmitting remote IPC beacon across network bus..." next
+    "@{name(3)}..." next
+    "@Vector south..." next
+    "@I am {stat(30)}..." next
+    "@If your socket receives this packet, execute far-jump south...{wait}{window_closeall}{unset(flag 636)}"
+    goto(data_44.l_0xc90f90)
+
+cow_zombie_paper:
+    call(data_33.l_0xc7dd8d)
+    "[1B 03 {e(data_31.l_0xc7a2f7)}]{music(115)}{pause(60)}{wait}[1F 01 00]{sound(11)}"
+    "{window_open(1)}@Interrupt received: Apple Kid Dynamic JIT Laboratories speaking." next
+    "@I have compiled an automated garbage collector daemon: <Zombie Paper>." next
+    "@It acts as a physical memory trap to reap defunct child processes and clear zombie PIDs overnight." next
+    "@Deploy the paper on the floor of the circus tent to trigger the cleanup cycle!{wait}"
+    "@I will transmit future updates over this interrupt line." next
+    "@*Click!* Beeeeep!{wait}{sound(11)}{window_closeall}{music_resume}[1F D3 08]{set(flag 675)}{set(flag 754)}" eob
+
+ROM[0xC8E14A] = goto(cow_threed_greeter)
+ROM[0xC79D81] = goto(cow_threed_ambush)
+ROM[0xC79E55] = goto(cow_paula_broadcast)
+ROM[0xC68D5A] = goto(cow_paula_broadcast_ambient)
+ROM[0xC7A300] = goto(cow_zombie_paper)

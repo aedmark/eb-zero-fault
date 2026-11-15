@@ -14,7 +14,7 @@ Changes: [CHANGELOG.md](CHANGELOG.md). Older sessions: [archive/](archive/README
 
 ## Current state
 
-Last updated: 2026-11-14, session 3, on `main`: Q-001 resolved via D-006 (Option B: Outdoors only). P2-01 implemented in `src/ccscript/dash.ccs` and compiled cleanly to `build/eb_zero_fault.sfc`.
+Last updated: 2026-11-14, session 3, on `main` (`0135103`): Q-001 resolved via D-006 (Option B: Outdoors only). P2-01 implemented in `src/ccscript/dash.ccs` and compiled cleanly to `build/eb_zero_fault.sfc`.
 
 **Session owner:** Antigravity / Maintainer, on `main`, since 2026-11-14. Phase 2 QoL implementation.
 

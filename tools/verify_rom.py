@@ -72,6 +72,18 @@ HOOKS = [
     (0x097990, b"\x0A", "CoW Moonside Mani Mani Destroyed Hook (0xC97990)"),
     (0x07C208, b"\x0A", "CoW Magnet Hill Commit Hook (0xC7C208)"),
     (0x07C258, b"\x0A", "CoW Magnet Hill Message Hook (0xC7C258)"),
+    (0x08B8D5, b"\x0A", "CoW Stoic Cake Lady Hook (0xC8B8D5)"),
+    (0x08B191, b"\x0A", "CoW Beach Cake Lady Hook (0xC8B191)"),
+    (0x0920A2, b"\x0A", "CoW Magic Cake Dream Hook (0xC920A2)"),
+    (0x09254A, b"\x0A", "CoW Mu Trial Legs Hook (0xC9254A)"),
+    (0x0925E3, b"\x0A", "CoW Mu Trial Arms Hook (0xC925E3)"),
+    (0x09268E, b"\x0A", "CoW Mu Trial Ears Hook (0xC9268E)"),
+    (0x092723, b"\x0A", "CoW Mu Trial Eyes Hook (0xC92723)"),
+    (0x0927EA, b"\x0A", "CoW Mu Trial Mind Hook (0xC927EA)"),
+    (0x09C991, b"\x0A", "CoW Dalaam Master Hook (0xC9C991)"),
+    (0x09C9E8, b"\x0A", "CoW Dalaam Conclude Hook (0xC9C9E8)"),
+    (0x08B52A, b"\x0A", "CoW Sailor Captain Hook (0xC8B52A)"),
+    (0x092C70, b"\x0A", "CoW Kraken Voyage Hook (0xC92C70)"),
 ]
 
 # Active NPC Configuration Table bindings verified dynamically against compiled symbols in summary.txt
@@ -98,6 +110,10 @@ NPC_BINDINGS = [
     (872, "cow_monotoli", "NPC Table Entry 872 (Monotoli 48th Floor Pointer)"),
     (1379, "cow_moonside_greeter", "NPC Table Entry 1379 (Moonside Inversion Greeter Pointer)"),
     (1406, "cow_mani_mani", "NPC Table Entry 1406 (Moonside Mani Mani Rootkit Pointer)"),
+    (1002, "cow_stoic_cake_lady", "NPC Table Entry 1002 (Stoic Club Cake Lady Pointer)"),
+    (1069, "cow_beach_cake_lady", "NPC Table Entry 1069 (Beach Cart Cake Lady Pointer)"),
+    (1089, "cow_master_dalaam", "NPC Table Entry 1089 (Dalaam Master Pointer)"),
+    (1065, "cow_sailor_captain", "NPC Table Entry 1065 (Sailor Captain Pointer)"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
@@ -143,6 +159,13 @@ THEMATIC_NAMES = [
     "Memory Corruptor Rat",
     "Clock Jitter",
     "DMA Pump",
+    # Phase 10 thematic enemies
+    "Packet Storm Kraken",
+    "Fragmented Struct",
+    "Corrupt Struct",
+    "Recursive Sprout",
+    "Interrupt Mite",
+    "Heap Dump",
 ]
 
 

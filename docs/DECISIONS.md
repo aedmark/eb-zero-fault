@@ -140,6 +140,19 @@ removing a fence whose purpose it forgot.
 **Consequences:** Unifies late-midgame progression under the Copy-on-Write parallel universe model. Automated verification in `tools/verify_rom.py` expanded to 100 binary assertions across ROM hooks, dynamic NPC table pointers, and thematic strings.
 **Review trigger:** Verification of Summers oceanic transition and Poo's party join event.
 
+## D-016 Mid-to-Late Game Scenarios: Oceanic Buffers, Resource Reclamation, and Packet Contention (2026-11-15, status: accepted)
+**Context:** Expanding the Copy-on-Write parallel universe into Summers, Dalaam, Poo's Mu Trial, and the Sea of Serendipity Kraken encounter (P10-01 through P10-06).
+**Decision:**
+1. Author `src/ccscript/cow_summers.ccs`: Stoic Club Cake Lady at `$C8B8D5` and `$C8B9C4` (NPC 1002) framing the club as thread idle profiling and introspection; Beach Cart Cake Lady at `$C8B191` (NPC 1069) and Magic Cake Dream sequence at `$C920A2` as an unhandled heap reallocation context switch mapping Prince Poo's remote eastern architecture into active memory.
+2. Author `src/ccscript/cow_dalaam.ccs`: Mu Training trial spirit at `$C9254A`, `$C925E3`, `$C9268E`, `$C92723`, and `$C927EA` executing progressive sensory resource deallocation (stripping locomotive registers <legs>, peripheral I/O vectors <arms>, input event stream <ears>, visual framebuffer <eyes>, and core execution registers <mind> into the null state `0x00`); Dalaam Master at `$C9C991` and `$C9C9E8` (NPC 1089) concluding resource reclamation and registering Prince Poo as Thread 4 to synchronize with primary coordinator Thread 1 (Ness).
+3. Author `src/ccscript/cow_sea.ccs`: Sailor Captain at `$C8B52A` and `$C8B6D5` (NPC 1065) dispatching packet transport across the unshielded oceanic memory bus; Sea of Serendipity voyage at `$C92C70` experiencing catastrophic latency spikes and packet contention; and defeating the Packet Storm Kraken to clear bus contention and restore channel bandwidth to Scaraba.
+4. Update `src/ccscript/cow_engine.ccs` allocating Sector dirty bits 896 (Summers/Toto), 897 (Dalaam), 898 (Mu Training), 899 (Sea of Serendipity); Entity mutation bits 900 (Magic Cake switch), 901 (Poo Mu deallocation), 902 (Poo Thread 4 registration), 903 (Kraken bus purged), and corresponding commit subroutines.
+5. Enforce dual-binding dispatch across 4 NPC table entries in `src/npc_config_table.yml` (NPCs 1002, 1065, 1069, 1089) and legacy label trampolines in `data_41.ccs`, `data_42.ccs`, `data_46.ccs`, and `data_53.ccs`.
+6. Rebalance regional monsters in `src/enemy_configuration_table.yml`: Kraken to Packet Storm Kraken (49, 182), Shattered Man to Fragmented Struct (125), Fierce Shattered Man to Corrupt Struct (126), Tough Mobile Sprout to Recursive Sprout (10), Thunder Mite to Interrupt Mite (31), Slimy Little Pile to Heap Dump (45).
+**Alternatives:** Treating Poo's trial as eastern mysticism and Summers as standard resort vacation (violates systems-level architecture premise).
+**Consequences:** Seamlessly connects the four-thread party model under distributed systems concepts. Automated verification in `tools/verify_rom.py` expanded to 122 binary assertions across ROM hooks, dynamic NPC table pointers, and thematic strings.
+**Review trigger:** Verification of Scaraba pyramid access and Dungeon Man architecture linking.
+
 ---
 
 ## Held tensions

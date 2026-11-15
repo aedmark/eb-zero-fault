@@ -9022,7 +9022,7 @@
   Movement: 606
   Show Sprite: when event flag unset
   Sprite: 181
-  Text Pointer 1: data_42.l_0xc8b8d5
+  Text Pointer 1: cow_summers.cow_stoic_cake_lady
   Text Pointer 2: $0
   Type: person
 1003:
@@ -9589,7 +9589,7 @@
   Movement: 605
   Show Sprite: always
   Sprite: 90
-  Text Pointer 1: data_42.l_0xc8b52a
+  Text Pointer 1: cow_sea.cow_sailor_captain
   Text Pointer 2: $0
   Type: person
 1066:
@@ -9625,7 +9625,7 @@
   Movement: 605
   Show Sprite: when event flag set
   Sprite: 181
-  Text Pointer 1: data_41.l_0xc8b191
+  Text Pointer 1: cow_summers.cow_beach_cake_lady
   Text Pointer 2: $0
   Type: person
 1070:
@@ -9805,7 +9805,7 @@
   Movement: 606
   Show Sprite: always
   Sprite: 166
-  Text Pointer 1: data_53.l_0xc9c991
+  Text Pointer 1: cow_dalaam.cow_master_dalaam
   Text Pointer 2: $0
   Type: person
 1090:

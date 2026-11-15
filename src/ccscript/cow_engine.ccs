@@ -36,8 +36,12 @@ command e(label) "{long label}"
 // 868: Sector 19 - Fourside Monolithic Kernel
 // 869: Sector 20 - Moonside Bitwise Inverted Domain
 // 895: Sector 21 - Magnet Hill Sanctuary Cache
+// 896: Sector 22 - Summers & Port Toto Oceanic Buffer
+// 897: Sector 23 - Dalaam Isolated Eastern Node
+// 898: Sector 24 - Mu Training Deallocation Matrix
+// 899: Sector 25 - Sea of Serendipity Bus Channel
 
-// Entity Mutation Bits (870-894)
+// Entity Mutation Bits (870-903)
 // 870: Mom baseline dirtied (refcount = 2 awareness)
 // 871: Tracy baseline dirtied (memory buffer initialized)
 // 872: Pokey baseline dirtied (unbound pointer hijacked)
@@ -63,6 +67,10 @@ command e(label) "{long label}"
 // 892: Evil Mani Mani (Rootkit core parity inversion)
 // 893: Monotoli (Kernel sysadmin deregulation)
 // 894: Magnet Hill (4th Sanctuary cache line commit)
+// 900: Magic Cake context switch initialized
+// 901: Poo Mu sensory deallocation completed
+// 902: Poo thread 4 registered
+// 903: Kraken bus anomaly purged
 
 // Reusable Engine Commands
 command cow_touch(f) "{set(flag f)}"
@@ -117,3 +125,15 @@ cow_fault_commit_moonside:
 
 cow_fault_commit_magnethill:
     "{set(flag 895)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_summers:
+    "{set(flag 896)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_dalaam:
+    "{set(flag 897)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_mu:
+    "{set(flag 898)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_sea:
+    "{set(flag 899)}{sound(11)}{pause(15)}" eob

@@ -91,3 +91,14 @@ Goal: Author late-midgame narrative scenarios across Dusty Dunes Desert, Foursid
 - [x] P9-04 Author Moonside bitwise-NOT inverted parity domain and Evil Mani Mani rootkit core destruction sequence (D-015; implemented src/ccscript/cow_moonside.ccs overriding C96D10, C96DB2, C9794B, and C97990, 2026-11-15).
 - [x] P9-05 Synchronize Magnet Hill fourth sanctuary cache line commit and defeat of the Memory Corruptor Rat (D-015; implemented src/ccscript/cow_magnet.ccs overriding C7C208 and C7C258, 2026-11-15).
 - [x] P9-06 Rebalance mid-game regional monsters in src/enemy_configuration_table.yml (Sparse Defrag Digger, Thread Terminus, Rootkit Core, Memory Corruptor Rat, Clock Jitter, DMA Pump) (D-015; updated entries 2, 40, 42, 88, 137, 154, 171, 179, 181, 203, 207, 2026-11-15).
+
+## Phase 10: Summers, Dalaam, Poo's Trial, and Kraken Scenarios
+
+Goal: Author mid-to-late game narrative scenarios across Summers oceanic memory buffer, Stoic Club thread profiling, Beach Cart Magic Cake context switch, Dalaam eastern node, Mu training sensory resource deallocation, and the Sea of Serendipity packet contention channel.
+
+- [x] P10-01 Script Summers Stoic Club thread idle profiling and Beach Cart Magic Cake heap dump unhandled context switch (D-016; implemented src/ccscript/cow_summers.ccs overriding C8B8D5, C8B9C4, C8B191, and C920A2, 2026-11-15).
+- [x] P10-02 Author Dalaam Mu Training progressive sensory resource deallocation across locomotive registers, peripheral I/O vectors, input event stream, visual framebuffer, and mind registers (D-016; implemented src/ccscript/cow_dalaam.ccs overriding C9254A, C925E3, C9268E, C92723, and C927EA, 2026-11-15).
+- [x] P10-03 Script Dalaam Master conclusion sequence and Prince Poo Thread 4 registration with primary coordinator Thread 1 (D-016; implemented src/ccscript/cow_dalaam.ccs overriding C9C991 and C9C9E8, 2026-11-15).
+- [x] P10-04 Author Sea of Serendipity oceanic memory bus traversal and Sailor Captain packet transport dispatch (D-016; implemented src/ccscript/cow_sea.ccs overriding C8B52A and C8B6D5, 2026-11-15).
+- [x] P10-05 Author Packet Storm Kraken oceanic channel bus fault and bus contention purge sequence (D-016; implemented src/ccscript/cow_sea.ccs overriding C92C70, 2026-11-15).
+- [x] P10-06 Rebalance regional monsters in src/enemy_configuration_table.yml (Packet Storm Kraken, Fragmented Struct, Corrupt Struct, Recursive Sprout, Interrupt Mite, Heap Dump) (D-016; updated entries 10, 31, 45, 49, 125, 126, 182, 2026-11-15).

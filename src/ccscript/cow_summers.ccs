@@ -1,0 +1,54 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 10: Summers Oceanic Buffer Scenario
+// ==============================================================================
+// Stoic Club thread idle profiling, Beach Cart Magic Cake heap dump, and
+// asynchronous architecture context switch.
+// ==============================================================================
+
+cow_stoic_cake_lady:
+    "@I am investigating the null thread state... the unallocated true self." next
+    "@Patrons of this club stare into unmapped memory addresses until their stack traces burn into the terminal." next
+    "@I want to reside in this idle wait-state at any time, all the time, or at no time." next
+    "@My process scheduler is signaling...[06 3D 00 {e(cow_stoic_cake_lady_query)}]" end
+
+cow_stoic_cake_lady_query:
+    next
+    "@What? What?{pause(15)} Magic Cake?" next
+    "@You traveled across the external memory bus just to consume a heap reallocation cake?" linebreak
+    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_stoic_cake_lady_yes)} {e(cow_stoic_cake_lady_no)}]"
+    goto(cow_stoic_cake_lady_no)
+
+cow_stoic_cake_lady_no:
+    "@Then do not interrupt my thread while I profile unreferenced memory..." end
+
+cow_stoic_cake_lady_yes:
+    "@I see...{pause(30)} Initiating address mapping." next
+    "@Meet my vendor thread at the cart on the beach.{wait}{pause(60)}" linebreak
+    "{window_closeall}[1F F1 EA 03 AA 02][1F 61]{set(flag 617)}"
+    eob
+
+cow_beach_cake_lady:
+    "[06 49 00 {e(data_41.l_0xc8b22f)}][06 10 00 {e(data_19.l_0xc65015)}]{event(5)}"
+    "@I do not know which debugger leaked my address." next
+    "@You traversed remote sectors to execute the Magic Cake memory dump?" next
+    "@I baked it entirely from discarded heap scraps and raw pointer overflows." next
+    "@Execute! Consume the binary payload!" next
+    "@This is an unhandled Magic Cake context switch![03]{window_closeall}"
+    call(cow_engine.cow_fault_commit_summers)
+    "{set(flag 900)}{unset(flag 61)}"
+    goto(cow_magic_cake_dream)
+
+cow_magic_cake_dream:
+    call(data_22.l_0xc69082)
+    "{music(111)}[1F 15 6A 00 FB 02 01][1F 61]{hide_char(255)}{warp(81)}{pause(120)}{window_open(1)}[19 10 01]{rtoarg}"
+    "@({name(0)} experienced a radical context switch... A separate remote architecture was mapped into active memory.)[03]"
+    "[1F 15 6A 00 79 02 01][1F 61]{window_closeall}[1F 64]{party_add(4)}{party_remove(1)}{party_remove(2)}{party_remove(3)}{hide_char(255)}{set(flag 11)}{music_effect(3)}{pause(60)}{warp(202)}[1F 15 6A 00 85 02 01]"
+    call(data_53.l_0xc9b4b8)
+    "{warp(203)}[1F 15 6A 00 86 02 01]"
+    call(data_53.l_0xc9b4b8)
+    "{show_party(1)}{warp(79)}{lock_movement(255)}[1F E6 41 04][1F E6 42 04]{pause(120)}{music_effect(3)}{pause(120)}[1F 16 41 04 03]{music(119)}{pause(120)}{set(flag 149)}{window_open(1)}@Prince {name(4)},{pause(15)} the execution cycle has arrived for your final compilation trial." next
+    "@Traverse to the <Place of Emptiness> and undergo total resource reclamation." next
+    "@The Dalaam kernel monitors your progression through this final stage.{wait}{window_closeall}{set(flag 150)}{set(flag 10)}[1F 66 01 01 03 22 C9 00]{unset(flag 11)}{event(6)}{set(flag 216)}[19 26 09]{music_effect(3)}{pause(60)}{music_resume}[1F E8 FF]"
+    eob

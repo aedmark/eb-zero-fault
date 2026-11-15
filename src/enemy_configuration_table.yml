@@ -505,7 +505,7 @@
   Money: 119
   Movement pattern: 24
   Music: 96
-  Name: Tough Mobile Sprout
+  Name: Recursive Sprout
   Offense: 33
   Overworld Sprite: 317
   PP: 13
@@ -1492,7 +1492,7 @@
   Money: 430
   Movement pattern: 23
   Music: 97
-  Name: Thunder Mite
+  Name: Interrupt Mite
   Offense: 85
   Overworld Sprite: 324
   PP: 200
@@ -2150,7 +2150,7 @@
   Money: 124
   Movement pattern: 20
   Music: 141
-  Name: Slimy Little Pile
+  Name: Heap Dump
   Offense: 42
   Overworld Sprite: 315
   PP: 0
@@ -2338,7 +2338,7 @@
   Money: 3049
   Movement pattern: 29
   Music: 104
-  Name: Kraken
+  Name: Packet Storm Kraken
   Offense: 105
   Overworld Sprite: 295
   PP: 176
@@ -5910,7 +5910,7 @@
   Money: 2630
   Movement pattern: 24
   Music: 103
-  Name: Shattered Man
+  Name: Fragmented Struct
   Offense: 104
   Overworld Sprite: 307
   PP: 0
@@ -5957,7 +5957,7 @@
   Money: 577
   Movement pattern: 24
   Music: 102
-  Name: Fierce Shattered Man
+  Name: Corrupt Struct
   Offense: 101
   Overworld Sprite: 307
   PP: 0
@@ -8589,7 +8589,7 @@
   Money: 3049
   Movement pattern: 29
   Music: 104
-  Name: Kraken
+  Name: Packet Storm Kraken
   Offense: 105
   Overworld Sprite: 295
   PP: 176

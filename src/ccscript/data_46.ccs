@@ -99,9 +99,7 @@ l_0xc91ffd:
     "{set(flag 11)}{event(5)}[1F 15 B9 01 09 03 01]" call(data_22.l_0xc69082) "[1F E9 6F 02][1F 61]{pause(30)}[1F 1E 6D 02 06][1F 61][1F 15 D1 00 92 00 FF]{warp(186)}[1F 61][1F ED][1F 15 D1 00 93 00 FF]{warp(188)}[1F EF D1 00][1F 61][1F ED][1F 15 D1 00 AA 00 FF][1F 15 E6 00 AB 00 FF]{warp(195)}[1F EF E6 00][1F 61]{unset(flag 655)}{set(flag 535)}{music_resume}[1F 61]{music(110)}[1F 61]{show_party(1)}[1F ED][1F 15 F1 00 AC 00 FF][1F 15 F1 00 AD 00 FF][1F 15 F1 00 AE 00 FF]{unset(flag 535)}{warp(78)}[1F E8 FF]{pause(1)}[19 26 07]{set(flag 748)}{set(flag 215)}{unset(flag 11)}{event(6)}[1F 15 B9 01 0A 03 01]" eob
 
 l_0xc920a2:
-    call(data_22.l_0xc69082) "{music(111)}[1F 15 6A 00 FB 02 01][1F 61]{hide_char(255)}{warp(81)}{pause(120)}{window_open(1)}[19 10 01]{rtoarg}@({name(0)} had a dream, it was a very clear,{pause(15)} and very strange,{pause(5)} dream.)[03][1F 15 6A 00 79 02 01][1F 61]{window_closeall}[1F 64]{party_add(4)}{party_remove(1)}{party_remove(2)}{party_remove(3)}{hide_char(255)}{set(flag 11)}{music_effect(3)}{pause(60)}{warp(202)}[1F 15 6A 00 85 02 01]" call(data_53.l_0xc9b4b8) "{warp(203)}[1F 15 6A 00 86 02 01]" call(data_53.l_0xc9b4b8) "{show_party(1)}{warp(79)}{lock_movement(255)}[1F E6 41 04][1F E6 42 04]{pause(120)}{music_effect(3)}{pause(120)}[1F 16 41 04 03]{music(119)}{pause(120)}{set(flag 149)}{window_open(1)}@Prince {name(4)},{pause(15)} the time has now come for you to undertake your final trial." next
-    "@Go to the <Place of Emptiness> and endure this final test." next
-    "@I am praying for your success in this final stage of your training.{wait}{window_closeall}{set(flag 150)}{set(flag 10)}[1F 66 01 01 03 22 C9 00]{unset(flag 11)}{event(6)}{set(flag 216)}[19 26 09]{music_effect(3)}{pause(60)}{music_resume}[1F E8 FF]" eob
+    goto(cow_summers.cow_magic_cake_dream)
 
 l_0xc92203:
     "{set(flag 11)}[1F 15 6A 00 53 01 01]       " call(data_53.l_0xc9b4b8) "{music_effect(2)}{pause(60)}{char_direction(4, 3)}{pause(4)}{char_direction(4, 4)}{pause(4)}{char_direction(4, 5)}{pause(4)}{hide_char(255)}[1F 15 6A 01 54 01 01]{music(60)}{unset(flag 2)}                       [1F 61]                              [06 02 00 {e(l_0xc92417)}]      [1F E7 6A 01][1F 15 A3 00 55 01 01]  [1F 61]                                                      [1F E7 A3 00]" call(l_0xc92461) "              [1F EA A3 00]                           [1F 61][1F EA 6A 01][1F 61]                              [06 02 00 {e(l_0xc92417)}]      [1F 15 6D 01 56 01 01]   {unset(flag 3)}               {set(flag 4)}               [1F 61]                      [06 02 00 {e(l_0xc9242e)}]      {set(flag 3)}[1F 61]                      {open_hp}                       [1F F2 6D 01 57 01]    {unset(flag 3)}               {unset(flag 5)}               " call(l_0xc9254a) "[06 02 00 {e(l_0xc9242e)}]      " call(l_0xc925e3) "[06 02 00 {e(l_0xc9242e)}]      " call(l_0xc9268e) "[06 02 00 {e(l_0xc9242e)}]      " call(l_0xc92723) "[06 02 00 {e(l_0xc9242e)}]      {set(flag 5)}[1F 61]" call(l_0xc927ea) "[06 02 00 {e(l_0xc9242e)}]      {set(flag 3)}                       [1F 61]                              [1F 1F 6D 01 06]        {show_party(1)}         {pause(1)}{music_resume}[1F 15 58 00 55 01 01][1F 61]                                                      [1F E7 58 00]{char_direction(4, 7)}" call(l_0xc92958) "              [1F EA 58 00]             [1F 61]" eob
@@ -132,12 +130,7 @@ l_0xc92461:
     "@it is the truth...{wait}{window_closeall}" eob
 
 l_0xc9254a:
-    "{window_open(1)}@Prince {name(4)}..." next
-    "@I am the spirit of your ancient lineage." next
-    "@To complete your trial,{pause(15)} I am going to break your legs." next
-    "@You will lose the use of them." next
-    "@Do you accept this?" linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc925db)} {e(l_0xc925d0)}]" goto(l_0xc925d0)
+    goto(cow_dalaam.cow_mu_trial_legs)
 
 l_0xc925d0:
     "{set(flag 2)}{window_closeall}{sound(32)}{pause(100)}" eob
@@ -146,53 +139,25 @@ l_0xc925db:
     call(l_0xc92909) "{window_closetop}" eob
 
 l_0xc925e3:
-    "{window_open(1)}@So, Prince {name(4)}..." next
-    "@you cannot walk, as your legs are broken." next
-    "@Next, I will tear your arms off..." next
-    "@I shall then take your arms and feed them to the crows." next
-    "@The taking of your arms..." next
-    "@Do you accept this?" linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc92686)} {e(l_0xc925d0)}]" goto(l_0xc925d0)
+    goto(cow_dalaam.cow_mu_trial_arms)
 
 l_0xc92686:
     call(l_0xc92924) "{window_closetop}" eob
 
 l_0xc9268e:
-    "{window_open(1)}@Ah, Prince {name(4)}..." next
-    "@Without legs and arms, you can only lie there..." next
-    "@Now, I'll cut your ears off." next
-    "@You do not mind my taking your hearing away, do you?" next
-    "@Do you accept this?" linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc9271b)} {e(l_0xc925d0)}]" goto(l_0xc925d0)
+    goto(cow_dalaam.cow_mu_trial_ears)
 
 l_0xc9271b:
     call(l_0xc9293f) "{window_closetop}" eob
 
 l_0xc92723:
-    "{text_blips(3)}{window_open(1)}@(So, Prince {name(4)}." next
-    "@No legs, no arms and no sound..." next
-    "@By floating words through the air,{pause(15)} I must ask you..." next
-    "@Do you care if I take your eyes?" next
-    "@Do you want to live in eternal darkness?" next
-    "@I shall steal your sight..." next
-    "@Do you accept this?)" linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc927e2)} {e(l_0xc925d0)}]" goto(l_0xc925d0)
+    goto(cow_dalaam.cow_mu_trial_eyes)
 
 l_0xc927e2:
     call(l_0xc92955) "{window_closetop}" eob
 
 l_0xc927ea:
-    "{window_open(1)}@(So, Prince {name(4)}." next
-    "@Now, I can only communicate directly with your mind." next
-    "@Your mind is all you have left..." next
-    "@In the end, I will take your mind," next
-    "@though you probably don't want to allow that, do you?" next
-    "@So... you can't answer?{pause(20)}  You can't even move?" next
-    "@Are you sad, are you lonely?" next
-    "@If you lose your mind,{pause(15)}" linebreak
-    "  you also lose any feelings of sadness..." next
-    "@Do you accept this?" next
-    "@I will take your mind, Prince {name(4)},{pause(20)} know that I will possess it...)[03]{pause(20)}{window_closeall}{set(flag 273)}{heal_percent(4, 100)}{text_blips(1)}{set(flag 595)}" eob
+    goto(cow_dalaam.cow_mu_trial_mind)
 
 l_0xc92909:
     "{window_switch(1)}{window_closetop}{sound(63)}{pause(10)}{open_hp}{hurt_percent(4, 80)}{sound(61)}{pause(90)}{sound(46)}{pause(30)}" eob
@@ -236,12 +201,7 @@ l_0xc92be3:
     "{window_closeall}{pause(60)}{music(145)}{pause(140)}[1F 15 B7 01 63 01 01]{pause(1)}[1F EF B7 01][1F E8 FF][1F 15 6A 00 A3 02 01][1F 61][1F ED]{lock_movement(255)}[1F 1F B7 01 06][1F E1 1B 04 B4][19 10 01]{rtoarg}{window_open(1)}@When you defeated the Starman DX, the Stonehenge base ceased functioning.[03]{window_closeall}{set(flag 70)}{set(flag 126)}{set(flag 51)}{set(flag 55)}{set(flag 766)}{isset(flag 219)}[1B 02 {e(data_51.l_0xc9992f)}]{set(flag 538)}{music_resume}" eob
 
 l_0xc92c70:
-    "{event(5)}{set(flag 11)}[1F F1 29 04 23 01][1F 15 6A 00 24 01 01]" call(data_53.l_0xc9b4b8) "{hide_char(255)}" call(data_33.l_0xc7dd6b) "{set(flag 542)}{music_resume}[1F F1 40 04 25 01][1F EE 40 04][1F E8 FF][1F 61][1F ED]{lock_movement(255)}{warp(89)}[1F 15 05 01 26 01 01]{pause(1)}[1F EF 05 01][1F E8 FF][1F 61][1F E7 05 01]" call(l_0xc92dee) "[1F EA 05 01][1F 61][1F 15 27 01 27 01 01][1F 61][1F E7 05 01][06 D9 00 {e(l_0xc92d92)}]{set(flag 543)}{unset(flag 542)}{window_open(1)}@H...{pause(5)} h...{pause(1)} here it coooomes!" next
-    "{window_closeall}" call(data_21.l_0xc685ad) "[1B 03 {e(l_0xc92dde)}][1F F2 27 01 7B 02]{pause(60)}{window_open(1)}@Oh, man!" next
-    "@I thought you guys were just everyday little kids," next
-    "@but you defeated the Kraken!" next
-    "@I also helped in the battle..." next
-    "@I threw my slippers at the beast...{pause(20)}  Maybe you didn't notice.{wait}{window_closeall}{pause(1)}" goto(l_0xc92d92)
+    goto(cow_sea.cow_kraken_voyage)
 
 l_0xc92d92:
     "[1F EA 05 01][1F 61][1F ED]{lock_movement(255)}{warp(90)}[1F 15 D4 00 28 01 01]{pause(1)}[1F EF D4 00][1F E8 FF][1F 61][1F 15 6A 00 29 01 01]{pause(1)}[1F EF 6A 00]{show_party(1)}[1F 61][1F ED]{unset(flag 542)}{unset(flag 543)}{music_effect(3)}{pause(60)}{music_resume}{unset(flag 11)}{event(6)}{set(flag 217)}" eob

@@ -38,16 +38,21 @@ HOOKS = [
     (0x095C0E, b"\x0A", "CoW Everdred Raw Heap Hook"),
     (0x098024, b"\x0A", "CoW Mr. Carpainter Immutable Cult Hook"),
     (0x07BF95, b"\x0A", "CoW Lilliput Steps Cache Commit Hook"),
-    # NPC Configuration Table Active Pointer Assertions
-    (0x1E709F, b"\xd4\x31\xf8", "NPC Table Entry 15 (Mom Initial Awakening Pointer)"),
-    (0x1E708E, b"\x39\x34\xf8", "NPC Table Entry 14 (Mom Awakening Door Knock Pointer)"),
-    (0x1E70C1, b"\x71\x37\xf8", "NPC Table Entry 17 (Pokey Front Door Burst Pointer)"),
-    (0x1E7556, b"\xa0\x3b\xf8", "NPC Table Entry 86 (Mayor Pirkle Refcount Pointer)"),
-    (0x1E7930, b"\x75\x3f\xf8", "NPC Table Entry 144 (Police Roadblock MMU Pointer)"),
-    (0x1E7413, b"\xc0\xb0\xf8", "NPC Table Entry 67 (Captain Strong Desk Pointer)"),
-    (0x1E7E4D, b"\xd8\x9f\xf8", "NPC Table Entry 221 (Apple Kid JIT Pointer)"),
-    (0x1E807E, b"\x74\xa5\xf8", "NPC Table Entry 254 (Everdred Raw Heap Pointer)"),
-    (0x1E8898, b"\x7f\xf9\xf7", "NPC Table Entry 376 (Mr. Carpainter Immutable Cult Pointer)"),
+    # Debug hooks
+    (0x1584AC, b"\x00\x80\xc5\x00", "ATM Card Debug Menu Hook (Action 197)"),
+]
+
+# Active NPC Configuration Table pointers (resolved dynamically via active pointer table at 0x131CA)
+NPC_POINTERS = [
+    (15, b"\xd4\x31\xf8", "NPC Table Entry 15 (Mom Initial Awakening Pointer)"),
+    (14, b"\x39\x34\xf8", "NPC Table Entry 14 (Mom Awakening Door Knock Pointer)"),
+    (17, b"\x71\x37\xf8", "NPC Table Entry 17 (Pokey Front Door Burst Pointer)"),
+    (86, b"\xa0\x3b\xf8", "NPC Table Entry 86 (Mayor Pirkle Refcount Pointer)"),
+    (144, b"\x75\x3f\xf8", "NPC Table Entry 144 (Police Roadblock MMU Pointer)"),
+    (67, b"\xc0\xb0\xf8", "NPC Table Entry 67 (Captain Strong Desk Pointer)"),
+    (221, b"\xd8\x9f\xf8", "NPC Table Entry 221 (Apple Kid JIT Pointer)"),
+    (254, b"\x74\xa5\xf8", "NPC Table Entry 254 (Everdred Raw Heap Pointer)"),
+    (376, b"\x7f\xf9\xf7", "NPC Table Entry 376 (Mr. Carpainter Immutable Cult Pointer)"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
@@ -116,6 +121,24 @@ def main() -> int:
             else:
                 print(f"OK: {description} verified at {hex(offset)}")
 
+        # Resolve active dynamic NPC configuration table base offset
+        npc_table_addr = rom_data[0x131CB] | (rom_data[0x131CC] << 8)
+        npc_table_bank = rom_data[0x131D0]
+        npc_table_file_offset = ((npc_table_bank - 0xC0) << 16) | npc_table_addr
+
+        for npc_id, expected_ptr, description in NPC_POINTERS:
+            offset = npc_table_file_offset + (npc_id * 17) + 9
+            f.seek(offset)
+            actual = f.read(len(expected_ptr))
+            if actual != expected_ptr:
+                print(
+                    f"ERROR: Pointer mismatch for {description} at {hex(offset)}: "
+                    f"expected {expected_ptr.hex()}, found {actual.hex()}"
+                )
+                errors += 1
+            else:
+                print(f"OK: {description} verified at {hex(offset)}")
+
         for name in THEMATIC_NAMES:
             encoded = eb_encode(name)
             if encoded in rom_data:
@@ -124,7 +147,7 @@ def main() -> int:
                 print(f"ERROR: Thematic string '{name}' not found in ROM")
                 errors += 1
 
-    total_checks = 1 + len(HOOKS) + len(THEMATIC_NAMES)
+    total_checks = 1 + len(HOOKS) + len(NPC_POINTERS) + len(THEMATIC_NAMES)
     if errors == 0:
         print(f"\nAll {total_checks} binary assertions passed successfully.")
         return 0

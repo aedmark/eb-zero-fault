@@ -14,19 +14,19 @@ Changes: [CHANGELOG.md](CHANGELOG.md). Older sessions: [archive/](archive/README
 
 ## Current state
 
-Last updated: 2026-11-15, session 7, on `main`: Overworld NPC dual-binding dispatch architecture and B-button status decoupling fully resolved (D-012). ROM is compiled and verified at `build/eb_zero_fault.sfc` (4,194,304 bytes) with 42 binary assertions passing.
+Last updated: 2026-11-15, session 8, on `main`: Native developer debug menu integration and naming screen bypass (D-013). ROM is compiled and verified at `build/eb_zero_fault.sfc` (4,194,304 bytes) with 43 binary assertions passing.
 
 **Session owner:** Antigravity / Maintainer, on `main`, since 2026-11-15. Root cause resolution for NPC configuration table pointer routing and overworld dash modal freeze.
 
-**Where things stand, in one paragraph:** The EarthBound: Zero Fault ROM hack is compiled and verified at `build/eb_zero_fault.sfc` (4,194,304 bytes). Resolved the persistent vanilla dialogue issue by establishing dual-binding dispatch for all narrative events: CoilSnake compiles `src/npc_config_table.yml` directly into active ROM pointers at `$CF8985` (`0x1E7000`), so all narrative NPCs (Mom entries 14/15, Pokey entries 17/19, Mayor Pirkle 86, Roadblock 144, Captain Strong 67/71, Apple Kid 221, Everdred 254, Carpainter 376) are now explicitly bound to our custom `cow_*` labels in `src/npc_config_table.yml`, while all underlying `data_XX` labels are redirected to `goto(cow_*)`. Resolved the B-button modal freeze by patching overworld polling at `$C0B8F1` to `AND #$2000` (Select only), completely decoupling B from the blocking status loop at `$C13CA1`. All 42 binary assertions pass in `tools/verify_rom.py`.
+**Where things stand, in one paragraph:** The EarthBound: Zero Fault ROM hack is compiled and verified at `build/eb_zero_fault.sfc` (4,194,304 bytes). Resolved the persistent vanilla dialogue issue by establishing dual-binding dispatch for all narrative events: CoilSnake compiles `src/npc_config_table.yml` directly into active ROM pointers at `$CF8985` (`0x1E7000`), so all narrative NPCs (Mom entries 14/15, Pokey entries 17/19, Mayor Pirkle 86, Roadblock 144, Captain Strong 67/71, Apple Kid 221, Everdred 254, Carpainter 376) are now explicitly bound to our custom `cow_*` labels in `src/npc_config_table.yml`, while all underlying `data_XX` labels are redirected to `goto(cow_*)`. Resolved the B-button modal freeze by patching overworld polling at `$C0B8F1` to `AND #$2000` (Select only), completely decoupling B from the blocking status loop at `$C13CA1`. Enabled the native developer debug menu on the starting ATM card (`$C58000`) and naming screen bypass (`naming_skip.yml`) for rapid testing (D-013). All 43 binary assertions pass in `tools/verify_rom.py`.
 
 **Verified** (2026-11-15, CachyOS Linux x86-64-v3, Python 3.14.10)
 
 | Suite | Result |
 | --- | --- |
 | `python3 tools/check_docs.py` | Pass (0 errors, 0 warnings in 13 files) |
-| ROM compilation (`tools/build.sh`) | Pass (4,194,304 bytes, 6.62s) |
-| Binary assertion suite (`tools/verify_rom.py`) | Pass (All 42 assertions: header, 23 ROM hooks, 10 active NPC table pointers, 9 encoded thematic names) |
+| ROM compilation (`tools/build.sh`) | Pass (4,194,304 bytes, 6.73s) |
+| Binary assertion suite (`tools/verify_rom.py`) | Pass (All 43 assertions: header, 24 ROM hooks including ATM debug menu, 9 dynamic active NPC table pointers, 9 encoded thematic names) |
 
 **What works**
 - **Toolchain & Build Pipeline** (P1-01 to P1-04, D-001, D-002, D-005). Clean decompiled source tree in `src/`, ephemeral 32-Mbit compilation in `tools/build.sh`, and root ROM protection invariant.
@@ -54,6 +54,9 @@ Last updated: 2026-11-15, session 7, on `main`: Overworld NPC dual-binding dispa
 None currently blocking.
 
 ## Session log
+
+### Session 8 (2026-11-15)
+Enabled developer debug tooling and naming bypass for streamlined verification (D-013). Connected Item Action 197 (ATM card) in `src/battle_action_table.yml` to the native EarthBound developer debug menu routine at `$C58000`. Ness starts with the ATM card in inventory slot 0 (`initial_stats.yml`), granting immediate in-game access to Goto Area (`IDU`), Goto Event (`IBNT`), Party Edit (`P-TiNStTI`), Goods, Money, and Sound Test from the Goods menu. Enabled `src/naming_skip.yml` (`Enable Skip: true`), bypassing all 7 naming screens on New Game and populating canonical names automatically. Updated `tools/verify_rom.py` to dynamically resolve the active NPC configuration table base offset from `$C131CA`, accommodating the 206-byte shift introduced by `SkipNamingModule` in Bank DE, and added binary verification for the ATM Card debug hook. ROM compiled cleanly in 6.73s with all 43 binary assertions passing and 0 doc errors.
 
 ### Session 7 (2026-11-15)
 Diagnosed and resolved persistent runtime vanilla dialogue across the ROM hack (D-012). Discovered that CoilSnake does not route NPC dialogue through legacy 24-bit ROM addresses in Bank C6; instead, `ExpandedTablesModule` compiles `src/npc_config_table.yml` directly into active ROM pointers at `$CF8985` (`0x1E7000`), resolving symbolic labels from `summary.txt`. Overwriting `ROM[0xCXXXXX]` only patched legacy trampolines while the engine continued jumping directly to vanilla `data_XX.ccs` labels in Banks F1-F8. Implemented dual-binding dispatch: updated `src/npc_config_table.yml` to bind all narrative NPCs directly to custom `cow_*` routines (Mom 14/15, Pokey 17/19, Mayor Pirkle 86, Roadblock 144, Captain Strong 67/71, Apple Kid 221, Everdred 254, Carpainter 376), and updated corresponding `data_XX` labels in `data_15.ccs`, `data_20.ccs`, `data_27.ccs`, `data_28.ccs`, `data_29.ccs`, `data_31.ccs`, `data_35.ccs`, `data_48.ccs`, and `data_50.ccs` to forward via `goto(cow_*)`. Decoupled overworld status window polling at `$C0B8F1` to Select only (`AND #$2000`). Expanded `tools/verify_rom.py` to 42 binary assertions. Build verified clean in 6.62s and doc integrity verified with 0 errors.

@@ -101,6 +101,16 @@ removing a fence whose purpose it forgot.
 **Consequences:** The compiled NPC table at `0x1E7000` directly addresses our custom CoW routines in Banks F7 and F8. All 42 binary assertions pass in `tools/verify_rom.py`.
 **Review trigger:** Verification of NPC dialogue transitions across mid-game teleport events.
 
+## D-013 Native Developer Debug Menu Integration and Naming Screen Bypass (2026-11-15, status: accepted)
+**Context:** Rapid iteration and verification of mid-game narrative events and engine mechanics required bypassing the 7-step character naming screen on new game starts and enabling immediate area and event warping.
+**Decision:**
+1. Enable EarthBound's native developer debug menu in `src/battle_action_table.yml` by updating Item Action 197 (ATM card) from `Code Address: $c29039` to `Code Address: $c58000`. Ness starts with the ATM card in inventory slot 0 (`initial_stats.yml`), allowing instant in-game access to Goto Area (`IDU`), Goto Event (`IBNT`), Party Edit (`P-TiNStTI`), Goods, Money, and Sound Test from the Goods menu.
+2. Enable `naming_skip.yml` with `Enable Skip: true` to bypass the 7 character naming screens automatically upon selecting New Game.
+3. Update `tools/verify_rom.py` to resolve the active NPC configuration table base dynamically via the pointer at `0x131CA`, accommodating the 206-byte allocation inserted by `SkipNamingModule` in Bank DE.
+**Alternatives:** Relying solely on manual gameplay progression through Onett and Twoson (drastically inflates regression test latency); patching out the intro flyover sequence via raw bytecode manipulation (risks corrupting initial camera, sprite state, and door collision variables).
+**Consequences:** Developers can test any scenario immediately from a fresh boot or save state without repeating the naming screens or walking across regions. All 43 binary assertions pass in `tools/verify_rom.py`.
+**Review trigger:** Final release packaging when debug hooks should be disabled for standard player distribution.
+
 ---
 
 ## Held tensions

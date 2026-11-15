@@ -14,27 +14,27 @@ Changes: [CHANGELOG.md](CHANGELOG.md). Older sessions: [archive/](archive/README
 
 ## Current state
 
-Last updated: 2026-11-14, session 6, on `main` (`8a63f50`): Phase 7 (Twoson and the Immutable Cult Scenario) fully implemented and verified. Project is complete through second sanctuary milestone: automated build pipeline, QoL engine (dash, fast text, shop stats), Copy-on-Write event engine, Onett and Twoson narrative scripting, Happy Happy Village Immutable State Cult, thematic combat/balance across Onett and Peaceful Rest Valley, and 31-assertion binary verification suite.
+Last updated: 2026-11-15, session 7, on `main`: Initial awakening dialogue hook (`0xC66D3E`) and overworld B-button status decoupling (`0xC0B8F1`) fully resolved (D-012). ROM is compiled and verified at `build/eb_zero_fault.sfc` (4,194,304 bytes) with 33 binary assertions passing.
 
-**Session owner:** Antigravity / Maintainer, on `main`, since 2026-11-14. Phase 7 completion.
+**Session owner:** Antigravity / Maintainer, on `main`, since 2026-11-15. Root cause resolution for awakening dialogue and overworld dash modal freeze.
 
-**Where things stand, in one paragraph:** The EarthBound: Zero Fault ROM hack is compiled and verified at `build/eb_zero_fault.sfc` (4,194,304 bytes). The engine includes outdoor B-Button dashing (D-006), fractional fast text with B-button bypass (D-007), shop equipment stat comparisons (D-008), the Copy-on-Write dirty-page state machine (D-004, D-009) in safe battery-backed SRAM ($7E9C08), the Onett narrative overhaul, the Captain Strong kernel privilege escalation audit (D-011), the Twoson algorithmic compiler divergence (Apple Kid dynamic JIT vs Orange Kid static AOT), Everdred's raw untyped memory allocator in Burglin Park, Mr. Carpainter and the Happy Happy Village Immutable State Cult worshipping the gold-plated Mani Mani mask ROM, Lilliput Steps cache line synchronization, and thematic monster/item rebalancing (Runaway Linter, Deadlock Tree, Stack Overflow Mole, D-010, D-011). All 31 binary assertions pass in `tools/verify_rom.py`.
+**Where things stand, in one paragraph:** The EarthBound: Zero Fault ROM hack is compiled and verified at `build/eb_zero_fault.sfc` (4,194,304 bytes). Resolved the unhooked initial dialogue anomaly by redirecting Mom's awakening text pointer at `$C66D3E` (Entry 15, flag 0x1d5 unset) to `cow_mom_initial_awakening` with sensory glitch pulse `{sound(11)}`, CoW state flags 850/870/840, and uninitialized pointer dialogue. Resolved the B-button modal lock by changing overworld status polling at `$C0B8F1` from `AND #$A000` to `AND #$2000` (Select button only), decoupling the B button from the blocking status loop at `$C13CA1` so B dashes cleanly without freezing movement. All 33 binary assertions pass in `tools/verify_rom.py`.
 
-**Verified** (2026-11-14, CachyOS Linux x86-64-v3, Python 3.14.10)
+**Verified** (2026-11-15, CachyOS Linux x86-64-v3, Python 3.14.10)
 
 | Suite | Result |
 | --- | --- |
 | `python3 tools/check_docs.py` | Pass (0 errors, 0 warnings in 13 files) |
-| ROM compilation (`tools/build.sh`) | Pass (4,194,304 bytes, 6.62s) |
-| Binary assertion suite (`tools/verify_rom.py`) | Pass (All 31 assertions: header, 21 ROM hooks, 9 encoded thematic names) |
+| ROM compilation (`tools/build.sh`) | Pass (4,194,304 bytes, 6.56s) |
+| Binary assertion suite (`tools/verify_rom.py`) | Pass (All 33 assertions: header, 23 ROM hooks, 9 encoded thematic names) |
 
 **What works**
 - **Toolchain & Build Pipeline** (P1-01 to P1-04, D-001, D-002, D-005). Clean decompiled source tree in `src/`, ephemeral 32-Mbit compilation in `tools/build.sh`, and root ROM protection invariant.
-- **QoL Engine Base** (P2-01 to P2-04, D-003, D-006, D-007, D-008). Outdoor B-button dashing, sub-frame fractional text rendering with B-button dialogue fast-forward, BG3 HDMA upload queue protection, and before/after shop equipment stat differential comparisons.
+- **QoL Engine Base** (P2-01 to P2-04, D-003, D-006, D-007, D-008, D-012). Outdoor B-button dashing, overworld status window decoupling at `$C0B8F1` (Select only), sub-frame fractional text rendering with B-button dialogue fast-forward, BG3 HDMA upload queue protection, and before/after shop equipment stat differential comparisons.
 - **Copy-on-Write Event Architecture** (P3-01 to P3-04, D-004, D-009). Safe SRAM range 836-1023 at WRAM `$7E9C08`, reusable macros (`cow_touch`, `cow_clean`, `cow_check`, `cow_pulse`), and sensory glitch commit routines.
-- **Narrative Overhaul for Onett & Twoson** (P4-01 to P4-04, P7-01 to P7-03, D-011). Overrides at `$C74F56` (Mom dangling pointer), `$C75C33` (Pokey heap panic), `$C72AF8` (Mayor Pirkle refcount dread), `$C66002` (Twoson MMU roadblock), `$C7BEB9` (Giant Step commit), `$C7699E` and `$C5F859` (Captain Strong kernel privilege audit), `$C81676` (Apple Kid JIT compiler), `$C95C0E` (Everdred raw heap allocator), `$C98024` (Carpainter Immutable Cult), and `$C7BF95` (Lilliput Steps cache commit).
+- **Narrative Overhaul for Onett & Twoson** (P4-01 to P4-04, P7-01 to P7-03, D-011, D-012). Overrides at `$C66D3E` (Mom initial jammies awakening), `$C74F56` (Mom door knock awakening), `$C75C33` (Pokey heap panic), `$C72AF8` (Mayor Pirkle refcount dread), `$C66002` (Twoson MMU roadblock), `$C7BEB9` (Giant Step commit), `$C7699E` and `$C5F859` (Captain Strong kernel privilege audit), `$C81676` (Apple Kid JIT compiler), `$C95C0E` (Everdred raw heap allocator), `$C98024` (Carpainter Immutable Cult), and `$C7BF95` (Lilliput Steps cache commit).
 - **Thematic Combat & Balance** (P5-01 to P5-04, P7-04, D-010, D-011). Rebalanced monsters (Null Reference Crow, Dangling Pointer, Runaway Thread, The OOM Killer, Runaway Linter, Deadlock Tree, Stack Overflow Mole), items (Dirty Page, Garbage Collector, Fork Bomb), and Ness initial stats.
-- **Verification Suite** (P6-01 to P6-03). Automated regression testing in `tools/verify_rom.py` (31 assertions) and documentation integrity checking in `tools/check_docs.py`.
+- **Verification Suite** (P6-01 to P6-03). Automated regression testing in `tools/verify_rom.py` (33 assertions) and documentation integrity checking in `tools/check_docs.py`.
 
 **Not verified**
 - Interactive gameplay feel on handheld hardware or local GUI emulator (user can launch via `snes9x-gtk build/eb_zero_fault.sfc` or preferred emulator).
@@ -54,6 +54,9 @@ Last updated: 2026-11-14, session 6, on `main` (`8a63f50`): Phase 7 (Twoson and 
 None currently blocking.
 
 ## Session log
+
+### Session 7 (2026-11-15)
+Diagnosed and resolved two runtime behavioral discrepancies reported during initial playtesting (D-012). First, identified that Mom before the meteorite event corresponds to NPC Entry 15 in `src/npc_config_table.yml` with text pointer `data_20.l_0xc66d3e` (`0xC66D3E`), which was running vanilla code because only Entry 14 (`0xC74F56`) had been hooked. Authored `cow_mom_initial_awakening` in `src/ccscript/cow_onett.ccs` and hooked `ROM[0xC66D3E]`. Second, analyzed overworld button handling in Bank C0 at `0xC0B8F0` and proved that pressing B or Select invoked blocking modal function `JSL $C13CA1` displaying the party HP/PP status window, freezing movement and preventing dash. Patched `ROM[0xC0B8F1]` to `AND #$2000` (Select only), completely decoupling B from the status window. Expanded `tools/verify_rom.py` to 33 binary assertions. Build verified clean in 6.56s and doc integrity verified with 0 errors.
 
 ### Session 6 (2026-11-14)
 Implemented Phase 7 (Twoson and the Immutable Cult Scenario, D-011). Formulated D-011 and updated [ROADMAP.md](../ROADMAP.md) with items P7-01 through P7-04. Implemented `src/ccscript/cow_police.ccs` for Captain Strong's kernel privilege escalation audit at `$C7699E` and `$C5F859` (P7-01). Implemented `src/ccscript/cow_twoson.ccs` for Apple Kid's dynamic JIT compiler vs Orange Kid's static AOT compiler at `$C81676` and Everdred's raw heap allocator at `$C95C0E` (P7-02). Implemented `src/ccscript/cow_happy.ccs` for Mr. Carpainter's Immutable State Cult at `$C98024` and Lilliput Steps cache line synchronization at `$C7BF95` (P7-03). Rebalanced regional monsters in `src/enemy_configuration_table.yml`: Runaway Linter (2435), Deadlock Tree (3845), and Stack Overflow Mole (1965, 8498) (P7-04). Expanded `tools/verify_rom.py` to 31 binary assertions. Verified clean 6.62s build and 0 errors in `tools/check_docs.py`.

@@ -90,6 +90,15 @@ removing a fence whose purpose it forgot.
 **Consequences:** Extends narrative cohesion from early game through the second sanctuary milestone.
 **Review trigger:** Script conflicts or flag collisions during mid-game teleport transitions.
 
+## D-012 Overworld Status Window Decoupling and Initial Awakening Hook (2026-11-15, status: accepted)
+**Context:** Verification testing revealed two distinct anomalies upon starting a new game: holding B inside Ness's house popped up the HP/PP status window and froze movement instead of running, and talking to Mom downstairs displayed vanilla dialogue.
+**Decision:**
+1. Decouple overworld status window polling at `0xC0B8F1` in `src/ccscript/dash.ccs` by changing `AND #$A000` (B or Select) to `AND #$2000` (Select only). Select remains the dedicated single-button status check; the B button is dedicated to dashing, fractional text fast-forwarding, and menu cancellation without triggering the modal status loop at `0xC13CA1`.
+2. Hook Mom's initial awakening text pointer at `0xC66D3E` in `src/ccscript/cow_onett.ccs` (`ROM[0xC66D3E] = goto(cow_mom_initial_awakening)`). In `src/npc_config_table.yml`, Mom before the meteorite event is NPC Entry 15 (Flag `0x1d5` unset), pointing to `data_20.l_0xc66d3e`, whereas Entry 14 (`0xC74F56`) only applies after Flag `0x1d5` is set.
+**Alternatives:** Leaving `0xC0B8F1` unpatched (holding B repeatedly invokes the blocking modal status loop, preventing smooth movement); remapping dash to the Y button (diverges from canonical B-button dash convention).
+**Consequences:** Both awakening states for Mom (Entry 15 jammies awakening and Entry 14 door knock) route to copy-on-write narrative scripts. B-button dash functions cleanly without triggering modal window freezes.
+**Review trigger:** Player reports regarding controller mapping preferences on specific third-party SNES emulators.
+
 ---
 
 ## Held tensions

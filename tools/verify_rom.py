@@ -10,10 +10,11 @@ ROM_PATH = "build/eb_zero_fault.sfc"
 EXPECTED_SIZE = 4_194_304  # 32 Mbits (4 MB)
 
 HOOKS = [
-    # Dash hooks (0xC02F30, 0xC031B8, 0xC07960)
+    # Dash hooks (0xC02F30, 0xC031B8, 0xC07960, 0xC0B8F1)
     (0x002F30, b"\x22", "Dash Hook 1 (Movement Vector)"),
     (0x0031B8, b"\x22", "Dash Hook 2 (Diagonal Vector)"),
     (0x007960, b"\x22", "Dash Hook 3 (Movement Normalization)"),
+    (0x00B8F1, b"\x29\x00\x20", "Dash Hook 4 (Overworld B-Button Status Bypass)"),
     # Fast text hooks
     (0x01FEC9, b"\x22", "Fast Text Hook 1 (Delay Calculation)"),
     (0x010D4B, b"\x22", "Fast Text Hook 2 (Delay Check Call 1)"),
@@ -24,6 +25,7 @@ HOOKS = [
     (0x05E277, b"\x0A", "Shop Equipment Stat Display Part 1"),
     (0x05E2F7, b"\x0A", "Shop Equipment Stat Display Part 2"),
     # Phase 4: CoW Narrative & MMU Hooks
+    (0x066D3E, b"\x0A", "CoW Mom Initial Awakening Hook"),
     (0x074F56, b"\x0A", "CoW Mom Awakening Script Hook"),
     (0x075C33, b"\x0A", "CoW Pokey Front Door Burst Hook"),
     (0x072AF8, b"\x0A", "CoW Mayor Pirkle Refcount Hook"),

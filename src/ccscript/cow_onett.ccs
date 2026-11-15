@@ -7,7 +7,23 @@ command e(label) "{long label}"
 // and MMU boundary enforcement.
 // ==============================================================================
 
-// P4-01: Ness's House Awakening & Mom State Check
+// P4-01: Mom Initial Awakening (Ness in Jammies, Flag 0x1d5 Unset)
+cow_mom_initial_awakening:
+    "[06 D7 01 {e(cow_mom_initial_changed)}]" // Check flag 471 (already changed clothes)
+    "{sound(11)}{pause(15)}"
+    "{set(flag 850)}{set(flag 870)}{set(flag 840)}" // FLAG_DIRTY_NESS_HOUSE, FLAG_MUT_MOM, FLAG_COW_ACTIVE
+    "{window_open(1)}@{name(1)}?{pause(20)} ...Wait." next
+    "@Why does looking at you feel like dereferencing an uninitialized pointer?" next
+    "@That deafening shudder on the northern ridge...{pause(15)} it sounded like a catastrophic page fault echoing across Onett." next
+    "@The entire valley is behaving like a copy-on-write memory segment waiting for the first write." next
+    "@And you want to go inspect the crash site?" next
+    "@At least change out of your jammies before you corrupt your stack frame![03]{window_closeall}{pause(1)}{set(flag 471)}{unset(flag 749)}{warp(196)}" eob
+
+cow_mom_initial_changed:
+    "@Your execution thread looks a bit more stable in those clothes." next
+    "@Be careful out there, {name(1)}!{pause(20)} Don't let unhandled exceptions leak into the house." end
+
+// P4-01: Ness's House Awakening & Mom State Check (Flag 0x1d5 Set, Pokey at Door)
 cow_mom_awakening:
     "[06 52 03 {e(cow_mom_already_dirty)}]" // Check flag 850 (FLAG_DIRTY_NESS_HOUSE)
     "{sound(11)}{pause(15)}"
@@ -104,6 +120,7 @@ cow_giant_step_commit:
     goto(data_31.l_0xc7bf94)
 
 // Wire hooks into ROM addresses
+ROM[0xC66D3E] = goto(cow_mom_initial_awakening)
 ROM[0xC74F56] = goto(cow_mom_awakening)
 ROM[0xC75C33] = goto(cow_pokey_burst)
 ROM[0xC72AF8] = goto(cow_mayor_pirkle)

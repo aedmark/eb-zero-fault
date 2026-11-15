@@ -47,3 +47,8 @@ define hijack_run = {
 ROM[0xC02F30] = hijack_run
 ROM[0xC031B8] = hijack_run
 ROM[0xC07960] = hijack_run
+
+// Suppress overworld B button from opening the Status/HP window modal loop at 0xC0B8F0.
+// Changes 'AND #$A000' (B or Select) to 'AND #$2000' (Select only).
+// Pressing Select still opens the status window; pressing B is reserved for dashing and cancel.
+ROM[0xC0B8F1] = AND_i(0x2000)

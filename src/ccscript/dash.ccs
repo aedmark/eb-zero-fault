@@ -1,0 +1,49 @@
+import "asm65816.ccs"
+
+// B-Button Dash Movement Routine (Option B: Outdoors Only)
+// Replaces Skip Sandwich check at movement adjustment routines.
+// Checks if B button (0x0080 at 0x0066) is held and verifies outdoor status
+// via native collision check CHECK_BICYCLE_COLLISION_FLAGS (0xC03C4B).
+
+define CHECK_BICYCLE_COLLISION_FLAGS = 0xC03C4B
+
+InRunMode: {
+    // Check if Skip Sandwich status is active ($9840 == 3)
+    LDA_a   (0x9840)
+    AND_i   (0x00FF)
+    CMP_i   (0x0003)
+    BEQ_a   (_is_running)
+
+    // Check if B button is held on Controller 1 (high byte at 0x0066)
+    LDA_a   (0x0066)
+    AND_i   (0x0080)
+    BEQ_a   (_not_running)
+
+    // B button is held. Verify player is outdoors via collision flags.
+    PHX
+    PHY
+    JSL     (CHECK_BICYCLE_COLLISION_FLAGS)
+    PLY
+    PLX
+    CMP_i   (0)
+    BEQ_a   (_is_running)
+
+_not_running:
+    LDA_i   (1)
+    RTL
+
+_is_running:
+    LDA_i   (0)
+    RTL
+}
+
+define hijack_run = {
+    JSL(InRunMode)
+    NOP NOP
+    CMP_i(0)
+}
+
+// Hook movement position and animation speed routines
+ROM[0xC02F30] = hijack_run
+ROM[0xC031B8] = hijack_run
+ROM[0xC07960] = hijack_run

@@ -47,6 +47,13 @@ removing a fence whose purpose it forgot.
 **Consequences:** Build directory requires 8 MB disk space for intermediate and final ROMs; cleanly isolated from version control.
 **Review trigger:** Switching to 48-Mbit expansion for large audio banks.
 
+## D-006 Outdoor-Only B-Button Dash Scope (2026-11-14, status: accepted)
+**Context:** Deciding movement speed ergonomics across interiors versus outdoor maps (P2-01, Q-001).
+**Decision:** Restrict the B-Button Dash to outdoor map sectors where bicycle travel is legally permitted, preserving the deliberate claustrophobic pacing of interiors, houses, and dungeons.
+**Alternatives:** Enabling dash globally in all maps (diminishes interior scale and trivializes cave navigation).
+**Consequences:** `src/ccscript/dash.ccs` invokes native collision routine `CHECK_BICYCLE_COLLISION_FLAGS` (`0xC03C4B`) during input polling; interior movement remains at vanilla walking speed unless Skip Sandwich is active.
+**Review trigger:** Player feedback indicating interior traversal remains overly tedious in late-game dungeons.
+
 ---
 
 ## Held tensions
@@ -63,4 +70,4 @@ removing a fence whose purpose it forgot.
 
 ## Open questions
 
-- **Q-001** Should the B-Button Dash be permitted inside interiors and caves, or restricted to outdoor town maps to preserve spatial scale? Blocks P2-01.
+- **Q-001** Should the B-Button Dash be permitted inside interiors and caves, or restricted to outdoor town maps to preserve spatial scale? Answer: Option B (Outdoors only). Restrict dash to outdoor maps via native collision check to preserve spatial scale and interior pacing (2026-11-14, D-006).

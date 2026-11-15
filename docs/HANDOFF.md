@@ -14,7 +14,7 @@ Changes: [CHANGELOG.md](CHANGELOG.md). Older sessions: [archive/](archive/README
 
 ## Current state
 
-Last updated: 2026-11-14, session 2, on `main`: Phase 1 complete. Toolchain configured in `.venv`, clean ROM decompiled into `src/` (tables, maps, graphics, and 62 CCScript modules), and `tools/build.sh` verified producing 4,194,304-byte expanded ROM.
+Last updated: 2026-11-14, session 2, on `main` (`9a240f9`): Phase 1 complete. Toolchain configured in `.venv`, clean ROM decompiled into `src/` (tables, maps, graphics, and 62 CCScript modules), and `tools/build.sh` verified producing 4,194,304-byte expanded ROM.
 
 **Session owner:** Antigravity / Maintainer, on `main`, since 2026-11-14. Phase 1 completion and Phase 2 QoL integration.
 

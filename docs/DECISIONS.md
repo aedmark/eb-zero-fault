@@ -83,6 +83,13 @@ removing a fence whose purpose it forgot.
 **Consequences:** Battle encounter text, item inventory windows, and status menus consistently reinforce system architecture metaphors.
 **Review trigger:** Encounter difficulty spikes or balance anomalies in early Onett progression.
 
+## D-011 Twoson Scenarios, Kernel Benchmarking, and Immutable State Cult (2026-11-14, status: accepted)
+**Context:** Expanding the Copy-on-Write parallel universe into Twoson, Burglin Park, Peaceful Rest Valley, and Happy Happy Village (P7-01 through P7-04).
+**Decision:** Author `src/ccscript/cow_police.ccs`, `src/ccscript/cow_twoson.ccs`, and `src/ccscript/cow_happy.ccs`. Structure Captain Strong's encounter as a kernel privilege escalation audit (`0xC7699E`, `0xC5F859`), Apple Kid as an adaptive JIT compiler developer vs Orange Kid's static AOT compiler (`0xC81676`), Everdred as an untyped raw memory allocator in Burglin Park (`0xC95C0E`), and Mr. Carpainter and Happy Happy Village as the "Immutable State Cult" worshipping a mask ROM statue that outlaws state mutation (`0xC98024`). Synchronize Lilliput Steps as a cache line commit (`0xC7BF95`). Reskin regional monsters in `src/enemy_configuration_table.yml`: Spinning Robo to "Runaway Linter" (2435), Territorial Oak to "Deadlock Tree" (3845), and Mondo Mole to "Stack Overflow Mole" (1965, 8498).
+**Alternatives:** Retaining vanilla Happy Happyist blue cult dialogue (misses central narrative architecture theme); skipping the Captain Strong privilege check.
+**Consequences:** Extends narrative cohesion from early game through the second sanctuary milestone.
+**Review trigger:** Script conflicts or flag collisions during mid-game teleport transitions.
+
 ---
 
 ## Held tensions

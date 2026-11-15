@@ -1,0 +1,66 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Happy Happy Village & Immutable Cult (P7-03)
+// ==============================================================================
+// Mr. Carpainter's Read-Only ROM Cult and Lilliput Steps cache synchronization.
+// ==============================================================================
+
+cow_carpainter:
+    "[06 7A 00 {e(cow_carpainter_defeated)}][06 44 00 {e(data_50.l_0xc982b3)}]"
+    "{sound(11)}{pause(10)}"
+    "{set(flag 744)}{set(flag 860)}{set(flag 881)}"
+    "@Welcome, traveler.{pause(15)} You carry the stench of heap mutation and dirty pages." next
+    "@The Mani Mani ROM has revealed the ultimate computational truth:" next
+    "@State mutation is sin! Every memory write invites race conditions and memory leaks!" next
+    "@I am transforming the world into a purely functional, immutable constant." next
+    "@No page faults.{pause(15)} No side effects.{pause(15)} Pure, frozen read-only serenity." next
+    "@Will you accept the write-protect latch and join our order of Static Constants?" linebreak
+    "  [19 02]Yes[02]  [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_carpainter_trap)} {e(cow_carpainter_refuse)}]" goto(cow_carpainter_refuse)
+
+cow_carpainter_refuse:
+    "@A mutable thread in my immutable domain cannot be tolerated." next
+    "@Defy me,{pause(15)} and I will purge your dirty pages with high-voltage write-protection![03]"
+    call(data_21.l_0xc6847a) "[1B 03 {e(data_21.l_0xc683de)}]{hasitem(255, 1)}[1B 03 {e(cow_carpainter_awakens)}]" eob
+
+cow_carpainter_trap:
+    "@Fool! Constants possess no free will.{pause(15)} Your execution permissions are stripped![03]"
+    call(data_21.l_0xc6847a) "[1B 03 {e(data_21.l_0xc683de)}]{hasitem(255, 1)}[1B 03 {e(cow_carpainter_awakens)}]" eob
+
+cow_carpainter_awakens:
+    "{window_open(1)}" newline
+    "@The statue behind me...{pause(15)} the gold-plated Mani Mani ROM..." next
+    "@Its write-lock signal was completely hypnotic." next
+    "@I genuinely believed that freezing all state would protect humanity from software bugs." next
+    "{set(flag 44)}" goto(cow_carpainter_defeated)
+
+cow_carpainter_defeated:
+    "@Please forgive my system intrusion...{pause(20)} I just wanted zero side-effects in my life." next
+    "@Here is the key to the mountain cabin mutex where {name(2)}'s thread is locked." next
+    "@Release her mutex lock and synchronize your processes." next
+    "{set(flag 68)}{unset(flag 175)}{unset(flag 45)}{set(flag 351)}{set(flag 352)}{set(flag 353)}{set(flag 354)}{set(flag 355)}{set(flag 356)}"
+    "[1D 03 FF][1B 02 {e(data_50.l_0xc9827c)}][1D 0E 00 AB]" call(data_33.l_0xc7dcb6)
+    "{wait}{window_closeall}{unset(flag 122)}" eob
+
+// Lilliput Steps Sanctuary Cache Synchronization
+cow_lilliput_commit:
+    "[1F 15 6A 00 60 01 01]{unset(flag 2)}"
+    call(data_33.l_0xc7dd6b)
+    "{music(33)}"
+    call(data_32.l_0xc7c54b)
+    "{set(flag 2)}[1F 61]{sound(11)}{sound(97)}"
+    "{set(flag 861)}"
+    "{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 02 {e(cow_lilliput_msg)}]"
+    "{window_open(1)}@The resonant frequency of Lilliput Steps purges the TLB cache..."
+    goto(cow_lilliput_msg)
+
+cow_lilliput_msg:
+    call(data_32.l_0xc7c57d)
+    "{set(flag 4)}{music_resume}"
+    "{window_open(1)}@{name(1)} briefly perceived the pristine initial state of the universe.[03]{pause(60)}" linebreak
+    "@Sector 12 cache line synchronized to permanent flash storage!{wait}"
+    "{set(flag 183)}{window_closetop}"
+    goto(data_32.l_0xc7c058)
+
+ROM[0xC98024] = goto(cow_carpainter)
+ROM[0xC7BF95] = goto(cow_lilliput_commit)

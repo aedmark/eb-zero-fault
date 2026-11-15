@@ -1,0 +1,73 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Twoson & Burglin Park Scenarios (P7-02)
+// ==============================================================================
+// Apple Kid JIT vs Orange Kid AOT compiler architecture and Everdred's raw heap.
+// ==============================================================================
+
+cow_apple_kid:
+    "[06 52 00 {e(cow_apple_busy)}][06 70 00 {e(data_35.l_0xc818b9)}][06 27 02 {e(cow_apple_invest)}]"
+    "{sound(11)}{pause(10)}"
+    "{set(flag 857)}{set(flag 878)}"
+    "@I apologize for the state of my workspace..." next
+    "@It looks like an uncollected garbage heap,{pause(15)} but my memory management is purely functional!" next
+    "@I'm Apple Kid. I specialize in dynamic JIT compilation and runtime bytecode patching." next
+    "@Orange Kid next door wastes all his cycles on static ahead-of-time theories that never execute in real hardware." next
+    "@Right now my execution thread is starving.{pause(20)} Do you have a consumable data structure in your inventory?" next
+    "@Could you pass one into my input stream?" linebreak
+    call(data_33.l_0xc7dd4f) "[11]{clearline}[09 02 {e(cow_apple_feed)} {e(cow_apple_refuse)}]" goto(cow_apple_refuse)
+
+cow_apple_refuse:
+    "@No problem. I'll just idle in an event loop for a while.{pause(15)} Feel free to inspect my memory dumps." goto(data_35.l_0xc81913)
+
+cow_apple_feed:
+    "@Pass an item to standard input:[03]{open_hp}" call(data_14.l_0xc5e456) newline
+    "[1B 02 {e(cow_apple_refuse)}]{store_registers}[19 19 00 00][1D 02 03][1B 03 {e(cow_apple_accept)}]@That data type is not serializable into food! I need valid sustenance calories." goto(data_35.l_0xc81913)
+
+cow_apple_accept:
+    "{load_registers}[1D 0F 00 00]{sound(118)}{pause(1)}"
+    "@Packet received! Starvation deadlock cleared.{pause(20)} You have excellent thread synchronization." next
+    "{set(flag 551)}" goto(cow_apple_invest)
+
+cow_apple_invest:
+    "@Would you like to invest $200 in my Adaptive JIT Compiler project?" next
+    call(data_33.l_0xc7dd4f) "[11]{clearline}[09 02 {e(cow_apple_take_cash)} {e(cow_apple_refuse)}]" goto(cow_apple_refuse)
+
+cow_apple_take_cash:
+    "@Optimal!{pause(15)} Excellent!{pause(15)} Compiling runtime binary now!" next
+    "@Transfer $200 to my memory register?" linebreak
+    call(data_33.l_0xc7dd4d) "[11]{clearline}[09 02 {e(cow_apple_fund)} {e(cow_apple_refuse)}]" goto(cow_apple_refuse)
+
+cow_apple_fund:
+    "[1D 14 C8 00 00 00][1B 03 {e(cow_apple_no_cash)}][1D 09 C8 00]{open_wallet}{sound(118)}{pause(1)}"
+    "@Transaction committed! The Receiver Phone JIT module will deliver real-time system alerts directly to your thread.{wait}{window_closeall}"
+    "{set(flag 112)}{set(flag 294)}{event(5)}"
+    goto(data_30.l_0xc79028)
+
+cow_apple_no_cash:
+    "@Insufficient credits in wallet buffer. Transaction rolled back." next
+    goto(cow_apple_refuse)
+
+cow_apple_busy:
+    "@Compiling custom runtime extensions... Check back after the next garbage-collection cycle." goto(data_35.l_0xc81913)
+
+// Everdred in Burglin Park
+cow_everdred:
+    "[06 55 00 {e(data_48.l_0xc960d7)}][06 0C 00 {e(data_48.l_0xc95f0a)}][06 0D 00 {e(data_48.l_0xc95df9)}][06 42 00 {e(data_48.l_0xc95dc6)}]"
+    "{sound(11)}{pause(10)}"
+    "{set(flag 858)}{set(flag 880)}"
+    "@Wah ha ha ha ha!{pause(20)}" linebreak
+    "  Why talk architecture when we can stress-test our instruction pipelines![03]"
+    call(data_21.l_0xc6846b) "[1B 03 {e(data_21.l_0xc683de)}]{window_open(1)}"
+    "@Yes! I'm Everdred, master of Burglin Park's unallocated heap!" next
+    "@I jumped off the roof and leaked 16 bytes of stack frame,{pause(15)} but your process survived my interrupt storm." next
+    "@You're searching for {name(2)}? She was intercepted by the Immutable State Cult!" next
+    "@Those functional fanatics dragged her into Peaceful Rest Valley to freeze her state into a read-only lock!" next
+    "@They worship a DIP-40 mask ROM statue and reject all copy-on-write page mutations." next
+    "@If they finalize her mutex lock,{pause(15)} her thread will be frozen in amber forever." next
+    "@Hurry through the valley and break their write-protect gate!" next
+    goto(data_48.l_0xc95dc6)
+
+ROM[0xC81676] = goto(cow_apple_kid)
+ROM[0xC95C0E] = goto(cow_everdred)

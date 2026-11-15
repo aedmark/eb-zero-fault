@@ -14,27 +14,27 @@ Changes: [CHANGELOG.md](CHANGELOG.md). Older sessions: [archive/](archive/README
 
 ## Current state
 
-Last updated: 2026-11-14, session 5, on `main` (`c0a6962`): Phases 1 through 6 fully implemented and verified. Project is complete through initial milestone: automated build pipeline, QoL engine (dash, fast text, shop stats), Copy-on-Write event engine, Onett narrative scripting, thematic combat/balance, and 22-assertion binary verification suite.
+Last updated: 2026-11-14, session 6, on `main` (`8a63f50`): Phase 7 (Twoson and the Immutable Cult Scenario) fully implemented and verified. Project is complete through second sanctuary milestone: automated build pipeline, QoL engine (dash, fast text, shop stats), Copy-on-Write event engine, Onett and Twoson narrative scripting, Happy Happy Village Immutable State Cult, thematic combat/balance across Onett and Peaceful Rest Valley, and 31-assertion binary verification suite.
 
-**Session owner:** Antigravity / Maintainer, on `main`, since 2026-11-14. Phase 1 through Phase 6 completion.
+**Session owner:** Antigravity / Maintainer, on `main`, since 2026-11-14. Phase 7 completion.
 
-**Where things stand, in one paragraph:** The EarthBound: Zero Fault ROM hack is fully compiled and verified at `build/eb_zero_fault.sfc` (4,194,304 bytes). The engine includes outdoor B-Button dashing (D-006), fractional fast text with B-button bypass (D-007), shop equipment stat comparisons (D-008), the Copy-on-Write dirty-page state machine (D-004, D-009) in safe battery-backed SRAM ($7E9C08), the Onett narrative overhaul (Ness awakening, Pokey interrupt, Mayor Pirkle refcount existential dread, Twoson MMU roadblock, and Giant Step memory commit), and thematic rebalancing (Null Reference Crow, Dangling Pointer, Runaway Thread, The OOM Killer, Dirty Page, Garbage Collector, Fork Bomb, and tuned Ness base stats, D-010). All 22 binary assertions pass in `tools/verify_rom.py`.
+**Where things stand, in one paragraph:** The EarthBound: Zero Fault ROM hack is compiled and verified at `build/eb_zero_fault.sfc` (4,194,304 bytes). The engine includes outdoor B-Button dashing (D-006), fractional fast text with B-button bypass (D-007), shop equipment stat comparisons (D-008), the Copy-on-Write dirty-page state machine (D-004, D-009) in safe battery-backed SRAM ($7E9C08), the Onett narrative overhaul, the Captain Strong kernel privilege escalation audit (D-011), the Twoson algorithmic compiler divergence (Apple Kid dynamic JIT vs Orange Kid static AOT), Everdred's raw untyped memory allocator in Burglin Park, Mr. Carpainter and the Happy Happy Village Immutable State Cult worshipping the gold-plated Mani Mani mask ROM, Lilliput Steps cache line synchronization, and thematic monster/item rebalancing (Runaway Linter, Deadlock Tree, Stack Overflow Mole, D-010, D-011). All 31 binary assertions pass in `tools/verify_rom.py`.
 
 **Verified** (2026-11-14, CachyOS Linux x86-64-v3, Python 3.14.10)
 
 | Suite | Result |
 | --- | --- |
 | `python3 tools/check_docs.py` | Pass (0 errors, 0 warnings in 13 files) |
-| ROM compilation (`tools/build.sh`) | Pass (4,194,304 bytes, 6.66s) |
-| Binary assertion suite (`tools/verify_rom.py`) | Pass (All 22 assertions: header, 15 ROM hooks, 6 encoded thematic names) |
+| ROM compilation (`tools/build.sh`) | Pass (4,194,304 bytes, 6.62s) |
+| Binary assertion suite (`tools/verify_rom.py`) | Pass (All 31 assertions: header, 21 ROM hooks, 9 encoded thematic names) |
 
 **What works**
 - **Toolchain & Build Pipeline** (P1-01 to P1-04, D-001, D-002, D-005). Clean decompiled source tree in `src/`, ephemeral 32-Mbit compilation in `tools/build.sh`, and root ROM protection invariant.
 - **QoL Engine Base** (P2-01 to P2-04, D-003, D-006, D-007, D-008). Outdoor B-button dashing, sub-frame fractional text rendering with B-button dialogue fast-forward, BG3 HDMA upload queue protection, and before/after shop equipment stat differential comparisons.
 - **Copy-on-Write Event Architecture** (P3-01 to P3-04, D-004, D-009). Safe SRAM range 836-1023 at WRAM `$7E9C08`, reusable macros (`cow_touch`, `cow_clean`, `cow_check`, `cow_pulse`), and sensory glitch commit routines.
-- **Narrative Overhaul for Onett** (P4-01 to P4-04). Overrides at `$C74F56` (Mom dangling pointer awakening), `$C75C33` (Pokey heap dereference panic), `$C72AF8` (Mayor Pirkle refcount existential crisis), `$C66002` (Twoson MMU Access Violation roadblock), and `$C7BEB9` (Giant Step memory synchronization commit).
-- **Thematic Combat & Balance** (P5-01 to P5-04, D-010). Rebalanced early enemies (Null Reference Crow, Dangling Pointer, Runaway Thread, The OOM Killer), items (Dirty Page, Garbage Collector, Fork Bomb), and Ness initial stats.
-- **Verification Suite** (P6-01 to P6-03). Automated regression testing in `tools/verify_rom.py` and documentation integrity checking in `tools/check_docs.py`.
+- **Narrative Overhaul for Onett & Twoson** (P4-01 to P4-04, P7-01 to P7-03, D-011). Overrides at `$C74F56` (Mom dangling pointer), `$C75C33` (Pokey heap panic), `$C72AF8` (Mayor Pirkle refcount dread), `$C66002` (Twoson MMU roadblock), `$C7BEB9` (Giant Step commit), `$C7699E` and `$C5F859` (Captain Strong kernel privilege audit), `$C81676` (Apple Kid JIT compiler), `$C95C0E` (Everdred raw heap allocator), `$C98024` (Carpainter Immutable Cult), and `$C7BF95` (Lilliput Steps cache commit).
+- **Thematic Combat & Balance** (P5-01 to P5-04, P7-04, D-010, D-011). Rebalanced monsters (Null Reference Crow, Dangling Pointer, Runaway Thread, The OOM Killer, Runaway Linter, Deadlock Tree, Stack Overflow Mole), items (Dirty Page, Garbage Collector, Fork Bomb), and Ness initial stats.
+- **Verification Suite** (P6-01 to P6-03). Automated regression testing in `tools/verify_rom.py` (31 assertions) and documentation integrity checking in `tools/check_docs.py`.
 
 **Not verified**
 - Interactive gameplay feel on handheld hardware or local GUI emulator (user can launch via `snes9x-gtk build/eb_zero_fault.sfc` or preferred emulator).
@@ -46,14 +46,17 @@ Last updated: 2026-11-14, session 5, on `main` (`c0a6962`): Phases 1 through 6 f
 
 ## Next steps (in order)
 
-1. Launch `build/eb_zero_fault.sfc` in a SNES emulator (`snes9x-gtk build/eb_zero_fault.sfc` or `mesen-s`) for interactive gameplay testing through Onett and Giant Step.
-2. If continuing scenario expansion, author Phase 7 (Twoson & Happy Happy Village sector commits) following the established CoW engine macros.
+1. Launch `build/eb_zero_fault.sfc` in a SNES emulator (`snes9x-gtk build/eb_zero_fault.sfc`) for interactive testing through Onett, Twoson, and Happy Happy Village.
+2. Advance to Phase 8: Threed and Saturn Valley (Zombie process leaks, Fly Honey buffer overflow, Master Belch memory leak, and Milky Well cache commit).
 
 ## Open questions for maintainers
 
 None currently blocking.
 
 ## Session log
+
+### Session 6 (2026-11-14)
+Implemented Phase 7 (Twoson and the Immutable Cult Scenario, D-011). Formulated D-011 and updated [ROADMAP.md](../ROADMAP.md) with items P7-01 through P7-04. Implemented `src/ccscript/cow_police.ccs` for Captain Strong's kernel privilege escalation audit at `$C7699E` and `$C5F859` (P7-01). Implemented `src/ccscript/cow_twoson.ccs` for Apple Kid's dynamic JIT compiler vs Orange Kid's static AOT compiler at `$C81676` and Everdred's raw heap allocator at `$C95C0E` (P7-02). Implemented `src/ccscript/cow_happy.ccs` for Mr. Carpainter's Immutable State Cult at `$C98024` and Lilliput Steps cache line synchronization at `$C7BF95` (P7-03). Rebalanced regional monsters in `src/enemy_configuration_table.yml`: Runaway Linter (2435), Deadlock Tree (3845), and Stack Overflow Mole (1965, 8498) (P7-04). Expanded `tools/verify_rom.py` to 31 binary assertions. Verified clean 6.62s build and 0 errors in `tools/check_docs.py`.
 
 ### Session 5 (2026-11-14)
 Completed Phases 2 through 6. Finalized shop stat display (P2-03, D-008). Built `tools/verify_rom.py` asserting 22 binary checks (P2-04, P6-01). Formulated D-009 after discovering EarthBound's 1024-flag battery-backed SRAM structure at `$7E9C08`, establishing safe dirty-page range 836-1023 (D-004 update). Implemented `src/ccscript/cow_engine.ccs` (P3-01 through P3-04) and `src/ccscript/cow_onett.ccs` with full narrative scripts for Mom, Pokey, Mayor Pirkle, Twoson MMU roadblock, and Giant Step memory commit (P4-01 through P4-04). Reskinned enemies (Null Reference Crow, Dangling Pointer, Runaway Thread, The OOM Killer), consumable items (Dirty Page, Garbage Collector, Fork Bomb), and rebalanced Ness base growth stats (P5-01 through P5-04, D-010). Verified clean 6.66s compilation and passing doc integrity.

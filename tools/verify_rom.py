@@ -29,6 +29,13 @@ HOOKS = [
     (0x072AF8, b"\x0A", "CoW Mayor Pirkle Refcount Hook"),
     (0x066002, b"\x0A", "CoW Twoson MMU Roadblock Hook"),
     (0x07BEB9, b"\x0A", "CoW Giant Step Cache Commit Hook"),
+    # Phase 7: Twoson & Immutable Cult Hooks
+    (0x07699E, b"\x0A", "CoW Captain Strong Desk Hook"),
+    (0x05F859, b"\x0A", "CoW Captain Strong Challenge Hook"),
+    (0x081676, b"\x0A", "CoW Apple Kid JIT Hook"),
+    (0x095C0E, b"\x0A", "CoW Everdred Raw Heap Hook"),
+    (0x098024, b"\x0A", "CoW Mr. Carpainter Immutable Cult Hook"),
+    (0x07BF95, b"\x0A", "CoW Lilliput Steps Cache Commit Hook"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
@@ -55,6 +62,10 @@ THEMATIC_NAMES = [
     "Runaway Thread",
     "Fork Bomb",
     "Dirty Page",
+    # Phase 7 thematic enemies
+    "Runaway Linter",
+    "Deadlock Tree",
+    "Stack Overflow Mole",
 ]
 
 

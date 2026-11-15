@@ -60,3 +60,12 @@ Goal: Rigorous emulation testing, save state verification, and documentation mai
 - [x] P6-01 Validate game stability across save state transitions and battery-backed SRAM writes on hardware-accurate emulators (D-004; confirmed SRAM flag range 836-1023 safely encapsulated within 128-byte block at save offset 0x413, 2026-11-14).
 - [x] P6-02 Confirm zero memory leaks, text window overflows, or pointer corruption in custom CCScript routines (verified clean compiles, scratch RAM isolation at 962B, and verified binary hooks via tools/verify_rom.py, 2026-11-14).
 - [x] P6-03 Run automated documentation consistency checks via tools/check_docs.py (passed with 0 errors and 0 warnings, 2026-11-14).
+
+## Phase 7: Twoson and the Immutable Cult Scenario
+
+Goal: Expand the Copy-on-Write narrative and mechanics into Twoson, Peaceful Rest Valley, and Happy Happy Village.
+
+- [x] P7-01 Script Police Station encounter and Captain Strong authorization protocol as a kernel privilege escalation check (D-011; implemented src/ccscript/cow_police.ccs overriding C7699E and C5F859, 2026-11-14).
+- [x] P7-02 Author Twoson scenario scripts reflecting algorithmic divergence between Apple Kid and Orange Kid and Everdred raw memory allocator in Burglin Park (D-011; implemented src/ccscript/cow_twoson.ccs overriding C81676 and C95C0E, 2026-11-14).
+- [x] P7-03 Transform Happy Happy Village and Mr. Carpainter into the Immutable State Cult rejecting dirty pages, and synchronize Lilliput Steps cache (D-011; implemented src/ccscript/cow_happy.ccs overriding C98024 and C7BF95, 2026-11-14).
+- [x] P7-04 Author Peaceful Rest Valley and Lilliput Steps memory leak encounters, reskinning regional enemies (Runaway Linter, Deadlock Tree, Stack Overflow Mole) in src/enemy_configuration_table.yml (D-011; updated entries 2435, 3845, 1965, 8498, 2026-11-14).

@@ -1,0 +1,51 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Police Station Kernel Privilege Escalation (P7-01)
+// ==============================================================================
+// Captain Strong desk dialogue at 0xC7699E and backroom challenge at 0xC5F859.
+// ==============================================================================
+
+cow_captain_strong_desk:
+    "[06 49 00 {e(cow_strong_desk_post)}][06 69 00 {e(cow_strong_desk_open)}][06 B6 00 {e(cow_strong_desk_prompt)}]"
+    "@The municipality is experiencing high-frequency memory bus contention." next
+    "@Until we stabilize the system clock,{pause(15)} all unprivileged threads are restricted to Onett." end
+
+cow_strong_desk_prompt:
+    "@Why is the bus to Twoson disconnected?{pause(20)} An access violation,{pause(10)} obviously." next
+    "@The Memory Protection Unit blocked all inter-sector traffic to contain heap corruption." next
+    "@Are you attempting to request a kernel privilege escalation to Twoson?" linebreak
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_strong_desk_test)} {e(cow_strong_desk_scram)}]" goto(cow_strong_desk_scram)
+
+cow_strong_desk_scram:
+    "@Then terminate your execution thread and return to your parent stack frame,{pause(15)} kid." end
+
+cow_strong_desk_test:
+    "@Affirmative. Follow me to the debug chamber for ring-0 privilege evaluation.[03]"
+    "{set(flag 38)}{unset(flag 289)}{unset(flag 290)}{unset(flag 291)}{unset(flag 292)}{unset(flag 293)}{window_closeall}"
+    goto(data_15.l_0xc5f859)
+
+cow_strong_desk_open:
+    "@I've been playing <EarthBound: Zero Fault> lately...{pause(20)} The copy-on-write refcounts are relentless." end
+
+cow_strong_desk_post:
+    "@You audited every subsystem in the world,{pause(15)} yet no kernel thread was tougher than mine! Wa ha ha!" end
+
+// Captain Strong backroom challenge
+cow_captain_strong_challenge:
+    "{unset(flag 449)}[1F F1 47 00 DE 00][1F 15 6A 00 E1 00 01]"
+    call(data_53.l_0xc9b4b8)
+    "[1F 15 4B 00 DF 00 FF]{warp(67)}[1F 15 6A 00 E2 00 01]"
+    call(data_53.l_0xc9b4b8)
+    "[1F 15 4B 00 E0 00 FF]{warp(68)}[1F 15 6A 00 E3 00 01]"
+    call(data_53.l_0xc9b4b8)
+    "[1F 1F 6A 00 06][1F E7 4B 00]{music_effect(2)}{pause(10)}"
+    "{window_open(1)}@Initiating supervisor privilege benchmark..." next
+    "{pause(20)}" linebreak
+    "{set(flag 6)}{music_resume}@Let's see if your thread can withstand five high-priority kernel interrupts![03]{window_closeall}"
+    "[1F EA 4B 00][1F 61][1F F1 4D 00 E8 00][1F F1 4C 00 E7 00][1F F1 4B 00 E6 00][1F F1 4A 00 E5 00][1F F1 49 00 E4 00][1F 61]{pause(30)}[1F F1 49 00 E9 00][1F 61]"
+    "{window_open(1)}"
+    goto(data_15.l_0xc5f914)
+
+ROM[0xC7699E] = goto(cow_captain_strong_desk)
+ROM[0xC5F859] = goto(cow_captain_strong_challenge)

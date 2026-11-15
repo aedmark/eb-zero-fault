@@ -22,6 +22,11 @@ command e(label) "{long label}"
 // 854: Sector 05 - Onett Arcade & South Road
 // 855: Sector 06 - Giant Step Footpath & Cave
 // 856: Sector 07 - Road to Twoson checkpoint
+// 857: Sector 08 - Twoson Municipality & Polestar
+// 858: Sector 09 - Burglin Park Heap
+// 859: Sector 10 - Peaceful Rest Valley Stack
+// 860: Sector 11 - Happy Happy Village Immutable Domain
+// 861: Sector 12 - Lilliput Steps Cache
 
 // Entity Mutation Bits (870-889)
 // 870: Mom baseline dirtied (refcount = 2 awareness)
@@ -32,6 +37,11 @@ command e(label) "{long label}"
 // 875: Frank Fly baseline dirtied (deadlock state)
 // 876: Buzz Buzz baseline dirtied (debug daemon instance)
 // 877: Police Captain baseline dirtied (access violation obstacle)
+// 878: Apple Kid baseline dirtied (dynamic JIT compiler initialized)
+// 879: Orange Kid baseline dirtied (static AOT compiler rejected)
+// 880: Everdred baseline dirtied (raw untyped allocator active)
+// 881: Carpainter baseline dirtied (immutable ROM cult dismantled)
+// 882: Paula baseline dirtied (mutex unlocked / thread synchronized)
 
 // Reusable Engine Commands
 command cow_touch(f) "{set(flag f)}"

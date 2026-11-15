@@ -202,9 +202,7 @@ l_0xc5f83b:
     "{char_direction(1, 3)}{pause(30)}[1F F1 7E 00 85 00][1F 61][1F E6 7E 00]" call(data_27.l_0xc743b0) "[1F E9 7E 00]{pause(80)}" eob
 
 l_0xc5f859:
-    "{unset(flag 449)}[1F F1 47 00 DE 00][1F 15 6A 00 E1 00 01]" call(data_53.l_0xc9b4b8) "[1F 15 4B 00 DF 00 FF]{warp(67)}[1F 15 6A 00 E2 00 01]" call(data_53.l_0xc9b4b8) "[1F 15 4B 00 E0 00 FF]{warp(68)}[1F 15 6A 00 E3 00 01]" call(data_53.l_0xc9b4b8) "[1F 1F 6A 00 06][1F E7 4B 00]{music_effect(2)}{pause(10)}{window_open(1)}@Show me what you got..." next
-    "{pause(20)}" linebreak
-    "{set(flag 6)}{music_resume}@See if you can get past five of my best men...[03]{window_closeall}[1F EA 4B 00][1F 61][1F F1 4D 00 E8 00][1F F1 4C 00 E7 00][1F F1 4B 00 E6 00][1F F1 4A 00 E5 00][1F F1 49 00 E4 00][1F 61]{pause(30)}[1F F1 49 00 E9 00][1F 61]{window_open(1)}" goto(l_0xc5f914)
+    goto(cow_police.cow_captain_strong_challenge)
 
 l_0xc5f914:
     "@Eeeeyah!" next

@@ -38,6 +38,16 @@ HOOKS = [
     (0x095C0E, b"\x0A", "CoW Everdred Raw Heap Hook"),
     (0x098024, b"\x0A", "CoW Mr. Carpainter Immutable Cult Hook"),
     (0x07BF95, b"\x0A", "CoW Lilliput Steps Cache Commit Hook"),
+    # NPC Configuration Table Active Pointer Assertions
+    (0x1E709F, b"\xd4\x31\xf8", "NPC Table Entry 15 (Mom Initial Awakening Pointer)"),
+    (0x1E708E, b"\x39\x34\xf8", "NPC Table Entry 14 (Mom Awakening Door Knock Pointer)"),
+    (0x1E70C1, b"\x71\x37\xf8", "NPC Table Entry 17 (Pokey Front Door Burst Pointer)"),
+    (0x1E7556, b"\xa0\x3b\xf8", "NPC Table Entry 86 (Mayor Pirkle Refcount Pointer)"),
+    (0x1E7930, b"\x75\x3f\xf8", "NPC Table Entry 144 (Police Roadblock MMU Pointer)"),
+    (0x1E7413, b"\xc0\xb0\xf8", "NPC Table Entry 67 (Captain Strong Desk Pointer)"),
+    (0x1E7E4D, b"\xd8\x9f\xf8", "NPC Table Entry 221 (Apple Kid JIT Pointer)"),
+    (0x1E807E, b"\x74\xa5\xf8", "NPC Table Entry 254 (Everdred Raw Heap Pointer)"),
+    (0x1E8898, b"\x7f\xf9\xf7", "NPC Table Entry 376 (Mr. Carpainter Immutable Cult Pointer)"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)

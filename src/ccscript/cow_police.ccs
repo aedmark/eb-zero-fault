@@ -23,7 +23,7 @@ cow_strong_desk_scram:
 cow_strong_desk_test:
     "@Affirmative. Follow me to the debug chamber for ring-0 privilege evaluation.[03]"
     "{set(flag 38)}{unset(flag 289)}{unset(flag 290)}{unset(flag 291)}{unset(flag 292)}{unset(flag 293)}{window_closeall}"
-    goto(data_15.l_0xc5f859)
+    goto(cow_captain_strong_challenge)
 
 cow_strong_desk_open:
     "@I've been playing <EarthBound: Zero Fault> lately...{pause(20)} The copy-on-write refcounts are relentless." end

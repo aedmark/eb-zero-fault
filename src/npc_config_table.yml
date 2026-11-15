@@ -130,7 +130,7 @@
   Movement: 37
   Show Sprite: when event flag set
   Sprite: 145
-  Text Pointer 1: data_28.l_0xc74f56
+  Text Pointer 1: cow_onett.cow_mom_awakening
   Text Pointer 2: $0
   Type: person
 15:
@@ -139,7 +139,7 @@
   Movement: 12
   Show Sprite: when event flag unset
   Sprite: 145
-  Text Pointer 1: data_20.l_0xc66d3e
+  Text Pointer 1: cow_onett.cow_mom_initial_awakening
   Text Pointer 2: $0
   Type: person
 16:
@@ -157,7 +157,7 @@
   Movement: 10
   Show Sprite: when event flag set
   Sprite: 44
-  Text Pointer 1: data_28.l_0xc75c33
+  Text Pointer 1: cow_onett.cow_pokey_burst
   Text Pointer 2: $0
   Type: person
 18:
@@ -175,7 +175,7 @@
   Movement: 45
   Show Sprite: when event flag set
   Sprite: 44
-  Text Pointer 1: data_28.l_0xc75c33
+  Text Pointer 1: cow_onett.cow_pokey_burst
   Text Pointer 2: $0
   Type: person
 20:
@@ -607,7 +607,7 @@
   Movement: 605
   Show Sprite: when event flag unset
   Sprite: 75
-  Text Pointer 1: data_29.l_0xc7699e
+  Text Pointer 1: cow_police.cow_captain_strong_desk
   Text Pointer 2: $0
   Type: person
 68:
@@ -643,7 +643,7 @@
   Movement: 605
   Show Sprite: when event flag set
   Sprite: 75
-  Text Pointer 1: data_29.l_0xc7699e
+  Text Pointer 1: cow_police.cow_captain_strong_desk
   Text Pointer 2: $0
   Type: person
 72:
@@ -778,7 +778,7 @@
   Movement: 605
   Show Sprite: always
   Sprite: 154
-  Text Pointer 1: data_27.l_0xc72af8
+  Text Pointer 1: cow_onett.cow_mayor_pirkle
   Text Pointer 2: $0
   Type: person
 87:
@@ -1300,7 +1300,7 @@
   Movement: 606
   Show Sprite: when event flag unset
   Sprite: 74
-  Text Pointer 1: data_20.l_0xc66002
+  Text Pointer 1: cow_onett.cow_police_roadblock
   Text Pointer 2: $0
   Type: person
 145:
@@ -1993,7 +1993,7 @@
   Movement: 14
   Show Sprite: when event flag unset
   Sprite: 176
-  Text Pointer 1: data_35.l_0xc81676
+  Text Pointer 1: cow_twoson.cow_apple_kid
   Text Pointer 2: $0
   Type: person
 222:
@@ -2290,7 +2290,7 @@
   Movement: 12
   Show Sprite: when event flag set
   Sprite: 157
-  Text Pointer 1: data_48.l_0xc95c0e
+  Text Pointer 1: cow_twoson.cow_everdred
   Text Pointer 2: $0
   Type: person
 255:
@@ -3388,7 +3388,7 @@
   Movement: 605
   Show Sprite: always
   Sprite: 159
-  Text Pointer 1: data_50.l_0xc98024
+  Text Pointer 1: cow_happy.cow_carpainter
   Text Pointer 2: $0
   Type: person
 377:

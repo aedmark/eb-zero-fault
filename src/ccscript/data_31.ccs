@@ -498,7 +498,7 @@ l_0xc7bd89:
     "@Looks like you're the world-class loser again!{wait}{window_closeall}{pause(20)}[1F 1F A9 01 06][1F EA 6A 00][1F E9 DD 03][1F E9 DE 03][1F E9 DF 03]{music_effect(3)}[1F 61][1F 1F 6A 00 06][1F 1E DD 03 06][1F 1E DE 03 06][1F 1E DF 03 06]{pause(12)}{set(flag 672)}{unset(flag 11)}" eob
 
 l_0xc7beb9:
-    ":---------------------[1F 15 6A 00 60 01 01]    {unset(flag 2)}               " call(data_33.l_0xc7dd6b) "{music(32)}" call(data_32.l_0xc7c54b) "{set(flag 2)}               [1F 61]                      {counter(1)}" call(data_33.l_0xc7dc7f) "[1B 02 {e(l_0xc7bf1e)}]{window_open(1)}@The power of Giant Step" call(data_32.l_0xc7c55d) goto(l_0xc7bf1e)
+    goto(cow_onett.cow_giant_step_commit)
 
 l_0xc7bf1e:
     call(data_32.l_0xc7c57d) "{set(flag 4)}{music_resume}[06 B6 00 {e(l_0xc7bf94)}]{window_open(1)}@{name(1)} caught a glimpse of a small, cute puppy.[03]{pause(60)}" linebreak
@@ -508,7 +508,7 @@ l_0xc7bf94:
     eob
 
 l_0xc7bf95:
-    "[1F 15 6A 00 60 01 01]    {unset(flag 2)}               " call(data_33.l_0xc7dd6b) "{music(33)}" call(data_32.l_0xc7c54b) "{set(flag 2)}               [1F 61]                      {counter(1)}" call(data_33.l_0xc7dc7f) "[1B 02 {e(l_0xc7bfe8)}]{window_open(1)}@The power of Liliput step" call(data_32.l_0xc7c55d) goto(l_0xc7bfe8)
+    goto(cow_happy.cow_lilliput_commit)
 
 l_0xc7bfe8:
     call(data_32.l_0xc7c57d) "{set(flag 4)}{music_resume}[06 B7 00 {e(data_32.l_0xc7c058)}]{window_open(1)}@{name(1)} briefly had a vision of a baby in a red cap.[03]{pause(60)}" linebreak

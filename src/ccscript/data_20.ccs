@@ -30,10 +30,7 @@ l_0xc65fa6:
     "@You can also use the map in Twoson.{pause(20)}  It's really useful." end
 
 l_0xc66002:
-    "[06 69 00 {e(l_0xc6605f)}]@The road to Twoson" linebreak
-    "  is closed." next
-    "@You can't just squeeze through road blocks,{pause(15)} either!" next
-    "@Onett is famous for roadblocks!" end
+    goto(cow_onett.cow_police_roadblock)
 
 l_0xc6605f:
     "@Hey,{pause(15)} aren't you {name(1)}?" next
@@ -202,11 +199,7 @@ l_0xc66d2b:
     "@It seems you have too many items to carry!" end
 
 l_0xc66d3e:
-    "[06 EE 02 {e(l_0xc66e13)}][06 D7 01 {e(l_0xc66df2)}]@What was that noise?" next
-    "@{name(1)},{pause(15)} you don't seem scared.{pause(20)}  Are you nuts?" next
-    "@And now you want to go check it out?{pause(15)}  ...oh{pause(15)} ...okay." next
-    "@You'll sneak out of your room anyway,{pause(15)} even if I asked you not to." next
-    "@At least change out of your jammies before you go.[03]{window_closeall}{pause(1)}{set(flag 471)}{unset(flag 749)}{warp(196)}" eob
+    goto(cow_onett.cow_mom_initial_awakening)
 
 l_0xc66df2:
     "@Be careful!{pause(20)}  Come home as soon as you can." end

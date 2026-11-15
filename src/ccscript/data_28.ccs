@@ -159,8 +159,7 @@ l_0xc74ef1:
     "@not just stuff you need right now." end
 
 l_0xc74f56:
-    "[06 5F 00 {e(l_0xc74fde)}][06 5E 00 {e(l_0xc750e3)}][06 60 00 {e(l_0xc74fec)}][06 62 00 {e(l_0xc74fb6)}][06 61 00 {e(l_0xc74fb6)}]@My land!{pause(20)}  Who could be knocking at the door at this time of night?" next
-    "@Would you answer it?" end
+    goto(cow_onett.cow_mom_awakening)
 
 l_0xc74fb6:
     "@Pokey's waiting for you.{pause(20)}  You should listen to what he has to say." end
@@ -335,17 +334,7 @@ l_0xc75b0f:
     "@Slam.{pause(20)}  Beeeeep!{wait}{sound(11)}{window_closeall}{unset(flag 654)}{unset(flag 753)}" eob
 
 l_0xc75c33:
-    "[06 60 00 {e(l_0xc75f3b)}]{window_closeall}{pause(30)}{music(177)}{pause(120)}{pause(120)}{music_resume}{window_open(1)}@Hey!{pause(15)}  L-{pause(15)}L-{pause(15)}Listen to what I've got to say!" next
-    "@When I took Picky to the place where the meteorite landed..." next
-    "[19 23 11 00 02 0E 00][1F 16 11 00 00]@Oh!{pause(20)}  Good evening ma'am.{pause(20)}  You're looking lovely as usual.  *snicker*" next
-    "[19 23 11 00 01 01 00][1F 16 11 00 00]@Anyway,{pause(15)} as I was saying," next
-    "@the police that were guarding the meteorite landing left suddenly" next
-    "@to deal with the Sharks.{pause(15)}  You know the Sharks,{pause(10)} they're the local ruffians," next
-    "@and they were really going wild.{pause(20)}  Suddenly,{pause(20)} I noticed that Picky was gone." next
-    "@I blame the cops... it certainly wasn't my fault at all." next
-    "@When my dad gets back,{pause(15)} I know I'm gonna get it..." next
-    "@You're my bestest friend.{pause(20)}  Won't YOU help me find Picky?" next
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc75ebc)} {e(l_0xc75e1c)}]" goto(l_0xc75e1c)
+    goto(cow_onett.cow_pokey_burst)
 
 l_0xc75e1c:
     "@If you refuse me,{pause(15)} I'll say something that'll cut you like a knife." next

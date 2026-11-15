@@ -412,13 +412,7 @@ l_0xc815f9:
     "@I rely on your support,{pause(15)} even though I am a super genius." end
 
 l_0xc81676:
-    "[06 52 00 {e(l_0xc818f1)}][06 70 00 {e(l_0xc818b9)}][06 27 02 {e(l_0xc81915)}]@Well,{pause(15)} I have sort of neglected doing my housework..." next
-    "@I know it's a bit of a pig sty,{pause(15)} but anyway..." next
-    "@I'm Apple Kid." next
-    "@I haven't taken a bath in quite a while,{pause(15)} so I may be kind of stinky." next
-    "{pause(60)}@By the way,{pause(15)} I'm starving.{pause(20)}  Do you have something to eat?" next
-    "@If you do,{pause(15)} can I have some?" linebreak
-    call(data_33.l_0xc7dd4f) "[11]{clearline}[09 02 {e(l_0xc81789)} {e(l_0xc81751)}]" goto(l_0xc81751)
+    goto(cow_twoson.cow_apple_kid)
 
 l_0xc81751:
     "@Well, go ahead and make yourself comfortable anyway.{pause(15)}  You can flop down anywhere." goto(l_0xc81913)

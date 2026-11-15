@@ -33,18 +33,7 @@ l_0xc72ad6:
     "@What was I thinking--{pause(15)} you did something really big!" end
 
 l_0xc72af8:
-    "[06 49 00 {e(l_0xc72e08)}][06 50 00 {e(l_0xc72dd0)}]@Hey{pause(10)} hey{pause(10)} hey!{pause(15)}  I'm Mayor B.H. Pirkle.{pause(15)}  It's so nice to meet you." next
-    "@You beat up the town bullies," next
-    "@punched them out big time,{pause(10)} kicked their butts,{pause(10)} bit their heads off," next
-    "@spit in their eyes,{pause(30)} and made them wet their pants." next
-    "@Then you forced them to promise not to make any more trouble.{pause(15)}  Thank you!" next
-    "@What?{pause(15)}" linebreak
-    "  You want a key to the touring entertainers' shack?" next
-    "@For someone as great as you,{pause(15)} giving you the key could help keep the town peaceful." next
-    "@However,{pause(15)} if you encounter a dangerous situation," next
-    "@please don't ask me to take any responsibility." next
-    "@I'll be able to avoid any responsibility, right?" next
-    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc72d2f)} {e(l_0xc72cac)}]" goto(l_0xc72cac)
+    goto(cow_onett.cow_mayor_pirkle)
 
 l_0xc72cac:
     "@I'm a very important man in these parts." next

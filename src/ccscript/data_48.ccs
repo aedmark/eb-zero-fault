@@ -200,19 +200,7 @@ l_0xc95ba0:
     "@I've got definite rules about how I handle my money matters..." end
 
 l_0xc95c0e:
-    "[06 55 00 {e(l_0xc960d7)}][06 0C 00 {e(l_0xc95f0a)}][06 0D 00 {e(l_0xc95df9)}][06 42 00 {e(l_0xc95dc6)}]@Wah ha ha ha ha!{pause(20)}" linebreak
-    "  Why don't we chat later-after  we've locked horns![03]" call(data_21.l_0xc6846b) "[1B 03 {e(data_21.l_0xc683de)}]{window_open(1)}@Yes, I'm Everdred, boss of Burglin Park." next
-    "@When I jumped off the roof,{pause(15)} I twisted my ankle." next
-    "@Anyway, I lost and nothing will change that." next
-    "@You know,{pause(15)} you're pretty strong." next
-    "@Yeah, I know that you want to find out about a girl named {name(2)}." next
-    "@She went off to a secret hideout in the Peaceful Rest Valley." next
-    "@A chubby boy and a weird guy in a blue outfit have kidnapped her, though." next
-    "@They said that they were going to make {name(2)} some sort of human sacrifice." next
-    "@They were definitely hard-core strange." next
-    "@You know, she might be gone already.{pause(20)}" linebreak
-    "  You'd better hurry." next
-    goto(l_0xc95dc6)
+    goto(cow_twoson.cow_everdred)
 
 l_0xc95dc6:
     "@If you save {name(2)},{pause(15)} be sure to come back here, okay?{pause(15)}  Don't{pause(20)} forget!{wait}{window_closeall}{set(flag 66)}" eob

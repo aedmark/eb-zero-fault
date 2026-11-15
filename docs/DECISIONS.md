@@ -90,14 +90,16 @@ removing a fence whose purpose it forgot.
 **Consequences:** Extends narrative cohesion from early game through the second sanctuary milestone.
 **Review trigger:** Script conflicts or flag collisions during mid-game teleport transitions.
 
-## D-012 Overworld Status Window Decoupling and Initial Awakening Hook (2026-11-15, status: accepted)
-**Context:** Verification testing revealed two distinct anomalies upon starting a new game: holding B inside Ness's house popped up the HP/PP status window and froze movement instead of running, and talking to Mom downstairs displayed vanilla dialogue.
+## D-012 Overworld Status Window Decoupling and Dual-Binding NPC Dialogue Architecture (2026-11-15, status: accepted)
+**Context:** Verification testing revealed that talking to Mom downstairs continued to run vanilla dialogue ("What was that noise?"), even after hooking `ROM[0xC66D3E] = goto(cow_mom_initial_awakening)`. Forensic analysis of CoilSnake's compilation pipeline proved that the EarthBound overworld engine does not dispatch NPC dialogue via legacy 24-bit ROM addresses in Bank C6. Instead, `ExpandedTablesModule` compiles `src/npc_config_table.yml` into the active NPC table at `$CF8985` by resolving symbolic labels against `summary.txt` and embedding 24-bit pointers directly into expanded memory. Overwriting `ROM[0xCXXXXX]` in custom scripts only patched legacy trampolines, leaving the runtime engine jumping directly to vanilla `data_XX.ccs` labels in Banks F1-F8.
 **Decision:**
-1. Decouple overworld status window polling at `0xC0B8F1` in `src/ccscript/dash.ccs` by changing `AND #$A000` (B or Select) to `AND #$2000` (Select only). Select remains the dedicated single-button status check; the B button is dedicated to dashing, fractional text fast-forwarding, and menu cancellation without triggering the modal status loop at `0xC13CA1`.
-2. Hook Mom's initial awakening text pointer at `0xC66D3E` in `src/ccscript/cow_onett.ccs` (`ROM[0xC66D3E] = goto(cow_mom_initial_awakening)`). In `src/npc_config_table.yml`, Mom before the meteorite event is NPC Entry 15 (Flag `0x1d5` unset), pointing to `data_20.l_0xc66d3e`, whereas Entry 14 (`0xC74F56`) only applies after Flag `0x1d5` is set.
-**Alternatives:** Leaving `0xC0B8F1` unpatched (holding B repeatedly invokes the blocking modal status loop, preventing smooth movement); remapping dash to the Y button (diverges from canonical B-button dash convention).
-**Consequences:** Both awakening states for Mom (Entry 15 jammies awakening and Entry 14 door knock) route to copy-on-write narrative scripts. B-button dash functions cleanly without triggering modal window freezes.
-**Review trigger:** Player reports regarding controller mapping preferences on specific third-party SNES emulators.
+1. Decouple overworld status window polling at `0xC0B8F1` in `src/ccscript/dash.ccs` by changing `AND #$A000` (B or Select) to `AND #$2000` (Select only). Select remains the dedicated single-button status check; the B button is dedicated to dashing, fractional text fast-forwarding, and menu cancellation without triggering the blocking modal status loop at `0xC13CA1`.
+2. Implement dual-binding dispatch for all narrative events:
+   - Update `src/npc_config_table.yml` so that every narrative NPC points directly to our custom module labels: Mom initial awakening (`cow_onett.cow_mom_initial_awakening` on NPC 15), Mom knocking (`cow_onett.cow_mom_awakening` on NPC 14), Pokey burst (`cow_onett.cow_pokey_burst` on NPC 17/19), Mayor Pirkle (`cow_onett.cow_mayor_pirkle` on NPC 86), Police Roadblock (`cow_onett.cow_police_roadblock` on NPC 144), Captain Strong (`cow_police.cow_captain_strong_desk` on NPC 67/71), Apple Kid (`cow_twoson.cow_apple_kid` on NPC 221), Everdred (`cow_twoson.cow_everdred` on NPC 254), and Mr. Carpainter (`cow_happy.cow_carpainter` on NPC 376).
+   - In `src/ccscript/data_*.ccs`, rewrite each corresponding vanilla label (`l_0xc66d3e`, `l_0xc74f56`, `l_0xc75c33`, `l_0xc72af8`, `l_0xc66002`, `l_0xc7699e`, `l_0xc5f859`, `l_0xc7beb9`, `l_0xc7bf95`, `l_0xc81676`, `l_0xc95c0e`, `l_0xc98024`) to execute `goto(cow_*)`, eliminating any unhooked fallback paths.
+**Alternatives:** Leaving `src/npc_config_table.yml` pointing to vanilla `data_XX` labels (causes all dialogue to execute vanilla text regardless of `ROM[...]` overrides); in-place editing of large 62-file decompiled `data_XX.ccs` without modular files (destroys project maintainability).
+**Consequences:** The compiled NPC table at `0x1E7000` directly addresses our custom CoW routines in Banks F7 and F8. All 42 binary assertions pass in `tools/verify_rom.py`.
+**Review trigger:** Verification of NPC dialogue transitions across mid-game teleport events.
 
 ---
 

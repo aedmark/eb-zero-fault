@@ -33,59 +33,16 @@ l_0xc8361b:
     eob
 
 l_0xc8361c:
-    "@....." next
-    "@*Wheeze, wheeze*..." next
-    "@....." next
-    "@Aren't you {name(1)}...?" next
-    "@...I can't see too well..." next
-    "@Everything's blurry...{pause(20)}  You are {name(1)}, aren't you?" next
-    "@It's me, we met in Twoson...{pause(20)}  Everdred from Burglin Park." next
-    "@You must remember.{pause(20)}  I'm the best thief around." next
-    "@That... Carpainter in Happy Happy Village was hiding something..." next
-    "@*wheeze, wheeze*... strange." next
-    "@I stole it, and thought about selling it in the big city..." next
-    "@An old, city-wise man called it Mani Mani." next
-    "@It's a strange-colored, doll-looking thing." next
-    "@...Ohh... *wheeze*,{pause(20)}" linebreak
-    "  I'm in pain." next
-    "@...and" next
-    "@....." next
-    "@Monotoli tricked me and stole it...{pause(30)} from me!" next
-    "@He tricked a thief!" next
-    "@He wanted me out of the way because I know his secret..." next
-    "@He gets his evil power from that statue!" next
-    "@...Listen!" next
-    "@I'll tell you only once." next
-    "@At the cafe,{pause(15)} check...{pause(15)} behind...{pause(15)} the counter..." next
-    "@...*Gasp*..." next
-    "[06 09 00 {e(l_0xc838b9)}]{set(flag 9)}@I said I'd tell you only once..." next
-    "@But if you insist, I'll tell you once more..." next
-    "@...*gasp, gasp*" next
-    "@Do{pause(5)} do{pause(5)} do you wanna hear it again?" linebreak
-    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc8361c)} {e(l_0xc83957)}]" goto(l_0xc83957)
+    goto(cow_fourside.cow_everdred_cafe)
 
 l_0xc838b9:
-    "@I've told you twice already..." next
-    "@But if you wanna hear one more time..." next
-    "@I'll tell you once more..." next
-    "@D...{pause(15)} D...{pause(15)} do... you wanna hear it again?" linebreak
-    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc8392f)} {e(l_0xc83957)}]" goto(l_0xc83957)
+    eob
 
 l_0xc8392f:
-    "@I'm not that nice of a guy.{pause(20)}  Besides." next
-    "@I'm slipping away..." next
-    goto(l_0xc83957)
+    eob
 
 l_0xc83957:
-    "@...Before I go, here's my last haiku poem:" next
-    "@When on your way out" next
-    "@Be sure that you say goodbye" next
-    "@then lock the door tight." next
-    "@This is my final request...{pause(20)}" linebreak
-    "  Don't follow me." next
-    "@I must be on my way..." next
-    "@Whoa..." next
-    "@So...{pause(15)} long!{wait}{set(flag 145)}{unset(flag 60)}" call(data_40.l_0xc8983b) eob
+    eob
 
 l_0xc839f7:
     "[06 91 00 {e(l_0xc83a24)}]@There's a person lying on the ground." next

@@ -126,6 +126,20 @@ removing a fence whose purpose it forgot.
 **Consequences:** Extends coherent systems-level narrative across the entire second act up to the third sanctuary. Verification suite expanded to 71 binary assertions across ROM hooks, dynamic NPC table pointers, and thematic strings.
 **Review trigger:** Verification of party member serialization and inventory preservation across the Sky Runner far jump.
 
+## D-015 Late-Midgame Scenarios: Memory Fragmentation, Monolithic Bureaucracy, and Inversion Matrices (2026-11-15, status: accepted)
+**Context:** Expanding the Copy-on-Write parallel universe into Dusty Dunes Desert, Fourside, Moonside, and Magnet Hill (P9-01 through P9-06).
+**Decision:**
+1. Author `src/ccscript/cow_desert.ccs`: Miner George at `$C61228` (NPC 830) as a sparse array compaction worker; five Guardian Diggers at `$C613B3` and `$C612D2`..`$C61386` (NPCs 831, 832, 833, 837, 838) as duplicate defragmentation subroutines claiming identical index registers; and Monkey Cave at `$C628A1` and `$C62AE7` (NPC 773) framing PSI Teleport as dynamic virtual memory page translation requiring an acceleration buffer.
+2. Author `src/ccscript/cow_fourside.ccs`: Department Store blackout at `$C89580` as memory bus power starvation evicting thread 2 (Paula); Dept Store Spook at `$C82C6B` (NPC 941) as Thread Terminus executing an unhandled core dump audit; Everdred at `$C8361C` (NPC 952) handing off the Jackie's Cafe memory pointer prior to stack frame deallocation; and Monotoli at `$C6EA34` and `$C6EB2C` (NPC 872, 874) as the compromised kernel sysadmin releasing Paula from the executive lock and deploying the rooftop helicopter vector to Summers.
+3. Author `src/ccscript/cow_moonside.ccs`: Moonside greeter at `$C96D10` (NPC 1379) and Yes/No inversion at `$C96DB2` as bitwise-NOT (`~`) complement address space where truth tables and parity bits are inverted; Evil Mani-Mani at `$C9794B` and `$C97990` (NPC 1406) as an unauthorized rootkit core broadcasting parity corruptions across Fourside.
+4. Author `src/ccscript/cow_magnet.ccs`: Magnet Hill sanctuary commit at `$C7C208` and `$C7C258` aligning electromagnetic cache lines in Sector 21 (`flag 895`).
+5. Update `src/ccscript/cow_engine.ccs` allocating Sector dirty bits 867-869, 895, and entity mutation bits 889-894 with commit routines.
+6. Enforce dual-binding dispatch across 11 NPC table entries in `src/npc_config_table.yml` and 15 legacy label trampolines in `data_16.ccs`, `data_17.ccs`, `data_40.ccs`, `data_36.ccs`, `data_37.ccs`, `data_25.ccs`, `data_49.ccs`, and `data_32.ccs`.
+7. Rebalance regional monsters in `src/enemy_configuration_table.yml`: Guardian Digger to Sparse Defrag Digger (42, 181), Dept. Store Spook to Thread Terminus (2, 171), Evil Mani-Mani to Rootkit Core (137, 203), Plague Rat of Doom to Memory Corruptor Rat (40, 179), Dali's Clock to Clock Jitter (88), Robo-pump to DMA Pump (154, 207).
+**Alternatives:** Retaining vanilla narrative text for Fourside bureaucracy and surrealist Moonside (breaks systems-level architecture premise).
+**Consequences:** Unifies late-midgame progression under the Copy-on-Write parallel universe model. Automated verification in `tools/verify_rom.py` expanded to 100 binary assertions across ROM hooks, dynamic NPC table pointers, and thematic strings.
+**Review trigger:** Verification of Summers oceanic transition and Poo's party join event.
+
 ---
 
 ## Held tensions

@@ -6961,7 +6961,7 @@
   Movement: 8
   Show Sprite: when event flag set
   Sprite: 133
-  Text Pointer 1: data_17.l_0xc62886
+  Text Pointer 1: cow_desert.cow_teleport_monkey
   Text Pointer 2: $0
   Type: person
 774:
@@ -7474,7 +7474,7 @@
   Movement: 13
   Show Sprite: when event flag set
   Sprite: 172
-  Text Pointer 1: data_16.l_0xc61228
+  Text Pointer 1: cow_desert.cow_miner_george
   Text Pointer 2: $0
   Type: person
 831:
@@ -7483,7 +7483,7 @@
   Movement: 600
   Show Sprite: when event flag unset
   Sprite: 419
-  Text Pointer 1: data_16.l_0xc612d2
+  Text Pointer 1: cow_desert.cow_guardian_digger_1
   Text Pointer 2: $0
   Type: person
 832:
@@ -7492,7 +7492,7 @@
   Movement: 600
   Show Sprite: when event flag unset
   Sprite: 419
-  Text Pointer 1: data_16.l_0xc612ff
+  Text Pointer 1: cow_desert.cow_guardian_digger_2
   Text Pointer 2: $0
   Type: person
 833:
@@ -7501,7 +7501,7 @@
   Movement: 600
   Show Sprite: when event flag unset
   Sprite: 419
-  Text Pointer 1: data_16.l_0xc6132c
+  Text Pointer 1: cow_desert.cow_guardian_digger_3
   Text Pointer 2: $0
   Type: person
 834:
@@ -7537,7 +7537,7 @@
   Movement: 600
   Show Sprite: when event flag unset
   Sprite: 419
-  Text Pointer 1: data_16.l_0xc61359
+  Text Pointer 1: cow_desert.cow_guardian_digger_4
   Text Pointer 2: $0
   Type: person
 838:
@@ -7546,7 +7546,7 @@
   Movement: 600
   Show Sprite: when event flag unset
   Sprite: 419
-  Text Pointer 1: data_16.l_0xc61386
+  Text Pointer 1: cow_desert.cow_guardian_digger_5
   Text Pointer 2: $0
   Type: person
 839:
@@ -7852,7 +7852,7 @@
   Movement: 700
   Show Sprite: when event flag unset
   Sprite: 164
-  Text Pointer 1: data_25.l_0xc6ea34
+  Text Pointer 1: cow_fourside.cow_monotoli
   Text Pointer 2: $0
   Type: person
 873:
@@ -7870,7 +7870,7 @@
   Movement: 8
   Show Sprite: when event flag set
   Sprite: 164
-  Text Pointer 1: data_25.l_0xc6ea34
+  Text Pointer 1: cow_fourside.cow_monotoli
   Text Pointer 2: $0
   Type: person
 875:
@@ -8473,7 +8473,7 @@
   Movement: 10
   Show Sprite: when event flag set
   Sprite: 455
-  Text Pointer 1: data_36.l_0xc82c6b
+  Text Pointer 1: cow_fourside.cow_dept_store_spook
   Text Pointer 2: $0
   Type: person
 942:
@@ -8572,7 +8572,7 @@
   Movement: 8
   Show Sprite: when event flag set
   Sprite: 180
-  Text Pointer 1: data_37.l_0xc8361c
+  Text Pointer 1: cow_fourside.cow_everdred_cafe
   Text Pointer 2: $0
   Type: person
 953:
@@ -12415,7 +12415,7 @@
   Movement: 12
   Show Sprite: always
   Sprite: 63
-  Text Pointer 1: data_49.l_0xc96d10
+  Text Pointer 1: cow_moonside.cow_moonside_greeter
   Text Pointer 2: $0
   Type: person
 1380:
@@ -12658,7 +12658,7 @@
   Movement: 10
   Show Sprite: always
   Sprite: 293
-  Text Pointer 1: data_49.l_0xc9794b
+  Text Pointer 1: cow_moonside.cow_mani_mani
   Text Pointer 2: data_22.l_0xc68f74
   Type: object
 1407:

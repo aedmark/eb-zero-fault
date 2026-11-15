@@ -80,3 +80,14 @@ Goal: Author mid-game Copy-on-Write narrative scenarios across Threed, Winters, 
 - [x] P8-04 Author Grapefruit Falls waterfall zero-knowledge proof-of-work gate and Master Belch memory leak buffer overflow exploit (D-014; implemented src/ccscript/cow_belch.ccs overriding C88875, EF6446, and EF6569, 2026-11-15).
 - [x] P8-05 Script Saturn Valley alien primitive bytecode domain and synchronize Milky Well third sanctuary cache line (D-014; implemented src/ccscript/cow_saturn.ccs overriding C7E819, EF679A, C7C12A, and C7C17B, 2026-11-15).
 - [x] P8-06 Rebalance mid-game regional monsters in src/enemy_configuration_table.yml (Buffer Overrun, Defunct Process, Zombie PID, Rootkit Sprout, Memory Leak Daemon, Malicious Daemon) (D-014; updated entries 30, 76, 77, 90, 93, 102, 169, 189, 191, 192, 197, 2026-11-15).
+
+## Phase 9: Dusty Dunes Desert, Fourside, and Moonside Scenarios
+
+Goal: Author late-midgame narrative scenarios across Dusty Dunes Desert, Fourside monolithic kernel, Moonside bitwise-NOT inversion matrix, and Magnet Hill fourth sanctuary cache line.
+
+- [x] P9-01 Author Dusty Dunes Desert sparse array compaction scenarios for Miner George, five Guardian Digger defragmentation subroutines, and Monkey Cave virtual memory teleportation algorithm (D-015; implemented src/ccscript/cow_desert.ccs overriding C61228, C613B3, C628A1, and C62AE7, 2026-11-15).
+- [x] P9-02 Script Fourside Department Store memory bus blackout, thread 2 eviction exception, and Thread Terminus daemon thread audit (D-015; implemented src/ccscript/cow_fourside.ccs overriding C89580 and C82C6B, 2026-11-15).
+- [x] P9-03 Author Jackie's Cafe Everdred memory pointer handoff and Monotoli 48th-floor monolithic kernel deregulation and helicopter vector (D-015; implemented src/ccscript/cow_fourside.ccs overriding C8361C, C6EA34, and C6EB2C, 2026-11-15).
+- [x] P9-04 Author Moonside bitwise-NOT inverted parity domain and Evil Mani Mani rootkit core destruction sequence (D-015; implemented src/ccscript/cow_moonside.ccs overriding C96D10, C96DB2, C9794B, and C97990, 2026-11-15).
+- [x] P9-05 Synchronize Magnet Hill fourth sanctuary cache line commit and defeat of the Memory Corruptor Rat (D-015; implemented src/ccscript/cow_magnet.ccs overriding C7C208 and C7C258, 2026-11-15).
+- [x] P9-06 Rebalance mid-game regional monsters in src/enemy_configuration_table.yml (Sparse Defrag Digger, Thread Terminus, Rootkit Core, Memory Corruptor Rat, Clock Jitter, DMA Pump) (D-015; updated entries 2, 40, 42, 88, 137, 154, 171, 179, 181, 203, 207, 2026-11-15).

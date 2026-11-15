@@ -125,12 +125,7 @@ l_0xc611e2:
     "@I praise all of you for your courage." end
 
 l_0xc61228:
-    "@I didn't have a problem digging until this...{pause(20)} I found a maze." next
-    "@Lots of monsters appeared, so I couldn't proceed." next
-    "@There's 5 big moles...!" next
-    "@If I beat the monsters, I can continue on." next
-    "@I think I have a bleeding ulcer from worrying too much." next
-    "@I'm helpless to really do anything." end
+    goto(cow_desert.cow_miner_george)
 
 l_0xc612d2:
     "[06 15 01 {e(data_32.l_0xc7c588)}]" call(l_0xc613b3) call(data_21.l_0xc6858a) "[1B 03 {e(data_21.l_0xc683de)}]" call(l_0xc615e9) "{pause(1)}[1F F1 3F 03 7B 02]{set(flag 277)}" call(l_0xc615a7) eob
@@ -148,10 +143,7 @@ l_0xc61386:
     "[06 19 01 {e(data_32.l_0xc7c588)}]" call(l_0xc613b3) call(data_21.l_0xc685a6) "[1B 03 {e(data_21.l_0xc683de)}]" call(l_0xc615e9) "{pause(1)}[1F F1 46 03 7B 02]{set(flag 281)}" call(l_0xc615a7) eob
 
 l_0xc613b3:
-    "{music(155)}[06 09 02 {e(l_0xc614f2)}][06 08 02 {e(l_0xc614b1)}][06 07 02 {e(l_0xc6146d)}][06 06 02 {e(l_0xc61443)}]{window_open(1)}@I'm one of the masters of this hole." next
-    "@There are five masters in all.{pause(20)}  We are all moles, of course." next
-    "@I believe I'm the third strongest amongst us." next
-    "@Take your best shot![03]{window_closeall}" eob
+    goto(cow_desert.cow_guardian_digger_msg)
 
 l_0xc61443:
     "{window_open(1)}@I'm really the third strongest master." next

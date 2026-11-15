@@ -149,39 +149,10 @@ l_0xc6ea0f:
     "@Thanks for dropping by, even though there's nothing to do, honey." end
 
 l_0xc6ea34:
-    "[06 A0 02 {e(l_0xc6ee6f)}][06 0F 00 {e(l_0xc6ee2e)}]@Look at my skinny arms,{pause(20)} thin body,{pause(20)} and gray hair..." next
-    "@I've become so weak since I lost the Mani Mani Statue." next
-    "@I'm sorry I kidnapped {name(2)}." next
-    "@I haven't done anything to her." next
-    "@...{name(2)} is a nice girl.[03]{window_closeall}{pause(60)}[1F 16 68 03 03]{pause(10)}{window_open(1)}@{name(2)}." next
-    "@Return to {name(1)}." next
-    "@I'm sorry I've created so much trouble for you.[03]{window_closeall}{pause(60)}" call(data_21.l_0xc68253) "{set(flag 15)}{unset(flag 776)}[19 23 68 03 01 FF 00][1F 16 68 03 00]{music_resume}{pause(120)}{window_open(1)}" goto(l_0xc6eb2c)
+    goto(cow_fourside.cow_monotoli)
 
 l_0xc6eb2c:
-    "@....." next
-    "@I'll tell you everything." next
-    "@The Mani Mani Statue creates an illusion." next
-    "@It attracts evil spirits and weakens your heart." next
-    "@The power scared me so much, I hid the statue in the warehouse at Jackie's Cafe." next
-    "@I often went there to pray." next
-    "@....." next
-    "@Cryptic words appeared to me while I was in the illusion." next
-    "@{name(1)}, your name appeared in the cryptic messages." next
-    "@<Stop {name(1)}, and do so by your own hand.>" next
-    "@Or..." next
-    "@<Don't let them go to Summers.>" next
-    "@Or..." next
-    "@<Make sure they know nothing of the Pyramid>..." next
-    "@I don't fully understand the messages," next
-    "@but someone obviously doesn't want you to go to Summers." next
-    "{pause(60)}" linebreak
-    "@...Evil... Giygas... or something... I could hear the name..." next
-    "@Anyway, the evil side would be in trouble if you visit Summers..." next
-    "@Oh!  On the contrary, you should definitely go to Summers," next
-    "@especially because they don't want you to make it there." next
-    "@....." next
-    "@...Would you like to hear the whole story again?" linebreak
-    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc6eb2c)} {e(l_0xc6ed74)}]" goto(l_0xc6ed74)
+    goto(cow_fourside.cow_monotoli_confess)
 
 l_0xc6ed74:
     "@Summers is located across the ocean.{pause(20)}  Take my helicopter." next

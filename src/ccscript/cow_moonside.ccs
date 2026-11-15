@@ -1,0 +1,34 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 9: Moonside Inversion Matrix Scenario
+// ==============================================================================
+// Bitwise NOT complement space, inverted truth table evaluations, and
+// Evil Mani Mani rootkit core purge.
+// ==============================================================================
+
+cow_moonside_greeter:
+    "@Welcome to MOON~SIDE." next
+    "@Wel{pause(15)}  come{pause(15)}  to bitwise{pause(20)}   NOT{pause(15)}  com{pause(15)}  ple{pause(5)} ment{pause(5)} space." end
+
+cow_moonside_yesno:
+    "@All boolean evaluation registers are inverted:" linebreak
+    "  <YES> evaluates as <NO> and" linebreak
+    "  <NO> evaluates as <YES>." next
+    "@Bitwise NOT complement logic makes absolute computational sense in Moonside." end
+
+cow_mani_mani:
+    "@(A golden rootkit transmitter pulses with inverted clock cycles.)" next
+    "@(It is broadcasting an unhandled parity inversion across the municipal memory grid!)[03]"
+    call(data_21.l_0xc68583)
+    "[1B 03 {e(data_21.l_0xc683de)}]{pause(1)}"
+    call(data_22.l_0xc69082)
+    "[1F F1 7E 05 7B 02]"
+    call(cow_engine.cow_fault_commit_moonside)
+    "{set(flag 892)}{set(flag 59)}{set(flag 75)}{warp(154)}{event(5)}{lock_movement(255)}{pause(20)}"
+    goto(cow_mani_mani_destroyed)
+
+cow_mani_mani_destroyed:
+    "{window_open(1)}@(The Mani Mani rootkit core suffered a fatal kernel panic!" next
+    "@The parity inversion matrix collapsed, restoring linear address space to Fourside.){wait}{window_closeall}[19 26 05][1F E8 FF]"
+    eob

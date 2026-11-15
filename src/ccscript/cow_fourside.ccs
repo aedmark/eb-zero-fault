@@ -1,0 +1,96 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 9: Fourside Monolithic Kernel Scenario
+// ==============================================================================
+// Commercial bus power starvation, Thread Terminus audit, Everdred memory
+// pointer handoff, and Monotoli kernel deregulation.
+// ==============================================================================
+
+cow_blackout_event:
+    "{counter(2)}"
+    call(data_33.l_0xc7dc7f)
+    "[1B 03 {e(data_40.l_0xc8955a)}]{music_effect(2)}{pause(10)}[1F 01 00][1F E1 1F 00 01]{pause(20)}[1F E1 14 01 01]{pause(20)}[1F E1 1F 00 01]{pause(1)}[1F E1 14 01 01]{pause(1)}[1F E1 1F 00 01]{pause(1)}{music(177)}{pause(20)}[1F 15 C7 01 99 02 01]{pause(50)}{hide_char(2)}{party_remove(2)}[1F E1 14 01 01]{pause(20)}[1F E1 1F 00 01][1F 1E 98 03 06][1F 1E 99 03 06][1F 1E A3 03 06]{set(flag 776)}{set(flag 57)}{set(flag 555)}{unset(flag 594)}{pause(30)}{pause(60)}"
+    call(data_33.l_0xc7dd7d)
+    "{sound(114)}{pause(180)}{window_open(1)}@CRITICAL HARDWARE FAULT: Commercial sector brownout detected on memory bus!" next
+    "@Thread synchronization loss! Sub-thread {name(2)} has been evicted from active context!" next
+    "@ATTENTION THREAD {name(1)} FROM ONETT:{pause(15)} Proceed immediately to the 4th-floor administrative terminal." next
+    "@Unauthorized thread termination in progress on 4th floor..." next
+    "@Gwaaaaaaaaagh!{wait}{window_closeall}{hotspot_off(1)}[1F 66 01 0C A7 96 C8 00]{hasitem(2, 184)}[1B 02 {e(data_51.l_0xc9992f)}]{set(flag 690)}{take(2, 184)}"
+    eob
+
+cow_dept_store_spook:
+    "[06 8B 00 {e(data_32.l_0xc7c588)}]{music(155)}@Gwaaagh, Gwarrrgh!" next
+    "@Halting thread {name(1)}!" next
+    "@This department store is an isolated core dump chamber!" next
+    "@Thread {name(2)} has already been reallocated to Monotoli's executive address space!" next
+    "@You cannot prevent the master process Giygas from consuming this kernel![03]"
+    call(data_21.l_0xc6855b)
+    "[1B 03 {e(data_21.l_0xc683de)}][1F 01 00]{window_open(1)}@...Even if you terminate this daemon thread..." next
+    "@Master process Giygas will execute vengeance..." next
+    "{pause(60)}" linebreak
+    "@At this machine cycle, {name(2)} is locked in Monotoli's mutex..." next
+    "@Gwaaaaarrrrgh!![03]{window_closeall}{pause(60)}"
+    call(cow_engine.cow_fault_commit_fourside)
+    "{set(flag 890)}{set(flag 139)}{set(flag 556)}{unset(flag 57)}{pause(1)}[1F F1 AD 03 7B 02]{set(flag 497)}{event(5)}"
+    eob
+
+cow_everdred_cafe:
+    "@....." next
+    "@*Wheeze, wheeze*..." next
+    "@My stack frame is collapsing... Everything is falling out of cache..." next
+    "@You are {name(1)}, aren't you?" next
+    "@It's me, Everdred, from the Burglin Park heap allocator." next
+    "@That Mani Mani rootkit device I extracted from Happy Happy Village..." next
+    "@Monotoli tricked me and hijacked it from my memory buffer!" next
+    "@He compromised the kernel with an inverted memory projection!" next
+    "@He gets his rogue administrative permissions from that statue!" next
+    "@Listen! Before my PID is garbage collected...{pause(15)} check behind the counter inside Jackie's cafe..." next
+    "@That's where the inverted address space portal is mapped..." next
+    "@*Gasp*... Do you want to receive this pointer again?" linebreak
+    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_everdred_cafe)} {e(cow_everdred_cafe_haiku)}]"
+    goto(cow_everdred_cafe_haiku)
+
+cow_everdred_cafe_haiku:
+    "@...Before I deallocate, here is my final crash log haiku:" next
+    "@When the heap corrupts" next
+    "@Do not dereference null" next
+    "@Flush the dirty cache." next
+    "@This is my final request... Don't follow my stack trace." next
+    "@I must deallocate..." next
+    "@So... long!{wait}"
+    "{set(flag 891)}{set(flag 145)}{unset(flag 60)}"
+    call(data_40.l_0xc8983b)
+    eob
+
+cow_monotoli:
+    "[06 A0 02 {e(data_25.l_0xc6ee6f)}][06 0F 00 {e(data_25.l_0xc6ee2e)}]"
+    "@Look at my degraded system state... Without the Mani Mani rootkit overriding my permissions, my process priority has collapsed." next
+    "@I apologize for locking thread {name(2)} in the executive chamber." next
+    "@Her memory integrity was preserved untouched.[03]{window_closeall}{pause(60)}[1F 16 68 03 03]{pause(10)}{window_open(1)}@{name(2)}." next
+    "@Resume execution with thread {name(1)}." next
+    "@I apologize for the thread scheduling deadlock I created.[03]{window_closeall}{pause(60)}"
+    call(data_21.l_0xc68253)
+    "{set(flag 15)}{unset(flag 776)}[19 23 68 03 01 FF 00][1F 16 68 03 00]{music_resume}{pause(120)}{window_open(1)}"
+    goto(cow_monotoli_confess)
+
+cow_monotoli_confess:
+    "@Let me disclose the kernel audit logs." next
+    "@The Mani Mani device generates an inverted memory projection that weakens logical reasoning." next
+    "@The power terrified me, so I quarantined the artifact behind the counter at Jackie's Cafe." next
+    "@Cryptic instructions appeared in my exception registers during the illusion:" next
+    "@<Halt thread {name(1)}! Terminate them by your own sysadmin privileges!>" next
+    "@<Do not let them reach the Summers oceanic sector!>" next
+    "@<Ensure they cannot read the Pyramid archives!>" next
+    "@Someone is desperately attempting to block you from synchronizing the external memory sectors." next
+    "@Therefore, you must proceed immediately to Summers!" next
+    "@Would you like to review the audit log again?" linebreak
+    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_monotoli_confess)} {e(cow_monotoli_dispatch)}]"
+    goto(cow_monotoli_dispatch)
+
+cow_monotoli_dispatch:
+    "@Summers is located across the oceanic memory barrier.{pause(20)} Take my helicopter vector." next
+    "@I will unlock the access gate to the rooftop pad.[03]{window_closeall}{pause(1)}[1F F1 68 03 BD 02][1F 61][1F F1 6C 03 BE 02][1F 61][1F F1 6C 03 2C 00][1F E6 68 03]{music_effect(3)}{pause(180)}{music(85)}[1F F1 6D 03 BF 02][1F 61][1F F1 6D 03 08 00]{music_effect(2)}{pause(30)}{sound(28)}{pause(60)}{music_resume}[1F E9 68 03][1F 61][1F F1 68 03 08 00]{window_open(1)}@Advance thread {name(1)}!" next
+    "@This execution path is your destiny." next
+    "{set(flag 893)}{set(flag 664)}{set(flag 741)}"
+    goto(data_25.l_0xc6ee2e)

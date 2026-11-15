@@ -1,0 +1,27 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 9: Magnet Hill Sanctuary Cache Scenario
+// ==============================================================================
+// 4th Sanctuary cache line synchronization and electromagnetic memory
+// alignment.
+// ==============================================================================
+
+cow_magnet_hill_commit:
+    "[1F 15 6A 00 60 01 01]    {unset(flag 2)}               "
+    call(data_33.l_0xc7dd6b)
+    "{music(36)}"
+    call(data_32.l_0xc7c54b)
+    "{set(flag 2)}               [1F 61]                      {counter(1)}"
+    call(data_33.l_0xc7dc7f)
+    "[1B 02 {e(cow_magnet_hill_msg)}]{window_open(1)}@The electromagnetic flux of Magnet Hill aligns the cache lines of Sector 21!"
+    call(data_32.l_0xc7c55d)
+    goto(cow_magnet_hill_msg)
+
+cow_magnet_hill_msg:
+    call(data_32.l_0xc7c57d)
+    "{set(flag 4)}{music_resume}[06 BA 00 {e(data_32.l_0xc7c2c5)}]{window_open(1)}@{name(1)} observed a sensory memory block of early infant nourishment.[03]{pause(60)}" linebreak
+    "@{name(1)}'s Sound Stone synchronized the 4th memory segment of Magnet Hill to persistent storage!{wait}"
+    call(cow_engine.cow_fault_commit_magnethill)
+    "{set(flag 894)}{set(flag 186)}{set(flag 494)}{window_closetop}"
+    goto(data_32.l_0xc7c2c5)

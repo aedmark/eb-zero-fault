@@ -129,7 +129,7 @@
   Money: 1648
   Movement pattern: 23
   Music: 102
-  Name: Dept. Store Spook
+  Name: Thread Terminus
   Offense: 82
   Overworld Sprite: 306
   PP: 290
@@ -1915,7 +1915,7 @@
   Money: 4464
   Movement pattern: 23
   Music: 103
-  Name: Plague Rat of Doom
+  Name: Memory Corruptor Rat
   Offense: 71
   Overworld Sprite: 333
   PP: 60
@@ -2009,7 +2009,7 @@
   Money: 1467
   Movement pattern: 23
   Music: 103
-  Name: Guardian Digger
+  Name: Sparse Defrag Digger
   Offense: 59
   Overworld Sprite: 333
   PP: 110
@@ -4218,7 +4218,7 @@
   Money: 314
   Movement pattern: 27
   Music: 98
-  Name: Dali's Clock
+  Name: Clock Jitter
   Offense: 65
   Overworld Sprite: 326
   PP: 0
@@ -6474,7 +6474,7 @@
   Money: 1852
   Movement pattern: 0
   Music: 148
-  Name: Evil Mani-Mani
+  Name: Rootkit Core
   Offense: 86
   Overworld Sprite: 293
   PP: 88
@@ -7226,7 +7226,7 @@
   Money: 349
   Movement pattern: 27
   Music: 98
-  Name: Robo-pump
+  Name: DMA Pump
   Offense: 70
   Overworld Sprite: 279
   PP: 0
@@ -8072,7 +8072,7 @@
   Money: 1648
   Movement pattern: 23
   Music: 102
-  Name: Dept. Store Spook
+  Name: Thread Terminus
   Offense: 82
   Overworld Sprite: 306
   PP: 290
@@ -8448,7 +8448,7 @@
   Money: 4464
   Movement pattern: 23
   Music: 103
-  Name: Plague Rat of Doom
+  Name: Memory Corruptor Rat
   Offense: 71
   Overworld Sprite: 333
   PP: 60
@@ -8542,7 +8542,7 @@
   Money: 1467
   Movement pattern: 23
   Music: 103
-  Name: Guardian Digger
+  Name: Sparse Defrag Digger
   Offense: 59
   Overworld Sprite: 333
   PP: 110
@@ -9576,7 +9576,7 @@
   Money: 1852
   Movement pattern: 0
   Music: 148
-  Name: Evil Mani-Mani
+  Name: Rootkit Core
   Offense: 86
   Overworld Sprite: 293
   PP: 88
@@ -9717,7 +9717,7 @@
   Money: 349
   Movement pattern: 27
   Music: 98
-  Name: Robo-pump
+  Name: DMA Pump
   Offense: 70
   Overworld Sprite: 279
   PP: 0

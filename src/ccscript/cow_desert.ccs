@@ -1,0 +1,102 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 9: Dusty Dunes Desert Scenario
+// ==============================================================================
+// Sparse array compaction, Guardian Digger defrag routines, and PSI Teleport
+// virtual memory page translation training.
+// ==============================================================================
+
+cow_miner_george:
+    "[06 79 03 {e(cow_miner_george_dirtied)}]"
+    call(cow_engine.cow_fault_commit_desert)
+    "{set(flag 889)}"
+    "@I was attempting to defragment this sparse memory sector...{pause(20)} but encountered a dense maze of unallocated pages!" next
+    "@Five rogue defragmentation subroutines have partitioned the sector!" next
+    "@They are all claiming the same index... five Guardian Diggers!" next
+    "@If you terminate those runaway threads, I can compact the memory bus and open the route forward." next
+    "@My process monitor is spiking from thread contention!" end
+
+cow_miner_george_dirtied:
+    "@Please collect those five rogue defragmentation subroutines." next
+    "@Until they are garbage collected, this sparse array cannot be compacted!" end
+
+cow_guardian_digger_msg:
+    "{music(155)}"
+    "{window_open(1)}@I am Sparse Defrag Digger #3 of this fragmented sector!" next
+    "@There are five duplicate worker threads allocated here,{pause(15)} all sharing the same index register!" next
+    "@My execution priority is strictly equidistant between rank 2 and rank 4!" next
+    "@Prepare for thread collision![03]{window_closeall}" eob
+
+cow_guardian_digger_1:
+    "[06 15 01 {e(data_32.l_0xc7c588)}]"
+    call(cow_guardian_digger_msg)
+    call(data_21.l_0xc6858a)
+    "[1B 03 {e(data_21.l_0xc683de)}]"
+    call(data_16.l_0xc615e9)
+    "{pause(1)}[1F F1 3F 03 7B 02]{set(flag 277)}"
+    call(data_16.l_0xc615a7)
+    eob
+
+cow_guardian_digger_2:
+    "[06 16 01 {e(data_32.l_0xc7c588)}]"
+    call(cow_guardian_digger_msg)
+    call(data_21.l_0xc68591)
+    "[1B 03 {e(data_21.l_0xc683de)}]"
+    call(data_16.l_0xc615e9)
+    "{pause(1)}[1F F1 40 03 7B 02]{set(flag 278)}"
+    call(data_16.l_0xc615a7)
+    eob
+
+cow_guardian_digger_3:
+    "[06 17 01 {e(data_32.l_0xc7c588)}]"
+    call(cow_guardian_digger_msg)
+    call(data_21.l_0xc68598)
+    "[1B 03 {e(data_21.l_0xc683de)}]"
+    call(data_16.l_0xc615e9)
+    "{pause(1)}[1F F1 41 03 7B 02]{set(flag 279)}"
+    call(data_16.l_0xc615a7)
+    eob
+
+cow_guardian_digger_4:
+    "[06 18 01 {e(data_32.l_0xc7c588)}]"
+    call(cow_guardian_digger_msg)
+    call(data_21.l_0xc6859f)
+    "[1B 03 {e(data_21.l_0xc683de)}]"
+    call(data_16.l_0xc615e9)
+    "{pause(1)}[1F F1 45 03 7B 02]{set(flag 280)}"
+    call(data_16.l_0xc615a7)
+    eob
+
+cow_guardian_digger_5:
+    "[06 19 01 {e(data_32.l_0xc7c588)}]"
+    call(cow_guardian_digger_msg)
+    call(data_21.l_0xc685a6)
+    "[1B 03 {e(data_21.l_0xc683de)}]"
+    call(data_16.l_0xc615e9)
+    "{pause(1)}[1F F1 46 03 7B 02]{set(flag 281)}"
+    call(data_16.l_0xc615a7)
+    eob
+
+cow_teleport_monkey:
+    "[06 13 01 {e(data_17.l_0xc62b6f)}]{counter(1)}"
+    call(data_33.l_0xc7dc7f)
+    "[1B 03 {e(data_17.l_0xc62a9b)}][06 02 00 {e(data_17.l_0xc62a30)}]"
+    goto(cow_teleport_monkey_demo)
+
+cow_teleport_monkey_demo:
+    "@Kyakyakya!{pause(15)} Thread {name(1)}!" next
+    "@(Sequential address traversal is too slow across fragmented sectors!)" next
+    "@(I will demonstrate the Virtual Memory Page Translation vector <PSI Teleport>!)" next
+    "@(To execute a far jump without raising a page fault," next
+    "@you must build up speed across a contiguous linear address buffer to saturate the bus!)[03]"
+    "{window_closeall}[1F F1 05 03 9E 02][1F 61][1F E6 05 03]{music(13)}[1F E9 05 03][1F 61][1F E6 05 03]{music_resume}[1F E9 05 03][1F 61][1F F1 05 03 08 00][19 23 05 03 01 FF 00][1F 16 05 03 00]{pause(30)}{window_open(1)}"
+    "@Ukkie!" next
+    "@(I translated pages to Fourside and returned instantly!)" next
+    "@(Now allocate your own acceleration buffer and try it!){wait}{window_closeall}{set(flag 2)}"
+    eob
+
+cow_teleport_monkey_learn:
+    "{window_open(1)}@{name(1)} compiled the PSI Teleportation translation vector into firmware!{wait}{window_closeall}{learnpsi(1, 1)}{set(flag 275)}[19 23 05 03 01 FF 00][1F 16 05 03 00][1F 1A 05 03 03]{pause(60)}[1F 1B 05 03][1F F1 05 03 80 02][1F 61]{window_open(1)}@Kyaho!" next
+    "@(Virtual memory paging initialized! The teacher daemon is deallocating now!){wait}{window_closeall}[1F F1 05 03 9F 02]{unset(flag 2)}{unset(flag 615)}{unset(flag 613)}"
+    eob

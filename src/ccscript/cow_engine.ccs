@@ -32,8 +32,12 @@ command e(label) "{long label}"
 // 864: Sector 15 - Grapefruit Falls & Belch Factory
 // 865: Sector 16 - Saturn Valley Alien Primitive Domain
 // 866: Sector 17 - Milky Well Cache
+// 867: Sector 18 - Dusty Dunes Desert Sparse Array
+// 868: Sector 19 - Fourside Monolithic Kernel
+// 869: Sector 20 - Moonside Bitwise Inverted Domain
+// 895: Sector 21 - Magnet Hill Sanctuary Cache
 
-// Entity Mutation Bits (870-889)
+// Entity Mutation Bits (870-894)
 // 870: Mom baseline dirtied (refcount = 2 awareness)
 // 871: Tracy baseline dirtied (memory buffer initialized)
 // 872: Pokey baseline dirtied (unbound pointer hijacked)
@@ -53,6 +57,12 @@ command e(label) "{long label}"
 // 886: Master Belch baseline dirtied (buffer overflow exploited)
 // 887: Saturn Valley baseline dirtied (alien bytecode primitives parsed)
 // 888: Milky Well baseline dirtied (third sanctuary cache synchronized)
+// 889: Miner George & Guardian Diggers (sparse defrag subroutines)
+// 890: Dept Store Spook (Thread Terminus audit)
+// 891: Everdred (Jackie's Cafe heap pointer)
+// 892: Evil Mani Mani (Rootkit core parity inversion)
+// 893: Monotoli (Kernel sysadmin deregulation)
+// 894: Magnet Hill (4th Sanctuary cache line commit)
 
 // Reusable Engine Commands
 command cow_touch(f) "{set(flag f)}"
@@ -95,3 +105,15 @@ cow_fault_commit_saturn:
 
 cow_fault_commit_milkywell:
     "{set(flag 866)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_desert:
+    "{set(flag 867)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_fourside:
+    "{set(flag 868)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_moonside:
+    "{set(flag 869)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_magnethill:
+    "{set(flag 895)}{sound(11)}{pause(15)}" eob

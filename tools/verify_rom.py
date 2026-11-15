@@ -56,6 +56,22 @@ HOOKS = [
     (0x2F679A, b"\x0A", "CoW Rootkit Sprout Hook (0xEF679A)"),
     (0x07C12A, b"\x0A", "CoW Milky Well Commit Hook (0xC7C12A)"),
     (0x07C17B, b"\x0A", "CoW Milky Well Message Hook (0xC7C17B)"),
+    # Phase 9: Dusty Dunes Desert, Fourside, Moonside, and Magnet Hill Hooks
+    (0x061228, b"\x0A", "CoW Miner George Defrag Hook (0xC61228)"),
+    (0x0613B3, b"\x0A", "CoW Guardian Digger Hook (0xC613B3)"),
+    (0x0628A1, b"\x0A", "CoW Teleport Monkey Demo Hook (0xC628A1)"),
+    (0x062AE7, b"\x0A", "CoW Teleport Monkey Learn Hook (0xC62AE7)"),
+    (0x089580, b"\x0A", "CoW Dept Store Blackout Hook (0xC89580)"),
+    (0x082C6B, b"\x0A", "CoW Dept Store Spook Hook (0xC82C6B)"),
+    (0x08361C, b"\x0A", "CoW Everdred Cafe Hook (0xC8361C)"),
+    (0x06EA34, b"\x0A", "CoW Monotoli 48th Floor Hook (0xC6EA34)"),
+    (0x06EB2C, b"\x0A", "CoW Monotoli Confession Hook (0xC6EB2C)"),
+    (0x096D10, b"\x0A", "CoW Moonside Greeter Hook (0xC96D10)"),
+    (0x096DB2, b"\x0A", "CoW Moonside Inversion Hook (0xC96DB2)"),
+    (0x09794B, b"\x0A", "CoW Moonside Mani Mani Hook (0xC9794B)"),
+    (0x097990, b"\x0A", "CoW Moonside Mani Mani Destroyed Hook (0xC97990)"),
+    (0x07C208, b"\x0A", "CoW Magnet Hill Commit Hook (0xC7C208)"),
+    (0x07C258, b"\x0A", "CoW Magnet Hill Message Hook (0xC7C258)"),
 ]
 
 # Active NPC Configuration Table bindings verified dynamically against compiled symbols in summary.txt
@@ -74,6 +90,14 @@ NPC_BINDINGS = [
     (697, "cow_master_belch", "NPC Table Entry 697 (Master Belch Memory Leak Daemon Pointer)"),
     (705, "cow_trillionage_sprout", "NPC Table Entry 705 (Rootkit Sprout Interceptor Pointer)"),
     (718, "cow_saturn_valley", "NPC Table Entry 718 (Mr. Saturn Alien Primitive Type Pointer)"),
+    (830, "cow_miner_george", "NPC Table Entry 830 (Miner George Defrag Pointer)"),
+    (831, "cow_guardian_digger_1", "NPC Table Entry 831 (Guardian Digger 1 Pointer)"),
+    (773, "cow_teleport_monkey", "NPC Table Entry 773 (Teleport Monkey Teacher Pointer)"),
+    (941, "cow_dept_store_spook", "NPC Table Entry 941 (Dept Store Spook Thread Terminus Pointer)"),
+    (952, "cow_everdred_cafe", "NPC Table Entry 952 (Everdred Jackie's Cafe Pointer)"),
+    (872, "cow_monotoli", "NPC Table Entry 872 (Monotoli 48th Floor Pointer)"),
+    (1379, "cow_moonside_greeter", "NPC Table Entry 1379 (Moonside Inversion Greeter Pointer)"),
+    (1406, "cow_mani_mani", "NPC Table Entry 1406 (Moonside Mani Mani Rootkit Pointer)"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
@@ -112,6 +136,13 @@ THEMATIC_NAMES = [
     "Rootkit Sprout",
     "Memory Leak Daemon",
     "Malicious Daemon",
+    # Phase 9 thematic enemies
+    "Sparse Defrag Digger",
+    "Thread Terminus",
+    "Rootkit Core",
+    "Memory Corruptor Rat",
+    "Clock Jitter",
+    "DMA Pump",
 ]
 
 

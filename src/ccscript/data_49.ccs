@@ -51,8 +51,7 @@ l_0xc96cd4:
     "@You seem happy enough,{pause(15)} but who knows?" end
 
 l_0xc96d10:
-    "@Welcome to Moonside." next
-    "@Wel{pause(15)}  come{pause(15)}  to moo{pause(20)}   nsi{pause(15)}  ns{pause(15)}  dem{pause(5)} oons{pause(5)} ide." end
+    goto(cow_moonside.cow_moonside_greeter)
 
 l_0xc96d4f:
     "@No, that's right.{pause(20)}" linebreak
@@ -69,9 +68,7 @@ l_0xc96d8a:
     "@This is Moonside." end
 
 l_0xc96db2:
-    "@<Yes> is <No> and" linebreak
-    "  <No> is <Yes.>" next
-    "@It makes perfect sense in Moonside." end
+    goto(cow_moonside.cow_moonside_yesno)
 
 l_0xc96dec:
     "@Hello!" next
@@ -305,11 +302,10 @@ l_0xc978aa:
     "@How about we dump these kids and go get something to drink!?[03][1F F1 74 05 62 01][1F 61]{set(flag 63)}" eob
 
 l_0xc9794b:
-    "@(It is a golden statue that you have seen before.)[03]" call(data_21.l_0xc68583) "[1B 03 {e(data_21.l_0xc683de)}]{pause(1)}" call(data_22.l_0xc69082) "[1F F1 7E 05 7B 02]{set(flag 59)}{set(flag 75)}{warp(154)}{event(5)}{lock_movement(255)}{pause(20)}" goto(l_0xc97990)
+    goto(cow_moonside.cow_mani_mani)
 
 l_0xc97990:
-    "{window_open(1)}@(The Mani Mani statue was actually a device that created illusions." next
-    "@The illusion device was destroyed.){wait}{window_closeall}[19 26 05][1F E8 FF]" eob
+    goto(cow_moonside.cow_mani_mani_destroyed)
 
 l_0xc979e5:
     "@Bones are great!{pause(20)}" linebreak

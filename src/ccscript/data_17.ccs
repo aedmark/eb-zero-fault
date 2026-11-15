@@ -54,20 +54,7 @@ l_0xc62886:
     "[06 13 01 {e(l_0xc62b6f)}]{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc62a9b)}][06 02 00 {e(l_0xc62a30)}]" goto(l_0xc628a1)
 
 l_0xc628a1:
-    "@Kyakya Kyokyo" next
-    "@(Ok,{pause(15)} I'll do a teacher's demonstration.)" next
-    "@Kyakyakya Kyakkya" next
-    "@(If you can learn this,{pause(15)} you can go anywhere you've been previously.)" next
-    "@Kyakkyaki kiki" next
-    "@(You can go there instantly.)" next
-    "@Kyakki Kyaki" next
-    "@(This skill can't be used in a room or underground, though.)[03]{window_closeall}[1F F1 05 03 9E 02][1F 61][1F E6 05 03]{music(13)}[1F E9 05 03][1F 61][1F E6 05 03]{music_resume}[1F E9 05 03][1F 61][1F F1 05 03 08 00][19 23 05 03 01 FF 00][1F 16 05 03 00]{pause(30)}{window_open(1)}@Ukkie" next
-    "@(I went to Fourside and returned.)" next
-    "@Kyaakyakkya" next
-    "@(I showed you the basic, straight course," next
-    "@but you can also build up enough speed while turning, if you have enough room.)" next
-    "@Ukkikie" next
-    "@(Ok!{pause(15)}  Why don't you try it, young man!){wait}{window_closeall}{set(flag 2)}" eob
+    goto(cow_desert.cow_teleport_monkey_demo)
 
 l_0xc62a30:
     "{window_open(1)}@Kyakyakyakya" next
@@ -86,8 +73,7 @@ l_0xc62a9b:
     "@(He's not here...)" end
 
 l_0xc62ae7:
-    "{window_open(1)}@{name(1)} learned how to use PSI Teleportation.{wait}{window_closeall}{learnpsi(1, 1)}{set(flag 275)}[19 23 05 03 01 FF 00][1F 16 05 03 00][1F 1A 05 03 03]{pause(60)}[1F 1B 05 03][1F F1 05 03 80 02][1F 61]{window_open(1)}@Kyaho!" next
-    "@(Great!{pause(20)}  Okay,{pause(15)} the teacher is going home now.){wait}{window_closeall}[1F F1 05 03 9F 02]{unset(flag 2)}{unset(flag 615)}{unset(flag 613)}" eob
+    goto(cow_desert.cow_teleport_monkey_learn)
 
 l_0xc62b6f:
     "@Kyai Kyai" next

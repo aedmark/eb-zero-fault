@@ -36,11 +36,10 @@ l_0xc7c204:
     "{set(flag 546)}" eob
 
 l_0xc7c208:
-    "[1F 15 6A 00 60 01 01]    {unset(flag 2)}               " call(data_33.l_0xc7dd6b) "{music(36)}" call(l_0xc7c54b) "{set(flag 2)}               [1F 61]                      {counter(1)}" call(data_33.l_0xc7dc7f) "[1B 02 {e(l_0xc7c258)}]{window_open(1)}@The power of Magnet Hill" call(l_0xc7c55d) goto(l_0xc7c258)
+    goto(cow_magnet.cow_magnet_hill_commit)
 
 l_0xc7c258:
-    call(l_0xc7c57d) "{set(flag 4)}{music_resume}[06 BA 00 {e(l_0xc7c2c5)}]{window_open(1)}@{name(1)} saw a baby's bottle, but just for an instant.[03]{pause(60)}" linebreak
-    "@{name(1)}'s Sound Stone recorded the melody of Magnet Hill.{wait}{set(flag 186)}{set(flag 494)}{window_closetop}" goto(l_0xc7c2c5)
+    goto(cow_magnet.cow_magnet_hill_msg)
 
 l_0xc7c2c5:
     eob

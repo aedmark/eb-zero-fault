@@ -1379,11 +1379,11 @@
   Text Address: data_55.l_0xc9fe1b
 197:
   Action type: item
-  Code Address: $c58000
+  Code Address: $c29039
   Direction: party
   PP Cost: 0
   Target: none
-  Text Address: data_55.l_0xc9fbf2
+  Text Address: data_06.l_0xc58000
 198:
   Action type: item
   Code Address: $c29039

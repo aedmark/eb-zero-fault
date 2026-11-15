@@ -102,13 +102,14 @@ removing a fence whose purpose it forgot.
 **Review trigger:** Verification of NPC dialogue transitions across mid-game teleport events.
 
 ## D-013 Native Developer Debug Menu Integration and Naming Screen Bypass (2026-11-15, status: accepted)
-**Context:** Rapid iteration and verification of mid-game narrative events and engine mechanics required bypassing the 7-step character naming screen on new game starts and enabling immediate area and event warping.
+**Context:** Rapid iteration and verification of mid-game narrative events and engine mechanics required bypassing the 7-step character naming screen on new game starts and enabling immediate area and event warping. Initial implementation pointed Item Action 197 `Code Address` to `$c58000`, causing a soft lock: in EarthBound's item architecture, overworld item scripts are executed via `Text Address` (pointing to CCScript bytecode), while `Code Address` must point to a 65816 machine code function (or an empty `REP #$31; RTL` return routine like `$C29039`). Executing CCScript control bytes (`$18 $01 $01...`) as CPU opcodes crashed the engine.
 **Decision:**
-1. Enable EarthBound's native developer debug menu in `src/battle_action_table.yml` by updating Item Action 197 (ATM card) from `Code Address: $c29039` to `Code Address: $c58000`. Ness starts with the ATM card in inventory slot 0 (`initial_stats.yml`), allowing instant in-game access to Goto Area (`IDU`), Goto Event (`IBNT`), Party Edit (`P-TiNStTI`), Goods, Money, and Sound Test from the Goods menu.
-2. Enable `naming_skip.yml` with `Enable Skip: true` to bypass the 7 character naming screens automatically upon selecting New Game.
-3. Update `tools/verify_rom.py` to resolve the active NPC configuration table base dynamically via the pointer at `0x131CA`, accommodating the 206-byte allocation inserted by `SkipNamingModule` in Bank DE.
+1. Connect the native developer debug menu via `Text Address: data_06.l_0xc58000` on Item Action 197 in `src/battle_action_table.yml`, while restoring `Code Address` to `$c29039`.
+2. Add a fallback trampoline in `src/ccscript/data_55.ccs` at `l_0xc9fbf2` (`goto(data_06.l_0xc58000)`).
+3. Enable `naming_skip.yml` with `Enable Skip: true` to bypass the 7 character naming screens automatically upon selecting New Game.
+4. Update `tools/verify_rom.py` to resolve the active NPC configuration table base dynamically via the pointer at `0x131CA`, accommodating the 206-byte allocation inserted by `SkipNamingModule` in Bank DE.
 **Alternatives:** Relying solely on manual gameplay progression through Onett and Twoson (drastically inflates regression test latency); patching out the intro flyover sequence via raw bytecode manipulation (risks corrupting initial camera, sprite state, and door collision variables).
-**Consequences:** Developers can test any scenario immediately from a fresh boot or save state without repeating the naming screens or walking across regions. All 43 binary assertions pass in `tools/verify_rom.py`.
+**Consequences:** Selecting Use on the ATM card from the Goods menu cleanly launches the developer debug menu (`P-TiNStTI`, `IDU`, `IBNT`, etc.) without displaying the vanilla cash machine dialogue or crashing the CPU. All 45 binary assertions pass in `tools/verify_rom.py`.
 **Review trigger:** Final release packaging when debug hooks should be disabled for standard player distribution.
 
 ---

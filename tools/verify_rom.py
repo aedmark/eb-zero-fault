@@ -39,7 +39,9 @@ HOOKS = [
     (0x098024, b"\x0A", "CoW Mr. Carpainter Immutable Cult Hook"),
     (0x07BF95, b"\x0A", "CoW Lilliput Steps Cache Commit Hook"),
     # Debug hooks
-    (0x1584AC, b"\x00\x80\xc5\x00", "ATM Card Debug Menu Hook (Action 197)"),
+    (0x1584A8, b"\xff\x62\xf7\x00", "ATM Card Debug Menu Text Hook (Action 197)"),
+    (0x1584AC, b"\x39\x90\xc2\x00", "ATM Card Safe Return Code Pointer (Action 197)"),
+    (0x323E18, b"\x0a\xff\x62\xf7\x00", "ATM Card Legacy Dialogue Trampoline"),
 ]
 
 # Active NPC Configuration Table pointers (resolved dynamically via active pointer table at 0x131CA)

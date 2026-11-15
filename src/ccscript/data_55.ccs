@@ -279,8 +279,7 @@ l_0xc9fbc4:
     "@The enemy may not notice that you are present.[03]" eob
 
 l_0xc9fbf2:
-    newline
-    "@To use this, go to a cash machine and insert the card.[03]" eob
+    goto(data_06.l_0xc58000)
 
 l_0xc9fc16:
     newline

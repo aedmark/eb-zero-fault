@@ -166,6 +166,20 @@ removing a fence whose purpose it forgot.
 **Consequences:** Establishes coprocessor acceleration dynamics and party descheduling/resynchronization mechanics. Automated verification in `tools/verify_rom.py` expanded to 146 binary assertions across ROM hooks, dynamic NPC table pointers, and thematic strings.
 **Review trigger:** Verification of Tenda Village, Lumine Hall, and Lost Underworld transitions.
 
+## D-018 Late-Game Scenarios: Concurrency Deadlocks, Bare-Metal Substrates, and Thermal Runaway (2026-11-15, status: accepted)
+**Context:** Expanding the Copy-on-Write parallel universe into Tenda Village, Lumine Hall, Lost Underworld, and Fire Spring (P12-01 through P12-06).
+**Decision:**
+1. Author `src/ccscript/cow_tenda.ccs`: Tenda Village shyness as a mutual exclusion deadlock and infinite spinlock contention across tribal threads; Rumor Tenda at `$C9D77F` (NPC 1252 text 1) identifying external synchronization library routine; Tenda Chief at `$C9D940` and `$C9D95E` (NPC 1252 text 2) compiling the library routine (`Overcoming Shyness`, item 164) across all thread descriptors and releasing Tendakraut (`item 211`, high-density aromatic serialization buffer); Strong Tenda at `$C936E6`, `$C9370D`, `$C9378A` (NPC 1258) executing a high-privilege hardware interrupt to lift the physical aperture barrier to Lumine Hall; and Un-shy Tenda at `$C9DC2C` (NPC 1261) detailing the ring 0 bare-metal substrate below.
+2. Author `src/ccscript/cow_lumine.ccs`: Lumine Hall terminal telemetry backplane at `$C937D9` dumping Coordinator Thread 1 runtime execution trace to optical memory registers; Electro Specter at `$C9E27B` (NPC 1246) as the Telemetry Monitor Daemon guarding Sanctuary Cache Node 7; and Lumine Hall melody synchronization at `$C7C3C2` and `$C7C412` committing cache line 7 (`flag 188`, `flag 913`).
+3. Author `src/ccscript/cow_underworld.ccs`: Lost Underworld bare-metal silicon substrate entry (`Sector 31`, `flag 914`); Outer Talking Rock at `$C9E2F5` (NPC 1260) serving as a memory address pointer; and Main Talking Rock at `$C9DE0E` (NPC 1292) as the physical silicon core memory record / immutable boot ROM detailing the 8 sanctuary cache lines and the impending CoW page frame coalescence event.
+4. Author `src/ccscript/cow_firespring.ccs`: Carbon Dog / Diamond Dog at `$EF57EB` (NPC 1276) as the Thermal Runaway Daemon / Crystallized Mutex guarding the silicon thermal junction; and Fire Spring melody synchronization at `$C7C479` and `$C7C4C9` committing cache line 8 (`flag 189`, `flag 915`).
+5. Update `src/ccscript/cow_engine.ccs` allocating Sector dirty bits 912 (Tenda Village), 913 (Lumine Hall), 914 (Lost Underworld), 915 (Fire Spring); Entity mutation bits 916-919, and corresponding commit subroutines.
+6. Enforce dual-binding dispatch across 7 NPC table entries in `src/npc_config_table.yml` (NPCs 1246, 1252, 1258, 1260, 1261, 1276, 1292) and 16 legacy label trampolines in `data_54.ccs`, `data_47.ccs`, `data_56.ccs`, and `data_32.ccs`.
+7. Rebalance regional monsters in `src/enemy_configuration_table.yml`: Electro Specter to Telemetry Monitor (116, 200), Carbon Dog to Thermal Runaway (27, 174), Diamond Dog to Crystallized Mutex (83, 190), Atomic Power Robot to Kernel Power Unit (13), Wetnosaur to Legacy Thread (35), Chomposaur to Monolithic Struct (36, 175), Loaded Dice to PRNG Generator (44, 195), Ego Orb to Process Orb (127).
+**Alternatives:** Treating Tenda shyness as tribal bashfulness, dinosaurs as prehistoric creatures, and glowing hall as mystic spirits (breaks systems architecture metaphor).
+**Consequences:** Unifies late-game progression up to the eighth sanctuary under systems-level concurrency, hardware telemetry, and bare-metal execution concepts. Automated verification in `tools/verify_rom.py` expanded to 175 binary assertions.
+**Review trigger:** Verification of Magicant core dump memory space and Sea of Eden transitions.
+
 ---
 
 ## Held tensions

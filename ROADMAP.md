@@ -113,3 +113,14 @@ Goal: Author mid-to-late game narrative scenarios across Scaraba, the Pyramid cr
 - [x] P11-04 Author Dungeon Man physical aperture channel stall, submerged yellow packet transport recovery, and Jeff firmware reflash (D-017; implemented src/ccscript/cow_dungeonman.ccs overriding C93381, C9344F, and C57C2C, 2026-11-15).
 - [x] P11-05 Script Deep Darkness high-attenuation swamp traversal, Master Barf Cascading Leak Daemon confrontation, and Prince Poo far-interrupt resynchronization with PK Starstorm (D-017; implemented src/ccscript/cow_deepdark.ccs overriding C9E619, 2026-11-15).
 - [x] P11-06 Rebalance regional monsters in src/enemy_configuration_table.yml (Instruction Decoder, Security Enclave Guard, Fragmented Heap Dump, Cascading Leak Daemon, Signal Jitter Eel, Packet Loss Slug) (D-017; updated entries 15, 46, 73, 95, 100, 112, 194, 208, 2026-11-15).
+
+## Phase 12: Tenda Village, Lumine Hall, Lost Underworld, and Fire Spring Scenarios
+
+Goal: Author late-game narrative scenarios across Tenda Village mutual exclusion deadlock, Lumine Hall terminal telemetry backplane, the Lost Underworld bare-metal substrate, and Fire Spring thermal runaway daemon.
+
+- [x] P12-01 Script Tenda Village mutual exclusion deadlock, library routine arbitration (Overcoming Shyness), Tenda Chief compilation, and Strong Tenda aperture barrier clearance (D-018; implemented src/ccscript/cow_tenda.ccs overriding C9D77F, C9D940, C9D95E, C9DC2C, C936E6, C9370D, and C9378A, 2026-11-15).
+- [x] P12-02 Author Lumine Hall terminal telemetry backplane output, Electro Specter telemetry monitor confrontation, and 7th Sanctuary cache line synchronization (D-018; implemented src/ccscript/cow_lumine.ccs overriding C937D9, C9E27B, C7C3C2, and C7C412, 2026-11-15).
+- [x] P12-03 Script Lost Underworld bare-metal substrate entry, outer stone pointer, and main Talking Rock immutable boot ROM core memory records (D-018; implemented src/ccscript/cow_underworld.ccs overriding C9E2F5, C9DE0E, C9E041, and C9E252, 2026-11-15).
+- [x] P12-04 Author Fire Spring 8th Sanctuary cache line synchronization and Carbon Dog / Diamond Dog thermal runaway state transition confrontation (D-018; implemented src/ccscript/cow_firespring.ccs overriding EF57EB, C7C479, and C7C4C9, 2026-11-15).
+- [x] P12-05 Integrate Phase 12 dual-binding dispatch across NPC configuration table and legacy label trampolines with CoW engine sector commit routines (D-018; updated src/npc_config_table.yml entries 1246, 1252, 1258, 1260, 1261, 1276, 1292 and src/ccscript/cow_engine.ccs, 2026-11-15).
+- [x] P12-06 Rebalance regional monsters in src/enemy_configuration_table.yml (Telemetry Monitor, Thermal Runaway, Crystallized Mutex, Kernel Power Unit, Legacy Thread, Monolithic Struct, PRNG Generator, Process Orb) (D-018; updated entries 13, 27, 35, 36, 44, 83, 116, 127, 174, 175, 190, 195, 200, 2026-11-15).

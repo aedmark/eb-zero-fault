@@ -11218,7 +11218,7 @@
   Movement: 693
   Show Sprite: when event flag unset
   Sprite: 333
-  Text Pointer 1: data_54.l_0xc9e27b
+  Text Pointer 1: cow_lumine.cow_lumine_boss
   Text Pointer 2: $0
   Type: person
 1247:
@@ -11272,8 +11272,8 @@
   Movement: 10
   Show Sprite: always
   Sprite: 170
-  Text Pointer 1: data_54.l_0xc9d77f
-  Text Pointer 2: data_54.l_0xc9d940
+  Text Pointer 1: cow_tenda.cow_tenda_rumor
+  Text Pointer 2: cow_tenda.cow_tenda_chief_check
   Type: person
 1253:
   Direction: left
@@ -11326,7 +11326,7 @@
   Movement: 606
   Show Sprite: always
   Sprite: 97
-  Text Pointer 1: data_47.l_0xc936e6
+  Text Pointer 1: cow_tenda.cow_tenda_strong
   Text Pointer 2: data_54.l_0xc9d6f8
   Type: person
 1259:
@@ -11344,7 +11344,7 @@
   Movement: 8
   Show Sprite: always
   Sprite: 260
-  Text Pointer 1: data_54.l_0xc9e2f5
+  Text Pointer 1: cow_underworld.cow_underworld_outer_stone
   Text Pointer 2: $0
   Type: person
 1261:
@@ -11353,7 +11353,7 @@
   Movement: 12
   Show Sprite: always
   Sprite: 97
-  Text Pointer 1: data_54.l_0xc9dc2c
+  Text Pointer 1: cow_tenda.cow_tenda_unshy
   Text Pointer 2: data_54.l_0xc9d6f8
   Type: person
 1262:
@@ -11488,7 +11488,7 @@
   Movement: 693
   Show Sprite: when event flag unset
   Sprite: 333
-  Text Pointer 1: data_56.l_0xef57eb
+  Text Pointer 1: cow_firespring.cow_firespring_boss
   Text Pointer 2: $0
   Type: person
 1277:
@@ -11632,7 +11632,7 @@
   Movement: 8
   Show Sprite: always
   Sprite: 268
-  Text Pointer 1: data_54.l_0xc9de0e
+  Text Pointer 1: cow_underworld.cow_underworld_main_stone
   Text Pointer 2: $0
   Type: person
 1293:

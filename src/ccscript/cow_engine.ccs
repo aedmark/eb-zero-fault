@@ -43,8 +43,12 @@ command e(label) "{long label}"
 // 904: Sector 26 - Scaraba & Pyramid Cryptographic Archive
 // 905: Sector 27 - Southern Scaraba & Dungeon Man Coprocessor
 // 906: Sector 28 - Deep Darkness High-Attenuation Channel
+// 912: Sector 29 - Tenda Village Deadlock Enclave
+// 913: Sector 30 - Lumine Hall 7th Sanctuary Cache
+// 914: Sector 31 - Lost Underworld Bare-Metal Substrate
+// 915: Sector 32 - Fire Spring 8th Sanctuary Cache
 
-// Entity Mutation Bits (870-911)
+// Entity Mutation Bits (870-919)
 // 870: Mom baseline dirtied (refcount = 2 awareness)
 // 871: Tracy baseline dirtied (memory buffer initialized)
 // 872: Pokey baseline dirtied (unbound pointer hijacked)
@@ -79,6 +83,10 @@ command e(label) "{long label}"
 // 909: Star Master microcode compilation (Poo suspended)
 // 910: Dungeon Man coprocessor bus interface bridged
 // 911: Master Barf cascading leak daemon purged
+// 916: Tenda Village shyness deadlock resolved / Overcoming Shyness routine compiled
+// 917: Lumine Hall 7th Sanctuary cache line synchronized (Electro Specter purged)
+// 918: Lost Underworld Talking Stone immutable records accessed
+// 919: Fire Spring 8th Sanctuary cache line synchronized (Carbon Dog / Diamond Dog purged)
 
 // Reusable Engine Commands
 command cow_touch(f) "{set(flag f)}"
@@ -154,3 +162,15 @@ cow_fault_commit_dungeonman:
 
 cow_fault_commit_deepdark:
     "{set(flag 906)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_tenda:
+    "{set(flag 912)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_lumine:
+    "{set(flag 913)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_underworld:
+    "{set(flag 914)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_firespring:
+    "{set(flag 915)}{sound(11)}{pause(15)}" eob

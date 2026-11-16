@@ -11,16 +11,13 @@ l_0xc936ca:
     "@Yeah, I thought that you had made up your mind...{wait}{window_closeall}" eob
 
 l_0xc936e6:
-    "[06 99 00 {e(l_0xc9378a)}][06 9B 00 {e(l_0xc9370d)}]@.....{pause(20)}" linebreak
-    "  Shy...{pause(15)}" linebreak
-    "  that we are..." end
+    goto(cow_tenda.cow_tenda_strong)
 
 l_0xc9370d:
-    "@Powerful...{pause(20)} I..." next
-    "@so... show...{pause(30)} everyone...[03]{window_closeall}[1F 16 EA 04 03][1F F1 EF 04 54 02][1F 61][1F E6 EF 04]{window_open(1)}@Hu{pause(15)}u{pause(5)}u{pause(1)}up!{pause(15)}  I got it!{pause(15)}  I got it!  Eeeee yeah!!![03]{window_closeall}[1F E9 EF 04][1F 61][1F 1E EF 04 06]{sound(121)}{set(flag 153)}" eob
+    eob
 
 l_0xc9378a:
-    "@My... power...{pause(20)} awe-inspiring!" end
+    eob
 
 l_0xc937a3:
     "{window_open(1)}@Hey!{pause(15)}  Hey!...  Talk to me!{pause(20)}" linebreak
@@ -28,7 +25,7 @@ l_0xc937a3:
     "  Heeeeeey!!{wait}{window_closeall}" eob
 
 l_0xc937d9:
-    "@I'm {name(1)}...@It's been a long road getting here...@Soon, I'll be...@Soon, I'll be...@Soon, I'll be...@What will happen to us?@W...what's happening?@My thoughts are being written out on the wall...@or are they?" eob
+    goto(cow_lumine.cow_lumine_wall)
 
 l_0xc93853:
     "@Welcome!" next

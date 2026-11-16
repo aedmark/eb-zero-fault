@@ -61,21 +61,19 @@ l_0xc7c39b:
     "[06 BC 00 {e(l_0xc7c3c2)}]" call(l_0xc7c57d) "{pause(1)}[1F E1 1A 02 3C][1F 14 01][1F 15 6A 00 61 01 01]       [1F 61]                                              " goto(l_0xc7c3c2)
 
 l_0xc7c3c2:
-    "[1F 15 6A 00 60 01 01]    {unset(flag 2)}               " call(data_33.l_0xc7dd6b) "{music(38)}" call(l_0xc7c54b) "{set(flag 2)}               [1F 61]                      {counter(1)}" call(data_33.l_0xc7dc7f) "[1B 02 {e(l_0xc7c412)}]{window_open(1)}@The power of Lumine Hall" call(l_0xc7c55d) goto(l_0xc7c412)
+    goto(cow_lumine.cow_lumine_melody)
 
 l_0xc7c412:
-    "{set(flag 4)}" call(l_0xc7c57d) "{music_resume}[06 BC 00 {e(l_0xc7c478)}]{window_open(1)}@{name(1)} saw a vision of his father holding him.[03]{pause(60)}" linebreak
-    "@{name(1)}'s Sound Stone recorded the melody of Lumine Hall.{wait}{set(flag 188)}{window_closetop}" goto(l_0xc7c478)
+    eob
 
 l_0xc7c478:
     eob
 
 l_0xc7c479:
-    "[1F 15 6A 00 60 01 01]    {unset(flag 2)}               " call(data_33.l_0xc7dd6b) "{music(39)}" call(l_0xc7c54b) "{set(flag 2)}               [1F 61]                      {counter(1)}" call(data_33.l_0xc7dc7f) "[1B 02 {e(l_0xc7c4c9)}]{window_open(1)}@The power of Fire Spring" call(l_0xc7c55d) goto(l_0xc7c4c9)
+    goto(cow_firespring.cow_firespring_melody)
 
 l_0xc7c4c9:
-    "{set(flag 4)}" call(l_0xc7c57d) "{music_resume}[06 BD 00 {e(l_0xc7c53a)}]{window_open(1)}@{name(1)} had the feeling that he was being watched by himself as a baby.[03]{pause(60)}" linebreak
-    "@{name(1)}'s Sound Stone recorded the melody of the Fire Spring.{wait}{set(flag 189)}{window_closetop}" goto(l_0xc7c53a)
+    eob
 
 l_0xc7c53a:
     call(data_53.l_0xc9b226) "[06 80 01 {e(l_0xc7c547)}]" eob

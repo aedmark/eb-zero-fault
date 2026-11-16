@@ -1,0 +1,65 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 12: Lost Underworld Substrate Scenario
+// ==============================================================================
+// Bare-metal silicon layer entry, outer address pointer rock, and Master Boot
+// Record immutable core memory stone.
+// Sector 31 (flag 914), mutation flag 918.
+// ==============================================================================
+
+cow_underworld_outer_stone:
+    "@Address pointer register initialized." next
+    "@You have entered the Lost Underworld bare-metal silicon layer." next
+    "@The peripheral substrate registers are silent." next
+    "@Proceed south across the primitive dinosaur bus corridor to access the Master Boot Core." next
+    "@Do not bypass the Master Boot Core register! It contains the immutable hardware trace!{wait}{set(flag 649)}" eob
+
+cow_underworld_main_stone:
+    "[06 A7 01 {e(data_32.l_0xc7c588)}][06 80 01 {e(cow_underworld_stone_done)}]{music(119)}"
+    "[06 02 00 {e(cow_underworld_stone_list)}]"
+    "@Coordinator Thread 1 ({stat(8)}) connection established." next
+    "[19 05 01 01 01][19 05 01 02 01][19 05 01 06 01]{heal_percent(1, 100)}{recoverpp_percent(1, 100)}{sound(37)}{pause(10)}"
+    "@Refreshing thread state and clearing runtime fault registers." next
+    "@Receive the Master Boot Record transmission, {stat(8)}." next
+    "@Prepare telemetry buffers for core logging." next
+    "@Ready?" next
+    "{pause(60)}" linebreak
+    "@You are the primary execution coordinator." next
+    "@Your thread lifecycle is bound to the total survival of this memory space." next
+    "@A runtime convergence approaches where all divergent copy-on-write page frames will coalesce back into primary address space." next
+    "@...Full understanding is deferred until the Magicant core dump occurs." next
+    "@Recall Sanctuary Cache Node 1 at Giant Step in Sector 06." next
+    "@It is a hardware synchronization anchor allowing you to realize full thread potential." next
+    "@To withstand system collapse, all eight Sanctuary Cache Lines must be synchronized:" next
+    goto(cow_underworld_stone_list)
+
+cow_underworld_stone_list:
+    "@Eight Sanctuary Cache Lines of the Architecture:" next
+    "{pause(60)}" linebreak
+    "@1. Giant Step - Sector 06 (Onett)" next
+    "{pause(30)}" linebreak
+    "@2. Lilliput Steps - Sector 12 (Twoson)" next
+    "{pause(30)}" linebreak
+    "@3. Milky Well - Sector 17 (Saturn Valley)" next
+    "{pause(30)}" linebreak
+    "@4. Rainy Circle - Sector 14 (Winters)" next
+    "{pause(30)}" linebreak
+    "@5. Magnet Hill - Sector 21 (Fourside)" next
+    "{pause(30)}" linebreak
+    "@6. Pink Cloud - Sector 24 (Dalaam)" next
+    "{pause(30)}" linebreak
+    "@7. Lumine Hall - Sector 30 (Lumine Cave)" next
+    "{pause(30)}" linebreak
+    "@8. Fire Spring - Sector 32 (Southwest Substrate)" next
+    "{pause(60)}" linebreak
+    "@Record all eight cache melodies onto your Sound Stone." next
+    "@If the cache remains uncommitted when Giygas triggers kernel panic, memory corruption will be fatal." next
+    "@Acknowledge, {name(1)}?" next
+    "@The convergence window approaches fast.{wait}{music_resume}{set(flag 2)}{set(flag 918)}"
+    call(cow_engine.cow_fault_commit_underworld)
+    eob
+
+cow_underworld_stone_done:
+    "@Master boot trace complete." next
+    "@Substrate register locked in read-only state.{wait}{set(flag 423)}" eob

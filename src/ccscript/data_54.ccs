@@ -59,11 +59,7 @@ l_0xc9d779:
     call(data_44.l_0xc90dea) eob
 
 l_0xc9d77f:
-    "[06 49 00 {e(l_0xc9d875)}][06 5C 00 {e(l_0xc9d854)}][06 9B 00 {e(l_0xc9d7e2)}]@...We're all shy." next
-    "@Rumor, I heard a book to fix shyness, there is." next
-    "@Where?" next
-    "@Don't know." next
-    "@Just a rumor.{wait}{set(flag 154)}" eob
+    goto(cow_tenda.cow_tenda_rumor)
 
 l_0xc9d7e2:
     "@Since we overcame our shyness, I'll give you a {itemname(160)}." next
@@ -95,26 +91,10 @@ l_0xc9d91b:
     "@Get rid of something." end
 
 l_0xc9d940:
-    "{store_registers}[06 9B 00 {e(data_32.l_0xc7c6b6)}]{load_registers}[19 19 00 00]{swap}{result_is(164)}[1B 03 {e(l_0xc9d95e)}]" goto(data_32.l_0xc7c6b6)
+    goto(cow_tenda.cow_tenda_chief_check)
 
 l_0xc9d95e:
-    "{event(5)}@.....!" next
-    "@Book!" next
-    "@Can fix shyness." next
-    "@Thanks." next
-    "@Relax." next
-    "@I'll read to everyone." next
-    "@Oh!" next
-    "@Just holding this book in my hands makes me feel like" next
-    "@I'm overcoming my shyness already!" next
-    "@I'll really take time to read it to everyone!{sound(121)}[03]{window_closeall}[1F 15 6A 00 79 02 01][1F 61]{window_open(1)}@(The leader of the Tenda tribe read <Overcoming Shyness> to everyone.)[03]{window_closeall}" call(data_45.l_0xc91582) "{warp(231)}{lock_movement(255)}{pause(1)}{music_resume}{window_open(1)}" newline
-    "@Chat, Chat whisper, whisper" next
-    "@I'd like to give you some" linebreak
-    "  <{itemname(211)}> in return." next
-    "@<{itemname(211)}> is a type of dish that all Tenda like." next
-    "@It stinks, but it tastes wonderful." next
-    "{take(255, 164)}[1D 0E 00 D3][1B 05]{sound(116)}{pause(60)}{window_open(1)}@{name(1)} lends the leader of the Tenda tribe the book <Overcoming Shyness.>" next
-    call(data_33.l_0xc7dcb6) "{wait}{window_closeall}{set(flag 155)}{pause(60)}{set(flag 509)}" call(data_22.l_0xc68931) call(data_46.l_0xc935b7) "[1F E8 FF]{event(6)}" eob
+    goto(cow_tenda.cow_tenda_chief_read)
 
 l_0xc9db12:
     "[06 9B 00 {e(l_0xc9db1e)}]" goto(l_0xc9d735)
@@ -163,20 +143,7 @@ l_0xc9dc0e:
     "@Drink.{wait}{window_closeall}[06 DC 00 {e(data_51.l_0xc9992f)}]" call(data_33.l_0xc7dd74) "{music(92)}{event(2)}" eob
 
 l_0xc9dc2c:
-    "[06 9B 00 {e(l_0xc9dd87)}][06 02 00 {e(l_0xc9dd78)}]@There's only one Tenda who's not shy." next
-    "@It's me, bubby!" next
-    "@You know what?" next
-    "@There's something scary that comes from the underground." next
-    "@So, we covered up the hole." next
-    "@There are lots of dinosaurs there." next
-    "@I went there once, but I came right back, 'cause I was so surprised!" next
-    "@There was a talking stone that talks a lot." next
-    "@Do you wanna go and see?" next
-    "@I understand." next
-    "@But I'm not as strong as I look." next
-    "@I'm sorry, I guess I can't help you." next
-    "@The guy next to me is strong, but he lacks conversation skills." next
-    "@He needs to overcome his shyness first.{wait}{set(flag 2)}" eob
+    goto(cow_tenda.cow_tenda_unshy)
 
 l_0xc9dd78:
     "@Oh, I wanna talk..." end
@@ -200,73 +167,19 @@ l_0xc9ddf8:
     "@This is the earth's belly button!" end
 
 l_0xc9de0e:
-    "[06 A7 01 {e(data_32.l_0xc7c588)}][06 80 01 {e(l_0xc9e252)}]{music(119)}[06 02 00 {e(l_0xc9e041)}]@You finally came, {stat(8)}." next
-    "[19 05 01 01 01][19 05 01 02 01][19 05 01 06 01]{heal_percent(1, 100)}{recoverpp_percent(1, 100)}{sound(37)}{pause(10)}@Finally, you talk to me." next
-    "@Listen {stat(8)}." next
-    "@I'm going to tell you something very important." next
-    "@You may want to take notes." next
-    "@Ready?" next
-    "{pause(60)}" linebreak
-    "@You're the chosen one." next
-    "@Your destiny is not only yours..." next
-    "@It's the destiny of the whole universe." next
-    "@There will be a time in which all of you in the universe will overlap each other." next
-    "@...It's not necessary to understand now." next
-    "@Do you remember <Giant Step> in Onett?" next
-    "@That is one of <Your Sanctuary.>" next
-    "@It is a spot which gives you power" next
-    "@and allows you to realize all your skills." next
-    "@There was a monster that protected it." next
-    "@The monster was influenced by the power of the place." next
-    "@You must have beaten those monsters." next
-    "@You must reach all of the eight power spots in the world..." next
-    "@When the Sound Stone records the melodies of all eight power spots," next
-    "@you can finally see <Your World.>" next
-    goto(l_0xc9e041)
+    goto(cow_underworld.cow_underworld_main_stone)
 
 l_0xc9e041:
-    "@I'll tell you all of the power spots." next
-    "{pause(60)}" linebreak
-    "@1. <Giant Step> in Onett." next
-    "{pause(30)}" linebreak
-    "@2. <Lilliput Steps> in Peaceful Rest Valley near Twoson." next
-    "{pause(30)}" linebreak
-    "@3. <Milky Well> in Grapefruit Falls in Saturn Valley." next
-    "{pause(30)}" linebreak
-    "@4. <Rainy Circle> found by {name(3)} in Winters." next
-    "{pause(30)}" linebreak
-    "@5. <Magnet Hill> at the edge of the city of Fourside." next
-    "{pause(30)}" linebreak
-    "@6. <Pink Cloud> which {name(4)} knows." next
-    "{pause(30)}" linebreak
-    "@7. and... <Lumine Hole> where the shining lichen lives in the cave." next
-    "{pause(30)}" linebreak
-    "@8. A new place is now going to be opened up to you." next
-    "@<Fire Spring,> located southwest of here." next
-    "{pause(60)}" linebreak
-    "@Listen to the melodies of all eight power spots." next
-    "@If you do not fail, you may upset Giygas' plans..." next
-    "@Understand, {name(1)}?" next
-    "@The time will come." next
-    "@The time when the destiny of you and the whole universe will overlap..." next
-    "@It is fast approaching.{wait}{music_resume}{set(flag 2)}" eob
+    eob
 
 l_0xc9e252:
-    "@I don't need words anymore." next
-    "@I'll turn back into a simple rock.{wait}{set(flag 423)}" eob
+    eob
 
 l_0xc9e27b:
-    "[06 C4 00 {e(data_32.l_0xc7c588)}]{counter(1)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(data_22.l_0xc690a6)}]{music(155)}@You finally got here." next
-    "@This is the seventh <Your Sanctuary> location.{pause(20)}  But it's mine now." next
-    "@Take it from me,{pause(30)} if you dare...[03]" call(data_21.l_0xc68433) "[1B 03 {e(data_21.l_0xc683de)}][1F 1E DE 04 08]{pause(120)}{set(flag 196)}" eob
+    goto(cow_lumine.cow_lumine_boss)
 
 l_0xc9e2f5:
-    "@Good evening." next
-    "@I'm a talking rock." next
-    "@But the rocks around here don't talk too much." next
-    "@The rock that talks the most is deep down in the labyrinth a ways ahead..." next
-    "@in the <Lost Underworld.>" next
-    "@Don't forget to talk to the rock!{pause(20)}  It's important!{wait}{set(flag 649)}" eob
+    goto(cow_underworld.cow_underworld_outer_stone)
 
 l_0xc9e37e:
     "[06 8A 02 {e(l_0xc9e567)}][06 0A 00 {e(l_0xc9e4eb)}]@I heard monkeys living in some desert can teleport." next

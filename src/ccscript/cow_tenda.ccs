@@ -1,0 +1,90 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 12: Tenda Village Mutual Exclusion Scenario
+// ==============================================================================
+// Shyness mutual exclusion deadlock, synchronization library routine compilation,
+// Tendakraut serialization buffer, and Strong Tenda physical aperture clearance.
+// Sector 29 (flag 912), mutation flag 916.
+// ==============================================================================
+
+cow_tenda_rumor:
+    "[06 94 03 {e(cow_tenda_rumor_committed)}]"
+    "[06 9B 00 {e(cow_tenda_rumor_committed)}]"
+    "@...Spinlock timeout." next
+    "@All local worker threads trapped in mutual exclusion deadlock." next
+    "@Every process yields execution priority to every other process." next
+    "@Net throughput: 0 instructions per second." next
+    "@Rumor holds that an external synchronization library routine exists in the northern root repository." next
+    "@Where? Unknown." next
+    "@Awaiting semaphore arbitration.{wait}{set(flag 154)}" eob
+
+cow_tenda_rumor_committed:
+    "[06 5C 00 {e(cow_tenda_rumor_done)}]"
+    "@Mutual exclusion deadlock resolved." next
+    "@All tribal threads operating in concurrent harmony." next
+    "@Take this {itemname(160)} to expand your register capacity." next
+    "[1D 03 FF][1B 02 {e(cow_tenda_rumor_full)}][1D 0E 00 A0]" call(data_33.l_0xc7dccf) "{set(flag 92)}" end
+
+cow_tenda_rumor_full:
+    newline
+    "@Register overflow. No free memory slots in your buffer." next
+    "@Free a register and return." end
+
+cow_tenda_rumor_done:
+    "@All processes running smoothly." next
+    "@Terminating transmission.{wait}{window_closeall}{pause(1)}[1F F1 E4 04 0C 00]" eob
+
+cow_tenda_chief_check:
+    "{store_registers}[06 9B 00 {e(data_32.l_0xc7c6b6)}]{load_registers}[19 19 00 00]{swap}{result_is(164)}[1B 03 {e(cow_tenda_chief_read)}]" goto(data_32.l_0xc7c6b6)
+
+cow_tenda_chief_read:
+    "{event(5)}@.....!" next
+    "@Synchronization library routine detected!" next
+    "@<Overcoming Shyness>..." next
+    "@Contains optimal semaphore arbitration algorithms!" next
+    "@Beginning in-place compilation across all thread descriptors..." next
+    "@Compiling... linking... dispatching...{sound(121)}[03]{window_closeall}[1F 15 6A 00 79 02 01][1F 61]{window_open(1)}"
+    "@(The Tenda Chief broadcasts <Overcoming Shyness> microcode to all local processes.)[03]{window_closeall}"
+    call(data_45.l_0xc91582)
+    "{warp(231)}{lock_movement(255)}{pause(1)}{music_resume}{window_open(1)}" newline
+    "@Thread starvation resolved! Concurrency restored!" next
+    "@As compensation, accept this high-density serialization buffer:" linebreak
+    "  <{itemname(211)}>." next
+    "@It emits pungent aroma emissions, but serializes critical payload data." next
+    "{take(255, 164)}[1D 0E 00 D3][1B 05]{sound(116)}{pause(60)}{window_open(1)}@{name(1)} passes the synchronization routine <Overcoming Shyness> to the Tenda Chief." next
+    call(data_33.l_0xc7dcb6)
+    "{wait}{window_closeall}{set(flag 155)}{pause(60)}{set(flag 509)}{set(flag 916)}"
+    call(cow_engine.cow_fault_commit_tenda)
+    call(data_22.l_0xc68931) call(data_46.l_0xc935b7) "[1F E8 FF]{event(6)}" eob
+
+cow_tenda_strong:
+    "[06 99 00 {e(cow_tenda_strong_cleared)}]"
+    "[06 9B 00 {e(cow_tenda_strong_lift)}]"
+    "@....." linebreak
+    "  Thread starved..." linebreak
+    "  Spinlock active..." end
+
+cow_tenda_strong_lift:
+    "@Concurrency unblocked! Thread priority elevated!" next
+    "@Watch me clear this physical memory barrier...[03]{window_closeall}"
+    "[1F 16 EA 04 03][1F F1 EF 04 54 02][1F 61][1F E6 EF 04]{window_open(1)}"
+    "@Huuuup! Memory barrier dislodged! Hardware aperture open![03]{window_closeall}"
+    "[1F E9 EF 04][1F 61][1F 1E EF 04 06]{sound(121)}{set(flag 153)}" eob
+
+cow_tenda_strong_cleared:
+    "@Physical aperture unblocked." next
+    "@Hardware transmission channel open to lower substrate." end
+
+cow_tenda_unshy:
+    "[06 9B 00 {e(cow_tenda_unshy_post)}]"
+    "@There is only one unlocked thread in this enclave." next
+    "@It is me, process 1261!" next
+    "@Warning: The lower layers contain raw bare-metal ring 0 architecture." next
+    "@We sealed the subterranean aperture to block unhandled primitive exceptions." next
+    "@Massive monolithic dinosaur processes roam the substrate." next
+    "@An immutable core memory rock records the hardware state." next
+    "@To open the aperture, the strong thread beside me must be unblocked by semaphore arbitration.{wait}{set(flag 2)}" eob
+
+cow_tenda_unshy_post:
+    "@Now that all threads have acquired execution locks, my unique un-shy status is depreciated." end

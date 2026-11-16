@@ -97,6 +97,19 @@ HOOKS = [
     (0x09344F, b"\x0A", "CoW Dungeon Man Submarine Talk Hook (0xC9344F)"),
     (0x057C2C, b"\x0A", "CoW Jeff Repair Submarine Hook (0xC57C2C)"),
     (0x09E619, b"\x0A", "CoW Master Barf Hook (0xC9E619)"),
+    # Phase 12 hooks
+    (0x09D77F, b"\x0A", "CoW Tenda Rumor Hook (0xC9D77F)"),
+    (0x09D940, b"\x0A", "CoW Tenda Chief Check Hook (0xC9D940)"),
+    (0x09D95E, b"\x0A", "CoW Tenda Chief Read Hook (0xC9D95E)"),
+    (0x09DC2C, b"\x0A", "CoW Tenda Unshy Hook (0xC9DC2C)"),
+    (0x0936E6, b"\x0A", "CoW Strong Tenda Hook (0xC936E6)"),
+    (0x0937D9, b"\x0A", "CoW Lumine Wall Hook (0xC937D9)"),
+    (0x09E27B, b"\x0A", "CoW Lumine Boss Hook (0xC9E27B)"),
+    (0x07C3C2, b"\x0A", "CoW Lumine Melody Hook (0xC7C3C2)"),
+    (0x09E2F5, b"\x0A", "CoW Outer Talking Rock Hook (0xC9E2F5)"),
+    (0x09DE0E, b"\x0A", "CoW Main Talking Rock Hook (0xC9DE0E)"),
+    (0x2F57EB, b"\x0A", "CoW Fire Spring Boss Hook (0xEF57EB)"),
+    (0x07C479, b"\x0A", "CoW Fire Spring Melody Hook (0xC7C479)"),
 ]
 
 # Active NPC Configuration Table bindings verified dynamically against compiled symbols in summary.txt
@@ -132,6 +145,14 @@ NPC_BINDINGS = [
     (1196, "cow_brick_road", "NPC Table Entry 1196 (Brick Road Dungeon Man Pointer)"),
     (1197, "cow_jeff_repair_submarine", "NPC Table Entry 1197 (Submarine Repair Pointer)"),
     (1229, "cow_master_barf", "NPC Table Entry 1229 (Master Barf Deep Darkness Pointer)"),
+    # Phase 12 NPC bindings
+    (1246, "cow_lumine_boss", "NPC Table Entry 1246 (Electro Specter Telemetry Monitor Pointer)"),
+    (1252, "cow_tenda_rumor", "NPC Table Entry 1252 (Tenda Chief Rumor Pointer)"),
+    (1258, "cow_tenda_strong", "NPC Table Entry 1258 (Strong Tenda Barrier Pointer)"),
+    (1260, "cow_underworld_outer_stone", "NPC Table Entry 1260 (Outer Talking Rock Pointer)"),
+    (1261, "cow_tenda_unshy", "NPC Table Entry 1261 (Un-shy Tenda Pointer)"),
+    (1276, "cow_firespring_boss", "NPC Table Entry 1276 (Carbon Dog Thermal Runaway Pointer)"),
+    (1292, "cow_underworld_main_stone", "NPC Table Entry 1292 (Main Talking Rock Pointer)"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
@@ -191,6 +212,15 @@ THEMATIC_NAMES = [
     "Fragmented Heap Dump",
     "Signal Jitter Eel",
     "Packet Loss Slug",
+    # Phase 12 thematic enemies
+    "Telemetry Monitor",
+    "Thermal Runaway",
+    "Crystallized Mutex",
+    "Kernel Power Unit",
+    "Legacy Thread",
+    "Monolithic Struct",
+    "PRNG Generator",
+    "Process Orb",
 ]
 
 

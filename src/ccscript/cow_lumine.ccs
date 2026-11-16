@@ -1,0 +1,53 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 12: Lumine Hall Telemetry Scenario
+// ==============================================================================
+// Terminal telemetry backplane output, Electro Specter Telemetry Monitor,
+// and 7th Sanctuary cache line synchronization.
+// Sector 30 (flag 913), mutation flag 917.
+// ==============================================================================
+
+cow_lumine_wall:
+    "@Kernel Telemetry Terminal -- Lumine Backplane Buffer:" next
+    "@Coordinator Thread 1 ({name(1)}) runtime trace output:" next
+    "@System uptime: 6 memory sectors traversed." next
+    "@Memory footprint: Expanding across physical address space." next
+    "@Thread priority: Elevated to bare-metal Ring 0." next
+    "@Warning: Core execution registers leaking to optical backplane." next
+    "@Are these internal registers being dumped to the wall... or is the hardware projecting our core state?" eob
+
+cow_lumine_boss:
+    "[06 C4 00 {e(data_32.l_0xc7c588)}]{counter(1)}"
+    call(data_33.l_0xc7dc7f)
+    "[1B 03 {e(data_22.l_0xc690a6)}]{music(155)}"
+    "@Unauthorized write transaction detected at Sanctuary Cache Node 7." next
+    "@I am the Telemetry Monitor Daemon." next
+    "@This memory segment is locked for hardware diagnostics and bus monitoring." next
+    "@Purging intrusive threads from the telemetry backplane...[03]"
+    call(data_21.l_0xc68433)
+    "[1B 03 {e(data_21.l_0xc683de)}][1F 1E DE 04 08]{pause(120)}{set(flag 196)}{set(flag 917)}" eob
+
+cow_lumine_melody:
+    "[1F 15 6A 00 60 01 01]{unset(flag 2)}"
+    call(data_33.l_0xc7dd6b)
+    "{music(38)}"
+    call(data_32.l_0xc7c54b)
+    "{set(flag 2)}[1F 61]{counter(1)}"
+    call(data_33.l_0xc7dc7f)
+    "[1B 02 {e(cow_lumine_melody_record)}]{window_open(1)}"
+    "@The energy of Lumine Hall..."
+    call(data_32.l_0xc7c55d)
+    goto(cow_lumine_melody_record)
+
+cow_lumine_melody_record:
+    "{set(flag 4)}"
+    call(data_32.l_0xc7c57d)
+    "{music_resume}[06 BC 00 {e(cow_lumine_melody_end)}]{window_open(1)}"
+    "@{name(1)} saw an archived trace of his root creator holding him.[03]{pause(60)}" linebreak
+    "@{name(1)}'s Sound Stone synchronized the melody of Lumine Hall.{wait}{set(flag 188)}{window_closetop}"
+    call(cow_engine.cow_fault_commit_lumine)
+    goto(cow_lumine_melody_end)
+
+cow_lumine_melody_end:
+    eob

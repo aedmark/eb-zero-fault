@@ -10345,7 +10345,7 @@
   Movement: 10
   Show Sprite: when event flag unset
   Sprite: 102
-  Text Pointer 1: data_06.l_0xc5762c
+  Text Pointer 1: cow_dungeonman.cow_dungeonman_key_npc
   Text Pointer 2: $0
   Type: person
 1150:
@@ -10372,7 +10372,7 @@
   Movement: 498
   Show Sprite: when event flag set
   Sprite: 41
-  Text Pointer 1: data_46.l_0xc9344f
+  Text Pointer 1: cow_dungeonman.cow_dungeonman_submarine_talk
   Text Pointer 2: $0
   Type: person
 1153:
@@ -10768,7 +10768,7 @@
   Movement: 8
   Show Sprite: always
   Sprite: 179
-  Text Pointer 1: data_06.l_0xc57947
+  Text Pointer 1: cow_dungeonman.cow_brick_road
   Text Pointer 2: $0
   Type: person
 1197:
@@ -10777,7 +10777,7 @@
   Movement: 8
   Show Sprite: when event flag unset
   Sprite: 244
-  Text Pointer 1: data_06.l_0xc57c2c
+  Text Pointer 1: cow_dungeonman.cow_jeff_repair_submarine
   Text Pointer 2: $0
   Type: object
 1198:
@@ -11065,7 +11065,7 @@
   Movement: 10
   Show Sprite: when event flag unset
   Sprite: 299
-  Text Pointer 1: data_54.l_0xc9e619
+  Text Pointer 1: cow_deepdark.cow_master_barf
   Text Pointer 2: $0
   Type: person
 1230:

@@ -18,14 +18,10 @@ l_0xc575f8:
     "@But now I don't know why I did." end
 
 l_0xc5762c:
-    "[06 50 01 {e(l_0xc576e0)}]@I am not sure if it was the <Dungeon Man,> but..." next
-    "@there is a strange looking tower to the northwest." next
-    "@...This key I picked up a little while ago shall maybe open the tower." next
-    "@You may have it, I do not need it.[1D 03 FF][1B 02 {e(l_0xc57718)}][03][1D 0E 00 C0][1B 05]" call(data_33.l_0xc7dcb6) "{set(flag 336)}{wait}{window_closeall}{isset(flag 691)}[1B 02 {e(data_51.l_0xc9992f)}]{pause(60)}" call(data_22.l_0xc692f7) eob
+    goto(cow_dungeonman.cow_dungeonman_key_npc)
 
 l_0xc576e0:
-    "@I'm not sure if it was the <Dungeon Man>..." next
-    "@There's a strange looking tower to the northwest." end
+    eob
 
 l_0xc57718:
     next
@@ -38,15 +34,13 @@ l_0xc57753:
     "{window_closeall}{pause(1)}{warp(159)}" call(data_52.l_0xc9b112) eob
 
 l_0xc57760:
-    "{store_registers}[06 5E 02 {e(l_0xc577c5)}]{load_registers}" call(data_33.l_0xc7dd2c) "{result_is(192)}[1B 02 {e(l_0xc577b2)}]{load_registers}" call(data_33.l_0xc7dd37) newline
-    "@(The key worked to open the door." next
-    "@You may enter.){wait}{wait}{set(flag 606)}{sound(119)}{window_closeall}{warp(159)}" call(data_52.l_0xc9b112) eob
+    goto(cow_dungeonman.cow_dungeonman_unlock)
 
 l_0xc577b2:
-    "@(The key doesn't fit!)" end
+    eob
 
 l_0xc577c5:
-    "@(The door's already opened.)" end
+    eob
 
 l_0xc577d8:
     "[06 DA 00 {e(l_0xc57911)}]@A scary place called Deep Darkness is on the other side of the river." next
@@ -69,16 +63,10 @@ l_0xc57911:
     "@I cannot believe you made it back alive." end
 
 l_0xc57947:
-    "[06 DA 00 {e(l_0xc57955)}][06 97 00 {e(l_0xc57a26)}]" goto(l_0xc57955)
+    goto(cow_dungeonman.cow_brick_road)
 
 l_0xc57955:
-    "@Welcome![03]{window_closeall}" call(data_45.l_0xc915f4) "{sound(37)}{pause(90)}{window_open(1)}[06 DA 00 {e(l_0xc57ad9)}]@Long time, no see." next
-    "@Mr. {name(3)}, we met in Winters a long time ago." next
-    "@I'm Brick Road." next
-    "@Dr. Andonuts finally made me Dungeon Man." next
-    "@If you want, I'll come with you guys for a while." next
-    "@The <Return Hole> is over there." next
-    "@Jump in that hole and then walk out.{wait}{set(flag 24)}{set(flag 445)}[1F 66 01 09 81 33 C9 00]{set(flag 507)}" eob
+    goto(cow_dungeonman.cow_brick_road)
 
 l_0xc57a26:
     "@There's an old submarine at the back of the dungeon." next
@@ -122,8 +110,7 @@ l_0xc57c10:
     "{window_open(1)}@" call(data_34.l_0xc7e6d7) "'s health is restored.{wait}{window_closeall}" eob
 
 l_0xc57c2c:
-    "{counter(3)}" call(data_33.l_0xc7dc7f) "[1B 03 {e(l_0xc57c6f)}]@({name(3)} checked the broken submarine.)" next
-    "@Yes!{pause(20)}  It can still work.{wait}{window_closeall}" goto(data_46.l_0xc934ed)
+    goto(cow_dungeonman.cow_jeff_repair_submarine)
 
 l_0xc57c6f:
     "@(No one can repair the submarine except {name(3)}.)" end

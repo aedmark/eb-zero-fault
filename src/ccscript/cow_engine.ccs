@@ -40,8 +40,11 @@ command e(label) "{long label}"
 // 897: Sector 23 - Dalaam Isolated Eastern Node
 // 898: Sector 24 - Mu Training Deallocation Matrix
 // 899: Sector 25 - Sea of Serendipity Bus Channel
+// 904: Sector 26 - Scaraba & Pyramid Cryptographic Archive
+// 905: Sector 27 - Southern Scaraba & Dungeon Man Coprocessor
+// 906: Sector 28 - Deep Darkness High-Attenuation Channel
 
-// Entity Mutation Bits (870-903)
+// Entity Mutation Bits (870-911)
 // 870: Mom baseline dirtied (refcount = 2 awareness)
 // 871: Tracy baseline dirtied (memory buffer initialized)
 // 872: Pokey baseline dirtied (unbound pointer hijacked)
@@ -71,6 +74,11 @@ command e(label) "{long label}"
 // 901: Poo Mu sensory deallocation completed
 // 902: Poo thread 4 registered
 // 903: Kraken bus anomaly purged
+// 907: Sphinx cryptoprocessor challenge passed
+// 908: Hawk Eye optical transceiver recovered
+// 909: Star Master microcode compilation (Poo suspended)
+// 910: Dungeon Man coprocessor bus interface bridged
+// 911: Master Barf cascading leak daemon purged
 
 // Reusable Engine Commands
 command cow_touch(f) "{set(flag f)}"
@@ -137,3 +145,12 @@ cow_fault_commit_mu:
 
 cow_fault_commit_sea:
     "{set(flag 899)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_scaraba:
+    "{set(flag 904)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_dungeonman:
+    "{set(flag 905)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_deepdark:
+    "{set(flag 906)}{sound(11)}{pause(15)}" eob

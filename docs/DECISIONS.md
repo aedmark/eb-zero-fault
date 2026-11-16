@@ -153,6 +153,19 @@ removing a fence whose purpose it forgot.
 **Consequences:** Seamlessly connects the four-thread party model under distributed systems concepts. Automated verification in `tools/verify_rom.py` expanded to 122 binary assertions across ROM hooks, dynamic NPC table pointers, and thematic strings.
 **Review trigger:** Verification of Scaraba pyramid access and Dungeon Man architecture linking.
 
+## D-017 Mid-to-Late Game Scenarios: Cryptographic Enclaves, Hybrid Coprocessors, and High-Attenuation Channels (2026-11-15, status: accepted)
+**Context:** Expanding the Copy-on-Write parallel universe into Scaraba, the Pyramid, Dungeon Man, and Deep Darkness (P11-01 through P11-06).
+**Decision:**
+1. Author `src/ccscript/cow_scaraba.ccs`: Sphinx security enclave challenge at `$C87220` and `$C87280` requiring cryptographic instruction sequence verification; Pyramid archive traversal at `$C93181` recovering the Hawk Eye optical infrared bus transceiver; Star Master arrival at `$C5739F` and `$C573DC` descheduling Prince Poo from the active thread pool for remote microcode optimization; and Poo's departure at `$C932F6` pledging a far-interrupt resynchronization once PK Starstorm is compiled.
+2. Author `src/ccscript/cow_dungeonman.ccs`: Southern Scaraba key NPC at `$C5762C` (NPC 1149) providing an address decoder key; tower entrance at `$C57760` establishing bus interface connection; Brick Road at `$C57955` (NPC 1196) integrated as a monolithic hybrid hardware acceleration coprocessor coupling pipelines with party threads; palm tree stall at `$C93381` where coprocessor chassis exceeds channel aperture width; submarine dialogue at `$C9344F` (NPC 1152) locating submerged packet transport in auxiliary storage; and Jeff at `$C57C2C` (NPC 1197) reflashing transport firmware for swamp traversal.
+3. Author `src/ccscript/cow_deepdark.ccs`: Master Barf confrontation at `$C9E619` (NPC 1229) as the persistent Cascading Leak Daemon executing recursive heap corruptions; defeat of Master Barf triggering Prince Poo far-interrupt rejoining Thread 4 to active execution pool with PK Starstorm compiled.
+4. Update `src/ccscript/cow_engine.ccs` allocating Sector dirty bits 904 (Scaraba/Pyramid), 905 (Dungeon Man), 906 (Deep Darkness); Entity mutation bits 907-911, and corresponding commit subroutines.
+5. Enforce dual-binding dispatch across 5 NPC table entries in `src/npc_config_table.yml` (NPCs 1149, 1152, 1196, 1197, 1229) and 13 legacy label trampolines in `data_39.ccs`, `data_46.ccs`, `data_05.ccs`, `data_06.ccs`, and `data_54.ccs`.
+6. Rebalance regional monsters in `src/enemy_configuration_table.yml`: Guardian Hieroglyph to Instruction Decoder (15), Even Slimier Little Pile to Fragmented Heap Dump (46), Guardian General to Security Enclave Guard (73, 208), Master Barf to Cascading Leak Daemon (95, 194), Zap Eel to Signal Jitter Eel (100), Pit Bull Slug to Packet Loss Slug (112).
+**Alternatives:** Treating Pyramid as supernatural tomb and Dungeon Man as absurd novelty (breaks technical systems architecture metaphor).
+**Consequences:** Establishes coprocessor acceleration dynamics and party descheduling/resynchronization mechanics. Automated verification in `tools/verify_rom.py` expanded to 146 binary assertions across ROM hooks, dynamic NPC table pointers, and thematic strings.
+**Review trigger:** Verification of Tenda Village, Lumine Hall, and Lost Underworld transitions.
+
 ---
 
 ## Held tensions

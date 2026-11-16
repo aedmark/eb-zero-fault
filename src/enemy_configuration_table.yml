@@ -740,7 +740,7 @@
   Money: 470
   Movement pattern: 21
   Music: 96
-  Name: Guardian Hieroglyph
+  Name: Instruction Decoder
   Offense: 94
   Overworld Sprite: 325
   PP: 126
@@ -2197,7 +2197,7 @@
   Money: 579
   Movement pattern: 20
   Music: 141
-  Name: Even Slimier Little Pile
+  Name: Fragmented Heap Dump
   Offense: 103
   Overworld Sprite: 315
   PP: 0
@@ -3466,7 +3466,7 @@
   Money: 3235
   Movement pattern: 28
   Music: 103
-  Name: Guardian General
+  Name: Security Enclave Guard
   Offense: 109
   Overworld Sprite: 322
   PP: 6
@@ -4500,7 +4500,7 @@
   Money: 3536
   Movement pattern: 29
   Music: 99
-  Name: Master Barf
+  Name: Cascading Leak Daemon
   Offense: 136
   Overworld Sprite: 328
   PP: 0
@@ -4735,7 +4735,7 @@
   Money: 611
   Movement pattern: 20
   Music: 99
-  Name: Zap Eel
+  Name: Signal Jitter Eel
   Offense: 97
   Overworld Sprite: 301
   PP: 0
@@ -5299,7 +5299,7 @@
   Money: 543
   Movement pattern: 20
   Music: 96
-  Name: Pit Bull Slug
+  Name: Packet Loss Slug
   Offense: 79
   Overworld Sprite: 316
   PP: 11
@@ -9153,7 +9153,7 @@
   Money: 3536
   Movement pattern: 29
   Music: 99
-  Name: Master Barf
+  Name: Cascading Leak Daemon
   Offense: 136
   Overworld Sprite: 328
   PP: 0
@@ -9811,7 +9811,7 @@
   Money: 3235
   Movement pattern: 28
   Music: 103
-  Name: Guardian General
+  Name: Security Enclave Guard
   Offense: 109
   Overworld Sprite: 322
   PP: 6

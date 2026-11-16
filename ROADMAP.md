@@ -102,3 +102,14 @@ Goal: Author mid-to-late game narrative scenarios across Summers oceanic memory 
 - [x] P10-04 Author Sea of Serendipity oceanic memory bus traversal and Sailor Captain packet transport dispatch (D-016; implemented src/ccscript/cow_sea.ccs overriding C8B52A and C8B6D5, 2026-11-15).
 - [x] P10-05 Author Packet Storm Kraken oceanic channel bus fault and bus contention purge sequence (D-016; implemented src/ccscript/cow_sea.ccs overriding C92C70, 2026-11-15).
 - [x] P10-06 Rebalance regional monsters in src/enemy_configuration_table.yml (Packet Storm Kraken, Fragmented Struct, Corrupt Struct, Recursive Sprout, Interrupt Mite, Heap Dump) (D-016; updated entries 10, 31, 45, 49, 125, 126, 182, 2026-11-15).
+
+## Phase 11: Scaraba, Pyramid, Dungeon Man, and Deep Darkness Scenarios
+
+Goal: Author mid-to-late game narrative scenarios across Scaraba, the Pyramid cryptographic archive, the Dungeon Man hybrid coprocessor, and the Deep Darkness high-attenuation channel.
+
+- [x] P11-01 Script Scaraba Sphinx hardware security enclave challenge and cryptographic signature verification sequence (D-017; implemented src/ccscript/cow_scaraba.ccs overriding C87220 and C87280, 2026-11-15).
+- [x] P11-02 Author Pyramid archive traversal, Hawk Eye optical infrared transceiver recovery, and Star Master remote microcode compilation routine descheduling Prince Poo (D-017; implemented src/ccscript/cow_scaraba.ccs overriding C93181, C932F6, C5739F, and C573DC, 2026-11-15).
+- [x] P11-03 Script Southern Scaraba Dungeon Man hybrid coprocessor integration, bus interface key decoding, and core entrance routines (D-017; implemented src/ccscript/cow_dungeonman.ccs overriding C5762C, C57760, and C57955, 2026-11-15).
+- [x] P11-04 Author Dungeon Man physical aperture channel stall, submerged yellow packet transport recovery, and Jeff firmware reflash (D-017; implemented src/ccscript/cow_dungeonman.ccs overriding C93381, C9344F, and C57C2C, 2026-11-15).
+- [x] P11-05 Script Deep Darkness high-attenuation swamp traversal, Master Barf Cascading Leak Daemon confrontation, and Prince Poo far-interrupt resynchronization with PK Starstorm (D-017; implemented src/ccscript/cow_deepdark.ccs overriding C9E619, 2026-11-15).
+- [x] P11-06 Rebalance regional monsters in src/enemy_configuration_table.yml (Instruction Decoder, Security Enclave Guard, Fragmented Heap Dump, Cascading Leak Daemon, Signal Jitter Eel, Packet Loss Slug) (D-017; updated entries 15, 46, 73, 95, 100, 112, 194, 208, 2026-11-15).

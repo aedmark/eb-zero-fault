@@ -253,12 +253,10 @@ l_0xc87202:
     "[06 5C 01 {e(data_51.l_0xc9992f)}][06 56 01 {e(l_0xc87280)}][06 94 00 {e(l_0xc87220)}]{window_open(1)}@.....{wait}{window_closeall}" eob
 
 l_0xc87220:
-    "{window_open(1)}@Are you a thief, a warrior, or one who has come to see my majesty?" next
-    "@You must decide what you really are.  Therefore, what will you do?{wait}{window_closeall}{set(flag 7)}{set(flag 152)}" eob
+    goto(cow_scaraba.cow_sphinx_gate)
 
 l_0xc87280:
-    "{window_open(1)}@Warriors, enter now.{pause(20)}" linebreak
-    "  Search for the {itemname(175)}.[03]{window_closeall}" eob
+    goto(cow_scaraba.cow_sphinx_open)
 
 l_0xc872a6:
     "@Broken down, old submarine.  The yellow color is purely coincidental." next

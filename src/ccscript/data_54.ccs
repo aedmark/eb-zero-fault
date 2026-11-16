@@ -312,16 +312,7 @@ l_0xc9e613:
     call(data_44.l_0xc90d23) eob
 
 l_0xc9e619:
-    "[06 14 01 {e(data_32.l_0xc7c588)}]{music(134)}@You may have forgotten, but *Buuuuurp!*..." next
-    "@I'm the return of Belch!{sound(78)}{pause(1)}" next
-    "@I've fought you before." next
-    "{sound(78)}{pause(1)}@Peeeeyouuu!" next
-    "@Don't you remember my ripe odor?" next
-    "@Belch has trained more and has returned much stronger." next
-    "@Buuuurp!{pause(20)}{sound(78)}{pause(1)}  Belch has also changed his name to Puke!..." next
-    "@Barf!  vomit!  barf, barf!  chuck!  chuck!" next
-    "@Drown to death in puke!" next
-    "@Don't you think that's an incredibly masculine taunt to throw at you?[03]" call(data_21.l_0xc68570) "[1B 03 {e(data_21.l_0xc683de)}]{party_add(4)}{learnpsi(4, 2)}{set(flag 276)}{pause(1)}[1F F1 CD 04 7B 02]" eob
+    goto(cow_deepdark.cow_master_barf)
 
 l_0xc9e763:
     "@Kaweeeek!" next

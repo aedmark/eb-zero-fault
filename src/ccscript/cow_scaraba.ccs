@@ -1,0 +1,65 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 11: Scaraba & Pyramid Cryptographic Archive
+// ==============================================================================
+// Sphinx security enclave, Hawk Eye optical transceiver extraction, and
+// Prince Poo asynchronous microcode compilation (Thread 4 descheduling).
+// ==============================================================================
+
+cow_sphinx_gate:
+    "{window_open(1)}@SECURITY ENCLAVE CHALLENGE:" next
+    "@Who seeks bus access to the read-only Pyramid archive?" next
+    "@Identify your operational profile: an unprivileged scraper, a verification unit, or an unauthorized probing daemon?" next
+    "@Input the 4-step instruction vector verified in the museum hieroglyphs!{wait}{window_closeall}{set(flag 7)}{set(flag 152)}"
+    eob
+
+cow_sphinx_open:
+    "{window_open(1)}@CRYPTOGRAPHIC SIGNATURE VERIFIED." next
+    "@Bus access granted to verified units.{pause(20)}" linebreak
+    "  Enter the archive and extract the {itemname(175)} optical transceiver.[03]{window_closeall}"
+    call(cow_engine.cow_fault_commit_scaraba)
+    "{set(flag 907)}"
+    eob
+
+cow_pyramid_hawkeye:
+    "[06 5C 01 {e(data_46.l_0xc93234)}]@(An optical transceiver array rests on the pedestal." next
+    "@Extract the {itemname(175)} low-signal sensor array?)" linebreak
+    call(data_33.l_0xc7dd4f) "[11]{clearline}[09 02 {e(cow_pyramid_hawkeye_get)} {e(cow_pyramid_hawkeye_no)}]"
+    goto(cow_pyramid_hawkeye_no)
+
+cow_pyramid_hawkeye_no:
+    "@(Wasn't this hardware sensor the entire objective of this sector query?)" end
+
+cow_pyramid_hawkeye_get:
+    "[1D 03 FF][1B 02 {e(data_46.l_0xc931f1)}][1D 0E 00 AF]"
+    call(data_33.l_0xc7dcb6)
+    "{wait}{set(flag 348)}{set(flag 908)}{pause(10)}[1F 1E AB 04 06]"
+    eob
+
+cow_star_master:
+    "{window_open(1)}@Compilation milestone reached." next
+    "@You traversed the cryptographic archive successfully![03]{window_closeall}"
+    call(data_45.l_0xc915f4)
+    "{sound(37)}{pause(90)}{window_open(1)}@We synchronize at last, Prince {stat(74)}.[03]{window_closeall}"
+    eob
+
+cow_star_master_explain:
+    "{window_open(1)}@Telemetry signals predicted our synchronization at this node." next
+    "@The execution cycle has arrived to compile the <PK Starstorm> routine..." next
+    "@Your thread must be temporarily descheduled from the active group pool." next
+    "@You must compile high-energy arithmetic routines in remote isolation." next
+    "@Do you understand?" next
+    "@There is only one valid compilation vector." next
+    "@I must preempt your thread slot even if your scheduler objects." next
+    "@Yield your thread slot for remote optimization![03]{window_closeall}{pause(30)}"
+    "{set(flag 909)}"
+    goto(data_46.l_0xc9329b)
+
+cow_poo_departure:
+    "[1F E4 04 00 01]{window_open(1)}@Coordinator {name(1)}..." next
+    "@It is critical that I compile and optimize the <PK Starstorm> arithmetic library." next
+    "@The routine will provide essential high-throughput attack primitives." next
+    "@Once compilation completes,{pause(15)} I will execute a far-interrupt to rejoin your pool." next
+    "@Trust my thread...{pause(20)} I will resynchronize with you soon.[03]{window_closeall}{set(flag 17)}"
+    eob

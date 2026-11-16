@@ -1,0 +1,26 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 11: Deep Darkness & Cascading Leak Daemon
+// ==============================================================================
+// High-attenuation swamp corridor, Master Barf cascading memory corruption,
+// and Prince Poo far-interrupt thread resynchronization with PK Starstorm.
+// ==============================================================================
+
+cow_master_barf:
+    "[06 14 01 {e(data_32.l_0xc7c588)}]{music(134)}@You believed my thread was permanently purged at Grapefruit Falls? *Buuuuurp!*..." next
+    "@I am the Cascading Leak Daemon!{sound(78)}{pause(1)}" next
+    "@I survived the buffer overflow exploit!" next
+    "{sound(78)}{pause(1)}@Peeeeyouuu!" next
+    "@Do you detect the stench of my dirty memory pages?" next
+    "@I spawned secondary recursive processes and multiplied my corruption routines." next
+    "@Buuuurp!{pause(20)}{sound(78)}{pause(1)}  Belch has re-aliased to Master Barf!..." next
+    "@Stack fault! Heap smash! Buffer bleed! Leak, leak!" next
+    "@Drown in recursive memory corruption!" next
+    "@Prepare to have your entire stack space overwritten![03]"
+    call(data_21.l_0xc68570)
+    "[1B 03 {e(data_21.l_0xc683de)}]"
+    "{party_add(4)}{learnpsi(4, 2)}{set(flag 276)}{pause(1)}"
+    call(cow_engine.cow_fault_commit_deepdark)
+    "{set(flag 911)}[1F F1 CD 04 7B 02]"
+    eob

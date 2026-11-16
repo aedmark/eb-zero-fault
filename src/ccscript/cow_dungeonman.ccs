@@ -1,0 +1,87 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 11: Southern Scaraba & Dungeon Man Coprocessor
+// ==============================================================================
+// Dungeon Man hybrid hardware acceleration coprocessor, bus interface bridging,
+// channel aperture stall (trees), and submerged packet transport recovery.
+// ==============================================================================
+
+cow_dungeonman_key_npc:
+    "[06 50 01 {e(cow_dungeonman_key_done)}]@A colossal monolithic hardware unit dominates the northwestern quadrant." next
+    "@Sensors indicate an integrated hybrid coprocessor." next
+    "@I salvaged an address decoder key from an external peripheral register." next
+    "@Take this key to bridge the coprocessor bus interface.[1D 03 FF][1B 02 {e(data_06.l_0xc57718)}][03][1D 0E 00 C0][1B 05]"
+    call(data_33.l_0xc7dcb6)
+    "{set(flag 336)}{wait}{window_closeall}{isset(flag 691)}[1B 02 {e(data_51.l_0xc9992f)}]{pause(60)}"
+    call(data_22.l_0xc692f7)
+    eob
+
+cow_dungeonman_key_done:
+    "@The monolithic hybrid coprocessor stands in the northwest." next
+    "@Its clock cycles vibrate across the entire desert basin." end
+
+cow_dungeonman_unlock:
+    "{store_registers}[06 5E 02 {e(data_06.l_0xc577c5)}]{load_registers}"
+    call(data_33.l_0xc7dd2c)
+    "{result_is(192)}[1B 02 {e(data_06.l_0xc577b2)}]{load_registers}"
+    call(data_33.l_0xc7dd37)
+    newline
+    "@(The address decoder key bridged the coprocessor interface." next
+    "@Bus connection established. You may enter the processing core.){wait}{wait}{set(flag 606)}{sound(119)}{window_closeall}{warp(159)}"
+    call(data_52.l_0xc9b112)
+    eob
+
+cow_brick_road:
+    "[06 DA 00 {e(cow_brick_road_dialogue)}][06 97 00 {e(data_06.l_0xc57a26)}]"
+    goto(cow_brick_road_dialogue)
+
+cow_brick_road_dialogue:
+    "@Welcome to the processing core![03]{window_closeall}"
+    call(data_45.l_0xc915f4)
+    "{sound(37)}{pause(90)}{window_open(1)}[06 DA 00 {e(cow_brick_road_post)}]"
+    "@Long time no see, Analyst {name(3)}." next
+    "@We synchronized in the Winters debug facility." next
+    "@I am Brick Road. Dr. Andonuts synthesized my logic gates with this monolithic chassis." next
+    "@I am Dungeon Man: an integrated hybrid hardware acceleration coprocessor!" next
+    "@I will couple my execution pipeline with your party threads." next
+    "@Jump into the <Return Hole> conduit and traverse outward!{wait}"
+    call(cow_engine.cow_fault_commit_dungeonman)
+    "{set(flag 910)}{set(flag 24)}{set(flag 445)}[1F 66 01 09 81 33 C9 00]{set(flag 507)}"
+    eob
+
+cow_brick_road_post:
+    "@I am pleased that my hardware coprocessor assisted your pipeline throughput." next
+    "@Continue onward!{wait}{window_closeall}" eob
+
+cow_dungeonman_stuck:
+    "{pause(20)}{window_open(1)}@HARDWARE PIPELINE STALL!{pause(20)}" next
+    "@My physical coprocessor chassis exceeds the transmission channel width!" next
+    "@I am trapped between the palm tree array!{pause(20)} Bus motion halted." next
+    "@Though my coprocessor is pinned, your mobile threads must advance." next
+    "[19 10 01]{rtoarg}@{name(0)}, decoupling pipeline here." next
+    "@Continue onward without hardware acceleration![03]{window_closeall}{pause(20)}{party_remove(10)}[1F 17 80 04 08 00 01]{set(flag 274)}"
+    call(data_33.l_0xc7de60)
+    "{unset(flag 756)}{sound(17)}{unset(flag 662)}[1F E8 FF]{pause(20)}{sound(5)}"
+    call(data_33.l_0xc7dd6b)
+    "{music_resume}"
+    eob
+
+cow_dungeonman_submarine_talk:
+    "[06 DA 00 {e(data_46.l_0xc934e4)}]{window_open(1)}[06 97 00 {e(cow_dungeonman_sub_offer)}]"
+    "@My chassis remains pinned at this channel bottleneck." next
+    "@Do not concern your scheduler with my status...{pause(20)} Proceed forward.{wait}{window_closeall}"
+    eob
+
+cow_dungeonman_sub_offer:
+    "@A submerged transport?" next
+    "@Sensors confirm...{pause(15)} I retain a yellow packet submarine in my auxiliary storage register." next
+    "@Enter my processing core to retrieve it...{wait}{window_closeall}{pause(1)}"
+    goto(data_46.l_0xc934e4)
+
+cow_jeff_repair_submarine:
+    "{counter(3)}"
+    call(data_33.l_0xc7dc7f)
+    "[1B 03 {e(data_06.l_0xc57c6f)}]@({name(3)} analyzed the submerged packet transport.)" next
+    "@I/O channels intact!{pause(20)} Firmware reflashed and operational!{wait}{window_closeall}"
+    goto(data_46.l_0xc934ed)

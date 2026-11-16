@@ -84,6 +84,19 @@ HOOKS = [
     (0x09C9E8, b"\x0A", "CoW Dalaam Conclude Hook (0xC9C9E8)"),
     (0x08B52A, b"\x0A", "CoW Sailor Captain Hook (0xC8B52A)"),
     (0x092C70, b"\x0A", "CoW Kraken Voyage Hook (0xC92C70)"),
+    (0x087220, b"\x0A", "CoW Sphinx Gate Hook (0xC87220)"),
+    (0x087280, b"\x0A", "CoW Sphinx Open Hook (0xC87280)"),
+    (0x093181, b"\x0A", "CoW Pyramid Hawk Eye Hook (0xC93181)"),
+    (0x0932F6, b"\x0A", "CoW Poo Departure Hook (0xC932F6)"),
+    (0x05739F, b"\x0A", "CoW Star Master Hook (0xC5739F)"),
+    (0x0573DC, b"\x0A", "CoW Star Master Explain Hook (0xC573DC)"),
+    (0x05762C, b"\x0A", "CoW Dungeon Man Key NPC Hook (0xC5762C)"),
+    (0x057760, b"\x0A", "CoW Dungeon Man Unlock Hook (0xC57760)"),
+    (0x057955, b"\x0A", "CoW Brick Road Dungeon Man Hook (0xC57955)"),
+    (0x093381, b"\x0A", "CoW Dungeon Man Stuck Hook (0xC93381)"),
+    (0x09344F, b"\x0A", "CoW Dungeon Man Submarine Talk Hook (0xC9344F)"),
+    (0x057C2C, b"\x0A", "CoW Jeff Repair Submarine Hook (0xC57C2C)"),
+    (0x09E619, b"\x0A", "CoW Master Barf Hook (0xC9E619)"),
 ]
 
 # Active NPC Configuration Table bindings verified dynamically against compiled symbols in summary.txt
@@ -114,6 +127,11 @@ NPC_BINDINGS = [
     (1069, "cow_beach_cake_lady", "NPC Table Entry 1069 (Beach Cart Cake Lady Pointer)"),
     (1089, "cow_master_dalaam", "NPC Table Entry 1089 (Dalaam Master Pointer)"),
     (1065, "cow_sailor_captain", "NPC Table Entry 1065 (Sailor Captain Pointer)"),
+    (1149, "cow_dungeonman_key_npc", "NPC Table Entry 1149 (Dungeon Man Key NPC Pointer)"),
+    (1152, "cow_dungeonman_submarine_talk", "NPC Table Entry 1152 (Dungeon Man Submarine Talk Pointer)"),
+    (1196, "cow_brick_road", "NPC Table Entry 1196 (Brick Road Dungeon Man Pointer)"),
+    (1197, "cow_jeff_repair_submarine", "NPC Table Entry 1197 (Submarine Repair Pointer)"),
+    (1229, "cow_master_barf", "NPC Table Entry 1229 (Master Barf Deep Darkness Pointer)"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
@@ -166,6 +184,13 @@ THEMATIC_NAMES = [
     "Recursive Sprout",
     "Interrupt Mite",
     "Heap Dump",
+    # Phase 11 thematic enemies
+    "Cascading Leak Daemon",
+    "Instruction Decoder",
+    "Security Enclave Guard",
+    "Fragmented Heap Dump",
+    "Signal Jitter Eel",
+    "Packet Loss Slug",
 ]
 
 

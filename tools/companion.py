@@ -752,6 +752,11 @@ class CompanionRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             return
 
+        if url.path == "/favicon.ico":
+            self.send_response(204)
+            self.end_headers()
+            return
+
         if url.path == "/api/status":
             rom_path = REPO_ROOT / "build" / "eb_zero_fault.sfc"
             status = {
@@ -834,6 +839,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
   <title>Zero Fault Companion - ROM Text Explorer & Exporter</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
@@ -1815,7 +1821,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
       spinner.classList.remove('hidden');
       statusBadge.className = 'px-3 py-2 rounded bg-indigo-950 text-indigo-200 border border-indigo-800 flex items-center justify-between';
       statusText.textContent = 'Running CoilSnake build pipeline and compiling CCScript...';
-      consoleOutput.textContent = 'Compiling project to build/eb_zero_fault.sfc...\n';
+      consoleOutput.textContent = 'Compiling project to build/eb_zero_fault.sfc...\\n';
       btnLaunch.classList.add('hidden');
       btnDownload.classList.add('hidden');
 
@@ -1828,7 +1834,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
           spinner.classList.add('hidden');
           statusBadge.className = 'px-3 py-2 rounded bg-emerald-950 text-emerald-200 border border-emerald-800 flex items-center justify-between font-bold';
           statusText.textContent = `Build Complete! 4,194,304 bytes in ${{result.total_duration}}s. All 245 binary assertions passed!`;
-          consoleOutput.textContent = result.build_output + '\n\n' + result.verify_output;
+          consoleOutput.textContent = result.build_output + '\\n\\n' + result.verify_output;
           btnLaunch.classList.remove('hidden');
           btnDownload.classList.remove('hidden');
         }} else {{

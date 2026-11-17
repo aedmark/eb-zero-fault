@@ -47,8 +47,10 @@ command e(label) "{long label}"
 // 913: Sector 30 - Lumine Hall 7th Sanctuary Cache
 // 914: Sector 31 - Lost Underworld Bare-Metal Substrate
 // 915: Sector 32 - Fire Spring 8th Sanctuary Cache
+// 920: Sector 33 - Magicant Core Dump Memory Space
+// 921: Sector 34 - Sea of Eden Deep Kernel Space
 
-// Entity Mutation Bits (870-919)
+// Entity Mutation Bits (870-925)
 // 870: Mom baseline dirtied (refcount = 2 awareness)
 // 871: Tracy baseline dirtied (memory buffer initialized)
 // 872: Pokey baseline dirtied (unbound pointer hijacked)
@@ -87,6 +89,10 @@ command e(label) "{long label}"
 // 917: Lumine Hall 7th Sanctuary cache line synchronized (Electro Specter purged)
 // 918: Lost Underworld Talking Stone immutable records accessed
 // 919: Fire Spring 8th Sanctuary cache line synchronized (Carbon Dog / Diamond Dog purged)
+// 922: Magicant core dump space entered / CoW page frame coalescence verified
+// 923: Flying Men ephemeral helper threads dispatched
+// 924: Sea of Eden deep kernel threshold crossed
+// 925: Ness's Nightmare root mutex lock purged / kernel deadlock cleared
 
 // Reusable Engine Commands
 command cow_touch(f) "{set(flag f)}"
@@ -174,3 +180,9 @@ cow_fault_commit_underworld:
 
 cow_fault_commit_firespring:
     "{set(flag 915)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_magicant:
+    "{set(flag 920)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_seaofeden:
+    "{set(flag 921)}{sound(11)}{pause(15)}" eob

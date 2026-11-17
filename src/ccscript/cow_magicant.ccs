@@ -1,0 +1,92 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 13: Magicant Core Dump Scenario
+// ==============================================================================
+// Copy-on-Write page coalescence, core dump memory space (Sector 33, flag 920),
+// ephemeral worker thread allocation, and stack trace core dump tombstones.
+// Mutation flags: 922 (coalescence verified), 923 (worker threads dispatched).
+// ==============================================================================
+
+cow_magicant_greeter:
+    "[06 9A 03 {e(cow_magicant_greeter_done)}]"
+    "@Global Copy-on-Write page coalescence verified." next
+    "@You have entered Sector 33: Kernel Core Dump Memory Space." next
+    "@All divergent dirty pages from sectors 01 through 32 have collapsed into this debug realm." next
+    "@Coordinator Thread 1 ({name(1)}) is running in ring -1 hypervisor isolation." next
+    "@Inspect your memory trace and subconscious registers at your own pace.{wait}{set(flag 922)}"
+    call(cow_engine.cow_fault_commit_magicant)
+    "[1F E1 1F 05 3C]" eob
+
+cow_magicant_greeter_done:
+    "@Sector 33 remains mapped in core dump inspection mode." next
+    "@Prepare for root mutex resolution at the northern kernel gateway.{wait}[1F E1 1F 05 3C]" eob
+
+cow_magicant_tracy:
+    "@Coordinator Thread 1 ({name(1)})!" next
+    "@Auxiliary Storage Buffer Tracy active in core dump mode." next
+    "@The Sea of Eden (Sector 34) lies beyond the northern threshold." next
+    "@Non-privileged threads cannot access that memory space." next
+    "[1F E1 05 00 3C]@Access auxiliary storage registers?" linebreak
+    goto(data_18.l_0xc64687)
+
+cow_magicant_young_ness:
+    "@Parent Pointer trace: Initial boot instance of PID 1 ({name(1)})." next
+    "@Memory footprint: 64KB base RAM." next
+    "@Uncommitted childhood state registers cached in read-only segment." next
+    "@Do you wish to execute legacy game subroutines?" next
+    "@Acknowledged: Current system execution demands forward progress.{wait}[1F E1 1F 03 3C]" eob
+
+cow_magicant_flying_man_1:
+    call(data_29.l_0xc7716d)
+    "[1B 03 {e(data_29.l_0xc77148)}]"
+    call(cow_magicant_flying_man_dialogue)
+    call(data_21.l_0xc68359)
+    "{set(flag 587)}{set(flag 28)}{set(flag 923)}" eob
+
+cow_magicant_flying_man_2:
+    call(data_29.l_0xc7716d)
+    "[1B 03 {e(data_29.l_0xc77148)}]"
+    call(cow_magicant_flying_man_dialogue)
+    call(data_21.l_0xc68397)
+    "{set(flag 587)}{set(flag 29)}{set(flag 923)}" eob
+
+cow_magicant_flying_man_dialogue:
+    "[06 CF 00 {e(cow_magicant_fm_5)}][06 CE 00 {e(cow_magicant_fm_4)}][06 CD 00 {e(cow_magicant_fm_3)}][06 CC 00 {e(cow_magicant_fm_2)}]"
+    "@Ephemeral Worker Thread 1 (PID 11) allocated via pthread_create." next
+    "@I am an auxiliary execution unit bound to your stack frame." next
+    "@I will intercept memory faults and absorb stack overflow exceptions." next
+    "@Worker Thread 1 online.[03]" eob
+
+cow_magicant_fm_2:
+    "@Ephemeral Worker Thread 2 (PID 12) allocated." next
+    "@Previous worker thread terminated and garbage collected." next
+    "@Auxiliary stack protection re-established.[03]" eob
+
+cow_magicant_fm_3:
+    "@Ephemeral Worker Thread 3 (PID 13) dispatched." next
+    "@Thread pool allocation headroom diminishing." next
+    "@Stack frame integrity monitoring active.[03]" eob
+
+cow_magicant_fm_4:
+    "@Ephemeral Worker Thread 4 (PID 14) initialized." next
+    "@Warning: Do not thrash worker threads like unmanaged heap allocations!" next
+    "@Thread descriptor table nearly exhausted.[03]" eob
+
+cow_magicant_fm_5:
+    "@Final Worker Thread 5 (PID 15) allocated!" next
+    "@Thread pool capacity at 100%!" next
+    "@If this worker thread faults, no auxiliary threads remain!" next
+    "@You will execute unshielded in bare-metal kernel space![03]" eob
+
+cow_magicant_tombstone_1:
+    "@Worker Thread 1 (PID 11) core dumped here." next
+    "@Stack frame terminated with status 0. Deallocated from active task table." end
+
+cow_magicant_tombstone_2:
+    "@Worker Thread 2 (PID 12) core dumped here." next
+    "@Absorbed fatal memory exception and triggered clean stack unwind." end
+
+cow_magicant_tombstone_buzz:
+    "@Buzz Buzz Debug Daemon tombstone." next
+    "@Terminated during Onett bootstrap sequence prior to architectural audit completion." end

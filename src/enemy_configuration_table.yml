@@ -834,7 +834,7 @@
   Money: 791
   Movement pattern: 27
   Music: 97
-  Name: Electro Swoosh
+  Name: Socket Exception
   Offense: 140
   Overworld Sprite: 276
   PP: 338
@@ -1022,7 +1022,7 @@
   Money: 4442
   Movement pattern: 0
   Music: 148
-  Name: '|''s Nightmare'
+  Name: Root Mutex Lock
   Offense: 172
   Overworld Sprite: 293
   PP: 882
@@ -2385,7 +2385,7 @@
   Money: 960
   Movement pattern: 23
   Music: 104
-  Name: Bionic Kraken
+  Name: Hypervisor Kraken
   Offense: 155
   Overworld Sprite: 306
   PP: 60
@@ -4594,7 +4594,7 @@
   Money: 879
   Movement pattern: 27
   Music: 96
-  Name: French Kiss of Death
+  Name: Fatal Signal
   Offense: 160
   Overworld Sprite: 277
   PP: 0
@@ -5440,7 +5440,7 @@
   Money: 641
   Movement pattern: 27
   Music: 96
-  Name: Care Free Bomb
+  Name: Unbounded Task
   Offense: 135
   Overworld Sprite: 277
   PP: 0
@@ -6521,7 +6521,7 @@
   Money: 659
   Movement pattern: 27
   Music: 98
-  Name: Mr. Molecule
+  Name: Atomic Register
   Offense: 118
   Overworld Sprite: 277
   PP: 21
@@ -8119,7 +8119,7 @@
   Money: 4442
   Movement pattern: 0
   Music: 148
-  Name: '|''s Nightmare'
+  Name: Root Mutex Lock
   Offense: 172
   Overworld Sprite: 293
   PP: 882
@@ -8636,7 +8636,7 @@
   Money: 960
   Movement pattern: 23
   Music: 104
-  Name: Bionic Kraken
+  Name: Hypervisor Kraken
   Offense: 155
   Overworld Sprite: 306
   PP: 60

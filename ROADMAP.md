@@ -124,3 +124,25 @@ Goal: Author late-game narrative scenarios across Tenda Village mutual exclusion
 - [x] P12-04 Author Fire Spring 8th Sanctuary cache line synchronization and Carbon Dog / Diamond Dog thermal runaway state transition confrontation (D-018; implemented src/ccscript/cow_firespring.ccs overriding EF57EB, C7C479, and C7C4C9, 2026-11-15).
 - [x] P12-05 Integrate Phase 12 dual-binding dispatch across NPC configuration table and legacy label trampolines with CoW engine sector commit routines (D-018; updated src/npc_config_table.yml entries 1246, 1252, 1258, 1260, 1261, 1276, 1292 and src/ccscript/cow_engine.ccs, 2026-11-15).
 - [x] P12-06 Rebalance regional monsters in src/enemy_configuration_table.yml (Telemetry Monitor, Thermal Runaway, Crystallized Mutex, Kernel Power Unit, Legacy Thread, Monolithic Struct, PRNG Generator, Process Orb) (D-018; updated entries 13, 27, 35, 36, 44, 83, 116, 127, 174, 175, 190, 195, 200, 2026-11-15).
+
+## Phase 13: Magicant, Sea of Eden, and Ness's Nightmare Scenarios
+
+Goal: Author penultimate narrative scenarios across Magicant core dump memory space, Flying Men ephemeral worker threads, the Sea of Eden deep kernel threshold, and Ness's Nightmare root mutex corruption.
+
+- [x] P13-01 Script Magicant Copy-on-Write page coalescence, core dump memory space, root child pointer projections, and resident storage daemon (D-019; implemented src/ccscript/cow_magicant.ccs overriding C773F4, C7743D, and C772FF, 2026-11-16).
+- [x] P13-02 Author Flying Men ephemeral helper thread allocation, stack frame interception, thread pool exhaustion, and stack trace core dump tombstones (D-019; implemented src/ccscript/cow_magicant.ccs overriding C76F7A, C76F96, C76FB2, C776EE, C77713, and C7779E, 2026-11-16).
+- [x] P13-03 Script Sea of Eden deep kernel space gateway, hypervisor threshold warning, and Mani Mani root reflection (D-019; implemented src/ccscript/cow_seaofeden.ccs overriding C777F2 and C7786E, 2026-11-16).
+- [x] P13-04 Author Ness's Nightmare Root Mutex Lock Daemon confrontation, kernel deadlock release, and 32-bit register expansion (D-019; implemented src/ccscript/cow_seaofeden.ccs overriding C7794C, 2026-11-16).
+- [x] P13-05 Script physical bus wake-up and thread resynchronization re-attaching Threads 2, 3, and 4 in Saturn Valley (D-019; implemented src/ccscript/cow_resync.ccs overriding C9B4C9, 2026-11-16).
+- [x] P13-06 Rebalance regional monsters in src/enemy_configuration_table.yml (Root Mutex Lock, Hypervisor Kraken, Socket Exception, Fatal Signal, Unbounded Task, Atomic Register) (D-019; updated entries 17, 21, 50, 97, 115, 138, 172, 183, 2026-11-16).
+
+## Phase 14: Phase Distorter Assembly, Onett Meteorite Zexonyte, and Hardware Conversion Scenarios
+
+Goal: Author late-game preparation scenarios across Saturn Valley Phase Distorter development, Onett power grid blackout, meteorite core Zexonyte extraction, and physical-to-robot body hardware architecture transfer.
+
+- [ ] P14-01 Script Dr. Andonuts and Apple Kid Phase Distorter hypervisor engine assembly and missing Zexonyte element telemetry in Saturn Valley (D-020).
+- [ ] P14-02 Script Onett night invasion, bus contention blackout, Giygas invasion daemons, and meteorite core fragment extraction (D-020).
+- [ ] P14-03 Script Saturn Valley Phase Distorter v2 hijacking sequence and Mr. Saturn tea ceremony thread synchronization (D-020).
+- [ ] P14-04 Script Phase Distorter v3 biological chassis decommissioning and 65816-to-robotic hardware architecture transfer (D-020).
+- [ ] P14-05 Integrate Phase 14 dual-binding dispatch across NPC configuration table and legacy label trampolines with CoW engine sector commit routines (D-020).
+- [ ] P14-06 Rebalance regional monsters in src/enemy_configuration_table.yml (Ghost of Starman, Evil Eye, etc.) (D-020).

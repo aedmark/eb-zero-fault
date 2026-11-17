@@ -179,41 +179,25 @@ l_0xc76f5e:
     call(l_0xc7716d) "[1B 03 {e(l_0xc77148)}]" call(l_0xc76fb2) call(data_21.l_0xc6831b) "{set(flag 587)}{set(flag 27)}" eob
 
 l_0xc76f7a:
-    call(l_0xc7716d) "[1B 03 {e(l_0xc77148)}]" call(l_0xc76fb2) call(data_21.l_0xc68359) "{set(flag 587)}{set(flag 28)}" eob
+    goto(cow_magicant.cow_magicant_flying_man_1)
 
 l_0xc76f96:
-    call(l_0xc7716d) "[1B 03 {e(l_0xc77148)}]" call(l_0xc76fb2) call(data_21.l_0xc68397) "{set(flag 587)}{set(flag 29)}" eob
+    goto(cow_magicant.cow_magicant_flying_man_2)
 
 l_0xc76fb2:
-    "[06 CF 00 {e(l_0xc770b0)}][06 CE 00 {e(l_0xc7706a)}][06 CD 00 {e(l_0xc7703f)}][06 CC 00 {e(l_0xc77007)}]@I am your courage." next
-    "@I follow you here in Magicant." next
-    "@...My name?" next
-    "@Let's say Flying Man.[03]" eob
+    goto(cow_magicant.cow_magicant_flying_man_dialogue)
 
 l_0xc77007:
-    "@I'll be your courage." next
-    "@I'll remain unless you lose your courage." next
-    "@Call me Flying Man 2.[03]" eob
+    eob
 
 l_0xc7703f:
-    "@I'm Flying Man 3." next
-    "@Your courage hasn't died yet." next
-    "@Let's go![03]" eob
+    eob
 
 l_0xc7706a:
-    "@I'm also your courage." next
-    "@Call me Return of the Flying Man!" next
-    "@...How's that?" next
-    "@However... don't treat us like trash.[03]" eob
+    eob
 
 l_0xc770b0:
-    "@Of course, we're your courage." next
-    "@But we warned you not to treat us like trash!" next
-    "@Didn't you get it?!" next
-    "@This isn't courage, it's desperation." next
-    "@If you don't understand <courage,>{pause(15)} look it up in the dictionary." next
-    "@Okay?" next
-    "@My name's The Final Flying Man.[03]" eob
+    eob
 
 l_0xc77148:
     "@Did you want to talk to me?" next
@@ -258,11 +242,7 @@ l_0xc772c8:
     "@I'll make some {stat(4)} for you.[03]" call(data_45.l_0xc915f4) call(data_45.l_0xc91693) "{unset(flag 383)}{warp(52)}[1F E1 1F 07 3C]" eob
 
 l_0xc772ff:
-    "@Brother {name(1)}!" next
-    "@The <Sea of Eden> is at the end of Magicant." next
-    "@Other people can't get close to it.{pause(20)}  It's a strange place." next
-    "[1F E1 05 00 3C]@Is there anything I can do for you?" linebreak
-    goto(data_18.l_0xc64687)
+    goto(cow_magicant.cow_magicant_tracy)
 
 l_0xc7735d:
     "@Whimper... whine." next
@@ -275,14 +255,10 @@ l_0xc7739f:
     "@But you've heard my song in the back of your mind.)" end
 
 l_0xc773f4:
-    "@This is the realm of Magicant, which your mind created." next
-    "@Why don't you explore your mind.{pause(20)}  Take your time, {name(1)}.{wait}[1F E1 1F 05 3C]" eob
+    goto(cow_magicant.cow_magicant_greeter)
 
 l_0xc7743d:
-    "@It's me...{pause(20)}  I'm you when you were younger." next
-    "@Hey, let's play ball." next
-    "@Do you prefer reading comics or playing games?" next
-    "@What?{pause(20)}  You're busy?...{wait}[1F E1 1F 03 3C]" eob
+    goto(cow_magicant.cow_magicant_young_ness)
 
 l_0xc7749d:
     "@You kicked my butt badly..." next
@@ -350,12 +326,10 @@ l_0xc776c8:
     "  Face the sun and smile...{wait}[1F E1 05 00 3C]" eob
 
 l_0xc776ee:
-    "@{name(1)}'s courage is resting here." next
-    "@He fought well and died." end
+    goto(cow_magicant.cow_magicant_tombstone_1)
 
 l_0xc77713:
-    "@Another one of {name(1)}'s courage is resting here." next
-    "@He damaged evil terribly, and finally died." end
+    goto(cow_magicant.cow_magicant_tombstone_2)
 
 l_0xc7774b:
     "@Here he rests..." next
@@ -368,51 +342,16 @@ l_0xc77790:
     "@Tombstone.{wait}{set(flag 159)}" eob
 
 l_0xc7779e:
-    "@This is Buzz Buzz's tombstone." next
-    "@He appeared earlier in the game and gave up the ghost" next
-    "@before he achieved his goal." end
+    goto(cow_magicant.cow_magicant_tombstone_buzz)
 
 l_0xc777f2:
-    "@The Sea of Eden is filled with ultimate intelligence." next
-    "@You can't go there unless you're truly ready." next
-    "@It's a place where you can touch the truth of the universe." next
-    "@Going there may bring sorrow.{wait}[1F E1 1F 05 3C]" eob
+    goto(cow_seaofeden.cow_seaofeden_greeter)
 
 l_0xc7786e:
-    "@{name(1)}, you've stood on the eight power spots of the earth." next
-    "@From these,{pause(15)} you created Magicant, the realm of your mind." next
-    "@In Magicant,{pause(15)} there's beauty,{pause(15)} kindness,{pause(15)} sorrow,{pause(20)} and hatred." next
-    "@Of course, there's an evil and violent side of you." next
-    "@The Sea of Eden sits at the center of those feelings." next
-    "@It takes you to the truth about yourself.{wait}[1F E1 1F 06 3C]" eob
+    goto(cow_seaofeden.cow_seaofeden_guide)
 
 l_0xc7794c:
-    "[06 4A 00 {e(data_32.l_0xc7c588)}]@(I'm the evil part of your brain." next
-    "@You can't beat me." next
-    "@Because you are the one who forced me into being...)[03]" call(data_21.l_0xc6857c) "[1B 03 {e(data_21.l_0xc683de)}]{set(flag 74)}{pause(1)}[1F F1 4E 05 7B 02]{pause(40)}[1F 15 6A 00 00 03 01][1F 61][1F E7 6A 00]{window_open(1)}@({name(1)} heard a familiar voice at the center of the Sea of Eden.)" next
-    call(l_0xc77c50) "@Giygas' goal is" linebreak
-    "  to destroy you." next
-    call(l_0xc77c50) "@Listen carefully!" next
-    call(l_0xc77c50) "@Everything in the unverse could be destroyed at the hands of Giygas." next
-    call(l_0xc77c50) "@But he and his followers are also in trouble." next
-    call(l_0xc77c50) "@The Apple of Enlightenment has foretold" next
-    call(l_0xc77c50) "@that Giygas' attempt will fail." next
-    call(l_0xc77c50) "@It is because of the existence of a boy named {name(1)}." next
-    call(l_0xc77c50) "@...That's me!" next
-    call(l_0xc77c50) "@Listen." next
-    call(l_0xc77c50) "@Free your mind and KNOW what you must do!" next
-    call(l_0xc77c50) "@Your destiny has already been decided." next
-    call(l_0xc77c50) "@You...{pause(20)} I...{pause(20)} where should we go?" next
-    call(l_0xc77c50) "@You know deep within the reaches of your mind." next
-    call(l_0xc77c50) "@...S{pause(15)} ...Sat...{pause(20)}" linebreak
-    "  ...Saturn" next
-    "@....." next
-    call(l_0xc77c50) "@Saturn Valley...{pause(20)} yes..." next
-    call(l_0xc77c50) "@Go to the valley where the Mr. Saturn live." next
-    call(l_0xc77c50) "@...You'll get something new there." next
-    call(l_0xc77c50) "@Soon, Magicant will be no more.{pause(20)}  We must be quick![03]" call(l_0xc77c50) "{window_closetop}{pause(120)}{window_open(1)}@({name(1)} really heard his own voice." next
-    "@Go to Saturn Valley!" next
-    "@Go to Saturn Valley now!){wait}{window_closetop}{music_effect(3)}" call(l_0xc77c50) "{pause(60)}" goto(data_33.l_0xc7dfbe)
+    goto(cow_seaofeden.cow_ness_nightmare)
 
 l_0xc77c4f:
     eob

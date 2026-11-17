@@ -72,8 +72,7 @@ l_0xc9b4b8:
     "{pause(1)}[1F EF 6A 00][1F E8 FF][1F 61][1F ED]{lock_movement(255)}" eob
 
 l_0xc9b4c9:
-    "{event(5)}{set(flag 11)}{pause(60)}" call(data_33.l_0xc7dd6b) "{pause(120)}{window_open(1)}@Now you can wake up.{pause(20)}  Your friends are waiting for you." next
-    "@It is time to get up.[03]{window_closeall}{pause(1)}" call(l_0xc9b8dd) call(data_22.l_0xc69082) "{music(143)}[1F F2 01 00 5A 01]     {pause(1)}[1F EF 01 00]                           [1F E8 FF][1F 61][1F 15 6A 00 5F 01 01]   [1F 61][1F ED]{lock_movement(255)}{set(flag 349)}" call(data_33.l_0xc7dd6b) "[06 24 02 {e(l_0xc9b799)}][06 23 02 {e(l_0xc9b6e3)}][06 22 02 {e(l_0xc9b62d)}]{warp(197)}{lock_movement(255)}{pause(60)}" call(data_29.l_0xc77dab) "{pause(60)}[1F F1 C4 01 5B 01]{pause(30)}[1F 1A C5 01 03][1F 1A C6 01 03][1F 1A C7 01 03]{pause(90)}[1F 1E C4 01 06]         {show_char(1, 1)}                {pause(30)}[1F 1B C5 01][1F 1B C6 01][1F 1B C7 01]{pause(90)}[1F F1 C5 01 5C 01]" call(l_0xc9b84f) "[1F F1 C6 01 5D 01]" call(l_0xc9b87f) "[1F F1 C7 01 5E 01]" call(l_0xc9b898) "{party_add(2)}{hide_char(2)}[1F F1 C5 01 2F 00][1F 61][1F 1E C5 01 06]{show_char(2, 1)}{party_add(3)}{hide_char(3)}[1F F1 C6 01 2F 00][1F 61][1F 1E C6 01 06]{show_char(3, 1)}{party_add(4)}{hide_char(4)}[1F F1 C7 01 2F 00][1F 61][1F 1E C7 01 06]{show_char(4, 1)}" goto(l_0xc9b60f)
+    goto(cow_resync.cow_magicant_resync)
 
 l_0xc9b60f:
     "{pause(120)}{teleport(4, 4)}{pause(120)}[19 26 04]{unset(flag 349)}{set(flag 382)}{unset(flag 476)}[1F E8 FF]{event(6)}{unset(flag 11)}" eob

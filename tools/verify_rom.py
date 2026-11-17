@@ -110,6 +110,20 @@ HOOKS = [
     (0x09DE0E, b"\x0A", "CoW Main Talking Rock Hook (0xC9DE0E)"),
     (0x2F57EB, b"\x0A", "CoW Fire Spring Boss Hook (0xEF57EB)"),
     (0x07C479, b"\x0A", "CoW Fire Spring Melody Hook (0xC7C479)"),
+    # Phase 13 hooks
+    (0x076F7A, b"\x0A", "CoW Magicant Flying Man 1 Hook (0xC76F7A)"),
+    (0x076F96, b"\x0A", "CoW Magicant Flying Man 2 Hook (0xC76F96)"),
+    (0x076FB2, b"\x0A", "CoW Magicant Flying Man Dialogue Hook (0xC76FB2)"),
+    (0x0772FF, b"\x0A", "CoW Magicant Tracy Hook (0xC772FF)"),
+    (0x0773F4, b"\x0A", "CoW Magicant Greeter Hook (0xC773F4)"),
+    (0x07743D, b"\x0A", "CoW Magicant Young Ness Hook (0xC7743D)"),
+    (0x0776EE, b"\x0A", "CoW Magicant Tombstone 1 Hook (0xC776EE)"),
+    (0x077713, b"\x0A", "CoW Magicant Tombstone 2 Hook (0xC77713)"),
+    (0x07779E, b"\x0A", "CoW Magicant Buzz Buzz Tombstone Hook (0xC7779E)"),
+    (0x0777F2, b"\x0A", "CoW Sea of Eden Greeter Hook (0xC777F2)"),
+    (0x07786E, b"\x0A", "CoW Sea of Eden Guide Hook (0xC7786E)"),
+    (0x07794C, b"\x0A", "CoW Ness Nightmare Hook (0xC7794C)"),
+    (0x09B4C9, b"\x0A", "CoW Magicant Resync Saturn Valley Hook (0xC9B4C9)"),
 ]
 
 # Active NPC Configuration Table bindings verified dynamically against compiled symbols in summary.txt
@@ -153,6 +167,18 @@ NPC_BINDINGS = [
     (1261, "cow_tenda_unshy", "NPC Table Entry 1261 (Un-shy Tenda Pointer)"),
     (1276, "cow_firespring_boss", "NPC Table Entry 1276 (Carbon Dog Thermal Runaway Pointer)"),
     (1292, "cow_underworld_main_stone", "NPC Table Entry 1292 (Main Talking Rock Pointer)"),
+    # Phase 13 NPC bindings
+    (1316, "cow_magicant_flying_man_1", "NPC Table Entry 1316 (Magicant Flying Man 1 Pointer)"),
+    (1317, "cow_magicant_flying_man_2", "NPC Table Entry 1317 (Magicant Flying Man 2 Pointer)"),
+    (1322, "cow_magicant_greeter", "NPC Table Entry 1322 (Magicant CoW Greeter Pointer)"),
+    (1323, "cow_magicant_young_ness", "NPC Table Entry 1323 (Magicant Young Ness Cached PID Pointer)"),
+    (1340, "cow_seaofeden_greeter", "NPC Table Entry 1340 (Sea of Eden Greeter Pointer)"),
+    (1341, "cow_seaofeden_guide", "NPC Table Entry 1341 (Sea of Eden Architecture Guide Pointer)"),
+    (1343, "cow_magicant_tracy", "NPC Table Entry 1343 (Magicant Auxiliary Storage Tracy Pointer)"),
+    (1347, "cow_magicant_tombstone_1", "NPC Table Entry 1347 (Worker Thread 1 Core Dump Pointer)"),
+    (1348, "cow_magicant_tombstone_2", "NPC Table Entry 1348 (Worker Thread 2 Core Dump Pointer)"),
+    (1352, "cow_magicant_tombstone_buzz", "NPC Table Entry 1352 (Buzz Buzz Debug Daemon Tombstone Pointer)"),
+    (1358, "cow_ness_nightmare", "NPC Table Entry 1358 (Root Mutex Lock Ness's Nightmare Pointer)"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
@@ -221,6 +247,13 @@ THEMATIC_NAMES = [
     "Monolithic Struct",
     "PRNG Generator",
     "Process Orb",
+    # Phase 13 thematic enemies
+    "Root Mutex Lock",
+    "Hypervisor Kraken",
+    "Socket Exception",
+    "Fatal Signal",
+    "Unbounded Task",
+    "Atomic Register",
 ]
 
 

@@ -180,6 +180,32 @@ removing a fence whose purpose it forgot.
 **Consequences:** Unifies late-game progression up to the eighth sanctuary under systems-level concurrency, hardware telemetry, and bare-metal execution concepts. Automated verification in `tools/verify_rom.py` expanded to 175 binary assertions.
 **Review trigger:** Verification of Magicant core dump memory space and Sea of Eden transitions.
 
+## D-019 Penultimate Scenarios: Page Coalescence, Ephemeral Worker Threads, and Root Mutex Resolution (2026-11-16, status: accepted)
+**Context:** Expanding the Copy-on-Write parallel universe into Magicant, Sea of Eden, and Ness's Nightmare (P13-01 through P13-06).
+**Decision:**
+1. Author `src/ccscript/cow_magicant.ccs`: Magicant as Sector 33 global Copy-on-Write page coalescence / kernel core dump memory space (`flag 920`); Magicant Greeter at `$C773F4` (NPC 1322) verifying ring -1 hypervisor debug mode; Younger Ness at `$C7743D` (NPC 1323) as cached initial boot instance of PID 1; Tracy at `$C772FF` (NPC 1343) as auxiliary storage buffer; Flying Men at `$C76F7A`, `$C76F96`, `$C76FB2` (NPCs 1316, 1317) as ephemeral helper threads allocated on-demand via `pthread_create` with escalating thread pool exhaustion; and tombstones at `$C776EE`, `$C77713`, `$C7779E` (NPCs 1347, 1348, 1352) as stack trace core dump records.
+2. Author `src/ccscript/cow_seaofeden.ccs`: Sea of Eden as Sector 34 deep kernel space (`flag 921`); Sea of Eden Greeter and Guide at `$C777F2` and `$C7786E` (NPCs 1340, 1341) as hypervisor threshold barriers; and Ness's Nightmare at `$C7794C` (NPC 1358) as the Root Mutex Lock Daemon guarding address 0x00000000 whose defeat purges the kernel deadlock, unlocks 32-bit registers, and triggers the Saturn Valley return.
+3. Author `src/ccscript/cow_resync.ccs`: Physical bus return and thread resynchronization sequence at `$C9B4C9` re-attaching Threads 2 (Paula), 3 (Jeff), and 4 (Poo) to the active execution pool.
+4. Update `src/ccscript/cow_engine.ccs` allocating Sector dirty bits 920 (Magicant), 921 (Sea of Eden); Entity mutation bits 922-925, and corresponding commit subroutines.
+5. Enforce dual-binding dispatch across 11 NPC table entries in `src/npc_config_table.yml` (NPCs 1316, 1317, 1322, 1323, 1340, 1341, 1343, 1347, 1348, 1352, 1358) and 13 legacy label trampolines in `data_29.ccs` and `data_53.ccs`.
+6. Rebalance regional monsters in `src/enemy_configuration_table.yml`: |'s Nightmare to Root Mutex Lock (21, 172), Bionic Kraken to Hypervisor Kraken (50, 183), Electro Swoosh to Socket Exception (17), French Kiss of Death to Fatal Signal (97), Care Free Bomb to Unbounded Task (115), Mr. Molecule to Atomic Register (138).
+**Alternatives:** Treating Magicant as whimsical dreamscape and Ness's Nightmare as surreal psychic manifestation (breaks systems architecture metaphor).
+**Consequences:** Resolves the internal psychological climax as a hardware-level page convergence and kernel mutex unlocking. Automated verification in `tools/verify_rom.py` expanded to 203 binary assertions.
+**Review trigger:** Verification of Phase Distorter assembly in Saturn Valley and Onett invasion.
+
+## D-020 Late-Game Preparation: Phase Distorter Assembly, Onett Meteorite Zexonyte, and Hardware Conversion (2026-11-16, status: proposed)
+**Context:** Preparing for late-game scenarios across Saturn Valley Phase Distorter development, Onett power grid blackout, meteorite core extraction, and physical-to-robot body hardware architecture transfer (P14-01 through P14-06).
+**Decision:**
+1. Author `src/ccscript/cow_phasedistorter.ccs`: Saturn Valley Phase Distorter development with Dr. Andonuts and Apple Kid constructing hypervisor execution chamber (Sector 35, `flag 926`); telemetry indicating missing Zexonyte kernel element.
+2. Author `src/ccscript/cow_onett_night.ccs`: Onett night invasion as bus contention blackout (Sector 36, `flag 927`) with alien daemons blocking power circuits and meteorite core extraction yielding Zexonyte fragment (`item 205`).
+3. Author `src/ccscript/cow_conversion.ccs`: Phase Distorter v2 hijacking sequence and Phase Distorter v3 biological chassis decommissioning, executing 65816-to-robotic hardware architecture transfer (`flag 928`).
+4. Update `src/ccscript/cow_engine.ccs` allocating Sector dirty bits 926 (Phase Distorter), 927 (Onett Night); Entity mutation bits 928-931, and corresponding commit subroutines.
+5. Enforce dual-binding dispatch across NPC configuration table entries and legacy label trampolines.
+6. Rebalance regional monsters in `src/enemy_configuration_table.yml`: Ghost of Starman, Evil Eye, etc.
+**Alternatives:** Treating Phase Distorter as conventional sci-fi time machine and robot transfer as spiritual soul migration (breaks systems architecture metaphor).
+**Consequences:** Frames the journey to the past as an architecture transfer into hardened execution units capable of traversing corrupted temporal bus lines.
+**Review trigger:** Verification of Cave of the Past and final Giygas encounters.
+
 ---
 
 ## Held tensions

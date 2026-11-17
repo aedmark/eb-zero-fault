@@ -1,0 +1,59 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 13: Sea of Eden & Root Mutex Scenario
+// ==============================================================================
+// Sea of Eden deep kernel space (Sector 34, flag 921), hypervisor threshold,
+// and Ness's Nightmare Root Mutex Lock Daemon confrontation.
+// Mutation flags: 924 (Sea of Eden crossed), 925 (Root mutex purged).
+// ==============================================================================
+
+cow_seaofeden_greeter:
+    "@Sector 34: Sea of Eden Gateway." next
+    "@This deep kernel space contains the raw root architecture." next
+    "@Ring -1 hypervisor barrier active." next
+    "@Entering this address space exposes Coordinator Thread 1 to the root corruption vector.{wait}{set(flag 924)}"
+    call(cow_engine.cow_fault_commit_seaofeden)
+    "[1F E1 1F 05 3C]" eob
+
+cow_seaofeden_guide:
+    "@Coordinator {name(1)}: Eight Sanctuary Cache Lines synchronized." next
+    "@From these cache states, the kernel reconstructed this unified core dump." next
+    "@Within the Sea of Eden sits the root mutex lock corruption." next
+    "@It is the kernel deadlock holding your primary execution vector.{wait}[1F E1 1F 06 3C]" eob
+
+cow_ness_nightmare:
+    "[06 4A 00 {e(data_32.l_0xc7c588)}]"
+    "@Root Mutex Lock Corruption Daemon detected at core address 0x00000000." next
+    "@I am the unhandled kernel deadlock holding your primary execution vector." next
+    "@You cannot release this lock... because you are the process that spawned it!" next
+    "@Executing terminal kernel panic...[03]"
+    call(data_21.l_0xc6857c)
+    "[1B 03 {e(data_21.l_0xc683de)}]{set(flag 74)}{set(flag 925)}{pause(1)}"
+    "[1F F1 4E 05 7B 02]{pause(40)}[1F 15 6A 00 00 03 01][1F 61][1F E7 6A 00]{window_open(1)}"
+    "@({name(1)} resolved the root mutex lock. Kernel deadlock cleared.)" next
+    call(data_29.l_0xc77c50)
+    "@Telemetry signal received from root architecture:" next
+    call(data_29.l_0xc77c50)
+    "@Giygas intends to trigger total system-wide memory collapse." next
+    call(data_29.l_0xc77c50)
+    "@The Apple of Enlightenment forecast kernel recovery through Coordinator Thread 1." next
+    call(data_29.l_0xc77c50)
+    "@...That is you, {name(1)}!" next
+    call(data_29.l_0xc77c50)
+    "@Expand internal registers and execute core synchronizations!" next
+    call(data_29.l_0xc77c50)
+    "@Awaken from the core dump space!" next
+    call(data_29.l_0xc77c50)
+    "@Return to the physical bus network at Saturn Valley!" next
+    call(data_29.l_0xc77c50)
+    "@Synchronize with Threads 2, 3, and 4!" next
+    call(data_29.l_0xc77c50)
+    "@Core Dump Space (Sector 33) unmapping in 3... 2... 1...[03]"
+    call(data_29.l_0xc77c50)
+    "{window_closetop}{pause(120)}{window_open(1)}"
+    "@(Coordinator Thread 1 verified root clearance." next
+    "@Return to Saturn Valley immediately!){wait}{window_closetop}{music_effect(3)}"
+    call(data_29.l_0xc77c50)
+    "{pause(60)}"
+    goto(data_33.l_0xc7dfbe)

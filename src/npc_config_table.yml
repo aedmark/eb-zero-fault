@@ -11848,7 +11848,7 @@
   Movement: 12
   Show Sprite: when event flag unset
   Sprite: 39
-  Text Pointer 1: data_29.l_0xc76f7a
+  Text Pointer 1: cow_magicant.cow_magicant_flying_man_1
   Text Pointer 2: $0
   Type: person
 1317:
@@ -11857,7 +11857,7 @@
   Movement: 606
   Show Sprite: when event flag unset
   Sprite: 39
-  Text Pointer 1: data_29.l_0xc76f96
+  Text Pointer 1: cow_magicant.cow_magicant_flying_man_2
   Text Pointer 2: $0
   Type: person
 1318:
@@ -11902,7 +11902,7 @@
   Movement: 12
   Show Sprite: always
   Sprite: 107
-  Text Pointer 1: data_29.l_0xc773f4
+  Text Pointer 1: cow_magicant.cow_magicant_greeter
   Text Pointer 2: $0
   Type: person
 1323:
@@ -11911,7 +11911,7 @@
   Movement: 12
   Show Sprite: always
   Sprite: 123
-  Text Pointer 1: data_29.l_0xc7743d
+  Text Pointer 1: cow_magicant.cow_magicant_young_ness
   Text Pointer 2: $0
   Type: person
 1324:
@@ -12064,7 +12064,7 @@
   Movement: 10
   Show Sprite: always
   Sprite: 98
-  Text Pointer 1: data_29.l_0xc777f2
+  Text Pointer 1: cow_seaofeden.cow_seaofeden_greeter
   Text Pointer 2: $0
   Type: person
 1341:
@@ -12073,7 +12073,7 @@
   Movement: 10
   Show Sprite: always
   Sprite: 98
-  Text Pointer 1: data_29.l_0xc7786e
+  Text Pointer 1: cow_seaofeden.cow_seaofeden_guide
   Text Pointer 2: $0
   Type: person
 1342:
@@ -12091,7 +12091,7 @@
   Movement: 10
   Show Sprite: always
   Sprite: 146
-  Text Pointer 1: data_29.l_0xc772ff
+  Text Pointer 1: cow_magicant.cow_magicant_tracy
   Text Pointer 2: $0
   Type: person
 1344:
@@ -12127,7 +12127,7 @@
   Movement: 8
   Show Sprite: when event flag set
   Sprite: 239
-  Text Pointer 1: data_29.l_0xc776ee
+  Text Pointer 1: cow_magicant.cow_magicant_tombstone_1
   Text Pointer 2: $0
   Type: object
 1348:
@@ -12136,7 +12136,7 @@
   Movement: 8
   Show Sprite: when event flag set
   Sprite: 239
-  Text Pointer 1: data_29.l_0xc77713
+  Text Pointer 1: cow_magicant.cow_magicant_tombstone_2
   Text Pointer 2: $0
   Type: object
 1349:
@@ -12172,7 +12172,7 @@
   Movement: 8
   Show Sprite: always
   Sprite: 239
-  Text Pointer 1: data_29.l_0xc7779e
+  Text Pointer 1: cow_magicant.cow_magicant_tombstone_buzz
   Text Pointer 2: $0
   Type: object
 1353:
@@ -12226,7 +12226,7 @@
   Movement: 10
   Show Sprite: when event flag unset
   Sprite: 293
-  Text Pointer 1: data_29.l_0xc7794c
+  Text Pointer 1: cow_seaofeden.cow_ness_nightmare
   Text Pointer 2: data_22.l_0xc68f74
   Type: object
 1359:

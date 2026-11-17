@@ -1,0 +1,101 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 14: Phase Distorter v2/v3 & Hardware Conversion
+// ==============================================================================
+// Zexonyte synthesis, Phase Distorter v2 hijacking, Mr. Saturn tea telemetry,
+// Phase Distorter v3, and 65816-to-robotic hardware architecture transfer.
+// Mutation flags: 928 (Hardware conversion verified), 930 (PD2 hijacked),
+// 931 (Final thread resynchronization complete).
+// ==============================================================================
+
+cow_phasedistorter_receive_zexonyte:
+    "[19 19 00 00]{swap}{result_is(193)}[1B 03 {e(cow_phasedistorter_accept_zexonyte)}]"
+    goto(data_32.l_0xc7c6b6)
+
+cow_phasedistorter_accept_zexonyte:
+    "{take(255, 193)}{sound(118)}@Zexonyte core element verified and accepted into synthesis buffer!" next
+    "@Synthesizing hypervisor clock stabilizer... Synthesis successful!" next
+    "@Phase Distorter v2 assembly is complete in the launch bay." next
+    "@Take time to rest and consolidate your thread state while we run diagnostic sweeps.{wait}{set(flag 134)}{set(flag 169)}" eob
+
+cow_phasedistorter_v2_ready:
+    "[06 A9 00 {e(cow_phasedistorter_v2_resting)}]@Phase Distorter v2 compiled and linked!" next
+    "@Equipped with hardware save states and register recovery buffers." next
+    "@Prepare for launch into the spatial manifold." next
+    "@Are your registers ready?" linebreak
+    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_phasedistorter_v2_prep_done)} {e(cow_phasedistorter_v2_prep_done)}]" goto(cow_phasedistorter_v2_prep_done)
+
+cow_phasedistorter_v2_prep_done:
+    "@Ensure all thread buffers are clean before boarding.{wait}{set(flag 765)}" eob
+
+cow_phasedistorter_v2_resting:
+    "@Intriguing telemetry..." next
+    "@Leave the synthesis chamber to us and let your threads rest." end
+
+cow_phasedistorter_v2_board:
+    "@Phase Distorter v2 ready for ignition." next
+    "@Enter the execution pod now!{wait}{set(flag 133)}{set(flag 930)}[1F F1 E5 02 1F 01]" eob
+
+cow_saturn_tea_ceremony:
+    "[06 49 00 {e(cow_saturn_tea_clear)}][06 4A 00 {e(cow_saturn_tea_duty)}]"
+    goto(cow_saturn_tea_offer)
+
+cow_saturn_tea_offer:
+    "@Mr. Saturn telemetry tea ceremony." next
+    "@Consolidate stack frames and snapshot runtime logs before hardware conversion?{wait}{set(flag 668)}{set(flag 931)}" eob
+
+cow_saturn_tea_duty:
+    "[06 9C 02 {e(cow_saturn_tea_offer)}]@Big trouble ahead for your execution pipelines." next
+    "@Mr. Saturns help you stabilize the bus. Boing!" end
+
+cow_saturn_tea_clear:
+    "@Incredible execution! All system errors purged! Zoom!" end
+
+cow_conversion_procedure:
+    "[06 1D 01 {e(cow_conversion_briefing)}]{window_open(1)}"
+    "@Phase Distorter v3 assembly complete." next
+    "@Mr. Saturn low-level primitives and Apple Kid have resolved the temporal equations." next
+    "@Giygas is executing attacks from our exact spatial coordinates," next
+    "@but from the deepest historical registers in the past.[03]{window_closeall}" eob
+
+cow_conversion_briefing:
+    "@In order to confront Giygas,{pause(15)} you must warp into the deep historical registers." next
+    "@This requires Phase Distorter 3." next
+    "@Fatal architectural constraint: Living biological wetware cannot survive unshielded temporal bus transmission." next
+    "@Stack frames and biological memory disintegrate under temporal shear." next
+    "@The only viable path: Decommission your biological 65816 chassis" next
+    "@and transfer your entire runtime program, registers, and thread states into hardened robotic execution units." next
+    "@Do you authorize hardware architecture transfer?" linebreak
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_conversion_confirm)} {e(cow_conversion_decline)}]" goto(cow_conversion_decline)
+
+cow_conversion_decline:
+    "@Acknowledged. Without hardware conversion, temporal bus traversal is fatal." end
+
+cow_conversion_confirm:
+    "@...Understood. You accept the irrevocable conversion of your execution units." next
+    "@Stand by for biological deallocation..." next
+    "@{name(1)},{pause(15)} powering down physical chassis..." next
+    "{pause(60)}@Executing architecture flash... Stand by...[03]{window_closeall}{pause(1)}"
+    call(data_22.l_0xc69082)
+    "{music_effect(3)}[1F 15 6A 00 79 02 01][1F 61]{hide_char(255)}{warp(81)}{lock_movement(255)}"
+    "[1F 15 6A 00 0E 03 01][1F 61][1F E6 6A 00]{music(179)}[1F E9 6A 00][1F 61][1F 01 00]"
+    "[1F 15 A2 00 3B 01 FF]{warp(104)}{lock_movement(255)}{hide_char(255)}{window_open(1)}"
+    "@Hardware architecture transfer successful!" next
+    "@Coordinator Thread 1 ({name(1)})! Thread 2 ({name(2)})! Thread 4 ({name(4)})!" next
+    "@Thread 3 ({name(3)})... my son..." next
+    "@Your programs and registers are fully active within robotic chassis." next
+    "@Activate Phase Distorter 3 and breach the temporal bus boundary!" linebreak
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_conversion_launch)} {e(cow_conversion_launch_hesitate)}]" goto(cow_conversion_launch_hesitate)
+
+cow_conversion_launch_hesitate:
+    "@{name(1)}! The fate of the entire system memory bus rests upon your execution!" linebreak
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_conversion_launch)} {e(cow_conversion_launch)}]" goto(cow_conversion_launch)
+
+cow_conversion_launch:
+    "@All threads nominal. Temporal hypervisor online!" next
+    "@Departing for the Cave of the Past... Execute![03]"
+    "{music(91)}{window_closeall}{set(flag 372)}{set(flag 928)}{pause(1)}{warp(93)}{lock_movement(255)}{pause(60)}"
+    "{show_party(1)}[1F 15 6A 00 3C 01 01]"
+    call(data_53.l_0xc9b4b8)
+    "[19 26 01]{unset(flag 382)}{unset(flag 328)}{unset(flag 331)}{unset(flag 329)}{unset(flag 330)}{unset(flag 332)}{unset(flag 327)}{unset(flag 337)}{unset(flag 11)}[1F E8 FF]" eob

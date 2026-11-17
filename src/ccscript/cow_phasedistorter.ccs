@@ -1,0 +1,58 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 14: Phase Distorter Assembly Scenario
+// ==============================================================================
+// Saturn Valley Phase Distorter hypervisor engine development, Dr. Andonuts
+// and Apple Kid execution chamber compilation, and Zexonyte telemetry.
+// Sector 35 (flag 926).
+// ==============================================================================
+
+cow_phasedistorter_test:
+    "[1F 15 6A 00 20 01 01]" call(data_53.l_0xc9b4b8)
+    "{hide_char(255)}{music(91)}[1F E9 E5 02][1F 61]{music(126)}{pause(100)}[19 05 01 08 02][1F 15 6A 00 21 01 01]{show_party(1)}"
+    call(data_53.l_0xc9b4b8)
+    "{pause(120)}[1F F1 D8 02 22 01][1F 61]{music_resume}[1F E6 D8 02][19 05 01 08 00]{window_open(1)}"
+    "@Phase Distorter v1 compilation test failure!" next
+    "@Temporal clock oscillator offline. Hardware execution stalled." next
+    "@We require a trace sample of Zexonyte to stabilize hypervisor bus clock frequencies." next
+    "@Our telemetry indicates an unharvested Zexonyte element deposit at Sector 0 (Onett)!" next
+    "@Warning: Giygas's invasion daemons have flooded Onett with severe bus contention." next
+    "@The town's power grid has suffered a total blackout." next
+    "@Prepare your registers and retrieve the Zexonyte element immediately.{wait}{window_closeall}"
+    "{set(flag 132)}{set(flag 632)}{set(flag 468)}{unset(flag 108)}{unset(flag 633)}{unset(flag 422)}{unset(flag 517)}{isset(flag 99)}[1B 02 {e(data_51.l_0xc9992f)}]{unset(flag 746)}"
+    call(cow_engine.cow_fault_commit_phasedistorter) eob
+
+cow_phasedistorter_andonuts:
+    "[06 49 00 {e(cow_phasedistorter_andonuts_clear)}][06 FD 02 {e(cow_conversion.cow_phasedistorter_v2_board)}][06 86 00 {e(cow_conversion.cow_phasedistorter_v2_ready)}][06 84 00 {e(cow_phasedistorter_andonuts_waiting)}]"
+    "@The Mr. Saturns are exceptional low-level primitives." next
+    "@Apple Kid's compiler optimizations have accelerated development." next
+    "@A corrupted thread resembling a pig hijacked Phase Distorter v2!" next
+    "@We must engineer Phase Distorter v3 immediately!{wait}{window_closeall}{pause(1)}[1F F1 E5 02 1F 01]" eob
+
+cow_phasedistorter_andonuts_waiting:
+    "@Awaiting physical Zexonyte core element from Sector 0 (Onett)." next
+    "@Without that oscillator crystal, the temporal hypervisor cannot achieve phase lock." end
+
+cow_phasedistorter_andonuts_clear:
+    "@System-wide memory corruption purged! All thread states restored!" end
+
+cow_phasedistorter_apple_kid:
+    "[06 49 00 {e(cow_phasedistorter_ak_clear)}][06 86 00 {e(cow_phasedistorter_ak_v2)}][06 84 00 {e(cow_phasedistorter_ak_waiting)}][06 4A 00 {e(cow_phasedistorter_ak_lost)}][19 10 01]{rtoarg}@Coordinator Thread {name(0)}." next
+    goto(cow_phasedistorter_ak_waiting)
+
+cow_phasedistorter_ak_waiting:
+    "@Phase Distorter v1 confirmed our space-time displacement compiler equations." next
+    "@We are waiting for Dr. Andonuts to receive the Zexonyte hardware driver." end
+
+cow_phasedistorter_ak_v2:
+    "@Phase Distorter v2 is fully compiled and linked!" next
+    "@Dr. Andonuts has integrated hardware save states and register recovery routines." end
+
+cow_phasedistorter_ak_lost:
+    "@The space-time displacement equations are mathematically sound." next
+    "@Our telemetry indicates intense enemy presence in the Lost Underworld!" end
+
+cow_phasedistorter_ak_clear:
+    "@Giygas's victory probability was 99%." next
+    "@Your courage reduced it to 0%. Kernel integrity permanently secured!" end

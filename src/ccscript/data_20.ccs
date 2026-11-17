@@ -168,10 +168,7 @@ l_0xc66afe:
     "@I can't seem to fall back asleep." end
 
 l_0xc66b33:
-    "@I can only help by keeping your items here..." next
-    "@I support you whole-heartedly.{pause(20)}  Don't get yourself knocked off." next
-    "@...I will be strong while you're gone." next
-    goto(data_18.l_0xc64672)
+    goto(cow_onett_night.cow_onett_night_tracy)
 
 l_0xc66b97:
     "@Someone's knocking at the door.{pause(20)}  What an annoying knock!" end

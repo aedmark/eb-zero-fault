@@ -124,6 +124,16 @@ HOOKS = [
     (0x07786E, b"\x0A", "CoW Sea of Eden Guide Hook (0xC7786E)"),
     (0x07794C, b"\x0A", "CoW Ness Nightmare Hook (0xC7794C)"),
     (0x09B4C9, b"\x0A", "CoW Magicant Resync Saturn Valley Hook (0xC9B4C9)"),
+    # Phase 14 hooks
+    (0x09B900, b"\x0A", "CoW Phase Distorter 1 Test Hook (0xC9B900)"),
+    (0x09BCA1, b"\x0A", "CoW Phase Distorter 3 Conversion Hook (0xC9BCA1)"),
+    (0x07EF3B, b"\x0A", "CoW Apple Kid Saturn Valley Hook (0xC7EF3B)"),
+    (0x07F165, b"\x0A", "CoW Dr. Andonuts Saturn Valley Hook (0xC7F165)"),
+    (0x07F29E, b"\x0A", "CoW Dr. Andonuts Zexonyte Hook (0xC7F29E)"),
+    (0x07F710, b"\x0A", "CoW Mr. Saturn Tea Ceremony Hook (0xC7F710)"),
+    (0x086279, b"\x0A", "CoW Onett Meteorite Night Hook (0xC86279)"),
+    (0x07533C, b"\x0A", "CoW Mom Onett Night Hook (0xC7533C)"),
+    (0x066B33, b"\x0A", "CoW Tracy Onett Night Hook (0xC66B33)"),
 ]
 
 # Active NPC Configuration Table bindings verified dynamically against compiled symbols in summary.txt
@@ -179,6 +189,11 @@ NPC_BINDINGS = [
     (1348, "cow_magicant_tombstone_2", "NPC Table Entry 1348 (Worker Thread 2 Core Dump Pointer)"),
     (1352, "cow_magicant_tombstone_buzz", "NPC Table Entry 1352 (Buzz Buzz Debug Daemon Tombstone Pointer)"),
     (1358, "cow_ness_nightmare", "NPC Table Entry 1358 (Root Mutex Lock Ness's Nightmare Pointer)"),
+    # Phase 14 NPC bindings
+    (198, "cow_onett_night_meteorite", "NPC Table Entry 198 (Onett Meteorite Night Pointer)"),
+    (727, "cow_phasedistorter_apple_kid", "NPC Table Entry 727 (Apple Kid Saturn Valley Pointer)"),
+    (728, "cow_phasedistorter_andonuts", "NPC Table Entry 728 (Dr. Andonuts Saturn Valley Pointer)"),
+    (729, "cow_saturn_tea_ceremony", "NPC Table Entry 729 (Mr. Saturn Tea Telemetry Pointer)"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
@@ -254,6 +269,11 @@ THEMATIC_NAMES = [
     "Fatal Signal",
     "Unbounded Task",
     "Atomic Register",
+    # Phase 14 thematic enemies
+    "Ghost Thread",
+    "Watchdog Daemon",
+    "Bus Octobot",
+    "Supervisor Starman",
 ]
 
 

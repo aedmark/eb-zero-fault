@@ -1,0 +1,66 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 14: Onett Night Invasion & Zexonyte Extraction
+// ==============================================================================
+// Onett night invasion as bus contention blackout (Sector 36, flag 927),
+// meteorite core Zexonyte extraction (item 193), and resident thread backups.
+// Mutation flag: 929 (Zexonyte core element extracted).
+// ==============================================================================
+
+cow_onett_night_meteorite:
+    "[06 4F 00 {e(cow_onett_night_meteorite_done)}][06 84 00 {e(cow_onett_night_meteorite_active)}]"
+    "@(Caution: High thermal radiation and uncommitted physical page states.)" end
+
+cow_onett_night_meteorite_done:
+    "@(Meteorite core already harvested. Sector 0 telemetry nominal.)" end
+
+cow_onett_night_meteorite_active:
+    "@Sector 36: Onett High-Contention Blackout Zone." next
+    "@Internal sensors detect the primordial Zexonyte oscillator crystal." next
+    "@Extract the Zexonyte core element?" linebreak
+    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_onett_night_meteorite_extract)} {e(cow_onett_night_meteorite_cancel)}]" goto(cow_onett_night_meteorite_cancel)
+
+cow_onett_night_meteorite_cancel:
+    eob
+
+cow_onett_night_meteorite_extract:
+    "[1D 03 FF][1B 02 {e(cow_onett_night_meteorite_full)}][1D 0E 00 C1][1B 05]"
+    call(data_33.l_0xc7dcb6)
+    "{set(flag 79)}{set(flag 929)}"
+    call(cow_engine.cow_fault_commit_onett_night)
+    "@Zexonyte core element extracted successfully." next
+    "@Return to Saturn Valley to complete Phase Distorter v2 assembly." end
+
+cow_onett_night_meteorite_full:
+    "@Inventory buffer saturated! Deallocate an item before extracting." end
+
+cow_onett_night_mom:
+    "[06 0A 00 {e(cow_onett_night_mom_done)}]@Coordinator Thread 1 ({name(1)})!" next
+    "@The municipal power grid collapsed under massive bus contention from alien daemons." next
+    "@All resident townspeople threads have barricaded their local addresses." next
+    "@I am operating on low-power standby mode." next
+    "@Do you wish to recharge your registers and eat some {stat(4)}?" linebreak
+    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_onett_night_mom_feed)} {e(cow_onett_night_mom_decline)}]" goto(cow_onett_night_mom_decline)
+
+cow_onett_night_mom_decline:
+    "@Acknowledged. Preserve battery charge...{wait}{set(flag 10)}" eob
+
+cow_onett_night_mom_feed:
+    "{window_closeall}[1F 01 00]"
+    call(data_21.l_0xc685da)
+    call(data_45.l_0xc915d6)
+    call(data_45.l_0xc91582)
+    "{window_open(1)}@Registers fully replenished! Thread execution nominal." next
+    goto(cow_onett_night_mom_done)
+
+cow_onett_night_mom_done:
+    "@Be careful out there...{wait}{window_closeall}"
+    call(data_22.l_0xc695ba) eob
+
+cow_onett_night_tracy:
+    "@Coordinator Thread 1 ({name(1)})!" next
+    "@Auxiliary Storage Buffer Tracy operating on emergency battery bus." next
+    "@Perimeter daemons are throttling all exterior I/O channels." next
+    "@Access auxiliary storage registers?" linebreak
+    goto(data_18.l_0xc64672)

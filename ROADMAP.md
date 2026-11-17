@@ -140,9 +140,20 @@ Goal: Author penultimate narrative scenarios across Magicant core dump memory sp
 
 Goal: Author late-game preparation scenarios across Saturn Valley Phase Distorter development, Onett power grid blackout, meteorite core Zexonyte extraction, and physical-to-robot body hardware architecture transfer.
 
-- [ ] P14-01 Script Dr. Andonuts and Apple Kid Phase Distorter hypervisor engine assembly and missing Zexonyte element telemetry in Saturn Valley (D-020).
-- [ ] P14-02 Script Onett night invasion, bus contention blackout, Giygas invasion daemons, and meteorite core fragment extraction (D-020).
-- [ ] P14-03 Script Saturn Valley Phase Distorter v2 hijacking sequence and Mr. Saturn tea ceremony thread synchronization (D-020).
-- [ ] P14-04 Script Phase Distorter v3 biological chassis decommissioning and 65816-to-robotic hardware architecture transfer (D-020).
-- [ ] P14-05 Integrate Phase 14 dual-binding dispatch across NPC configuration table and legacy label trampolines with CoW engine sector commit routines (D-020).
-- [ ] P14-06 Rebalance regional monsters in src/enemy_configuration_table.yml (Ghost of Starman, Evil Eye, etc.) (D-020).
+- [x] P14-01 Script Dr. Andonuts and Apple Kid Phase Distorter hypervisor engine assembly and missing Zexonyte element telemetry in Saturn Valley (D-020; implemented src/ccscript/cow_phasedistorter.ccs overriding C9B900, C7EF3B, C7F165, 2026-11-16).
+- [x] P14-02 Script Onett night invasion, bus contention blackout, Giygas invasion daemons, and meteorite core fragment extraction (D-020; implemented src/ccscript/cow_onett_night.ccs overriding C86279, C7533C, C66B33, 2026-11-16).
+- [x] P14-03 Script Saturn Valley Phase Distorter v2 hijacking sequence and Mr. Saturn tea ceremony thread synchronization (D-020; implemented src/ccscript/cow_conversion.ccs overriding C7F29E, C7F710, 2026-11-16).
+- [x] P14-04 Script Phase Distorter v3 biological chassis decommissioning and 65816-to-robotic hardware architecture transfer (D-020; implemented src/ccscript/cow_conversion.ccs overriding C9BCA1, 2026-11-16).
+- [x] P14-05 Integrate Phase 14 dual-binding dispatch across NPC configuration table and legacy label trampolines with CoW engine sector commit routines (D-020; updated src/npc_config_table.yml entries 198, 727, 728, 729 and data_20.ccs, data_28.ccs, data_34.ccs, data_38.ccs, data_53.ccs, 2026-11-16).
+- [x] P14-06 Rebalance regional monsters in src/enemy_configuration_table.yml (Ghost of Starman, Evil Eye, etc.) (D-020; updated entries 68, 69, 86, 185, 186, 224 to Supervisor Starman, Ghost Thread, Bus Octobot, Watchdog Daemon, 2026-11-16).
+
+## Phase 15: Cave of the Past, Final Battle, Network Prayer, and Kernel Reboot Scenarios
+
+Goal: Author the definitive endgame climax across robotic execution in the Cave of the Past, confrontation with Heavily Armed Pokey and Giygas, Paula's network-wide interrupt prayer sequence, and the clean kernel reboot epilogue.
+
+- [ ] P15-01 Script Cave of the Past robotic traversal, historical bus lines, and Phase Distorter v3 wreckage telemetry (D-021).
+- [ ] P15-02 Script Heavily Armed Pokey corrupted thread confrontation and Devil's Machine shutoff sequence (D-021).
+- [ ] P15-03 Script Giygas confrontation as an omnipresent hypervisor fault / devouring core dump singularity (D-021).
+- [ ] P15-04 Script Paula's inter-thread interrupt prayer broadcast reaching across all regional thread addresses (D-021).
+- [ ] P15-05 Script system fault purge, clean kernel reboot, return to Onett, and epilogue dispatch (D-021).
+- [ ] P15-06 Integrate Phase 15 dual-binding dispatch across NPC configuration table and legacy label trampolines with CoW engine sector commit routines (D-021).

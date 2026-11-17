@@ -365,24 +365,19 @@ l_0xc861dd:
     "@<Mani Mani is {pause(10)} always Mani Mani {pause(10)} at Mani Mani with all {pause(10)} Mani Mani {pause(10)} Mani>" end
 
 l_0xc86279:
-    "[06 4F 00 {e(l_0xc86320)}][06 84 00 {e(l_0xc862b8)}]@(Caution!{pause(30)}  There are still lots of fires burning here and there.{pause(20)}  It's HOT!)" end
+    goto(cow_onett_night.cow_onett_night_meteorite)
 
 l_0xc862b8:
-    "@There is something shiny that you can reach." next
-    "@Do you want to try and get it?" linebreak
-    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc862f8)} {e(l_0xc862f7)}]" goto(l_0xc862f7)
-
-l_0xc862f7:
     eob
 
 l_0xc862f8:
-    "[1D 03 FF][1B 02 {e(l_0xc86311)}][1D 0E 00 C1][1B 05]" call(data_33.l_0xc7dcb6) "{set(flag 79)}" end
+    eob
 
 l_0xc86311:
-    "@You don't have any more space." end
+    eob
 
 l_0xc86320:
-    "@(Seems like a big meteorite landed here not too long ago.)" end
+    eob
 
 l_0xc8634c:
     "@Even if you're poor, come and see how easy it is to own a luxurious second home!" next

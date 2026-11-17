@@ -49,8 +49,10 @@ command e(label) "{long label}"
 // 915: Sector 32 - Fire Spring 8th Sanctuary Cache
 // 920: Sector 33 - Magicant Core Dump Memory Space
 // 921: Sector 34 - Sea of Eden Deep Kernel Space
+// 926: Sector 35 - Saturn Valley Phase Distorter Development
+// 927: Sector 36 - Onett Night Invasion / Bus Contention Blackout
 
-// Entity Mutation Bits (870-925)
+// Entity Mutation Bits (870-931)
 // 870: Mom baseline dirtied (refcount = 2 awareness)
 // 871: Tracy baseline dirtied (memory buffer initialized)
 // 872: Pokey baseline dirtied (unbound pointer hijacked)
@@ -93,6 +95,10 @@ command e(label) "{long label}"
 // 923: Flying Men ephemeral helper threads dispatched
 // 924: Sea of Eden deep kernel threshold crossed
 // 925: Ness's Nightmare root mutex lock purged / kernel deadlock cleared
+// 928: Robotic Hardware Architecture Conversion verified (65816 deallocation)
+// 929: Zexonyte core element extracted from Sector 0 meteor site
+// 930: Phase Distorter v2 hijacked by corrupted thread Pokey
+// 931: Final thread resynchronization / tea ceremony complete
 
 // Reusable Engine Commands
 command cow_touch(f) "{set(flag f)}"
@@ -186,3 +192,9 @@ cow_fault_commit_magicant:
 
 cow_fault_commit_seaofeden:
     "{set(flag 921)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_phasedistorter:
+    "{set(flag 926)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_onett_night:
+    "{set(flag 927)}{sound(11)}{pause(15)}" eob

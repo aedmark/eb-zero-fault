@@ -354,124 +354,61 @@ l_0xc7ef0d:
     "  from now...{wait}{font_normal}" eob
 
 l_0xc7ef3b:
-    "[06 49 00 {e(l_0xc7f0e2)}][06 86 00 {e(l_0xc7f0d6)}][06 84 00 {e(l_0xc7ef67)}][06 4A 00 {e(l_0xc7efa2)}][19 10 01]{rtoarg}@Ah, {name(0)}." next
-    goto(l_0xc7ef67)
+    goto(cow_phasedistorter.cow_phasedistorter_apple_kid)
 
 l_0xc7ef67:
-    "@The Phase Distorter will certainly be completed someday," next
-    "@in my humble opinion." end
+    eob
 
 l_0xc7efa2:
-    "@Excellent, excellent!" linebreak
-    "  Everything proceeded as planned." next
-    "@Dr. Andonuts, Mr. Saturn and I worked together" next
-    "@and finally completed the Phase Distorter." next
-    "@The purpose of the device is to enable instantaneous travel" next
-    "@through space and time." next
-    "@In this prototype, you can only travel to different points" next
-    "@within the same time period." next
-    "@It is able, however, to search out the locations of enemies." next
-    "@Right now, it is indicating the presence of enemies in the Lost Underworld!" end
+    eob
 
 l_0xc7f0d6:
-    "[06 A9 00 {e(l_0xc7ef67)}]" goto(l_0xc7efa2)
+    eob
 
 l_0xc7f0e2:
-    "@The chance of Giygas gaining victory with his monstrous plan is 99%." next
-    "@However, your courage has produced a 1% chance that Giygas fails." next
-    "@I must try to come to a deeper understanding of this trait called <courage.>" end
+    eob
 
 l_0xc7f165:
-    "[06 49 00 {e(l_0xc7f634)}][06 FD 02 {e(l_0xc7f50b)}][06 86 00 {e(l_0xc7f34c)}][06 84 00 {e(l_0xc7f25b)}]@Yahah!  The Mr. Saturns are incredible folk." next
-    "@And the Apple Kid...  He is a most exceptional young man," next
-    "@very different from other kids." next
-    "@...Well, anyway...{pause(20)}  The prototype Phase Distorter has been stolen." next
-    "@Someone resembling a pig wearing clothes took Mr. Saturn captive" next
-    "@and stole the device!{wait}{window_closeall}{pause(1)}[1F F1 E5 02 1F 01]" eob
+    goto(cow_phasedistorter.cow_phasedistorter_andonuts)
 
 l_0xc7f25b:
-    "@Hmmmm..." next
-    "@If I only had a piece of a meteorite," next
-    "@I might be able to extract some Zexonyte." end
+    eob
 
 l_0xc7f29e:
-    "[19 19 00 00]{swap}{result_is(193)}[1B 03 {e(l_0xc7f2b1)}]" goto(data_32.l_0xc7c6b6)
+    goto(cow_conversion.cow_phasedistorter_receive_zexonyte)
 
 l_0xc7f2b1:
-    "{take(255, 193)}{sound(118)}@Ah, yes!{pause(15)}" linebreak
-    "  This is fantastic!{pause(30)}" linebreak
-    "  What?" next
-    "@Well, I've never actually seen this incredibly rare element before..." next
-    "@It is very intriguing." next
-    "@All right, leave everything to us, and you get some rest." next
-    "@This is getting most fascinating!{wait}{set(flag 134)}{set(flag 169)}" eob
+    eob
 
 l_0xc7f34c:
-    "[06 A9 00 {e(l_0xc7f5ec)}]@Finally, it's complete! " next
-    "@The Phase Distorter, version two," next
-    "@{pause(15)} is equipped with two new features." next
-    "@First,{pause(20)} it can repair your biological functions." next
-    "@Second,{pause(20)} it can save your progress." next
-    "@Don't be afraid, get right in!" next
-    "@...There is just one thing, though..." next
-    "@You might not be able to return.{pause(20)}  So, make sure you are optimally outfitted." next
-    "@Are you ready to go?" linebreak
-    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc7f459)} {e(l_0xc7f459)}]" goto(l_0xc7f459)
+    eob
 
 l_0xc7f459:
-    "@Even if you're not 100%,{pause(15)} perfectly,{pause(15)} completely ready..." next
-    "@Well, you should be as prepared as possible.{pause(20)}  It would be for the best." next
-    "@Without careful preparation, you would be in big trouble." next
-    "@I just want to make sure you're ready." next
-    "@Let me know when your preparations are complete.{wait}{set(flag 765)}" eob
+    eob
 
 l_0xc7f50b:
-    "@Good.{pause(20)}  At last,{pause(15)} the time has come." next
-    "@Are you ready?" linebreak
-    "[19 02]Yes[02][19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc7f54c)} {e(l_0xc7f459)}]" goto(l_0xc7f459)
+    eob
 
 l_0xc7f54c:
-    "@Remember, the Phase Distorter, version 2," next
-    "@is equipped with two new features." next
-    "@First,{pause(20)} it can repair your biological functions." next
-    "@Second,{pause(20)} it can save your progress." next
-    "@Don't be afraid!{pause(15)}  Get right in!{wait}{set(flag 133)}[1F F1 E5 02 1F 01]" eob
+    eob
 
 l_0xc7f5ec:
-    "@Yes...{pause(20)}  Most intriguing..." next
-    "@Leave everything to us, and you get some rest." next
-    "@This is getting most fascinating!" end
+    eob
 
 l_0xc7f634:
-    "@It's a miracle!" next
-    "@A miracle that has only happened because of your great courage!" next
-    "@...Believe me,{pause(15)} I went through a lifetime's worth of stress while you were gone..." next
-    "@I just wish I could have come with you as a robot." next
-    "@I should have used the Phase Distorter." next
-    "@What a story that would have been..." next
-    "@<Scientist and four kids save the world!>{pause(30)}  Wah ha ha ha ha!" end
+    eob
 
 l_0xc7f710:
-    "[06 49 00 {e(l_0xc7f813)}][06 4A 00 {e(l_0xc7f7a5)}]" goto(l_0xc7f71e)
+    goto(cow_conversion.cow_saturn_tea_ceremony)
 
 l_0xc7f71e:
-    "@The Apple Kid was lost, and he was just wandering around, so I brought him here." next
-    "@That was quite a while ago...{pause(20)}  Would you like some tea? " next
-    "@Ah,{pause(15)} I see that you're busy." next
-    "@It looks like things are pretty rough.{pause(20)}  You take care now...{wait}{set(flag 668)}" eob
+    eob
 
 l_0xc7f7a5:
-    "[06 9C 02 {e(l_0xc7f71e)}]@I'm not sure what will happen, but I sense big-time trouble ahead for you." next
-    "@I'm going to stay here for a while and help Mr. Saturn." next
-    "@It's important for a man to enjoy doing his duty." end
+    eob
 
 l_0xc7f813:
-    "@Incredible!{pause(20)}" linebreak
-    "  Excellent!" next
-    "@I'm not quite sure what for, but congratulations on a job well done!" next
-    "@If we ever have the chance to get together again," next
-    "@let's go on a picnic or something." next
-    "@Maybe we could play horseshoes, too!" end
+    eob
 
 l_0xc7f8ab:
     "{font_saturn}@(Hot" linebreak

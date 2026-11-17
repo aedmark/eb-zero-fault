@@ -107,32 +107,16 @@ l_0xc9b8ff:
     eob
 
 l_0xc9b900:
-    "[1F 15 6A 00 20 01 01]" call(l_0xc9b4b8) "{hide_char(255)}{music(91)}[1F E9 E5 02][1F 61]{music(126)}{pause(100)}[19 05 01 08 02][1F 15 6A 00 21 01 01]{show_party(1)}" call(l_0xc9b4b8) "{pause(120)}[1F F1 D8 02 22 01][1F 61]{music_resume}[1F E6 D8 02][19 05 01 08 00]{window_open(1)}@Hmmm... it doesn't work.{pause(20)}  One thing is missing..." next
-    "@But that one material cannot normally be found on the earth." next
-    "@The material I'm thinking of came from a meteorite" next
-    "@that fell when I was much younger." next
-    goto(l_0xc9b9d0)
+    goto(cow_phasedistorter.cow_phasedistorter_test)
 
 l_0xc9b9d0:
-    "@Have you seen a meteorite anywhere recently?" linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc9ba78)} {e(l_0xc9ba0a)}]" goto(l_0xc9ba0a)
+    eob
 
 l_0xc9ba0a:
-    "@Hmmm...{pause(20)} so are we just going to wait for a meteorite" next
-    "@to suddenly fall from the sky?" next
-    "@Mmm...{pause(30)} you haven't seen a meteorite...{pause(20)} Hm... think for a minute..." next
-    goto(l_0xc9b9d0)
+    eob
 
 l_0xc9ba78:
-    "@Eureka!{pause(15)}  That's it!" next
-    "@With even just a piece of the meteorite,{pause(15)} I can synthesize the material Zexonyte." next
-    "@...I doubt that your mortal enemy Giygas," next
-    "@or whatever, will allow you to go to Onett and get a piece of the meteorite." next
-    "@By now, Onett is in his evil hands." next
-    "@You must go,{pause(5)} though,{pause(15)} so take every possible precaution." next
-    "@The Mr. Saturns have introduced some of their new developments at their shop." next
-    "@Please check them out before you leave." next
-    "@...I wonder what Onett is like at this point in time?...{wait}{window_closeall}{set(flag 132)}{set(flag 632)}{set(flag 468)}{unset(flag 108)}{unset(flag 633)}{unset(flag 422)}{unset(flag 517)}{isset(flag 99)}[1B 02 {e(data_51.l_0xc9992f)}]{unset(flag 746)}" eob
+    eob
 
 l_0xc9bbd3:
     "{set(flag 775)}" call(data_22.l_0xc69082) "[1F 15 6A 00 50 01 01]  " call(l_0xc9b4b8) "{hide_char(255)}{set(flag 760)}{music_resume}[1F 1E E5 02 09]{pause(180)}{warp(94)}            {pause(100)}[1F 17 FA 04 51 01 04]{pause(80)}" call(data_33.l_0xc7dd6b) "{unset(flag 760)}{music_resume}{show_party(1)}[1F 15 6A 00 52 01 01]" call(l_0xc9b4b8) "[19 26 01][1F 66 01 07 3C BC C9 00][1F 66 02 29 17 59 EF 00]{set(flag 332)}" eob
@@ -144,75 +128,34 @@ l_0xc9bc48:
     "{music(127)}[1F 17 FB 04 36 01 04]       {pause(120)}{pause(60)}[1F 17 F8 04 37 01 01]        [1F 17 F5 04 38 01 01][1F 17 F7 04 3A 01 01]  [1F 61]{music_resume}[19 23 F5 04 01 FF 00][1F 16 F5 04 00][1F E6 F8 04][1F E6 F5 04][1F E6 F7 04]" call(l_0xc9bca1) "{set(flag 328)}{set(flag 329)}{set(flag 330)}{set(flag 327)}" eob
 
 l_0xc9bca1:
-    "[06 1D 01 {e(l_0xc9bd69)}]{window_open(1)}@The Phase Distorter has been completed." next
-    "@We could finish it quickly because of Mr. Saturn's incredible scientific skill..." next
-    "@Giygas is attacking from our exact location," next
-    "@but he is attacking from many years in the past.[03]{window_closeall}" eob
+    goto(cow_conversion.cow_conversion_procedure)
 
 l_0xc9bd35:
-    "@This is very hard for me to tell you, but...[03][06 1D 01 {e(l_0xc9bd52)}]" eob
+    eob
 
 l_0xc9bd52:
-    "{window_closeall}[1F 1E F5 04 06][1F 17 F6 04 39 01 01]{pause(150)}{set(flag 331)}{unset(flag 328)}" eob
+    eob
 
 l_0xc9bd69:
-    "@In order to defeat Giygas,{pause(15)} who is attacking from the past," next
-    "@you must warp to the past." next
-    "@This can be done by way of the <Phase Distorter 3.>" next
-    "@However, the machine cannot warp living things,{pause(15)} I mean lifeforms." next
-    "@Life is demolished in the process of warping." next
-    "@The only way to accomplish the time travel is" next
-    "@to transfer your brain <program> into a robot," next
-    "@and send the robot to the past." next
-    "@...The transfer means that your spirit will go with the robot" next
-    "@while your body is left behind..." next
-    "@I cannot promise that your spirit will come back after the battle in the past." next
-    "@Yet, you must understand that the four of you are the chosen ones." next
-    "@Do you still wish to face Giygas by traveling to the past?" next
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc9bf68)} {e(l_0xc9bf2c)}]" goto(l_0xc9bf2c)
+    eob
 
 l_0xc9bf2c:
-    "@Yes, it's natural to feel as you do." next
-    "@The only thing left is the destruction of our planet..." end
+    eob
 
 l_0xc9bf68:
-    "@...Hmmm{pause(20)} ...you accept this while knowing" next
-    "@that you may not be able to return to your current form," next
-    "@right?" linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc9bfcd)} {e(l_0xc9bf2c)}]" goto(l_0xc9bf2c)
+    eob
 
 l_0xc9bfcd:
-    "@...Yes... I see...{pause(20)}" linebreak
-    "  You have really set your mind on this..." next
-    "@Let me take a good look at you now..." next
-    "@{name(1)},{pause(15)} please give me that red cap..." next
-    "{pause(60)}" linebreak
-    "@Ready... stand by...[03]{window_closeall}{pause(1)}" call(data_22.l_0xc69082) "{music_effect(3)}[1F 15 6A 00 79 02 01][1F 61]{hide_char(255)}{warp(81)}{lock_movement(255)}[1F 15 6A 00 0E 03 01][1F 61][1F E6 6A 00]{music(179)}[1F E9 6A 00][1F 61][1F 01 00][1F 15 A2 00 3B 01 FF]{warp(104)}{lock_movement(255)}{hide_char(255)}{window_open(1)}@{name(1)}!" linebreak
-    "  {name(2)}!" linebreak
-    "  {name(4)}!" next
-    "@{name(3)}!...{pause(20)} my son..." next
-    "@There is no turning back now." next
-    "@{name(1)}, activate the Phase Distorter 3 by your own" linebreak
-    "  hand," next
-    "@thereby following your own destiny..." next
-    "@Will you do so?" linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc9c19b)} {e(l_0xc9c128)}]" goto(l_0xc9c128)
+    eob
 
 l_0xc9c128:
-    "@...I see..." next
-    "@{stat(52)}!{pause(20)}  You do it!" linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc9c19b)} {e(l_0xc9c15f)}]" goto(l_0xc9c15f)
+    eob
 
 l_0xc9c15f:
-    "@Oh, you lost your nerve..." next
-    "@{name(1)}!{pause(20)}  It is up to you..." linebreak
-    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(l_0xc9c19b)} {e(l_0xc9c128)}]" goto(l_0xc9c19b)
+    eob
 
 l_0xc9c19b:
-    "@Only a few people know of your amazing courage," next
-    "@but the number of people you save through that bravery is immense." next
-    "@I feel very fortunate..." next
-    "@to be present at the beginning of this monumental undertaking...[03]{music(91)}{window_closeall}{set(flag 372)}{pause(1)}{warp(93)}{lock_movement(255)}{pause(60)}{show_party(1)}[1F 15 6A 00 3C 01 01]" call(l_0xc9b4b8) "[19 26 01]{unset(flag 382)}{unset(flag 328)}{unset(flag 331)}{unset(flag 329)}{unset(flag 330)}{unset(flag 332)}{unset(flag 327)}{unset(flag 337)}{unset(flag 11)}[1F E8 FF]" eob
+    eob
 
 l_0xc9c262:
     "@You must warp to the past and fight, but...{wait}{set(flag 285)}" eob

@@ -193,18 +193,31 @@ removing a fence whose purpose it forgot.
 **Consequences:** Resolves the internal psychological climax as a hardware-level page convergence and kernel mutex unlocking. Automated verification in `tools/verify_rom.py` expanded to 203 binary assertions.
 **Review trigger:** Verification of Phase Distorter assembly in Saturn Valley and Onett invasion.
 
-## D-020 Late-Game Preparation: Phase Distorter Assembly, Onett Meteorite Zexonyte, and Hardware Conversion (2026-11-16, status: proposed)
+## D-020 Late-Game Preparation: Phase Distorter Assembly, Onett Meteorite Zexonyte, and Hardware Conversion (2026-11-16, status: accepted)
 **Context:** Preparing for late-game scenarios across Saturn Valley Phase Distorter development, Onett power grid blackout, meteorite core extraction, and physical-to-robot body hardware architecture transfer (P14-01 through P14-06).
 **Decision:**
 1. Author `src/ccscript/cow_phasedistorter.ccs`: Saturn Valley Phase Distorter development with Dr. Andonuts and Apple Kid constructing hypervisor execution chamber (Sector 35, `flag 926`); telemetry indicating missing Zexonyte kernel element.
-2. Author `src/ccscript/cow_onett_night.ccs`: Onett night invasion as bus contention blackout (Sector 36, `flag 927`) with alien daemons blocking power circuits and meteorite core extraction yielding Zexonyte fragment (`item 205`).
+2. Author `src/ccscript/cow_onett_night.ccs`: Onett night invasion as bus contention blackout (Sector 36, `flag 927`) with alien daemons blocking power circuits and meteorite core extraction yielding Zexonyte fragment (`item 193`, `flag 79`, `flag 929`).
 3. Author `src/ccscript/cow_conversion.ccs`: Phase Distorter v2 hijacking sequence and Phase Distorter v3 biological chassis decommissioning, executing 65816-to-robotic hardware architecture transfer (`flag 928`).
 4. Update `src/ccscript/cow_engine.ccs` allocating Sector dirty bits 926 (Phase Distorter), 927 (Onett Night); Entity mutation bits 928-931, and corresponding commit subroutines.
-5. Enforce dual-binding dispatch across NPC configuration table entries and legacy label trampolines.
-6. Rebalance regional monsters in `src/enemy_configuration_table.yml`: Ghost of Starman, Evil Eye, etc.
+5. Enforce dual-binding dispatch across 4 NPC configuration table entries (198, 727, 728, 729) and legacy label trampolines in `data_20.ccs`, `data_28.ccs`, `data_34.ccs`, `data_38.ccs`, `data_53.ccs`.
+6. Rebalance regional monsters in `src/enemy_configuration_table.yml`: Starman Super (68, 185) to Supervisor Starman, Ghost of Starman (69, 186) to Ghost Thread, Mechanical Octobot (86) to Bus Octobot, Evil Eye (224) to Watchdog Daemon.
 **Alternatives:** Treating Phase Distorter as conventional sci-fi time machine and robot transfer as spiritual soul migration (breaks systems architecture metaphor).
-**Consequences:** Frames the journey to the past as an architecture transfer into hardened execution units capable of traversing corrupted temporal bus lines.
+**Consequences:** Frames the journey to the past as an architecture transfer into hardened execution units capable of traversing corrupted temporal bus lines. Automated verification in `tools/verify_rom.py` expanded to 220 binary assertions.
 **Review trigger:** Verification of Cave of the Past and final Giygas encounters.
+
+## D-021 Endgame: Cave of the Past, Final Battle, Network Prayer, and Kernel Reboot (2026-11-16, status: proposed)
+**Context:** Implementing the final climax of EarthBound: Zero Fault across the Cave of the Past, the temporal bus threshold, Heavily Armed Pokey and Giygas confrontation, Paula's network interrupt prayer sequence, and the clean kernel reboot epilogue (P15-01 through P15-06).
+**Decision:**
+1. Author `src/ccscript/cow_caveofpast.ccs`: Cave of the Past robotic traversal (Sector 37, `flag 932`), corrupted temporal registers, Phase Distorter v3 wreckage telemetry, and terminal hypervisor threshold.
+2. Author `src/ccscript/cow_giygas.ccs`: Final battle scenario with Heavily Armed Pokey (Rootkit Daemon) and Giygas (Singularity Void / Unbounded System Fault).
+3. Author `src/ccscript/cow_prayer.ccs`: Paula's Prayer sequence as network-wide inter-thread interrupt broadcasts reaching all active threads across the memory manifold.
+4. Author `src/ccscript/cow_epilogue.ccs`: Clean kernel reboot, memory barrier release, homecoming in Onett, and epilogue dispatch (Sector 38, `flag 933`).
+5. Update `src/ccscript/cow_engine.ccs`: Allocate Sector dirty bits 932 (Cave of the Past) and 933 (Epilogue/Reboot), Entity mutation bits 934-938, and corresponding commit subroutines.
+6. Rebalance final boss and late-game enemies in `src/enemy_configuration_table.yml`, enforce dual-binding dispatch across NPC table entries and legacy trampolines, and expand `tools/verify_rom.py`.
+**Alternatives:** Retaining vanilla abstract metaphysical cosmic horror dialogue without systems architecture metaphor (breaks core premise).
+**Consequences:** Resolves the entire narrative arc as a cosmic debugging operation restoring system integrity and committing the final clean kernel state.
+**Review trigger:** Verification of end credits and epilogue save state.
 
 ---
 

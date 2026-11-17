@@ -3231,7 +3231,7 @@
   Money: 735
   Movement pattern: 26
   Music: 97
-  Name: Starman Super
+  Name: Supervisor Starman
   Offense: 112
   Overworld Sprite: 303
   PP: 310
@@ -3278,7 +3278,7 @@
   Money: 807
   Movement pattern: 23
   Music: 97
-  Name: Ghost of Starman
+  Name: Ghost Thread
   Offense: 152
   Overworld Sprite: 306
   PP: 462
@@ -4077,7 +4077,7 @@
   Money: 744
   Movement pattern: 23
   Music: 97
-  Name: Mechanical Octobot
+  Name: Bus Octobot
   Offense: 147
   Overworld Sprite: 306
   PP: 0
@@ -8730,7 +8730,7 @@
   Money: 735
   Movement pattern: 26
   Music: 97
-  Name: Starman Super
+  Name: Supervisor Starman
   Offense: 112
   Overworld Sprite: 303
   PP: 310
@@ -8777,7 +8777,7 @@
   Money: 807
   Movement pattern: 23
   Music: 97
-  Name: Ghost of Starman
+  Name: Ghost Thread
   Offense: 152
   Overworld Sprite: 306
   PP: 462
@@ -10563,7 +10563,7 @@
   Money: 896
   Movement pattern: 23
   Music: 96
-  Name: Evil Eye
+  Name: Watchdog Daemon
   Offense: 141
   Overworld Sprite: 306
   PP: 400

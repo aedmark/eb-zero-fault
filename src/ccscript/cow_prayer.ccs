@@ -1,0 +1,110 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 15: Network Prayer Interrupts
+// ==============================================================================
+// Paula's network-wide inter-thread interrupt (NMI/IPC) sequence reaching
+// across all regional thread addresses, culminating in host player interrupt.
+// ==============================================================================
+
+cow_prayer_1:
+    newline
+    "{sound(28)}@{user} broadcast an inter-thread NMI interrupt across the global bus line![03]{pause(60)}" newline
+    "{text_blips(2)}@<...Transmitting high-priority IPC packet!{prompt}" linebreak
+    "@Any online thread on this bus..." linebreak
+    "  Acknowledge interrupt...>{text_blips(1)}{pause(150)}" eob
+
+cow_prayer_2:
+    newline
+    "{sound(28)}@{user} broadcast an inter-thread NMI interrupt across the global bus line![03]{pause(60)}" newline
+    "{text_blips(2)}@<...Synchronizing bus lines!{prompt}" linebreak
+    "@Route this interrupt packet" linebreak
+    "  to all remote nodes on Earth!>{text_blips(1)}{pause(150)}" eob
+
+cow_prayer_3:
+    newline
+    "{sound(28)}@{user} broadcast an inter-thread NMI interrupt across the global bus line![03]{pause(60)}" newline
+    "{text_blips(2)}@<...Thread stack holding!{prompt}" linebreak
+    "@Anyone listening to our frequency..." linebreak
+    "  Transmit power packet...>{text_blips(1)}{pause(150)}" eob
+
+cow_prayer_4:
+    newline
+    "{sound(28)}@{user} broadcast an inter-thread NMI interrupt across the global bus line![03]{pause(60)}" newline
+    "{text_blips(2)}@<...Register lines failing!{prompt}" linebreak
+    "@Remote nodes, assist us..." linebreak
+    "  Send compute cycles...>{text_blips(1)}{pause(150)}" eob
+
+cow_prayer_5:
+    newline
+    "{sound(28)}@{user} broadcast an inter-thread NMI interrupt across the global bus line![03]{pause(60)}" newline
+    "{text_blips(2)}@<...Clock frequency drifting!{prompt}" linebreak
+    "@Any node receiving this packet..." linebreak
+    "  Lock our phase...>{text_blips(1)}{pause(150)}" eob
+
+cow_prayer_6:
+    newline
+    "{sound(28)}@{user} broadcast an inter-thread NMI interrupt across the global bus line![03]{pause(60)}" newline
+    "{text_blips(2)}@<...Containment barrier failing!{prompt}" linebreak
+    "@Flood the memory bus" linebreak
+    "  with clean parity signals!>{text_blips(1)}{pause(150)}" eob
+
+cow_prayer_7:
+    newline
+    "{sound(28)}@{user} broadcast an inter-thread NMI interrupt across the global bus line![03]{pause(60)}" newline
+    "{text_blips(2)}@<Our buffers are saturated...{prompt}" linebreak
+    "@...Anyone... any thread..." linebreak
+    "  ...override the kernel panic!>{text_blips(1)}{pause(150)}{window_closeall}" eob
+
+cow_prayer_8:
+    newline
+    "{sound(28)}@{user} broadcast an inter-thread NMI interrupt across the global bus line![03]{pause(60)}" newline
+    "{text_blips(2)}@<Can any supervisor thread hear us?!{prompt}" linebreak
+    "@Inject hardware interrupt directly into CPU registers!>{text_blips(1)}{pause(150)}" eob
+
+cow_prayer_mom:
+    "{window_open(1)}@(Sector 01 <Mom> detected parent process heartbeat anomaly on standby bus,{prompt}" linebreak
+    "@and transmitted emergency power: Coordinator Thread 1... live and finish execution!){pause(150)}{window_closeall}" eob
+
+cow_prayer_r5:
+    "{window_open(1)}@(Fourside audio coprocessor Runaway Five intercepted Ness's clock pulse,{prompt}" linebreak
+    "@and broadcast maximum resonant frequency to stabilize the bus lines!){pause(150)}{window_closeall}" eob
+
+cow_prayer_polestar:
+    "{window_open(1)}@(Twoson Polestar node detected Thread 2's packet on port 0x02,{prompt}" linebreak
+    "@and prayed sincerely to prevent daughter thread stack deallocation!){pause(150)}{window_closeall}" eob
+
+cow_prayer_tony:
+    "{window_open(1)}@(Winters debug terminal Tony detected Thread 3's register signature,{prompt}" linebreak
+    "@and compiled emergency register power to send across the bus!){pause(150)}{window_closeall}" eob
+
+cow_prayer_dalaam:
+    "{window_open(1)}@(Dalaam eastern node received remote IPC telemetry from Prince {stat(74)},{prompt}" linebreak
+    "@and transmitted spiritual microcode energy to sustain Thread 4!){pause(150)}{window_closeall}" eob
+
+cow_prayer_frank:
+    "{window_open(1)}@(Frank Fly at Onett arcade terminal remembered Ness clearing his deadlock,{prompt}" linebreak
+    "@and engaged fail-safe override to keep the universe running!){pause(150)}{window_closeall}" eob
+
+cow_prayer_saturn:
+    "{window_open(1)}@(All Mr. Saturn primitive bytecode instances synchronized,{prompt}" linebreak
+    "@and dumped buffer energy to robotic execution units! Zoom! Boing!){pause(150)}{window_closeall}" eob
+
+cow_prayer_void:
+    "{pause(60)}{window_open(1)}@{stat(30)}'s interrupt signal{pause(30)}" linebreak
+    "  was swallowed{pause(30)}" linebreak
+    "  by Giygas's unbounded void!{pause(150)}{window_closeall}" eob
+
+cow_prayer_user:
+    "{pause(60)}{window_open(1)}@{stat(30)}'s interrupt escaped the VM sandbox and contacted the host supervisor thread: {counter(1)}" goto(data_55.l_0xc9f72f)
+
+cow_prayer_user_exec:
+    "{pause(30)} injected raw execution signal directly into the hardware bus!{pause(150)}{window_closeall}" eob
+
+cow_prayer_user_continue:
+    "{pause(30)} maintained continuous interrupt injection!{pause(150)}{window_closeall}" eob
+
+cow_giygas_unstable:
+    newline
+    "@Giygas's hypervisor containment barrier collapsed!" linebreak
+    "  Singularity decaying into parity noise!{sound(90)}{pause(70)}{sound(90)}{pause(65)}{sound(90)}{pause(74)}{sound(90)}" eob

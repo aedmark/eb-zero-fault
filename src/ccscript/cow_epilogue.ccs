@@ -1,0 +1,38 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 15: Clean Kernel Reboot & Epilogue
+// ==============================================================================
+// System fault purge, return to Onett, Mom/Tracy epilogue, and Pokey's detached
+// thread packet triggering final reboot and end credits (Sector 38, flag 933).
+// Mutation flags: 938 (Epilogue packet delivered / Kernel rebooted).
+// ==============================================================================
+
+cow_epilogue_mom:
+    "[06 F1 02 {e(data_28.l_0xc755ad)}][06 83 02 {e(data_28.l_0xc755c4)}]@Coordinator Thread 1 ({name(1)})!" next
+    "@The municipal power grid is fully restored and the bus contention blackout lifted!" next
+    "@All resident memory sectors have been verified clean and committed." next
+    "@You've become a master systems architect, {name(1)}." next
+    "[06 7E 02 {e(data_28.l_0xc7552d)}]@I want to take a moment to welcome Thread 2 ({name(2)}) into our address space." next
+    goto(data_28.l_0xc7552d)
+
+cow_epilogue_tracy:
+    "[06 01 03 {e(data_28.l_0xc76357)}]@Coordinator Thread 1! Welcome back to Sector 01!" next
+    "@Auxiliary storage buffers have completed final flush to non-volatile memory." next
+    "@All your variables and data are safely persistent!" next
+    "@If you have any problems with your assignments,{pause(15)} I'll assist your threads." next
+    goto(data_28.l_0xc76357)
+
+cow_epilogue_picky:
+    "[1F 01 00]{sound(8)}[1F 15 6A 00 27 00 01]" call(data_53.l_0xc9b4b8)
+    "[1F 15 2D 00 0B 00 01][1F 1E 16 00 06]{sound(9)}[1F ED][19 24 2D 00 01 01 00][1F E4 2D 00 00][19 22 01 03 2D 00]{char_direction(1, 0)}{lock_movement(255)}{pause(1)}[1F E7 2D 00]"
+    "{unset(flag 295)}{set(flag 467)}{set(flag 97)}{pause(30)}{music(177)}{pause(120)}{pause(120)}{window_open(1)}{pause(20)}"
+    "@A detached thread transmitted an unsigned packet from outside our address space!" next
+    "@It is addressed to Coordinator Thread 1 ({name(1)})..." next
+    "@There is no origin timestamp, and the packet bypassed the network filter..." next
+    "@Decoded message body reads: <Come and catch me, supervisor!" next
+    "@Spankety, spankety, spankety!>" next
+    "@...Where could that rogue process be executing?{wait}{pause(20)}{window_closeall}{pause(1)}"
+    "{set(flag 209)}{set(flag 938)}"
+    call(cow_engine.cow_fault_commit_epilogue)
+    "[1F 15 6A 00 07 03 01][1F 61]{hide_char(255)}{warp(81)}[1F 15 6A 00 08 03 01][1F 61]" goto(data_53.l_0xc9c98a)

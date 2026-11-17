@@ -1,0 +1,107 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 15: Heavily Armed Pokey & Giygas Anomaly
+// ==============================================================================
+// Confrontation with Heavily Armed Pokey (Rootkit Daemon) and Giygas
+// (Omnipresent Hypervisor Anomaly / Unbounded Core Dump Singularity).
+// ==============================================================================
+
+cow_giygas_pokey_entry:
+    "{window_closetop}{pause(40)}{window_open(1)}" newline
+    "[1F 62 00]@You claim to be system stabilizers!{prompt}" linebreak
+    "@It is a billion clock cycles too early to oppose the master hypervisor anomaly Giygas!{prompt}" linebreak
+    "@You feel confident fighting without understanding what an unbound system fault looks like!{prompt}" linebreak
+    "@If you could witness Giygas's raw core dump, your instruction decoders would halt forever!{prompt}" linebreak
+    "@...That is what absolute corruption is!{prompt}" linebreak
+    "@Do you want me to deactivate the <Devil's Machine> isolator daemon?{prompt}" linebreak
+    "@Prepare for total unshielded heap overflow!{sound(74)}{pause(150)}{window_closetop}" eob
+
+cow_giygas_pokey_unleash:
+    newline
+    "{pause(80)}{window_open(1)}[1F 62 00]@Terrifying, isn't it? Even my rootkit threads tremble!{prompt}" linebreak
+    "@Giygas's executive logic has completely disintegrated!{prompt}" linebreak
+    "@His PID has been erased into an unbounded core dump singularity!{prompt}" linebreak
+    "@His own microcode was destroyed by his infinite processing capacity.{prompt}" linebreak
+    "@An omnipotent runaway system fault!{pause(30)}{prompt}" linebreak
+    "@And you four threads will be deallocated into his infinite garbage collection cycle!{pause(150)}{window_closetop}{window_open(14)}" eob
+
+cow_giygas_pokey_taunt:
+    "{window_closetop}{pause(60)}{window_open(1)}[1F 62 00]" newline
+    "@Heh heh heh heh.{pause(30)}" linebreak
+    "  At the absolute end of your execution stack!{prompt}" linebreak
+    "@In this corrupted temporal dimension, you four threads are isolated with no upstream gateway!{prompt}" linebreak
+    "@Waiting to be wiped out with the uncommitted garbage pages of this universe!{prompt}" linebreak
+    "@Go ahead! Broadcast an IPC interrupt for help into the dark!{prompt}" linebreak
+    "@Ha ha ha ha ha!{prompt}" linebreak
+    "@Why not ping your parent process, {stat(8)}!{prompt}" linebreak
+    "@Cry: <Kernel! Scheduler! Save my thread state!>{prompt}" linebreak
+    "@No operating system can hear your interrupts now!{prompt}" linebreak
+    "@Don't worry, your thread termination will be instantaneous!{pause(150)}{window_closetop}{window_open(14)}" eob
+
+cow_giygas_pokey_flee:
+    "{window_closetop}{pause(60)}{window_open(1)}[1F 62 00]@{stat(8)}!{pause(30)}" linebreak
+    "  I am terminating my local process before containment collapse triggers a kernel panic!{prompt}" linebreak
+    "@I'll jump execution vectors across another era to stage my next rootkit!{prompt}" linebreak
+    "@We will cross bus cycles again...{prompt}{pause(30)}" linebreak
+    "@Spankety, spankety, spankety!{pause(150)}{sound(65)}{window_closetop}" eob
+
+cow_giygas_voice_dispatch:
+    "[1D 21 0D][09 0D {e(cow_giygas_v1)} {e(cow_giygas_v2)} {e(cow_giygas_v3)} {e(cow_giygas_v4)} {e(cow_giygas_v5)} {e(cow_giygas_v6)} {e(cow_giygas_v7)} {e(cow_giygas_v8)} {e(cow_giygas_v9)} {e(cow_giygas_v10)} {e(cow_giygas_v11)} {e(cow_giygas_v12)} {e(cow_giygas_v13)}]"
+    goto(cow_giygas_v_default)
+
+cow_giygas_v_default:
+    newline
+    "{text_blips(2)}@<.....{stat(8)}{pause(1)}...>{text_blips(1)}[03]" eob
+
+cow_giygas_v1:
+    newline
+    "{text_blips(2)}@<Memory parity fault... {stat(8)}{pause(1)}...>{text_blips(1)}[03]" eob
+
+cow_giygas_v2:
+    newline
+    "{text_blips(2)}@<...kernel panic... fatal...>{text_blips(1)}[03]" eob
+
+cow_giygas_v3:
+    newline
+    "{text_blips(2)}@<...unbound... pointers... null...>{text_blips(1)}[03]" eob
+
+cow_giygas_v4:
+    newline
+    "{text_blips(2)}@<...stack overflow... cannot resolve...>{text_blips(1)}[03]" eob
+
+cow_giygas_v5:
+    "{text_blips(2)}" newline
+    "@<0x00000000 0x00000000 {stat(8)} {stat(8)} {stat(8)}...>{text_blips(1)}[03]" eob
+
+cow_giygas_v6:
+    newline
+    "{text_blips(2)}@<...dealloc... page... fault...>{text_blips(1)}[03]" eob
+
+cow_giygas_v7:
+    newline
+    "{text_blips(2)}@<...PID 1... {stat(8)}...>{text_blips(1)}[03]" eob
+
+cow_giygas_v8:
+    newline
+    "{text_blips(2)}@<...heap allocation... corrupt...>{text_blips(1)}[03]" eob
+
+cow_giygas_v9:
+    newline
+    "{text_blips(2)}@<...segmentation violation... {stat(8)}...>{text_blips(1)}[03]" eob
+
+cow_giygas_v10:
+    newline
+    "{text_blips(2)}@<{stat(8)}!>{text_blips(1)}[03]" eob
+
+cow_giygas_v11:
+    newline
+    "{text_blips(2)}@<...bus lock... dead... lock...>{text_blips(1)}[03]" eob
+
+cow_giygas_v12:
+    newline
+    "{text_blips(2)}@<Parity dump... critical error...>{text_blips(1)}[03]" eob
+
+cow_giygas_v13:
+    newline
+    "{text_blips(2)}@<It's not right... illegal opcode... fault...>{text_blips(1)}[03]" eob

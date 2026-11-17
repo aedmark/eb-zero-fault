@@ -8,115 +8,55 @@ command e(label) "{long label}"
 
 // Text Data
 l_0xc9f134:
-    newline
-    "{sound(28)}@{user} prayed" linebreak
-    "  from bottom of her heart![03]{pause(60)}" newline
-    "{text_blips(2)}@<...Please give us strength!{prompt}" linebreak
-    "@Anyone who can hear our plea...." linebreak
-    "  Help us...>{text_blips(1)}{pause(150)}" eob
+    goto(cow_prayer.cow_prayer_1)
 
 l_0xc9f196:
-    newline
-    "{sound(28)}@{user} prayed" linebreak
-    "  from bottom of her heart![03]{pause(60)}" newline
-    "{text_blips(2)}@<...Please give us strength!{prompt}" linebreak
-    "@Speed this prayer" linebreak
-    "  to all the people of the earth.>{text_blips(1)}{pause(150)}" eob
+    goto(cow_prayer.cow_prayer_2)
 
 l_0xc9f1fd:
-    newline
-    "{sound(28)}@{user} prayed" linebreak
-    "  from bottom of her heart![03]{pause(60)}" newline
-    "{text_blips(2)}@<...Please give us strength!{prompt}" linebreak
-    "@Anyone who can hear our plea..." linebreak
-    "  Help us...>{text_blips(1)}{pause(150)}" eob
+    goto(cow_prayer.cow_prayer_3)
 
 l_0xc9f25e:
-    newline
-    "{sound(28)}@{user} prayed" linebreak
-    "  from bottom of her heart![03]{pause(60)}" newline
-    "{text_blips(2)}@<...Please grant us power!{prompt}" linebreak
-    "@Anyone who can hear our plea..." linebreak
-    "  Help us...>{text_blips(1)}{pause(150)}" eob
+    goto(cow_prayer.cow_prayer_4)
 
 l_0xc9f2bc:
-    newline
-    "{sound(28)}@{user} prayed" linebreak
-    "  from bottom of her heart![03]{pause(60)}" newline
-    "{text_blips(2)}@<...Please grant us strength!{prompt}" linebreak
-    "@Anyone who can hear our plea..." linebreak
-    "  We ask for this...>{text_blips(1)}{pause(150)}" eob
+    goto(cow_prayer.cow_prayer_5)
 
 l_0xc9f325:
-    newline
-    "{sound(28)}@{user} prayed" linebreak
-    "  from bottom of her heart![03]{pause(60)}" newline
-    "{text_blips(2)}@<...Please grant us power!{prompt}" linebreak
-    "@Speed this prayer" linebreak
-    "  to all the people of the earth...>{text_blips(1)}{pause(150)}" eob
+    goto(cow_prayer.cow_prayer_6)
 
 l_0xc9f389:
-    newline
-    "{sound(28)}@{user} prayed" linebreak
-    "  from bottom of her heart![03]{pause(60)}" newline
-    "{text_blips(2)}@<I can't think of" linebreak
-    "  anyone else...{prompt}" linebreak
-    "@...Someone, anyone..." linebreak
-    "  ...please help us.>{text_blips(1)}{pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_7)
 
 l_0xc9f3ec:
-    newline
-    "{sound(28)}@{user} prayed" linebreak
-    "  from the bottom of her heart![03]{pause(60)}" newline
-    "{text_blips(2)}@<Someone... can you hear me?!{prompt}" linebreak
-    "@Please, give us strength!>{text_blips(1)}{pause(150)}" eob
+    goto(cow_prayer.cow_prayer_8)
 
 l_0xc9f442:
-    "{window_open(1)}@(Suddenly," linebreak
-    "  {stat(8)}'s mother" linebreak
-    "  felt terribly uneasy,{prompt}" linebreak
-    "@and she began to pray for the safety of her son and his friends.){pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_mom)
 
 l_0xc9f4a2:
-    "{window_open(1)}@(Suddenly," linebreak
-    "  one of the Runaway Five felt" linebreak
-    "  something stop him,{prompt}" linebreak
-    "@and he prayed fervently for the safety of {stat(8)} and his friends.){pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_r5)
 
 l_0xc9f4f6:
-    "{window_open(1)}@({stat(30)}'s father" linebreak
-    "  thought he somehow heard" linebreak
-    "  his daughter's voice,{prompt}" linebreak
-    "@and prayed sincerely for the" linebreak
-    "  safety of {stat(30)} and" linebreak
-    "  her friends.){pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_polestar)
 
 l_0xc9f557:
-    "{window_open(1)}@(Suddenly," linebreak
-    "  Tony felt anxious about {stat(52)},{prompt}" linebreak
-    "@and he prayed strongly for the safety of {stat(52)} and his friends.){pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_tony)
 
 l_0xc9f5a8:
-    "{window_open(1)}@(A young woman in Dalaam woke from a dream in which Prince {stat(74)} died,{prompt}" linebreak
-    "@and she began to pray for the well-being of {stat(74)} and his friends.){pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_dalaam)
 
 l_0xc9f60d:
-    "{window_open(1)}@(Suddenly," linebreak
-    "  Frank recalled {stat(8)}'s shining young face,{prompt}" linebreak
-    "@and began to pray diligently for the safety of {stat(8)} and his friends.){pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_frank)
 
 l_0xc9f66f:
-    "{window_open(1)}@(All of the Mr. Saturns felt a new, startling feeling{prompt}" linebreak
-    "@they had never experienced before,{prompt}" linebreak
-    "@and they all started praying for the safety of {stat(8)} and his friends.){pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_saturn)
 
 l_0xc9f6de:
-    "{pause(60)}{window_open(1)}@{stat(30)}'s call{pause(30)}" linebreak
-    "  was absorbed{pause(30)}" linebreak
-    "  by the darkness.{pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_void)
 
 l_0xc9f70c:
-    "{pause(60)}{window_open(1)}@{stat(30)} and her friends' calls touched the heart of {counter(1)}" goto(l_0xc9f72f)
+    goto(cow_prayer.cow_prayer_user)
 
 l_0xc9f72f:
     "[19 28 02][1B 02 {e(l_0xc9f756)}]{swap}[1D 21 63][18 07 3C 00 00 00 00][1B 02 {e(l_0xc9f7af)}][1C 11 00][1C 03 00]" goto(l_0xc9f750)
@@ -134,7 +74,7 @@ l_0xc9f780:
     "{inc}" goto(l_0xc9f75f)
 
 l_0xc9f786:
-    "{pause(30)} prayed for the kids, having never even met them before.{pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_user_exec)
 
 l_0xc9f7af:
     "#" goto(l_0xc9f750)
@@ -153,7 +93,7 @@ l_0xc9f7e5:
     "{inc}" goto(l_0xc9f7c4)
 
 l_0xc9f7eb:
-    "{pause(30)} kept praying.{pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_user_continue)
 
 l_0xc9f7fe:
     "#" goto(l_0xc9f7e5)
@@ -169,19 +109,16 @@ l_0xc9f82e:
     "{inc}" goto(l_0xc9f80d)
 
 l_0xc9f834:
-    "{pause(30)} kept praying.{pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_user_continue)
 
 l_0xc9f847:
     "#" goto(l_0xc9f82e)
 
 l_0xc9f84d:
-    newline
-    "{pause(60)}{window_open(1)}@" call(data_34.l_0xc7e77d) " kept praying.{pause(150)}{window_closeall}" eob
+    goto(cow_prayer.cow_prayer_user_continue)
 
 l_0xc9f86a:
-    newline
-    "@Giygas' defenses became" linebreak
-    "  unstable.{sound(90)}{pause(70)}{sound(90)}{pause(65)}{sound(90)}{pause(74)}{sound(90)}" eob
+    goto(cow_prayer.cow_giygas_unstable)
 
 l_0xc9f897:
     newline

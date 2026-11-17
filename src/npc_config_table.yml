@@ -11443,7 +11443,7 @@
   Movement: 767
   Show Sprite: when event flag set
   Sprite: 176
-  Text Pointer 1: data_53.l_0xc9c262
+  Text Pointer 1: cow_caveofpast.cow_caveofpast_saturn_1
   Text Pointer 2: $0
   Type: person
 1272:
@@ -11452,7 +11452,7 @@
   Movement: 606
   Show Sprite: when event flag set
   Sprite: 171
-  Text Pointer 1: data_53.l_0xc9c27e
+  Text Pointer 1: cow_caveofpast.cow_caveofpast_saturn_2
   Text Pointer 2: $0
   Type: person
 1273:
@@ -11461,7 +11461,7 @@
   Movement: 8
   Show Sprite: when event flag set
   Sprite: 240
-  Text Pointer 1: data_56.l_0xef58c7
+  Text Pointer 1: cow_caveofpast.cow_caveofpast_wreckage
   Text Pointer 2: $0
   Type: object
 1274:

@@ -134,6 +134,24 @@ HOOKS = [
     (0x086279, b"\x0A", "CoW Onett Meteorite Night Hook (0xC86279)"),
     (0x07533C, b"\x0A", "CoW Mom Onett Night Hook (0xC7533C)"),
     (0x066B33, b"\x0A", "CoW Tracy Onett Night Hook (0xC66B33)"),
+    # Phase 15 hooks
+    (0x2F58C7, b"\x0A", "CoW Broken Phase Distorter Hook (0xEF58C7)"),
+    (0x09C262, b"\x0A", "CoW Cave of Past Saturn 1 Hook (0xC9C262)"),
+    (0x09C27E, b"\x0A", "CoW Cave of Past Saturn 2 Hook (0xC9C27E)"),
+    (0x08FB1B, b"\x0A", "CoW Pokey Battle Entry Hook (0xC8FB1B)"),
+    (0x08FC2E, b"\x0A", "CoW Pokey Unleash Giygas Hook (0xC8FC2E)"),
+    (0x08FD11, b"\x0A", "CoW Pokey Taunt Hook (0xC8FD11)"),
+    (0x08FF31, b"\x0A", "CoW Pokey Flee Hook (0xC8FF31)"),
+    (0x09EE2F, b"\x0A", "CoW Giygas Voice Random Hook (0xC9EE2F)"),
+    (0x09F0B8, b"\x0A", "CoW Prayer 1 Intro Hook (0xC9F0B8)"),
+    (0x09F134, b"\x0A", "CoW Prayer 1 Hook (0xC9F134)"),
+    (0x09F442, b"\x0A", "CoW Prayer Mom Hook (0xC9F442)"),
+    (0x09F4A2, b"\x0A", "CoW Prayer Runaway Five Hook (0xC9F4A2)"),
+    (0x09F70C, b"\x0A", "CoW Prayer User Hook (0xC9F70C)"),
+    (0x09F86A, b"\x0A", "CoW Giygas Unstable Hook (0xC9F86A)"),
+    (0x07547D, b"\x0A", "CoW Mom Epilogue Hook (0xC7547D)"),
+    (0x07625E, b"\x0A", "CoW Tracy Epilogue Hook (0xC7625E)"),
+    (0x09C85D, b"\x0A", "CoW Picky Epilogue Letter Hook (0xC9C85D)"),
 ]
 
 # Active NPC Configuration Table bindings verified dynamically against compiled symbols in summary.txt
@@ -194,6 +212,10 @@ NPC_BINDINGS = [
     (727, "cow_phasedistorter_apple_kid", "NPC Table Entry 727 (Apple Kid Saturn Valley Pointer)"),
     (728, "cow_phasedistorter_andonuts", "NPC Table Entry 728 (Dr. Andonuts Saturn Valley Pointer)"),
     (729, "cow_saturn_tea_ceremony", "NPC Table Entry 729 (Mr. Saturn Tea Telemetry Pointer)"),
+    # Phase 15 NPC bindings
+    (1271, "cow_caveofpast_saturn_1", "NPC Table Entry 1271 (Cave of Past Saturn 1 Pointer)"),
+    (1272, "cow_caveofpast_saturn_2", "NPC Table Entry 1272 (Cave of Past Saturn 2 Pointer)"),
+    (1273, "cow_caveofpast_wreckage", "NPC Table Entry 1273 (Cave of Past Wreckage Pointer)"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
@@ -274,6 +296,12 @@ THEMATIC_NAMES = [
     "Watchdog Daemon",
     "Bus Octobot",
     "Supervisor Starman",
+    # Phase 15 thematic enemies
+    "Root Starman",
+    "Monolithic Octobot",
+    "Reactor Daemon",
+    "Thread Shambler",
+    "Rootkit Pokey",
 ]
 
 

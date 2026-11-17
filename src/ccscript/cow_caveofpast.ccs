@@ -1,0 +1,38 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 15: Cave of the Past Scenario
+// ==============================================================================
+// Cave of the Past robotic traversal, historical registers, Phase Distorter v3
+// wreckage telemetry (Sector 37, flag 932).
+// Mutation flags: 934 (Wreckage audited).
+// ==============================================================================
+
+cow_caveofpast_wreckage:
+    "[06 DF 00 {e(cow_caveofpast_wreckage_empty)}][19 10 01]{rtoarg}@{name(0)} analyzed Phase Distorter v3 wreckage." next
+    "@Telemetry report:" next
+    "@Cross-epoch bus traversal completed successfully." next
+    "@Hypervisor hull integrity: 0% (Fatal structural decompression)." next
+    "@Robotic chassis transfer verified: All four threads executing nominal." next
+    "@Auxiliary recovery module located: {itemname(130)}!" next
+    "[1D 03 FF][1B 02 {e(cow_caveofpast_wreckage_full)}][1D 0E 00 82]"
+    call(data_33.l_0xc7dccf)
+    "{set(flag 223)}{set(flag 934)}"
+    call(cow_engine.cow_fault_commit_caveofpast)
+    end
+
+cow_caveofpast_wreckage_full:
+    "@Inventory buffer saturated! Free a memory slot to retrieve the {itemname(130)}." end
+
+cow_caveofpast_wreckage_empty:
+    "@(Phase Distorter v3 chassis decommissioned. Telemetry logs archived.)" end
+
+cow_caveofpast_saturn_1:
+    "@Deep historical registers reached." next
+    "@Ahead lies the core singularity chamber." next
+    "@Once you breach the containment threshold, return is impossible.{wait}{set(flag 285)}" eob
+
+cow_caveofpast_saturn_2:
+    "{font_saturn}@We here too." next
+    "@Historical clock frequency runs in reverse." next
+    "@Keep registers clean! Boing!{wait}{font_normal}" eob

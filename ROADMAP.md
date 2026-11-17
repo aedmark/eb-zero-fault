@@ -151,9 +151,9 @@ Goal: Author late-game preparation scenarios across Saturn Valley Phase Distorte
 
 Goal: Author the definitive endgame climax across robotic execution in the Cave of the Past, confrontation with Heavily Armed Pokey and Giygas, Paula's network-wide interrupt prayer sequence, and the clean kernel reboot epilogue.
 
-- [ ] P15-01 Script Cave of the Past robotic traversal, historical bus lines, and Phase Distorter v3 wreckage telemetry (D-021).
-- [ ] P15-02 Script Heavily Armed Pokey corrupted thread confrontation and Devil's Machine shutoff sequence (D-021).
-- [ ] P15-03 Script Giygas confrontation as an omnipresent hypervisor fault / devouring core dump singularity (D-021).
-- [ ] P15-04 Script Paula's inter-thread interrupt prayer broadcast reaching across all regional thread addresses (D-021).
-- [ ] P15-05 Script system fault purge, clean kernel reboot, return to Onett, and epilogue dispatch (D-021).
-- [ ] P15-06 Integrate Phase 15 dual-binding dispatch across NPC configuration table and legacy label trampolines with CoW engine sector commit routines (D-021).
+- [x] P15-01 Script Cave of the Past robotic traversal, historical bus lines, and Phase Distorter v3 wreckage telemetry (D-021; implemented src/ccscript/cow_caveofpast.ccs overriding EF58C7, C9C262, C9C27E, 2026-11-16).
+- [x] P15-02 Script Heavily Armed Pokey corrupted thread confrontation and Devil's Machine shutoff sequence (D-021; implemented src/ccscript/cow_giygas.ccs overriding C8FB1B, C8FC2E, C8FD11, C8FF31, 2026-11-16).
+- [x] P15-03 Script Giygas confrontation as an omnipresent hypervisor fault / devouring core dump singularity (D-021; implemented src/ccscript/cow_giygas.ccs overriding C9EE2F and C9EE68, 2026-11-16).
+- [x] P15-04 Script Paula's inter-thread interrupt prayer broadcast reaching across all regional thread addresses (D-021; implemented src/ccscript/cow_prayer.ccs overriding C9F0B8 through C9F86A, 2026-11-16).
+- [x] P15-05 Script system fault purge, clean kernel reboot, return to Onett, and epilogue dispatch (D-021; implemented src/ccscript/cow_epilogue.ccs overriding C7547D, C7625E, C9C85D, and C9C293, 2026-11-16).
+- [x] P15-06 Integrate Phase 15 dual-binding dispatch across NPC configuration table and legacy label trampolines with CoW engine sector commit routines (D-021; updated src/npc_config_table.yml entries 1271, 1272, 1273 and data_28.ccs, data_43.ccs, data_53.ccs, data_54.ccs, data_55.ccs, data_56.ccs, 2026-11-16).

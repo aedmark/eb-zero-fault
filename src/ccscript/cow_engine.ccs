@@ -51,8 +51,10 @@ command e(label) "{long label}"
 // 921: Sector 34 - Sea of Eden Deep Kernel Space
 // 926: Sector 35 - Saturn Valley Phase Distorter Development
 // 927: Sector 36 - Onett Night Invasion / Bus Contention Blackout
+// 932: Sector 37 - Cave of the Past Deep Temporal Registers
+// 933: Sector 38 - Clean Kernel Reboot & Epilogue Homecoming
 
-// Entity Mutation Bits (870-931)
+// Entity Mutation Bits (870-938)
 // 870: Mom baseline dirtied (refcount = 2 awareness)
 // 871: Tracy baseline dirtied (memory buffer initialized)
 // 872: Pokey baseline dirtied (unbound pointer hijacked)
@@ -99,6 +101,11 @@ command e(label) "{long label}"
 // 929: Zexonyte core element extracted from Sector 0 meteor site
 // 930: Phase Distorter v2 hijacked by corrupted thread Pokey
 // 931: Final thread resynchronization / tea ceremony complete
+// 934: Phase Distorter v3 wreckage telemetry audited
+// 935: Devil's Machine isolator daemon deactivated
+// 936: Paula's host interrupt injection executed
+// 937: Giygas core dump singularity purged
+// 938: Epilogue letter delivered / Kernel cleanly rebooted
 
 // Reusable Engine Commands
 command cow_touch(f) "{set(flag f)}"
@@ -198,3 +205,9 @@ cow_fault_commit_phasedistorter:
 
 cow_fault_commit_onett_night:
     "{set(flag 927)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_caveofpast:
+    "{set(flag 932)}{sound(11)}{pause(15)}" eob
+
+cow_fault_commit_epilogue:
+    "{set(flag 933)}{sound(11)}{pause(15)}" eob

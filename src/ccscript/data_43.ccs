@@ -370,68 +370,16 @@ l_0xc8fb05:
     "  have any PP![03]" eob
 
 l_0xc8fb1b:
-    "{window_closetop}{pause(40)}{window_open(1)}" newline
-    "[1F 62 00]@I understand you guys are already claiming to be heroes.{prompt}" linebreak
-    "@Well, it is a gazillion years too early for you to oppose Giygas!{prompt}" linebreak
-    "@You must feel pretty stupid to keep fighting without even knowing{prompt}" linebreak
-    "@what Giygas looks like!{prompt}" linebreak
-    "@If you were to ever see Giygas, you'd be so petrified with fear,{prompt}" linebreak
-    "@you'd never be able to run away!{prompt}" linebreak
-    "@...That's how scary it is!{prompt}" linebreak
-    "@So, do you want me to turn off the <Devil's Machine?>{prompt}" linebreak
-    "@Well, prepare to be amazed!{sound(74)}{pause(150)}{window_closetop}" eob
+    goto(cow_giygas.cow_giygas_pokey_entry)
 
 l_0xc8fc2e:
-    newline
-    "{pause(80)}{window_open(1)}[1F 62 00]@So, isn't this terrifying?{pause(30)}" linebreak
-    "  I'm terrified, too.{prompt}" linebreak
-    "@Giygas cannot think rationally any more,{prompt}" linebreak
-    "@and he isn't even aware of what he is doing now.{prompt}" linebreak
-    "@His own mind was destroyed by his incredible power.{prompt}" linebreak
-    "@What an all-mighty idiot!{pause(30)}{prompt}" linebreak
-    "@Yep, that's what he is!{prompt}" linebreak
-    "@Heh heh heh heh...{pause(30)}" linebreak
-    "  and you... you will be...{pause(30)}" linebreak
-    "  just another meal to him!{pause(150)}{window_closetop}{window_open(14)}" eob
+    goto(cow_giygas.cow_giygas_pokey_unleash)
 
 l_0xc8fd11:
-    "{window_closetop}{pause(60)}{window_open(1)}[1F 62 00]" newline
-    "@Heh heh heh heh.{pause(30)}" linebreak
-    "  You must really be" linebreak
-    "  at the end of your rope.{prompt}" linebreak
-    "@In this bizarre dimension," linebreak
-    "  you four are the only force fighting for justice...{prompt}" linebreak
-    "@And here you stand,{prompt}" linebreak
-    "@waiting to be burned up with all the rest of the garbage of this universe...{prompt}" linebreak
-    "@Haaaaah!{pause(30)}" linebreak
-    "  That's so sad. I can't help" linebreak
-    "  but shed a tear.{prompt}" linebreak
-    "@You know, my heart is beating incredibly fast,{pause(30)}" linebreak
-    "{prompt}" linebreak
-    "@...I must be experiencing absolute terror!{prompt}" linebreak
-    "@Do you want to scream for" linebreak
-    "  help here in the dark?!{prompt}" linebreak
-    "@Ha ha ha ha ha!{prompt}" linebreak
-    "@Why not call your mommy," linebreak
-    "  {stat(8)}!{prompt}" linebreak
-    "@Say, <Mommy!  Daddy!" linebreak
-    "  I'm so frightened!  {pause(30)}I think" linebreak
-    "  I'm gonna wet my pants!>{prompt}" linebreak
-    "@I know you have telepathy, or something, so just try and call for help,{prompt}" linebreak
-    "@you pathetically weak" linebreak
-    "  heroes of so-called justice!{prompt}" linebreak
-    "@No one will help you now!{prompt}" linebreak
-    "@Ha ha ha haah...{prompt}" linebreak
-    "@Don't worry, your pitiful suffering will be over soon!{pause(150)}{window_closetop}{window_open(14)}" eob
+    goto(cow_giygas.cow_giygas_pokey_taunt)
 
 l_0xc8ff31:
-    "{window_closetop}{pause(60)}{window_open(1)}[1F 62 00]@{stat(8)}!{pause(30)} Now, I..." linebreak
-    "  well... {pause(20)}It's going to seem like" linebreak
-    "  I'm running away.{prompt}" linebreak
-    "@But perhaps I'll just sneak away to another era to think about my next plan.{prompt}" linebreak
-    "@It's a good bet that we will see each other again...{prompt}{pause(30)}" linebreak
-    "@All right!  I'll be seeing you!{prompt}" linebreak
-    "@So now which one of us do you think is the cool guy?!{pause(150)}{sound(65)}{window_closetop}" eob
+    goto(cow_giygas.cow_giygas_pokey_flee)
 
 l_0xc90000:
     "{counter(20)}" call(data_44.l_0xc90fec) eob

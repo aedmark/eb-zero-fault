@@ -206,7 +206,7 @@ removing a fence whose purpose it forgot.
 **Consequences:** Frames the journey to the past as an architecture transfer into hardened execution units capable of traversing corrupted temporal bus lines. Automated verification in `tools/verify_rom.py` expanded to 220 binary assertions.
 **Review trigger:** Verification of Cave of the Past and final Giygas encounters.
 
-## D-021 Endgame: Cave of the Past, Final Battle, Network Prayer, and Kernel Reboot (2026-11-16, status: proposed)
+## D-021 Endgame: Cave of the Past, Final Battle, Network Prayer, and Kernel Reboot (2026-11-16, status: accepted)
 **Context:** Implementing the final climax of EarthBound: Zero Fault across the Cave of the Past, the temporal bus threshold, Heavily Armed Pokey and Giygas confrontation, Paula's network interrupt prayer sequence, and the clean kernel reboot epilogue (P15-01 through P15-06).
 **Decision:**
 1. Author `src/ccscript/cow_caveofpast.ccs`: Cave of the Past robotic traversal (Sector 37, `flag 932`), corrupted temporal registers, Phase Distorter v3 wreckage telemetry, and terminal hypervisor threshold.
@@ -216,7 +216,7 @@ removing a fence whose purpose it forgot.
 5. Update `src/ccscript/cow_engine.ccs`: Allocate Sector dirty bits 932 (Cave of the Past) and 933 (Epilogue/Reboot), Entity mutation bits 934-938, and corresponding commit subroutines.
 6. Rebalance final boss and late-game enemies in `src/enemy_configuration_table.yml`, enforce dual-binding dispatch across NPC table entries and legacy trampolines, and expand `tools/verify_rom.py`.
 **Alternatives:** Retaining vanilla abstract metaphysical cosmic horror dialogue without systems architecture metaphor (breaks core premise).
-**Consequences:** Resolves the entire narrative arc as a cosmic debugging operation restoring system integrity and committing the final clean kernel state.
+**Consequences:** Resolves the entire narrative arc as a cosmic debugging operation restoring system integrity and committing the final clean kernel state. Automated verification in `tools/verify_rom.py` expanded to 245 binary assertions.
 **Review trigger:** Verification of end credits and epilogue save state.
 
 ---

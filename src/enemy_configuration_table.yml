@@ -693,7 +693,7 @@
   Money: 820
   Movement pattern: 23
   Music: 104
-  Name: Nuclear Reactor Robot
+  Name: Reactor Daemon
   Offense: 142
   Overworld Sprite: 306
   PP: 0
@@ -2996,7 +2996,7 @@
   Money: 906
   Movement pattern: 23
   Music: 97
-  Name: Wild 'n Wooly Shambler
+  Name: Thread Shambler
   Offense: 144
   Overworld Sprite: 306
   PP: 212
@@ -3560,7 +3560,7 @@
   Money: 915
   Movement pattern: 23
   Music: 97
-  Name: Final Starman
+  Name: Root Starman
   Offense: 178
   Overworld Sprite: 306
   PP: 860
@@ -4124,7 +4124,7 @@
   Money: 815
   Movement pattern: 23
   Music: 97
-  Name: Ultimate Octobot
+  Name: Monolithic Octobot
   Offense: 163
   Overworld Sprite: 306
   PP: 0
@@ -6662,7 +6662,7 @@
   Money: 0
   Movement pattern: 0
   Music: 0
-  Name: Heavily Armed Pokey
+  Name: Rootkit Pokey
   Offense: 150
   Overworld Sprite: 44
   PP: 999
@@ -8871,7 +8871,7 @@
   Money: 915
   Movement pattern: 23
   Music: 97
-  Name: Final Starman
+  Name: Root Starman
   Offense: 178
   Overworld Sprite: 306
   PP: 860
@@ -9623,7 +9623,7 @@
   Money: 0
   Movement pattern: 21
   Music: 0
-  Name: Heavily Armed Pokey
+  Name: Rootkit Pokey
   Offense: 150
   Overworld Sprite: 44
   PP: 999
@@ -10187,7 +10187,7 @@
   Money: 0
   Movement pattern: 0
   Music: 105
-  Name: Heavily Armed Pokey
+  Name: Rootkit Pokey
   Offense: 145
   Overworld Sprite: 44
   PP: 999
@@ -10234,7 +10234,7 @@
   Money: 0
   Movement pattern: 0
   Music: 72
-  Name: Heavily Armed Pokey
+  Name: Rootkit Pokey
   Offense: 150
   Overworld Sprite: 44
   PP: 999

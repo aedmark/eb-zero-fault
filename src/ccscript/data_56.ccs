@@ -177,9 +177,7 @@ l_0xef5864:
     "@Ding, ding!{wait}{font_normal}" eob
 
 l_0xef58c7:
-    "[06 DF 00 {e(data_21.l_0xc685cb)}][19 10 01]{rtoarg}@{name(0)} checked the broken Phase Distorter." next
-    "@There was a {itemname(130)}." next
-    "[1D 03 FF][1B 02 {e(data_21.l_0xc685bb)}][1D 0E 00 82]" call(data_33.l_0xc7dccf) "{set(flag 223)}" end
+    goto(cow_caveofpast.cow_caveofpast_wreckage)
 
 l_0xef5917:
     "{sound(99)}[1F 15 A9 00 6C 02 01][1F 61][1F 1F A9 00 06][1F 15 62 00 08 00 01][1F E4 62 00 07][1F E4 62 00 01][1F E4 62 00 03][1F E4 62 00 05][1F E4 62 00 07]{pause(1)}[1F E4 62 00 01]{pause(2)}[1F E4 62 00 03]{pause(3)}[1F E4 62 00 05]{pause(4)}[1F E4 62 00 07]{pause(5)}[1F E4 62 00 01]{pause(6)}[1F E4 62 00 03]{pause(7)}[1F E4 62 00 05]{pause(8)}[1F E4 62 00 07]{window_open(1)}@Greetings!{pause(20)}  So, you are finally here![03]{window_closeall}" call(data_45.l_0xc915f4) "{sound(37)}{pause(90)}{window_open(1)}@Excellent!{pause(20)}  You are truly excellent!" next

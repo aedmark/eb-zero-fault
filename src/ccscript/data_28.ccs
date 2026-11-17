@@ -225,12 +225,7 @@ l_0xc7546f:
     eob
 
 l_0xc7547d:
-    "[06 F1 02 {e(l_0xc755ad)}][06 83 02 {e(l_0xc755c4)}]@Wow,{pause(10)} you've become such a strong,{pause(10)} young man." next
-    "@I'd like to hear all of your stories," next
-    "@but I don't want to annoy you as soon as you walk through the door." next
-    "[06 7E 02 {e(l_0xc7552d)}]@I want to have a chance to get to know your little girlfriend." next
-    "@It's good to meet you,{pause(15)} {name(2)}." next
-    goto(l_0xc7552d)
+    goto(cow_epilogue.cow_epilogue_mom)
 
 l_0xc7552d:
     "@After all your chats with people you met on your adventure are finally over," next
@@ -396,14 +391,7 @@ l_0xc7623e:
     "@Ooops!{pause(20)}  You seem to be carrying too much stuff already!" end
 
 l_0xc7625e:
-    "[06 01 03 {e(l_0xc76357)}]@Goody!{pause(20)}  My brother is back!" next
-    "@You've got a lot of catching up to do with your schoolwork, *Hyork*!" next
-    "@If you have any problems with your assignments,{pause(15)} I'll help you." next
-    "@Don't get freaked out." next
-    "@Did Escargo Express,{pause(15)} my old company,{pause(15)} help you?" next
-    "@I've saved some money,{pause(15)} so we'll do the lunch thing sometime." next
-    "@You also got a new girlfriend?[03]@Your adventure must have been pretty good!" next
-    goto(l_0xc76357)
+    goto(cow_epilogue.cow_epilogue_tracy)
 
 l_0xc76357:
     "@Do you need help with anything other than your schoolwork?" next

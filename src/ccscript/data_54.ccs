@@ -352,73 +352,50 @@ l_0xc9ed95:
     "@to find those great truffles by scent alone." end
 
 l_0xc9ee2f:
-    "[1D 21 0D][09 0D {e(l_0xc9ee7f)} {e(l_0xc9ee9f)} {e(l_0xc9eec7)} {e(l_0xc9eede)} {e(l_0xc9ef00)} {e(l_0xc9efb9)} {e(l_0xc9efe1)} {e(l_0xc9eff6)} {e(l_0xc9f020)} {e(l_0xc9f042)} {e(l_0xc9f052)} {e(l_0xc9f074)} {e(l_0xc9f090)}]" goto(l_0xc9ee68)
+    goto(cow_giygas.cow_giygas_voice_dispatch)
 
 l_0xc9ee68:
-    newline
-    "{text_blips(2)}@<.....{stat(8)}{pause(1)}...>{text_blips(1)}[03]" eob
+    goto(cow_giygas.cow_giygas_voice_dispatch)
 
 l_0xc9ee7f:
-    newline
-    "{text_blips(2)}@<It hurts,{pause(30)}" linebreak
-    "  {stat(8)}{pause(1)}...>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9ee9f:
-    newline
-    "{text_blips(2)}@<...I'm h...{pause(10)} a...{pause(10)} p...{pause(10)} p...{pause(10)} y...>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9eec7:
-    newline
-    "{text_blips(2)}@<...{pause(20)}friends...>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9eede:
-    newline
-    "{text_blips(2)}@<...It hurts,{pause(20)} ...it hurts...>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9ef00:
-    "{text_blips(2)}" newline
-    "@<{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}, {pause(1)}{stat(8)}{pause(5)} {pause(15)}.....>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9efb9:
-    newline
-    "{text_blips(2)}@<...{pause(1)}go... {pause(1)}b... {pause(1)}a... {pause(1)}c...{pause(1)}k...>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9efe1:
-    newline
-    "{text_blips(2)}@<...{stat(8)}{pause(1)}...>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9eff6:
-    newline
-    "{text_blips(2)}@<I {pause(15)}feel...{pause(15)} g...{pause(15)} o...{pause(15)} o...{pause(15)} d...>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9f020:
-    newline
-    "{text_blips(2)}@<...I'm so sad..." linebreak
-    "  .....{stat(8)}{pause(1)}.>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9f042:
-    newline
-    "{text_blips(2)}@<{stat(8)}!>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9f052:
-    newline
-    "{text_blips(2)}@<  Ah, {pause(20)} Grrr, {pause(15)} Ohhh...>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9f074:
-    newline
-    "{text_blips(2)}@<Argh...  Yaaagh!...>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9f090:
-    newline
-    "{text_blips(2)}@<It's not right...{pause(20)} not right...{pause(20)} not right...>{text_blips(1)}[03]" eob
+    eob
 
 l_0xc9f0b8:
-    newline
-    "{sound(28)}@{user} prayed" linebreak
-    "  from bottom of her heart![03]{pause(60)}" newline
-    "{text_blips(2)}@<...Please give us strength,{prompt}" linebreak
-    "@if it is possible..." linebreak
-    "  Please...>{prompt}" linebreak
-    "@<................" linebreak
-    "  Somebody... help us...>{text_blips(1)}{pause(150)}" eob
+    goto(cow_prayer.cow_prayer_1)
 

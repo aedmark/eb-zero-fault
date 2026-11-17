@@ -219,6 +219,19 @@ removing a fence whose purpose it forgot.
 **Consequences:** Resolves the entire narrative arc as a cosmic debugging operation restoring system integrity and committing the final clean kernel state. Automated verification in `tools/verify_rom.py` expanded to 245 binary assertions.
 **Review trigger:** Verification of end credits and epilogue save state.
 
+## D-022 Checkpoint SRAM Architecture and Headless Assertion Framework (2026-11-17, status: accepted)
+**Context:** Rapidly proving game mechanics, dirty-page mutations, and late-game encounters across 15 development phases without requiring a 40-hour manual playthrough.
+**Decision:**
+1. Implement `tools/generate_saves.py` creating an 8,192-byte battery SRAM (`eb_zero_fault.srm`) containing three distinct progression checkpoints across primary and mirror blocks (6 blocks total):
+   - Slot 1: Mid-game checkpoint (Phase 9/10 Fourside monolithic kernel & Moonside bitwise-NOT inversion, Level 45).
+   - Slot 2: Late-game checkpoint (Phase 13 Magicant core dump & Sea of Eden root mutex lock, Level 75).
+   - Slot 3: Endgame checkpoint (Phase 15 Cave of the Past robotic chassis & Giygas hypervisor singularity, Level 99).
+2. Compute exact dual checksums (Checksum 1: cumulative byte sum mod 0x10000; Checksum 2: 16-bit word XOR) for both primary and mirror blocks.
+3. Implement `tools/test_headless_assertions.py` executing 81 automated headless runtime and state assertions covering SRAM checksum integrity, party coordinates, B-button dash 65816 assembly vectors, fast-text delay calculation, HDMA queue safety, shop stat differential math, and CoW dirty-page state isolation.
+**Alternatives:** Relying solely on manual playthroughs in GUI emulators or basic static string checks.
+**Consequences:** Enables instantaneous spot-checking in Snes9x at any chapter and establishes automated headless CI/CD assertion testing.
+**Review trigger:** Modifying SRAM layout or adding new gameplay mechanics.
+
 ---
 
 ## Held tensions

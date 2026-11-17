@@ -10,11 +10,13 @@ The results themselves live in HANDOFF's "Current state"; this file is how to ge
 | Documentation | `tools/check_docs.py` | Cross-references, decision IDs, roadmap items, no placeholders | That the code or ROM builds | Seconds, Python standard library |
 | Toolchain check | `coilsnake --version` | Python environment and CoilSnake CLI functionality | That project files compile | Seconds, active `.venv` |
 | ROM Compilation | `tools/build.sh` | CCScript syntax, YAML schema validity, VRAM graphics import | Runtime game logic or game balance | 6-10 seconds, CPU |
-| Binary Verification | `tools/verify_rom.py` | Validates 31 binary assertions (header, dash hooks, text hooks, shop stats, CoW narrative, Twoson/Happy hooks, and thematic enemy/item names) | Interactive player control feel | Seconds, Python standard library |
-| Emulation test | Manual in Mesen-S | In-game behavior, dialogue formatting, music playback, collision | Full 40-hour game completion | Minutes, GUI emulator |
+| Binary Verification | `tools/verify_rom.py` | Validates 245 binary assertions (header, dash hooks, text hooks, shop stats, CoW narrative, NPC tables, and thematic enemy/item names) | Interactive player control feel | Seconds, Python standard library |
+| Headless Assertions | `tools/test_headless_assertions.py` | 81 headless runtime, assembly vector, SRAM checkpoint, and state machine assertions | Visual pixel rendering | Seconds, Python standard library |
+| Save Generation | `tools/generate_saves.py` | Generates verified 3-slot battery SRAM (.srm) checkpoints for mid-game, late-game, and endgame | Manual story completion | Seconds, Python standard library |
+| Emulation test | Manual in Snes9x | In-game behavior, dialogue formatting, music playback, collision | Full 40-hour game completion | Minutes, GUI emulator |
 
-**The fast set** (before every commit): `python3 tools/check_docs.py` and `python3 tools/verify_rom.py`.
-**The full set** (after modifying scripts or tables): `tools/build.sh`, `python3 tools/verify_rom.py`, and `python3 tools/check_docs.py`.
+**The fast set** (before every commit): `python3 tools/check_docs.py`, `python3 tools/verify_rom.py`, and `python3 tools/test_headless_assertions.py`.
+**The full set** (after modifying scripts or tables): `tools/build.sh`, `python3 tools/generate_saves.py`, `python3 tools/verify_rom.py`, `python3 tools/test_headless_assertions.py`, and `python3 tools/check_docs.py`.
 
 **Expected results** live in HANDOFF's "Verified" table, with the date and commit they were measured on.
 
@@ -51,8 +53,26 @@ coilsnake compile src/ build/eb_zero_fault.sfc
 ### Emulation and Visual Inspection
 
 ```bash
-mesen-s build/eb_zero_fault.sfc
+snes9x-gtk build/eb_zero_fault.sfc
 ```
 
 - What it does: Boots the compiled ROM in a cycle-accurate SNES emulator.
-- What to check: Verify title screen boots, start a new game, test dialogue window printing, and test B-Button dash movement.
+- What to check: Verify title screen boots, choose a save slot, test dialogue window printing, and test B-Button dash movement.
+
+### Battery Save Checkpoint Generation
+
+```bash
+python3 tools/generate_saves.py
+```
+
+- What it does: Assembles an 8,192-byte SRAM battery save (`eb_zero_fault.srm`) containing three pre-configured checkpoints across primary and mirror blocks (Slot 1: Fourside/Moonside, Slot 2: Magicant/Sea of Eden, Slot 3: Cave of the Past robotic party) with valid dual checksums.
+- What a pass looks like: Writes `build/eb_zero_fault.srm` and `tools/presets/eb_zero_fault.srm` with 6 valid blocks.
+
+### Headless Runtime and State Assertion Suite
+
+```bash
+python3 tools/test_headless_assertions.py
+```
+
+- What it does: Runs 81 automated headless assertions covering SRAM checksums, party coordinates, B-button dash 65816 assembly vectors, fast-text delay counters, HDMA queue safety, shop stat differential math, and CoW dirty-page state isolation.
+- What a pass looks like: Exit code 0, reporting `All headless runtime and state assertions verified successfully!`.

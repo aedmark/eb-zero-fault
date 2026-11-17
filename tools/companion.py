@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
-EarthBound: Zero Fault - ROM Text & Script Explorer (Zero Fault Companion)
+EarthBound: Zero Fault - Comprehensive ROM Text & Script Explorer (Zero Fault Companion)
 
-An interactive, searchable GUI and CLI companion for inspecting all text, scripts,
-dialogue trees, NPC table bindings, and thematic enemy reskins in EarthBound: Zero Fault.
-Like SCI Companion, but customized specifically for this 32-Mbit SNES ROM hack.
+An interactive, searchable GUI and CLI companion for inspecting ALL text, scripts,
+dialogue trees, NPC table bindings, battle actions, PSI abilities, items, and thematic
+enemy reskins in EarthBound: Zero Fault.
+Covers both the custom Copy-on-Write narrative overhaul (Phases 1-15) and all untouched
+vanilla EarthBound scripts across data_00.ccs through data_61.ccs.
 """
 
 import argparse
@@ -60,6 +62,73 @@ PHASE_MAPPINGS = {
     "cow_giygas.ccs": ("P15", "Phase 15: Endgame Climax & Clean Reboot", "Rootkit Pokey Devil's Machine shutoff, Giygas hypervisor singularity / core dump void voice"),
     "cow_prayer.ccs": ("P15", "Phase 15: Endgame Climax & Clean Reboot", "Paula non-maskable inter-thread interrupt (NMI) broadcasts, host supervisor thread injection"),
     "cow_epilogue.ccs": ("P15", "Phase 15: Endgame Climax & Clean Reboot", "Clean kernel reboot, Onett bus contention lifted, Pokey unsigned packet delivery, credits"),
+}
+
+# Categorization for all 62 vanilla script modules
+VANILLA_CATEGORIES = {
+    "data_00.ccs": ("SHOPS", "Shops, Hotels & Hospitals"),
+    "data_01.ccs": ("SHOPS", "Shops, Hotels & Hospitals"),
+    "data_02.ccs": ("SHOPS", "Shops, Hotels & Hospitals"),
+    "data_03.ccs": ("ITEMS", "Item & Equipment Help Descriptions"),
+    "data_04.ccs": ("ITEMS", "Item & Equipment Help Descriptions"),
+    "data_05.ccs": ("ITEMS", "Item & Equipment Help Descriptions"),
+    "data_06.ccs": ("DEBUG", "Debug Tooling & System Prompts"),
+    "data_07.ccs": ("DEBUG", "Debug Tooling & System Prompts"),
+    "data_08.ccs": ("DEBUG", "Debug Tooling & System Prompts"),
+    "data_09.ccs": ("DEBUG", "Debug Tooling & System Prompts"),
+    "data_10.ccs": ("DEBUG", "Debug Tooling & System Prompts"),
+    "data_11.ccs": ("DEBUG", "Debug Tooling & System Prompts"),
+    "data_12.ccs": ("DEBUG", "Debug Tooling & System Prompts"),
+    "data_13.ccs": ("DEBUG", "Debug Tooling & System Prompts"),
+    "data_14.ccs": ("DEBUG", "Debug Tooling & System Prompts"),
+    "data_15.ccs": ("ONETT_TWOSON", "Onett & Twoson Townspeople"),
+    "data_16.ccs": ("ONETT_TWOSON", "Onett & Twoson Townspeople"),
+    "data_17.ccs": ("ONETT_TWOSON", "Onett & Twoson Townspeople"),
+    "data_18.ccs": ("ONETT_TWOSON", "Onett & Twoson Townspeople"),
+    "data_19.ccs": ("ONETT_TWOSON", "Onett & Twoson Townspeople"),
+    "data_20.ccs": ("ONETT_TWOSON", "Onett & Twoson Townspeople"),
+    "data_21.ccs": ("ONETT_TWOSON", "Onett & Twoson Townspeople"),
+    "data_22.ccs": ("THREED_WINTERS", "Threed, Winters & Saturn Valley"),
+    "data_23.ccs": ("THREED_WINTERS", "Threed, Winters & Saturn Valley"),
+    "data_24.ccs": ("THREED_WINTERS", "Threed, Winters & Saturn Valley"),
+    "data_25.ccs": ("THREED_WINTERS", "Threed, Winters & Saturn Valley"),
+    "data_26.ccs": ("THREED_WINTERS", "Threed, Winters & Saturn Valley"),
+    "data_27.ccs": ("THREED_WINTERS", "Threed, Winters & Saturn Valley"),
+    "data_28.ccs": ("THREED_WINTERS", "Threed, Winters & Saturn Valley"),
+    "data_29.ccs": ("THREED_WINTERS", "Threed, Winters & Saturn Valley"),
+    "data_30.ccs": ("BATTLE_ITEMS", "Battle Item Usage & Weapons"),
+    "data_31.ccs": ("FOURSIDE", "Desert & Fourside Metropolis"),
+    "data_32.ccs": ("FOURSIDE", "Desert & Fourside Metropolis"),
+    "data_33.ccs": ("FOURSIDE", "Desert & Fourside Metropolis"),
+    "data_34.ccs": ("FOURSIDE", "Desert & Fourside Metropolis"),
+    "data_35.ccs": ("FOURSIDE", "Desert & Fourside Metropolis"),
+    "data_36.ccs": ("FOURSIDE", "Desert & Fourside Metropolis"),
+    "data_37.ccs": ("FOURSIDE", "Desert & Fourside Metropolis"),
+    "data_38.ccs": ("SUMMERS", "Summers, Dalaam & Poo's Mu"),
+    "data_39.ccs": ("SUMMERS", "Summers, Dalaam & Poo's Mu"),
+    "data_40.ccs": ("SUMMERS", "Summers, Dalaam & Poo's Mu"),
+    "data_41.ccs": ("SUMMERS", "Summers, Dalaam & Poo's Mu"),
+    "data_42.ccs": ("SUMMERS", "Summers, Dalaam & Poo's Mu"),
+    "data_43.ccs": ("BELCH_MOON", "Belch Factory & Moonside"),
+    "data_44.ccs": ("BELCH_MOON", "Belch Factory & Moonside"),
+    "data_45.ccs": ("BELCH_MOON", "Belch Factory & Moonside"),
+    "data_46.ccs": ("TENDA_LUMINE", "Deep Darkness, Tenda, Lumine & Underworld"),
+    "data_47.ccs": ("TENDA_LUMINE", "Deep Darkness, Tenda, Lumine & Underworld"),
+    "data_48.ccs": ("TENDA_LUMINE", "Deep Darkness, Tenda, Lumine & Underworld"),
+    "data_49.ccs": ("TENDA_LUMINE", "Deep Darkness, Tenda, Lumine & Underworld"),
+    "data_50.ccs": ("TENDA_LUMINE", "Deep Darkness, Tenda, Lumine & Underworld"),
+    "data_51.ccs": ("TENDA_LUMINE", "Deep Darkness, Tenda, Lumine & Underworld"),
+    "data_52.ccs": ("TENDA_LUMINE", "Deep Darkness, Tenda, Lumine & Underworld"),
+    "data_53.ccs": ("ENDGAME", "Phase Distorter, Giygas, Prayers & Ending"),
+    "data_54.ccs": ("ENDGAME", "Phase Distorter, Giygas, Prayers & Ending"),
+    "data_55.ccs": ("ENDGAME", "Phase Distorter, Giygas, Prayers & Ending"),
+    "data_56.ccs": ("BATTLE_SIGNS", "Battle Status Messages, Signs & Bulletins"),
+    "data_57.ccs": ("BATTLE_SIGNS", "Battle Status Messages, Signs & Bulletins"),
+    "data_58.ccs": ("BATTLE_SIGNS", "Battle Status Messages, Signs & Bulletins"),
+    "data_59.ccs": ("BATTLE_SIGNS", "Battle Status Messages, Signs & Bulletins"),
+    "data_60.ccs": ("BATTLE_SIGNS", "Battle Status Messages, Signs & Bulletins"),
+    "data_61.ccs": ("BATTLE_SIGNS", "Battle Status Messages, Signs & Bulletins"),
+    "data_62.ccs": ("MISC", "Miscellaneous"),
 }
 
 
@@ -150,7 +219,6 @@ def parse_dialogue_pages(code: str) -> List[str]:
     for match in pattern.finditer(clean_code):
         s, kw, bcode = match.groups()
         if s is not None:
-            # Split on [03] or {prompt} inside strings
             parts = re.split(r"\[03\]|\{prompt\}", s)
             for i, p in enumerate(parts):
                 if p:
@@ -242,11 +310,16 @@ def build_companion_data() -> Dict[str, Any]:
     npc_table = yaml.safe_load((REPO_ROOT / "src" / "npc_config_table.yml").read_text(encoding="utf-8"))
     enemy_table = yaml.safe_load((REPO_ROOT / "src" / "enemy_configuration_table.yml").read_text(encoding="utf-8"))
     item_table = yaml.safe_load((REPO_ROOT / "src" / "item_configuration_table.yml").read_text(encoding="utf-8"))
+    psi_table = yaml.safe_load((REPO_ROOT / "src" / "psi_ability_table.yml").read_text(encoding="utf-8"))
+    psi_names = yaml.safe_load((REPO_ROOT / "src" / "psi_name_table.yml").read_text(encoding="utf-8"))
+    action_table = yaml.safe_load((REPO_ROOT / "src" / "battle_action_table.yml").read_text(encoding="utf-8"))
 
     item_dict = {int(k): v.get("Name", f"Item {k}") for k, v in item_table.items()}
+    psi_name_dict = {int(k): v.get("Name", f"PSI {k}").strip() for k, v in psi_names.items()}
 
     npc_bindings, rom_hooks = load_verify_rom_metadata()
     trampoline_targets = find_vanilla_trampoline_targets()
+    reverse_trampoline = {f"{v[0][:-4]}.{v[1]}": k for k, v in trampoline_targets.items()}
     vanilla_files = load_vanilla_archive()
 
     # Map NPC table pointers
@@ -282,7 +355,6 @@ def build_companion_data() -> Dict[str, Any]:
             
             full_ref = f"{cfile.stem}.{current_label}"
             
-            # Match NPC binding
             bound_npc = None
             if full_ref in npc_pointer_map:
                 nid, pnum, ndata = npc_pointer_map[full_ref]
@@ -298,14 +370,12 @@ def build_companion_data() -> Dict[str, Any]:
             elif current_label in npc_bindings:
                 bound_npc = {"desc": npc_bindings[current_label]}
 
-            # Match ROM hook
             bound_hook = None
             for hdesc, hval in rom_hooks.items():
                 if current_label in hdesc or cfile.stem in hdesc.lower():
                     bound_hook = {"offset": hex(hval[0]), "desc": hdesc}
                     break
 
-            # Match vanilla target & text
             vanilla_mod, vanilla_lbl = trampoline_targets.get(full_ref, trampoline_targets.get(current_label, (None, None)))
             vanilla_clean = None
             vanilla_raw = None
@@ -325,9 +395,10 @@ def build_companion_data() -> Dict[str, Any]:
                 "id": full_ref,
                 "file": fname,
                 "label": current_label,
-                "phase_id": phase_info[0],
-                "phase_title": phase_info[1],
-                "phase_desc": phase_info[2],
+                "is_cow": True,
+                "category": phase_info[0],
+                "category_title": phase_info[1],
+                "category_desc": phase_info[2],
                 "comment": " ".join(current_comment).strip(),
                 "raw_code": full_code,
                 "clean_pages": clean_pages,
@@ -360,8 +431,78 @@ def build_companion_data() -> Dict[str, Any]:
 
         flush_entry()
 
-    print("Formatting bestiary, item, and NPC directory...")
-    # Thematic enemies
+    print("Parsing all 62 untouched vanilla script modules...")
+    vanilla_disk_files = sorted((REPO_ROOT / "src" / "ccscript").glob("data_*.ccs"))
+    vanilla_routines = []
+
+    for vfile in vanilla_disk_files:
+        fname = vfile.name
+        cat_info = VANILLA_CATEGORIES.get(fname, ("VANILLA", "Vanilla Scripts"))
+        content = vfile.read_text(encoding="utf-8", errors="ignore")
+        lines = content.splitlines()
+
+        current_label = None
+        current_lines = []
+
+        def flush_vanilla():
+            if not current_label or not current_lines:
+                return
+            full_code = "\n".join(current_lines)
+            raw_pages = parse_dialogue_pages(full_code)
+            clean_pages = [clean_dialogue_text(p, item_dict) for p in raw_pages if clean_dialogue_text(p, item_dict)]
+            full_ref = f"{vfile.stem}.{current_label}"
+
+            # Check if overridden by CoW
+            cow_override = reverse_trampoline.get(full_ref)
+
+            bound_npc = None
+            if full_ref in npc_pointer_map:
+                nid, pnum, ndata = npc_pointer_map[full_ref]
+                bound_npc = {
+                    "id": nid,
+                    "pointer_slot": pnum,
+                    "direction": ndata.get("Direction", "unknown"),
+                    "sprite": ndata.get("Sprite", 0),
+                    "movement": ndata.get("Movement", 0),
+                    "event_flag": ndata.get("Event Flag", "0x0"),
+                    "desc": npc_bindings.get(f"npc_{nid}", f"NPC Table Entry #{nid}")
+                }
+
+            sound_cues = extract_sound_cues(full_code)
+            flags_set, flags_checked = extract_flags(full_code)
+
+            vanilla_routines.append({
+                "id": full_ref,
+                "file": fname,
+                "label": current_label,
+                "is_cow": False,
+                "category": cat_info[0],
+                "category_title": cat_info[1],
+                "cow_override": cow_override,
+                "raw_code": full_code,
+                "clean_pages": clean_pages,
+                "dialogue_preview": clean_pages[0] if clean_pages else "(Script logic / Subroutine)",
+                "page_count": len(clean_pages),
+                "sound_cues": sound_cues,
+                "flags_set": flags_set,
+                "flags_checked": flags_checked,
+                "bound_npc": bound_npc,
+            })
+
+        for line in lines:
+            stripped = line.strip()
+            l_match = re.match(r"^([a-zA-Z0-9_]+):", stripped)
+            if l_match:
+                flush_vanilla()
+                current_label = l_match.group(1)
+                current_lines = [line]
+            else:
+                if current_label:
+                    current_lines.append(line)
+
+        flush_vanilla()
+
+    print("Formatting bestiary, item, NPC, PSI, and action tables...")
     thematic_names = [
         "The OOM Killer", "Null Reference Crow", "Dangling Pointer", "Runaway Thread",
         "Fork Bomb", "Dirty Page", "Runaway Linter", "Deadlock Tree", "Stack Overflow Mole",
@@ -398,7 +539,6 @@ def build_companion_data() -> Dict[str, Any]:
             "death_text": edata.get("Death Text Pointer", "$0"),
         })
 
-    # Items
     item_list = []
     for iid, idata in item_table.items():
         item_list.append({
@@ -410,14 +550,13 @@ def build_companion_data() -> Dict[str, Any]:
             "flags": idata.get("Misc Flags", []),
         })
 
-    # NPCs directory
     npc_list = []
     for nid, ndata in npc_table.items():
         p1 = str(ndata.get("Text Pointer 1", "$0"))
         p2 = str(ndata.get("Text Pointer 2", "$0"))
         is_cow = "cow_" in p1 or "cow_" in p2
         cow_routine_id = p1 if "cow_" in p1 else (p2 if "cow_" in p2 else None)
-        desc = npc_bindings.get(f"npc_{nid}", f"NPC #{nid}")
+        desc = npc_bindings.get(f"npc_{nid}", f"NPC Table Entry #{nid}")
         npc_list.append({
             "id": nid,
             "desc": desc,
@@ -431,7 +570,35 @@ def build_companion_data() -> Dict[str, Any]:
             "cow_routine_id": cow_routine_id,
         })
 
-    # Phases summary
+    psi_list = []
+    for pid, pdata in psi_table.items():
+        pname_id = pdata.get("PSI Name", 0)
+        base_name = psi_name_dict.get(pname_id, f"PSI #{pid}")
+        strength = pdata.get("Strength", "none")
+        name = f"{base_name} ({strength})" if strength != "none" else base_name
+        psi_list.append({
+            "id": pid,
+            "name": name,
+            "action_id": pdata.get("Action", 0),
+            "ness_lvl": pdata.get("Level learned by Ness", 0),
+            "paula_lvl": pdata.get("Level learned by Paula", 0),
+            "poo_lvl": pdata.get("Level learned by Poo", 0),
+            "type": pdata.get("Type", []),
+            "usability": pdata.get("Usability Outside of Battle", "???"),
+            "text_address": pdata.get("Text Address", "$0"),
+        })
+
+    action_list = []
+    for aid, adata in action_table.items():
+        action_list.append({
+            "id": aid,
+            "type": adata.get("Action type", "unknown"),
+            "pp_cost": adata.get("PP Cost", 0),
+            "target": adata.get("Target", "none"),
+            "direction": adata.get("Direction", "enemy"),
+            "text_address": adata.get("Text Address", "$0"),
+        })
+
     phases = []
     seen_phases = set()
     for fname, ptuple in PHASE_MAPPINGS.items():
@@ -440,27 +607,42 @@ def build_companion_data() -> Dict[str, Any]:
             seen_phases.add(pid)
             phases.append({"id": pid, "title": ptitle, "desc": pdesc})
 
+    vanilla_cats = []
+    seen_vcats = set()
+    for fname, vtuple in VANILLA_CATEGORIES.items():
+        vid, vtitle = vtuple
+        if vid not in seen_vcats:
+            seen_vcats.add(vid)
+            vanilla_cats.append({"id": vid, "title": vtitle})
+
     payload = {
         "meta": {
-            "title": "EarthBound: Zero Fault - ROM Text & Script Explorer",
+            "title": "EarthBound: Zero Fault - Comprehensive ROM Text Explorer",
             "version": "Phase 15 Complete (32-Mbit USA SNES)",
-            "total_routines": len(cow_routines),
-            "total_dialogue_pages": sum(r["page_count"] for r in cow_routines),
+            "total_cow_routines": len(cow_routines),
+            "total_vanilla_routines": len(vanilla_routines),
+            "total_all_routines": len(cow_routines) + len(vanilla_routines),
             "total_npcs": len(npc_table),
             "total_cow_npcs": sum(1 for n in npc_list if n["is_cow"]),
             "total_enemies": len(enemy_table),
             "total_thematic_enemies": sum(1 for e in enemy_list if e["is_thematic"]),
             "total_items": len(item_table),
+            "total_psi": len(psi_list),
+            "total_actions": len(action_list),
             "total_hooks": len(rom_hooks),
         },
         "phases": phases,
-        "routines": cow_routines,
+        "vanilla_categories": vanilla_cats,
+        "cow_routines": cow_routines,
+        "vanilla_routines": vanilla_routines,
         "npcs": npc_list,
         "enemies": enemy_list,
         "items": item_list,
+        "psi": psi_list,
+        "actions": action_list,
     }
 
-    print(f"Extraction complete: {len(cow_routines)} routines, {len(npc_list)} NPCs, {len(enemy_list)} enemies, {len(item_list)} items.")
+    print(f"Extraction complete: {len(cow_routines)} CoW routines, {len(vanilla_routines)} vanilla routines, {len(npc_list)} NPCs, {len(enemy_list)} enemies, {len(item_list)} items, {len(psi_list)} PSI.")
     return payload
 
 
@@ -473,7 +655,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zero Fault Companion - EarthBound ROM Text & Script Explorer</title>
+  <title>Zero Fault Companion - Complete EarthBound ROM Text & Script Explorer</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @font-face {{
@@ -488,7 +670,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
       position: relative;
     }}
     .eb-text {{
-      font-family: 'AppleKid', monospace, monospace;
+      font-family: 'AppleKid', monospace;
       letter-spacing: 0.05em;
       line-height: 1.6;
       color: #FFFFFF;
@@ -503,7 +685,6 @@ def generate_html_application(data: Dict[str, Any]) -> str:
       0% {{ opacity: 0.2; transform: translateY(-1px); }}
       100% {{ opacity: 1; transform: translateY(1px); }}
     }}
-    /* Custom scrollbars */
     ::-webkit-scrollbar {{
       width: 6px;
       height: 6px;
@@ -523,32 +704,38 @@ def generate_html_application(data: Dict[str, Any]) -> str:
 <body class="bg-slate-950 text-slate-100 antialiased h-screen flex flex-col overflow-hidden font-sans">
 
   <!-- Top App Navigation Bar -->
-  <header class="bg-slate-900 border-b border-slate-800 px-4 py-2.5 flex items-center justify-between shrink-0 shadow-md">
+  <header class="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center justify-between shrink-0 shadow-md">
     <div class="flex items-center gap-3">
       <div class="w-8 h-8 rounded bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-white shadow">
         0F
       </div>
       <div>
         <h1 class="text-sm font-bold tracking-wide text-white flex items-center gap-2">
-          EarthBound: Zero Fault <span class="text-xs px-2 py-0.5 rounded bg-indigo-950 border border-indigo-700 text-indigo-300 font-mono">ROM Text & Script Companion</span>
+          EarthBound: Zero Fault <span class="text-xs px-2 py-0.5 rounded bg-indigo-950 border border-indigo-700 text-indigo-300 font-mono">Full ROM Explorer</span>
         </h1>
-        <p class="text-[11px] text-slate-400">Copy-on-Write Memory Architecture Narrative & Systems Explorer</p>
+        <p class="text-[11px] text-slate-400">Complete Text Database: Custom Zero Fault Metaphor & All Untouched Vanilla Scripts</p>
       </div>
     </div>
 
     <!-- Quick Stats Bar -->
-    <div class="hidden md:flex items-center gap-2 text-xs">
+    <div class="hidden xl:flex items-center gap-2 text-xs">
       <span class="px-2 py-1 bg-slate-800/80 border border-slate-700 rounded text-slate-300">
-        <strong class="text-indigo-400 font-mono">{data['meta']['total_routines']}</strong> Routines
+        <strong class="text-indigo-400 font-mono">{data['meta']['total_cow_routines']}</strong> CoW Routines
       </span>
       <span class="px-2 py-1 bg-slate-800/80 border border-slate-700 rounded text-slate-300">
-        <strong class="text-purple-400 font-mono">{data['meta']['total_dialogue_pages']}</strong> Pages
+        <strong class="text-amber-400 font-mono">{data['meta']['total_vanilla_routines']}</strong> Vanilla Scripts
       </span>
       <span class="px-2 py-1 bg-slate-800/80 border border-slate-700 rounded text-slate-300">
-        <strong class="text-emerald-400 font-mono">{data['meta']['total_cow_npcs']}</strong> CoW NPCs
+        <strong class="text-emerald-400 font-mono">{data['meta']['total_npcs']}</strong> NPCs
       </span>
       <span class="px-2 py-1 bg-slate-800/80 border border-slate-700 rounded text-slate-300">
-        <strong class="text-amber-400 font-mono">{data['meta']['total_thematic_enemies']}</strong> Reskins
+        <strong class="text-purple-400 font-mono">{data['meta']['total_enemies']}</strong> Enemies
+      </span>
+      <span class="px-2 py-1 bg-slate-800/80 border border-slate-700 rounded text-slate-300">
+        <strong class="text-cyan-400 font-mono">{data['meta']['total_items']}</strong> Items
+      </span>
+      <span class="px-2 py-1 bg-slate-800/80 border border-slate-700 rounded text-slate-300">
+        <strong class="text-rose-400 font-mono">{data['meta']['total_psi']}</strong> PSI
       </span>
     </div>
 
@@ -572,36 +759,27 @@ def generate_html_application(data: Dict[str, Any]) -> str:
       <!-- Search Input -->
       <div class="p-3 border-b border-slate-800 space-y-2">
         <div class="relative">
-          <input id="search-input" type="text" placeholder="Search dialogue, labels, NPCs, flags..." 
+          <input id="search-input" type="text" placeholder="Search ALL dialogue, labels, NPCs, items..." 
                  class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" />
           <button id="clear-search-btn" class="absolute right-2.5 top-2 text-xs text-slate-500 hover:text-white hidden">✕</button>
         </div>
 
-        <!-- Mode Switcher Tabs -->
-        <div class="grid grid-cols-4 gap-1 p-0.5 bg-slate-950 border border-slate-800 rounded text-[11px] font-medium text-slate-400 text-center">
-          <button id="tab-nav-story" class="py-1 px-1.5 rounded bg-indigo-600 text-white shadow">Story</button>
-          <button id="tab-nav-npcs" class="py-1 px-1.5 rounded hover:text-white hover:bg-slate-800">NPCs</button>
-          <button id="tab-nav-enemies" class="py-1 px-1.5 rounded hover:text-white hover:bg-slate-800">Bestiary</button>
-          <button id="tab-nav-items" class="py-1 px-1.5 rounded hover:text-white hover:bg-slate-800">Items</button>
+        <!-- Mode Switcher Tabs (6 modes) -->
+        <div class="grid grid-cols-3 gap-1 p-0.5 bg-slate-950 border border-slate-800 rounded text-[11px] font-medium text-slate-400 text-center">
+          <button id="tab-nav-cow" class="py-1 px-1 rounded bg-indigo-600 text-white font-semibold shadow">✨ Zero Fault</button>
+          <button id="tab-nav-vanilla" class="py-1 px-1 rounded hover:text-white hover:bg-slate-800">📜 Vanilla</button>
+          <button id="tab-nav-npcs" class="py-1 px-1 rounded hover:text-white hover:bg-slate-800">👤 NPCs</button>
+          <button id="tab-nav-enemies" class="py-1 px-1 rounded hover:text-white hover:bg-slate-800">👾 Bestiary</button>
+          <button id="tab-nav-items" class="py-1 px-1 rounded hover:text-white hover:bg-slate-800">🎒 Items</button>
+          <button id="tab-nav-psi" class="py-1 px-1 rounded hover:text-white hover:bg-slate-800">⚡ PSI & Battle</button>
         </div>
       </div>
 
-      <!-- Filter Bar / Active Phase Dropdown -->
+      <!-- Filter Bar / Dynamic Category Dropdown -->
       <div class="px-3 py-1.5 bg-slate-950/60 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400">
         <span id="list-count-badge" class="font-mono text-slate-300">Loading...</span>
-        <select id="phase-filter-select" class="bg-slate-900 border border-slate-800 rounded px-1.5 py-0.5 text-[11px] text-slate-300 focus:outline-none">
-          <option value="ALL">All Story Phases</option>
-          <option value="P04">Phase 04: Onett</option>
-          <option value="P07">Phase 07: Twoson / Cult</option>
-          <option value="P08">Phase 08: Threed / Saturn</option>
-          <option value="P09">Phase 09: Fourside / Moon</option>
-          <option value="P10">Phase 10: Summers / Poo</option>
-          <option value="P11">Phase 11: Scaraba / DM</option>
-          <option value="P12">Phase 12: Tenda / Lumine</option>
-          <option value="P13">Phase 13: Magicant / Mutex</option>
-          <option value="P14">Phase 14: Distorter / Robot</option>
-          <option value="P15">Phase 15: Endgame / Reboot</option>
-          <option value="SYS">System / Kernel</option>
+        <select id="category-filter-select" class="bg-slate-900 border border-slate-800 rounded px-1.5 py-0.5 text-[11px] text-slate-300 focus:outline-none max-w-[190px] truncate">
+          <option value="ALL">All Categories</option>
         </select>
       </div>
 
@@ -615,14 +793,14 @@ def generate_html_application(data: Dict[str, Any]) -> str:
     <main class="flex-1 flex flex-col bg-slate-950 overflow-hidden">
 
       <!-- Breadcrumb & Header Bar -->
-      <div id="inspector-header" class="bg-slate-900/60 border-b border-slate-800 px-6 py-3 shrink-0 flex flex-wrap items-center justify-between gap-3">
+      <div id="inspector-header" class="bg-slate-900/60 border-b border-slate-800 px-6 py-2.5 shrink-0 flex flex-wrap items-center justify-between gap-3">
         <div>
           <div class="flex items-center gap-2 mb-1">
-            <span id="badge-phase" class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800">
-              Phase 04
+            <span id="badge-type" class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800">
+              Zero Fault CoW
             </span>
-            <span id="badge-file" class="text-[10px] font-mono text-slate-400">
-              cow_onett.ccs
+            <span id="badge-category" class="text-[10px] font-mono text-slate-400">
+              Phase 04: Onett
             </span>
           </div>
           <h2 id="inspector-title" class="text-base font-bold text-white font-mono flex items-center gap-2">
@@ -637,6 +815,18 @@ def generate_html_application(data: Dict[str, Any]) -> str:
         <div id="inspector-chips" class="flex flex-wrap items-center gap-1.5 text-xs">
           <!-- Bound NPC / Flag / Hook Badges -->
         </div>
+      </div>
+
+      <!-- Overridden Banner (for vanilla scripts that were redirected by Zero Fault) -->
+      <div id="overridden-banner" class="hidden px-6 py-2 bg-gradient-to-r from-indigo-950 to-purple-950 border-b border-indigo-800 flex items-center justify-between text-xs text-indigo-200">
+        <div class="flex items-center gap-2">
+          <span>✨</span>
+          <span><strong>Zero Fault Narrative Override:</strong> This vanilla label was redirected to a custom Copy-on-Write parallel routine:</span>
+          <code id="overridden-target-name" class="font-mono text-amber-300">cow_onett.cow_mom_awakening</code>
+        </div>
+        <button id="btn-jump-override" class="px-2 py-0.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded font-medium text-[11px] transition">
+          View Zero Fault Routine ➔
+        </button>
       </div>
 
       <!-- View Selector Tabs -->
@@ -807,10 +997,9 @@ def generate_html_application(data: Dict[str, Any]) -> str:
 
   <script>
     const DATA = {data_json};
-    let activeIndex = 0;
+    let activeItem = DATA.cow_routines[0];
     let activePage = 0;
-    let currentFilteredRoutines = DATA.routines;
-    let currentNavMode = 'story'; // story, npcs, enemies, items
+    let currentNavMode = 'cow'; // cow, vanilla, npcs, enemies, items, psi
     let sfxEnabled = true;
     let autoStepTimer = null;
 
@@ -835,27 +1024,67 @@ def generate_html_application(data: Dict[str, Any]) -> str:
     // Switch Nav Tabs
     function setNavMode(mode) {{
       currentNavMode = mode;
-      ['story', 'npcs', 'enemies', 'items'].forEach(m => {{
+      ['cow', 'vanilla', 'npcs', 'enemies', 'items', 'psi'].forEach(m => {{
         const btn = document.getElementById('tab-nav-' + m);
         if (m === mode) {{
-          btn.className = 'py-1 px-1.5 rounded bg-indigo-600 text-white shadow font-semibold';
+          btn.className = 'py-1 px-1 rounded bg-indigo-600 text-white shadow font-semibold';
         }} else {{
-          btn.className = 'py-1 px-1.5 rounded hover:text-white hover:bg-slate-800';
+          btn.className = 'py-1 px-1 rounded hover:text-white hover:bg-slate-800';
         }}
       }});
+      updateCategoryDropdown();
       renderResourceList();
+    }}
+
+    function updateCategoryDropdown() {{
+      const select = document.getElementById('category-filter-select');
+      select.innerHTML = '<option value="ALL">All Categories</option>';
+
+      if (currentNavMode === 'cow') {{
+        DATA.phases.forEach(p => {{
+          const opt = document.createElement('option');
+          opt.value = p.id;
+          opt.textContent = p.title;
+          select.appendChild(opt);
+        }});
+      }} else if (currentNavMode === 'vanilla') {{
+        DATA.vanilla_categories.forEach(c => {{
+          const opt = document.createElement('option');
+          opt.value = c.id;
+          opt.textContent = c.title;
+          select.appendChild(opt);
+        }});
+      }} else if (currentNavMode === 'npcs') {{
+        const opt1 = document.createElement('option');
+        opt1.value = 'COW_ONLY';
+        opt1.textContent = 'Zero Fault Modified NPCs (56)';
+        select.appendChild(opt1);
+        const opt2 = document.createElement('option');
+        opt2.value = 'VANILLA_ONLY';
+        opt2.textContent = 'Untouched Vanilla NPCs (1528)';
+        select.appendChild(opt2);
+      }} else if (currentNavMode === 'enemies') {{
+        const opt1 = document.createElement('option');
+        opt1.value = 'RESKIN_ONLY';
+        opt1.textContent = 'Zero Fault Reskins (56)';
+        select.appendChild(opt1);
+        const opt2 = document.createElement('option');
+        opt2.value = 'BOSS_ONLY';
+        opt2.textContent = 'Boss Enemies';
+        select.appendChild(opt2);
+      }}
     }}
 
     // Render Resource List based on mode and search
     function renderResourceList() {{
       const query = document.getElementById('search-input').value.toLowerCase().trim();
-      const phaseFilter = document.getElementById('phase-filter-select').value;
+      const catFilter = document.getElementById('category-filter-select').value;
       const listContainer = document.getElementById('resource-list');
       listContainer.innerHTML = '';
 
-      if (currentNavMode === 'story') {{
-        currentFilteredRoutines = DATA.routines.filter(r => {{
-          if (phaseFilter !== 'ALL' && r.phase_id !== phaseFilter) return false;
+      if (currentNavMode === 'cow') {{
+        const filtered = DATA.cow_routines.filter(r => {{
+          if (catFilter !== 'ALL' && r.category !== catFilter) return false;
           if (!query) return true;
           return r.label.toLowerCase().includes(query) ||
                  r.comment.toLowerCase().includes(query) ||
@@ -863,19 +1092,19 @@ def generate_html_application(data: Dict[str, Any]) -> str:
                  (r.bound_npc && r.bound_npc.desc && r.bound_npc.desc.toLowerCase().includes(query));
         }});
 
-        document.getElementById('list-count-badge').textContent = `${{currentFilteredRoutines.length}} routines`;
+        document.getElementById('list-count-badge').textContent = `${{filtered.length}} routines`;
 
-        currentFilteredRoutines.forEach((r) => {{
+        filtered.forEach((r) => {{
           const item = document.createElement('div');
-          const isSelected = r.id === (DATA.routines[activeIndex] ? DATA.routines[activeIndex].id : null);
+          const isSelected = activeItem && activeItem.id === r.id;
           item.className = `p-3 cursor-pointer transition border-l-2 ${{
             isSelected ? 'bg-indigo-950/60 border-indigo-500 text-white' : 'hover:bg-slate-800/60 border-transparent text-slate-300'
           }}`;
           
           item.innerHTML = `
             <div class="flex items-center justify-between gap-1 mb-1">
-              <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-indigo-300 font-semibold">
-                ${{r.phase_id}}
+              <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-indigo-950 text-indigo-300 border border-indigo-800 font-semibold">
+                ${{r.category}}
               </span>
               <span class="text-[10px] text-slate-500 font-mono">${{r.page_count}} pg</span>
             </div>
@@ -886,7 +1115,49 @@ def generate_html_application(data: Dict[str, Any]) -> str:
 
           item.addEventListener('click', () => {{
             playBeep(480, 'sine', 0.03);
-            selectRoutineById(r.id);
+            selectItem(r);
+          }});
+
+          listContainer.appendChild(item);
+        }});
+
+      }} else if (currentNavMode === 'vanilla') {{
+        const filtered = DATA.vanilla_routines.filter(r => {{
+          if (catFilter !== 'ALL' && r.category !== catFilter) return false;
+          if (!query) return true;
+          return r.label.toLowerCase().includes(query) ||
+                 r.file.toLowerCase().includes(query) ||
+                 r.clean_pages.some(p => p.toLowerCase().includes(query)) ||
+                 (r.bound_npc && r.bound_npc.desc && r.bound_npc.desc.toLowerCase().includes(query));
+        }});
+
+        document.getElementById('list-count-badge').textContent = `${{filtered.length}} scripts`;
+
+        // Render first 250 items to keep DOM instant, scroll handles more
+        const slice = filtered.slice(0, 300);
+
+        slice.forEach((r) => {{
+          const item = document.createElement('div');
+          const isSelected = activeItem && activeItem.id === r.id;
+          item.className = `p-3 cursor-pointer transition border-l-2 ${{
+            isSelected ? 'bg-amber-950/60 border-amber-500 text-white' : 'hover:bg-slate-800/60 border-transparent text-slate-300'
+          }}`;
+          
+          item.innerHTML = `
+            <div class="flex items-center justify-between gap-1 mb-1">
+              <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-amber-300 font-semibold">
+                ${{r.file}}
+              </span>
+              ${{r.cow_override ? '<span class="text-[10px] px-1 bg-indigo-900 text-indigo-200 rounded font-semibold font-mono">Overridden</span>' : ''}}
+            </div>
+            <div class="font-mono text-xs font-bold truncate text-slate-100">${{r.label}}</div>
+            <div class="text-[11px] text-slate-400 line-clamp-1 mt-0.5">${{r.dialogue_preview}}</div>
+            ${{r.bound_npc ? `<div class="text-[10px] text-emerald-400 mt-1 font-mono truncate">👤 ${{r.bound_npc.desc}}</div>` : ''}}
+          `;
+
+          item.addEventListener('click', () => {{
+            playBeep(480, 'sine', 0.03);
+            selectItem(r);
           }});
 
           listContainer.appendChild(item);
@@ -894,7 +1165,9 @@ def generate_html_application(data: Dict[str, Any]) -> str:
 
       }} else if (currentNavMode === 'npcs') {{
         const filteredNpcs = DATA.npcs.filter(n => {{
-          if (!query) return n.is_cow;
+          if (catFilter === 'COW_ONLY' && !n.is_cow) return false;
+          if (catFilter === 'VANILLA_ONLY' && n.is_cow) return false;
+          if (!query) return true;
           return String(n.id).includes(query) || 
                  n.desc.toLowerCase().includes(query) ||
                  n.pointer_1.toLowerCase().includes(query) ||
@@ -903,13 +1176,13 @@ def generate_html_application(data: Dict[str, Any]) -> str:
 
         document.getElementById('list-count-badge').textContent = `${{filteredNpcs.length}} NPCs`;
 
-        filteredNpcs.forEach(n => {{
+        filteredNpcs.slice(0, 300).forEach(n => {{
           const item = document.createElement('div');
           item.className = 'p-3 hover:bg-slate-800/60 cursor-pointer border-l-2 border-transparent text-slate-300';
           item.innerHTML = `
             <div class="flex items-center justify-between mb-1">
               <span class="font-mono text-[10px] text-slate-400">NPC #${{n.id}}</span>
-              ${{n.is_cow ? '<span class="text-[10px] px-1 bg-emerald-900/80 text-emerald-300 rounded font-semibold font-mono">CoW Active</span>' : '<span class="text-[10px] text-slate-600">Vanilla</span>'}}
+              ${{n.is_cow ? '<span class="text-[10px] px-1 bg-emerald-900/80 text-emerald-300 rounded font-semibold font-mono">CoW Active</span>' : '<span class="text-[10px] text-slate-600">Untouched Vanilla</span>'}}
             </div>
             <div class="text-xs font-bold text-white truncate">${{n.desc}}</div>
             <div class="text-[11px] font-mono text-slate-400 mt-0.5 truncate">
@@ -918,19 +1191,16 @@ def generate_html_application(data: Dict[str, Any]) -> str:
           `;
           item.addEventListener('click', () => {{
             playBeep(520, 'square', 0.04);
-            if (n.cow_routine_id) {{
-              const target = n.cow_routine_id.includes('.') ? n.cow_routine_id : n.cow_routine_id;
-              selectRoutineById(target);
-            }} else {{
-              alert(`NPC #${{n.id}}\\nDirection: ${{n.direction}}\\nSprite: ${{n.sprite}}\\nFlag: ${{n.event_flag}}\\nText Pointer 1: ${{n.pointer_1}}\\nText Pointer 2: ${{n.pointer_2}}`);
-            }}
+            loadNpcDialogue(n);
           }});
           listContainer.appendChild(item);
         }});
 
       }} else if (currentNavMode === 'enemies') {{
         const filteredEnemies = DATA.enemies.filter(e => {{
-          if (!query) return e.is_thematic;
+          if (catFilter === 'RESKIN_ONLY' && !e.is_thematic) return false;
+          if (catFilter === 'BOSS_ONLY' && !e.boss) return false;
+          if (!query) return true;
           return e.name.toLowerCase().includes(query) || String(e.id).includes(query);
         }});
 
@@ -951,7 +1221,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
           `;
           item.addEventListener('click', () => {{
             playBeep(420, 'square', 0.04);
-            showEnemyModal(e);
+            loadEnemyDetails(e);
           }});
           listContainer.appendChild(item);
         }});
@@ -976,31 +1246,130 @@ def generate_html_application(data: Dict[str, Any]) -> str:
           `;
           item.addEventListener('click', () => {{
             playBeep(520, 'sine', 0.04);
-            showItemModal(i);
+            loadItemDetails(i);
+          }});
+          listContainer.appendChild(item);
+        }});
+
+      }} else if (currentNavMode === 'psi') {{
+        const filteredPsi = DATA.psi.filter(p => {{
+          if (!query) return true;
+          return p.name.toLowerCase().includes(query) || String(p.id).includes(query);
+        }});
+
+        document.getElementById('list-count-badge').textContent = `${{filteredPsi.length}} PSI abilities`;
+
+        filteredPsi.forEach(p => {{
+          const item = document.createElement('div');
+          item.className = 'p-3 hover:bg-slate-800/60 cursor-pointer border-l-2 border-transparent text-slate-300';
+          item.innerHTML = `
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-mono text-[10px] text-slate-400">PSI #${{p.id}}</span>
+              <span class="font-mono text-[10px] text-cyan-400 font-semibold">${{p.type.join(', ')}}</span>
+            </div>
+            <div class="text-xs font-bold text-white truncate">${{p.name}}</div>
+            <div class="text-[11px] font-mono text-slate-400 mt-0.5 truncate">
+              Address: <span class="text-indigo-400">${{p.text_address}}</span>
+            </div>
+          `;
+          item.addEventListener('click', () => {{
+            playBeep(580, 'sine', 0.04);
+            loadPsiDetails(p);
           }});
           listContainer.appendChild(item);
         }});
       }}
     }}
 
-    function selectRoutineById(id) {{
-      const idx = DATA.routines.findIndex(r => r.id === id || r.label === id || r.id.endsWith('.' + id));
-      if (idx !== -1) {{
-        activeIndex = idx;
-        activePage = 0;
-        updateInspector();
-        renderResourceList();
+    function selectItem(r) {{
+      activeItem = r;
+      activePage = 0;
+      updateInspector();
+      renderResourceList();
+    }}
+
+    function loadNpcDialogue(n) {{
+      const ptr = n.pointer_1 !== '$0' ? n.pointer_1 : n.pointer_2;
+      if (ptr && ptr !== '$0') {{
+        const routine = findRoutineByPointer(ptr);
+        if (routine) {{
+          selectItem(routine);
+          return;
+        }}
       }}
+      alert(`NPC #${{n.id}} (${{n.desc}})\\nDirection: ${{n.direction}}\\nSprite: ${{n.sprite}}\\nFlag: ${{n.event_flag}}\\nText Pointer 1: ${{n.pointer_1}}\\nText Pointer 2: ${{n.pointer_2}}`);
+    }}
+
+    function loadEnemyDetails(e) {{
+      if (e.encounter_text && e.encounter_text !== '$0') {{
+        const routine = findRoutineByPointer(e.encounter_text);
+        if (routine) {{
+          selectItem(routine);
+          return;
+        }}
+      }}
+      alert(`Enemy: ${{e.name}}\\nHP: ${{e.hp}} | PP: ${{e.pp}} | Offense: ${{e.offense}} | Defense: ${{e.defense}}\\nExp: ${{e.exp}} | Money: $${{e.money}}\\nDropped Item: ${{e.dropped_item}}\\nEncounter Text: ${{e.encounter_text}}\\nDeath Text: ${{e.death_text}}`);
+    }}
+
+    function loadItemDetails(i) {{
+      if (i.help_pointer && i.help_pointer !== '$0') {{
+        const routine = findRoutineByPointer(i.help_pointer);
+        if (routine) {{
+          selectItem(routine);
+          return;
+        }}
+      }}
+      alert(`Item: ${{i.name}}\\nCost: ${{i.cost ? '$' + i.cost : 'Key Item'}}\\nFlags: ${{i.flags.join(', ')}}\\nHelp Pointer: ${{i.help_pointer}}`);
+    }}
+
+    function loadPsiDetails(p) {{
+      if (p.text_address && p.text_address !== '$0') {{
+        const routine = findRoutineByPointer(p.text_address);
+        if (routine) {{
+          selectItem(routine);
+          return;
+        }}
+      }}
+      alert(`PSI: ${{p.name}}\\nTypes: ${{p.type.join(', ')}}\\nLevel Ness: ${{p.ness_lvl}} | Paula: ${{p.paula_lvl}} | Poo: ${{p.poo_lvl}}\\nText: ${{p.text_address}}`);
+    }}
+
+    function findRoutineByPointer(ptr) {{
+      let cleanPtr = ptr.replace('$', '').trim();
+      let match = DATA.cow_routines.find(r => r.id === cleanPtr || r.label === cleanPtr || r.id.endsWith('.' + cleanPtr));
+      if (match) return match;
+      match = DATA.vanilla_routines.find(r => r.id === cleanPtr || r.label === cleanPtr || r.id.endsWith('.' + cleanPtr));
+      return match;
     }}
 
     function updateInspector() {{
-      const r = DATA.routines[activeIndex];
+      const r = activeItem;
       if (!r) return;
 
-      document.getElementById('badge-phase').textContent = `${{r.phase_id}} - ${{r.phase_title}}`;
-      document.getElementById('badge-file').textContent = r.file;
+      const isCow = r.is_cow;
+      document.getElementById('badge-type').textContent = isCow ? 'Zero Fault CoW' : 'Untouched Vanilla';
+      document.getElementById('badge-type').className = isCow 
+        ? 'text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800'
+        : 'text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800';
+
+      document.getElementById('badge-category').textContent = `${{r.category_title || r.file}}`;
       document.getElementById('inspector-title').textContent = r.label;
-      document.getElementById('inspector-comment').textContent = r.comment || '(No inline comment)';
+      document.getElementById('inspector-comment').textContent = r.comment || `File: ${{r.file}} (${{r.category_title || 'Game Script'}})`;
+
+      // Overridden banner
+      const banner = document.getElementById('overridden-banner');
+      if (r.cow_override) {{
+        banner.classList.remove('hidden');
+        document.getElementById('overridden-target-name').textContent = r.cow_override;
+        document.getElementById('btn-jump-override').onclick = () => {{
+          const cowMatch = DATA.cow_routines.find(cr => cr.id === r.cow_override || cr.label === r.cow_override);
+          if (cowMatch) {{
+            setNavMode('cow');
+            selectItem(cowMatch);
+          }}
+        }};
+      }} else {{
+        banner.classList.add('hidden');
+      }}
 
       // Chips
       const chipsContainer = document.getElementById('inspector-chips');
@@ -1028,10 +1397,10 @@ def generate_html_application(data: Dict[str, Any]) -> str:
       updateDialoguePage();
 
       // Diff
-      document.getElementById('diff-vanilla-target').textContent = r.vanilla_mod ? `${{r.vanilla_mod}}:${{r.vanilla_lbl}}` : 'No legacy override';
-      document.getElementById('diff-vanilla-text').textContent = r.vanilla_clean || '(Pristine legacy EarthBound dialogue not directly linked or unchanged in this subroutine)';
-      document.getElementById('diff-cow-target').textContent = r.id;
-      document.getElementById('diff-cow-text').textContent = r.clean_pages.length > 0 ? r.clean_pages.join('\\n\\n') : r.raw_code;
+      document.getElementById('diff-vanilla-target').textContent = r.vanilla_mod ? `${{r.vanilla_mod}}:${{r.vanilla_lbl}}` : (isCow ? 'No legacy override' : r.id);
+      document.getElementById('diff-vanilla-text').textContent = r.vanilla_clean || (!isCow ? (r.clean_pages.join('\\n\\n') || r.raw_code) : '(Pristine legacy EarthBound dialogue not directly linked or unchanged)');
+      document.getElementById('diff-cow-target').textContent = isCow ? r.id : (r.cow_override || 'Untouched in Zero Fault');
+      document.getElementById('diff-cow-text').textContent = isCow ? (r.clean_pages.length > 0 ? r.clean_pages.join('\\n\\n') : r.raw_code) : (r.cow_override ? 'View overridden CoW routine' : '(This vanilla dialogue was not modified by the Zero Fault parallel universe storyline.)');
 
       // Source
       document.getElementById('source-filename').textContent = `src/ccscript/${{r.file}} : ${{r.label}}`;
@@ -1040,16 +1409,16 @@ def generate_html_application(data: Dict[str, Any]) -> str:
       // System
       const flagsBox = document.getElementById('sys-flags-box');
       flagsBox.innerHTML = `
-        <div><span class="text-slate-500">Flags Set:</span> <span class="text-emerald-400">${{r.flags_set.join(', ') || 'None'}}</span></div>
-        <div><span class="text-slate-500">Flags Checked:</span> <span class="text-amber-400">${{r.flags_checked.join(', ') || 'None'}}</span></div>
-        <div><span class="text-slate-500">Audio Cues:</span> <span class="text-indigo-400">${{r.sound_cues.join(', ') || 'None'}}</span></div>
+        <div><span class="text-slate-500">Flags Set:</span> <span class="text-emerald-400">${{r.flags_set ? r.flags_set.join(', ') : 'None'}}</span></div>
+        <div><span class="text-slate-500">Flags Checked:</span> <span class="text-amber-400">${{r.flags_checked ? r.flags_checked.join(', ') : 'None'}}</span></div>
+        <div><span class="text-slate-500">Audio Cues:</span> <span class="text-indigo-400">${{r.sound_cues ? r.sound_cues.join(', ') : 'None'}}</span></div>
       `;
 
       const dispatchBox = document.getElementById('sys-dispatch-box');
       dispatchBox.innerHTML = `
         <div><span class="text-slate-500">Bound NPC:</span> <span class="text-emerald-400">${{r.bound_npc ? r.bound_npc.desc : 'None'}}</span></div>
         <div><span class="text-slate-500">ROM Hook:</span> <span class="text-purple-400">${{r.bound_hook ? r.bound_hook.desc + ' (' + r.bound_hook.offset + ')' : 'None'}}</span></div>
-        <div><span class="text-slate-500">Vanilla Target:</span> <span class="text-amber-400">${{r.vanilla_lbl ? r.vanilla_mod + ' : ' + r.vanilla_lbl : 'None'}}</span></div>
+        <div><span class="text-slate-500">Vanilla Target:</span> <span class="text-amber-400">${{r.vanilla_lbl ? r.vanilla_mod + ' : ' + r.vanilla_lbl : (r.cow_override || 'None')}}</span></div>
       `;
 
       // Render all pages list
@@ -1064,7 +1433,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
     }}
 
     function updateDialoguePage() {{
-      const r = DATA.routines[activeIndex];
+      const r = activeItem;
       if (!r) return;
 
       const total = r.clean_pages.length;
@@ -1074,22 +1443,14 @@ def generate_html_application(data: Dict[str, Any]) -> str:
 
       const contentBox = document.getElementById('eb-dialogue-content');
       if (total === 0) {{
-        contentBox.textContent = '(This routine contains execution logic or jump commands rather than direct player dialogue.)';
+        contentBox.textContent = '(This routine contains execution logic, jump instructions, or formatting commands.)';
         document.getElementById('eb-sound-cue').textContent = '';
         return;
       }}
 
       contentBox.textContent = r.clean_pages[activePage] || '';
-      const cue = r.sound_cues[activePage] || r.sound_cues[0] || '';
+      const cue = r.sound_cues ? (r.sound_cues[activePage] || r.sound_cues[0] || '') : '';
       document.getElementById('eb-sound-cue').textContent = cue ? `🔊 ${{cue}}` : '';
-    }}
-
-    function showEnemyModal(e) {{
-      alert(`Enemy: ${{e.name}}\\nHP: ${{e.hp}} | PP: ${{e.pp}} | Offense: ${{e.offense}} | Defense: ${{e.defense}}\\nExp: ${{e.exp}} | Money: $${{e.money}}\\nDropped: ${{e.dropped_item}}\\nBoss: ${{e.boss ? 'YES' : 'NO'}}`);
-    }}
-
-    function showItemModal(i) {{
-      alert(`Item: ${{i.name}}\\nCost: ${{i.cost ? '$' + i.cost : 'Key Item'}}\\nFlags: ${{i.flags.join(', ')}}`);
     }}
 
     // Event Listeners
@@ -1102,7 +1463,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
     }});
 
     document.getElementById('btn-next-page').addEventListener('click', () => {{
-      const r = DATA.routines[activeIndex];
+      const r = activeItem;
       if (r && activePage < r.clean_pages.length - 1) {{
         activePage++;
         playBeep(640, 'square', 0.03);
@@ -1111,7 +1472,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
     }});
 
     document.getElementById('eb-next-prompt').addEventListener('click', () => {{
-      const r = DATA.routines[activeIndex];
+      const r = activeItem;
       if (r) {{
         if (activePage < r.clean_pages.length - 1) {{
           activePage++;
@@ -1134,7 +1495,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
         btn.textContent = '⏹ Stop Auto';
         btn.className = 'px-3 py-1.5 bg-rose-950 hover:bg-rose-900 border border-rose-700 text-rose-300 rounded text-xs transition';
         autoStepTimer = setInterval(() => {{
-          const r = DATA.routines[activeIndex];
+          const r = activeItem;
           if (!r || r.clean_pages.length <= 1) return;
           if (activePage < r.clean_pages.length - 1) {{
             activePage++;
@@ -1170,7 +1531,7 @@ def generate_html_application(data: Dict[str, Any]) -> str:
 
     // Copy Code Button
     document.getElementById('btn-copy-code').addEventListener('click', () => {{
-      const r = DATA.routines[activeIndex];
+      const r = activeItem;
       if (r) {{
         navigator.clipboard.writeText(r.raw_code);
         const btn = document.getElementById('btn-copy-code');
@@ -1199,16 +1560,17 @@ def generate_html_application(data: Dict[str, Any]) -> str:
       renderResourceList();
     }});
 
-    document.getElementById('phase-filter-select').addEventListener('change', () => {{
+    document.getElementById('category-filter-select').addEventListener('change', () => {{
       renderResourceList();
     }});
 
     // Nav Mode Switcher
-    ['story', 'npcs', 'enemies', 'items'].forEach(m => {{
+    ['cow', 'vanilla', 'npcs', 'enemies', 'items', 'psi'].forEach(m => {{
       document.getElementById('tab-nav-' + m).addEventListener('click', () => setNavMode(m));
     }});
 
     // Initial Load
+    updateCategoryDropdown();
     renderResourceList();
     updateInspector();
   </script>
@@ -1219,21 +1581,43 @@ def generate_html_application(data: Dict[str, Any]) -> str:
 
 
 def run_cli_search(query: str, data: Dict[str, Any]):
-    """Search dialogues from the command line."""
+    """Search dialogues across all Zero Fault and untouched vanilla routines."""
     query = query.lower()
-    matches = []
-    for r in data["routines"]:
+    cow_matches = []
+    vanilla_matches = []
+
+    for r in data["cow_routines"]:
         for p_idx, page in enumerate(r["clean_pages"]):
             if query in page.lower():
-                matches.append((r, p_idx + 1, page))
-    
-    print(f"\nSearch results for '{query}' ({len(matches)} match(es)):\n" + "=" * 60)
-    for r, p_num, text in matches:
-        print(f"\n\033[1;36m[{r['file']}] {r['label']}\033[0m (Page {p_num}) - \033[33m{r['phase_id']}\033[0m")
-        if r.get("bound_npc"):
-            print(f"  \033[32mNPC:\033[0m {r['bound_npc']['desc']}")
-        print(f"  \033[37m{text}\033[0m")
-    print("\n" + "=" * 60)
+                cow_matches.append((r, p_idx + 1, page))
+
+    for r in data["vanilla_routines"]:
+        for p_idx, page in enumerate(r["clean_pages"]):
+            if query in page.lower():
+                vanilla_matches.append((r, p_idx + 1, page))
+
+    total = len(cow_matches) + len(vanilla_matches)
+    print(f"\nSearch results for '{query}' ({total} total match(es)):\n" + "=" * 65)
+
+    if cow_matches:
+        print(f"\n\033[1;35m--- ZERO FAULT COW ROUTINES ({len(cow_matches)} matches) ---\033[0m")
+        for r, p_num, text in cow_matches:
+            print(f"\n\033[1;36m[{r['file']}] {r['label']}\033[0m (Page {p_num}) - \033[33m{r['category']}\033[0m")
+            if r.get("bound_npc"):
+                print(f"  \033[32mNPC:\033[0m {r['bound_npc']['desc']}")
+            print(f"  \033[37m{text}\033[0m")
+
+    if vanilla_matches:
+        print(f"\n\033[1;33m--- UNTOUCHED VANILLA SCRIPTS ({len(vanilla_matches)} matches) ---\033[0m")
+        for r, p_num, text in vanilla_matches[:25]:
+            print(f"\n\033[1;36m[{r['file']}] {r['label']}\033[0m (Page {p_num}) - \033[34m{r['category_title']}\033[0m")
+            if r.get("bound_npc"):
+                print(f"  \033[32mNPC:\033[0m {r['bound_npc']['desc']}")
+            print(f"  \033[37m{text}\033[0m")
+        if len(vanilla_matches) > 25:
+            print(f"\n\033[38;5;244m... and {len(vanilla_matches) - 25} more vanilla matches.\033[0m")
+
+    print("\n" + "=" * 65)
 
 
 def start_server(html_path: Path, port: int = 8765):
@@ -1259,7 +1643,7 @@ def start_server(html_path: Path, port: int = 8765):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="EarthBound: Zero Fault - Text & Script Explorer")
+    parser = argparse.ArgumentParser(description="EarthBound: Zero Fault - Complete Text & Script Explorer")
     parser.add_argument("--search", "-s", type=str, help="Search dialogue directly from CLI")
     parser.add_argument("--build", "-b", action="store_true", help="Rebuild HTML application without launching")
     parser.add_argument("--serve", action="store_true", help="Run local HTTP server and open browser")

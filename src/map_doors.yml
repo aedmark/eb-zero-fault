@@ -2210,6 +2210,38 @@
     X: 26
     Y: 29
   31:
+  - Text Pointer: cow_prologue.cow_desk_drawer
+    Type: object
+    X: 18
+    Y: 8
+  - Text Pointer: cow_prologue.cow_desk_drawer
+    Type: object
+    X: 18
+    Y: 7
+  - Text Pointer: cow_prologue.cow_desk_drawer
+    Type: object
+    X: 18
+    Y: 6
+  - Text Pointer: cow_prologue.cow_desk_drawer
+    Type: object
+    X: 17
+    Y: 8
+  - Text Pointer: cow_prologue.cow_desk_drawer
+    Type: object
+    X: 19
+    Y: 8
+  - Text Pointer: data_39.l_cow_bedside_lamp
+    Type: object
+    X: 21
+    Y: 8
+  - Text Pointer: data_39.l_cow_bedside_lamp
+    Type: object
+    X: 22
+    Y: 8
+  - Text Pointer: data_39.l_cow_bedside_lamp
+    Type: object
+    X: 24
+    Y: 8
   - Destination X: 956
     Destination Y: 125
     Direction: left

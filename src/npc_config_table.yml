@@ -256,7 +256,7 @@
   Movement: 8
   Show Sprite: when event flag unset
   Sprite: 373
-  Text Pointer 1: $0
+  Text Pointer 1: cow_prologue.cow_desk_drawer
   Text Pointer 2: $0
   Type: object
 29:
@@ -265,7 +265,7 @@
   Movement: 8
   Show Sprite: when event flag unset
   Sprite: 375
-  Text Pointer 1: $0
+  Text Pointer 1: data_39.l_cow_bedside_lamp
   Text Pointer 2: $0
   Type: object
 30:

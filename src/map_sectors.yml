@@ -1500,7 +1500,7 @@
   Town Map Y: 178
 125:
   Item: 0
-  Music: 65
+  Music: 0
   Palette: 4
   Setting: indoors
   Teleport: disabled
@@ -1512,7 +1512,7 @@
   Town Map Y: 114
 126:
   Item: 0
-  Music: 79
+  Music: 0
   Palette: 5
   Setting: indoors
   Teleport: disabled
@@ -1524,7 +1524,7 @@
   Town Map Y: 80
 127:
   Item: 0
-  Music: 79
+  Music: 0
   Palette: 5
   Setting: indoors
   Teleport: disabled
@@ -1908,7 +1908,7 @@
   Town Map Y: 139
 159:
   Item: 0
-  Music: 71
+  Music: 0
   Palette: 0
   Setting: indoors
   Teleport: disabled

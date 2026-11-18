@@ -2247,7 +2247,7 @@
     Direction: left
     Event Flag: 0x0
     Style: 7
-    Text Pointer: data_51.l_0xc99930
+    Text Pointer: $0
     Type: door
     X: 4
     Y: 10

@@ -345,12 +345,23 @@ removing a fence whose purpose it forgot.
 **Decision:**
 1. Dual Bedroom Sector Disambiguation: EarthBound maps Ness's bedroom into two distinct sectors: nighttime (intro) at Sector Row 4, Col 31 (Warp 10, coordinates 1017, 137) and daytime at Sector Row 36, Col 27 (coordinates 888, 1165). NPC 28 (Desk Object at pixel coords 144, 48 in Sector 4, 31) had its Text Pointer 1 bound to `cow_prologue.cow_desk_drawer`. Sector 4, 31 and Sector 36, 27 in `src/map_doors.yml` were populated with door object triggers across tiles (17..19, 6..8) targeting `cow_prologue.cow_desk_drawer`.
 2. Camera Shake Elimination: Discovered that vanilla movement script 36 (`0x0024`) at `$C3ACAD` contains a damped sine wave camera offset displacement table (+16, -31, +26, -23, +21, -19...). Eliminated `[1F 15 6A 00 24 00 01]` from `cow_cold_open`, and patched `ROM[0xC1FEBC]` with `STZ $4A66` to disable the intro camera earthquake.
-3. Bedroom Door Sound Suppression: Leaving the nighttime bedroom through door (4, 10) invokes `l_0xc99930` which dispatches `l_0xc99945` (`[1F E1 10 03 1E]`, meteor impact sound) if Flag 517 is unset. Added `{set(flag 517)}` to `cow_cold_open` and replaced `l_0xc99945` in `src/ccscript/data_51.ccs` with silent flag commits.
+3. Bedroom Door Sound Suppression: Leaving the nighttime bedroom through door (4, 10) invokes `l_0xc99930` which dispatches `l_0xc99945` (`[1F E1 10 03 1E]`, meteor impact sound) if Flag 517 is unset. Replaced `l_0xc99945` in `src/ccscript/data_51.ccs` with silent flag commits.
 4. House Audio Muting: Set `Music: 0` for Sectors 159 (bedroom), 125 (hallway), 126 (living room), and 127 (kitchen) in `src/map_sectors.yml` and silenced Track 17 in `src/map_music.yml`, ensuring unbroken ambient silence inside the residence.
 5. Pajamas Sprite Refresh: Flag 749 (Pajamas) updates player graphics upon map reload. Initialized cold open sequence with `{hide_char(255)}`, `{set(flag 749)}`, `{set(flag 477)}`, and `{warp(10)}` before pausing for waking sprite and revealing the party with `{show_party(1)}` and movement script 626 (step out of bed), preventing player sprite blips or daytime clothes.
 **Alternatives:** Attempting to force sprite indices in RAM without warp refresh (leads to corrupted tile DMA and sprite glitching).
 **Consequences:** The prologue begins in pure stillness and silence, Ness awakens in bed in pajamas, and both items are immediately obtainable from the desk drawer.
 **Review trigger:** Testing prologue progression across various SNES emulator cores.
+
+## D-030 Cold Open Awakening Synchronization, Palette Integrity, and Input Restoration (2026-11-17, status: accepted)
+**Owner:** Gordon (Custodian)
+**Context:** Playtesting commit 9667937 revealed a regression where the game faded into daylight with Ness permanently frozen asleep in bed. Two root causes were identified: (1) setting Flag 517 (0x0205) triggered engine daylight palette swaps across Tilesets 11, 12, and 16; (2) cutscene movement lock Flag 11 was set without an unset(flag 11) terminator, and an overly truncated 60-frame pause mid-warp caused movement 626 to block indefinitely on [1F EF 6A 00]. Additionally, NOPing out $C1FE9A skipped engine camera initialization.
+**Decision:**
+1. Direct Engine Camera Initialization: Replaced the 10 NOP bytes at ROM[0xC1FE9A] with `LDX #$1FC8`, `LDA #$0448`, and `JSL $C0B65F`, initializing the SNES camera and player registers directly to Ness's bedroom coordinates (X=8136, Y=1096 pixels) on boot, preventing street coordinate bleed and visual glitching.
+2. Nighttime Palette Preservation: Purged `{set(flag 517)}` from `cow_cold_open`, keeping the nighttime sector palettes intact. Neutralized bedroom exit door hooks in `src/map_doors.yml` (door 4, 10 text pointer set to `$0`) and truncated `l_0xc99930` and `l_0xc99945` in `src/ccscript/data_51.ccs` to immediate `eob`, preventing the meteor crash audio and sirens from playing upon exiting.
+3. Awakening Timing and Input Restoration: Extended the initial stillness pause after `warp(10)` to 120 frames (2 seconds), allowing the warp transition to settle cleanly while Ness is asleep. Despawned bed sprites NPC 27 and NPC 26 sequentially, revealed Ness in pajamas, executed movement 626 to step onto the floor with a 35-frame completion pause, released movement locks, and explicitly cleared input lock Flag 11 via `{unset(flag 11)}` before `{save}` and `eob`.
+**Alternatives:** Spawning Ness standing beside the bed without sleep sprites (abandoned in favor of authentic peaceful awakening narrative).
+**Consequences:** Ness awakens smoothly in his dark bedroom wearing pajamas, steps out of bed onto the floor in complete stillness and silence, full player control is restored immediately, and the desk drawer reliably yields the Logic Probe and Worn Polarized Lens.
+**Review trigger:** Visual and controller verification across playtests.
 
 ---
 

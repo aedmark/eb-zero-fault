@@ -14,18 +14,20 @@ command e(label) "{long label}"
 // 1. Cold Open Sequence (Overrides 0xC5E70B)
 // -----------------------------------------------------------------------------
 cow_cold_open:
-    "{set(flag 469)}{set(flag 11)}{hide_char(255)}"
+    "{set(flag 469)}{hide_char(255)}"
     "{music(0)}" // Silence audio engine completely
-    "{set(flag 477)}{set(flag 532)}{set(flag 749)}{set(flag 517)}" // Flag 749: Pajamas, Flag 517: Silent meteor landing
+    "{set(flag 477)}{set(flag 749)}" // Flag 749: Pajamas, Flag 477: Bed sprites
     "{warp(10)}" // Warp directly to Ness bedroom in bed
     "[1F E9 1A 00][1F E9 1B 00]" // Ness sleeping in bed sprite
-    "{pause(60)}"
-    "[1F 1E 1B 00 06]" // Waking sprite
-    "{unset(flag 532)}{set(flag 533)}"
-    "{music(0)}"
-    "[1F 61][1F 1E 1A 00 06]{show_party(1)}"
-    "[1F F2 6A 00 72 02][1F EF 6A 00][1F E8 FF][1F 61][1F ED]"
-    "{set(flag 476)}{unset(flag 477)}{unset(flag 469)}{save}" eob
+    "{pause(120)}" // Smooth 2-second stillness while room fades in from black
+    "[1F 1E 1B 00 06]" // Waking sprite: despawn sleeping head
+    "{pause(30)}"
+    "[1F 1E 1A 00 06]" // Despawn bed sheet
+    "{show_party(1)}" // Reveal Ness in pajamas
+    "[1F F2 6A 00 72 02]" // Step out of bed onto the floor
+    "{pause(35)}" // Safe timer for step out animation
+    "[1F E8 FF][1F 61][1F ED]" // Release movement locks
+    "{set(flag 476)}{unset(flag 477)}{unset(flag 469)}{unset(flag 11)}{save}" eob
 
 // -----------------------------------------------------------------------------
 // 2. Bedroom Desk Drawer (Overrides 0xC8683D)
@@ -68,10 +70,11 @@ ROM[0xC5E70B] = goto(cow_cold_open)
 ROM[0xC8683D] = goto(cow_desk_drawer)
 ROM[0xC66AA4] = goto(cow_tracy_awakening)
 
-// Eliminate vanilla street spawn override at 0xC1FE9A (10 bytes)
+// Initialize engine camera and player position directly to Ness's bedroom (X=8136, Y=1096 pixels = tile 1017, 137)
 ROM[0xC1FE9A] = {
-    NOP NOP NOP NOP NOP
-    NOP NOP NOP NOP NOP
+    LDX_i(0x1FC8)
+    LDA_i(0x0448)
+    JSL(0xC0B65F)
 }
 
 // Eliminate intro cutscene screen shake ($4A66 = 0) at 0xC1FEBC (6 bytes)

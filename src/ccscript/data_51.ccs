@@ -52,10 +52,10 @@ l_0xc9992f:
     eob
 
 l_0xc99930:
-    "[06 D1 00 {e(l_0xc9992f)}][06 05 02 {e(l_0xc9992f)}][1F 63 {e(l_0xc99945)}]" eob
+    eob
 
 l_0xc99945:
-    "{set(flag 517)}{set(flag 476)}" eob
+    eob
 
 l_0xc9995d:
     "{set(flag 513)}{isset(flag 469)}[1B 02 {e(l_0xc9992f)}][06 1E 00 {e(l_0xc99991)}]{isset(flag 97)}[1B 02 {e(l_0xc9992f)}][06 25 03 {e(l_0xc99981)}]" eob

@@ -232,6 +232,27 @@ removing a fence whose purpose it forgot.
 **Consequences:** Enables instantaneous spot-checking in Snes9x at any chapter and establishes automated headless CI/CD assertion testing.
 **Review trigger:** Modifying SRAM layout or adding new gameplay mechanics.
 
+## D-023 Architectural PSI and Diagnostic Hardware Overhaul (2026-11-17, status: accepted)
+**Context:** Aligning battle abilities, PSI spells, and Jeff's unique hardware tools with the low-level operating system architecture and hardware probe motifs of EarthBound: Zero Fault (P16-01 through P16-03).
+**Decision:**
+1. Update `src/psi_name_table.yml` renaming offensive, defensive, and recovery PSI spells:
+   - PSI Fire to PSI Fork
+   - PSI Freeze / Flash to PSI SIGKILL / PSI SIGBUS
+   - PSI Shield to Mutex Lock / Kernel Mutex
+   - Lifeup / Healing to PSI Flush / Heap Clean / PSI Defrag
+   - Brainshock to Core Dump
+2. Update `src/ccscript/data_05.ccs` and `src/ccscript/data_56.ccs` battle help and invocation descriptions to match system architecture semantics.
+3. Retool Jeff's hardware kit in `src/item_configuration_table.yml`:
+   - Item 131: Bus Analyzer (replaces Spy / Slime Generator)
+   - Item 138: Logic Probe (replaces Defense Shower)
+   - Item 145: Interrupt Vector (replaces Big Bottle Rocket)
+   - Item 206: Worn Polarized Lens (replaces Insignificant Item in Ness's starting bedroom desk)
+4. Update item help pointers in `src/ccscript/data_03.ccs` and `src/ccscript/data_04.ccs`.
+5. Expand headless assertion suite `tools/test_headless_assertions.py` to 94 tests and `tools/verify_rom.py` to 258 binary assertions.
+**Alternatives:** Retaining vanilla whimsical PSI names and generic bottle rockets while only modifying overworld dialogue (inconsistent ludonarrative framing).
+**Consequences:** Seamlessly unifies active battle mechanics and equipment menus with the core systems architecture premise without breaking existing game balance or damage algorithms.
+**Review trigger:** Implementing Phase 17 memory pressure flush loop and status fault triggers.
+
 ---
 
 ## Held tensions

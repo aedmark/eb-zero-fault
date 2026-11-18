@@ -302,6 +302,20 @@ THEMATIC_NAMES = [
     "Reactor Daemon",
     "Thread Shambler",
     "Rootkit Pokey",
+    # Phase 16: Architectural PSI and Diagnostic Hardware
+    "PSI Fork",
+    "PSI SIGKILL",
+    "PSI SIGBUS",
+    "PSI Defrag",
+    "PSI Flush",
+    "Heap Clean",
+    "Mutex Lock",
+    "Kernel Mutex",
+    "Core Dump",
+    "Bus Analyzer",
+    "Logic Probe",
+    "Interrupt Vector",
+    "Worn Polarized Lens",
 ]
 
 

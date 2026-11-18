@@ -2028,7 +2028,7 @@
   Help Text Pointer: data_03.l_0xc54a3a
   Misc Flags:
   - jeff can use
-  Name: Counter-PSI unit
+  Name: Bus Analyzer
   Type: 52
 132:
   Action: 160
@@ -2122,7 +2122,7 @@
   Help Text Pointer: data_04.l_0xc54c32
   Misc Flags:
   - jeff can use
-  Name: Slime generator
+  Name: Logic Probe
   Type: 52
 139:
   Action: 170
@@ -2228,7 +2228,7 @@
   Misc Flags:
   - item disappears when used
   - jeff can use
-  Name: Big bottle rocket
+  Name: Interrupt Vector
   Type: 52
 146:
   Action: 165
@@ -3227,7 +3227,7 @@
   - ness can use
   - paula can use
   - poo can use
-  Name: Insignificant item
+  Name: Worn Polarized Lens
   Type: 59
 207:
   Action: 249

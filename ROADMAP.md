@@ -157,3 +157,11 @@ Goal: Author the definitive endgame climax across robotic execution in the Cave 
 - [x] P15-04 Script Paula's inter-thread interrupt prayer broadcast reaching across all regional thread addresses (D-021; implemented src/ccscript/cow_prayer.ccs overriding C9F0B8 through C9F86A, 2026-11-16).
 - [x] P15-05 Script system fault purge, clean kernel reboot, return to Onett, and epilogue dispatch (D-021; implemented src/ccscript/cow_epilogue.ccs overriding C7547D, C7625E, C9C85D, and C9C293, 2026-11-16).
 - [x] P15-06 Integrate Phase 15 dual-binding dispatch across NPC configuration table and legacy label trampolines with CoW engine sector commit routines (D-021; updated src/npc_config_table.yml entries 1271, 1272, 1273 and data_28.ccs, data_43.ccs, data_53.ccs, data_54.ccs, data_55.ccs, data_56.ccs, 2026-11-16).
+
+## Phase 16: Architectural PSI and Diagnostic Hardware Overhaul
+
+Goal: Retool battle PSI abilities, status effects, and character diagnostic hardware equipment to reflect low-level OS primitives, memory barriers, process control signals, and hardware inspection probes.
+
+- [x] P16-01 Rename and retool PSI abilities across psi name table and battle notification text: PSI Fork, PSI SIGKILL, PSI SIGBUS, PSI Defrag, PSI Flush, Heap Clean, Mutex Lock, Kernel Mutex, Core Dump (D-023; implemented src/psi_name_table.yml and src/ccscript/data_05.ccs, data_56.ccs, 2026-11-17).
+- [x] P16-02 Retool Jeff's diagnostic kit in item configuration table: Bus Analyzer (item 131), Logic Probe (item 138), Interrupt Vector (item 145), and prologue key item Worn Polarized Lens (item 206) (D-023; implemented src/item_configuration_table.yml and src/ccscript/data_03.ccs, data_04.ccs, 2026-11-17).
+- [x] P16-03 Update battery save generator presets and headless assertions for Phase 16 equipment and thematic strings (D-023; updated tools/generate_saves.py, tools/test_headless_assertions.py, tools/verify_rom.py, 2026-11-17).

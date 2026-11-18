@@ -30,7 +30,7 @@ l_0xc54bfa:
 l_0xc54c32:
     newline
     " <{itemname(138)}>" next
-    call(data_05.l_0xc56db7) "@Sprays a sticky substance that stops the enemy from moving." next
+    call(data_05.l_0xc56db7) "@Grounds target logic circuits, disabling special daemon skills for 1 to 2 turns." next
     call(data_05.l_0xc56d9b) end
 
 l_0xc54c6d:
@@ -80,7 +80,7 @@ l_0xc54e1d:
 l_0xc54e20:
     newline
     " <{itemname(145)}>" next
-    call(data_05.l_0xc56db7) "@Fires a fast, powerful bottle rocket." next
+    call(data_05.l_0xc56db7) "@Dispatches a high-velocity hardware interrupt, dealing severe kinetic damage." next
     call(data_05.l_0xc56dab) end
 
 l_0xc54e54:
@@ -458,7 +458,8 @@ l_0xc55d82:
 l_0xc55da1:
     newline
     " <{itemname(206)}>" next
-    "@It doesn't look like it would do much of anything, but..." end
+    "@A cracked, weathered optical lens." next
+    "@It feels impossibly familiar, as if it survived an unmentionable past journey." end
 
 l_0xc55dc8:
     newline

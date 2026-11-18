@@ -1,23 +1,23 @@
 0:
   Name: PSI(????)
 1:
-  Name: 'PSI Fire '
+  Name: 'PSI Fork '
 2:
-  Name: 'PSI Freeze '
+  Name: 'PSI SIGKILL '
 3:
   Name: 'PSI Thunder '
 4:
-  Name: 'PSI Flash '
+  Name: 'PSI SIGBUS '
 5:
-  Name: 'PSI Starstorm '
+  Name: 'PSI Defrag '
 6:
-  Name: 'Lifeup '
+  Name: 'PSI Flush '
 7:
-  Name: 'Healing '
+  Name: 'Heap Clean '
 8:
-  Name: 'Shield '
+  Name: 'Mutex Lock '
 9:
-  Name: 'PSI Shield '
+  Name: 'Kernel Mutex'
 10:
   Name: 'Offense up '
 11:
@@ -29,6 +29,6 @@
 14:
   Name: 'Paralysis '
 15:
-  Name: 'Brainshock '
+  Name: 'Core Dump '
 16:
   Name: 'Teleport '

@@ -108,6 +108,10 @@ ITEM_SOUVENIR_COIN = 0x56
 ITEM_SOUND_STONE = 0xC4
 ITEM_BAZOOKA = 0x31
 ITEM_HEAVY_BAZOOKA = 0x32
+ITEM_BUS_ANALYZER = 131
+ITEM_LOGIC_PROBE = 138
+ITEM_INTERRUPT_VECTOR = 145
+ITEM_WORN_POLARIZED_LENS = 206
 
 
 def encode_eb_text(s: str, length: int) -> bytes:
@@ -237,7 +241,7 @@ def build_save_file() -> bytearray:
     configure_character(
         p1, 0, "Ness", 45, 420, 180, 95, 85, 35, 30, 30, 42, 36,
         weapon=ITEM_BIG_LEAGUE_BAT, body=ITEM_EARTH_PENDANT, arms=0x47, other=ITEM_FRANKLIN_BADGE,
-        inventory=[ITEM_BIG_LEAGUE_BAT, ITEM_EARTH_PENDANT, ITEM_FRANKLIN_BADGE, ITEM_DIRTY_PAGE, ITEM_FORK_BOMB, ITEM_BRAIN_FOOD_LUNCH, ITEM_CUP_OF_LIFENOODLES]
+        inventory=[ITEM_BIG_LEAGUE_BAT, ITEM_EARTH_PENDANT, ITEM_FRANKLIN_BADGE, ITEM_WORN_POLARIZED_LENS, ITEM_DIRTY_PAGE, ITEM_FORK_BOMB, ITEM_BRAIN_FOOD_LUNCH, ITEM_CUP_OF_LIFENOODLES]
     )
     configure_character(
         p1, 1, "Paula", 43, 260, 240, 45, 65, 40, 25, 35, 26, 48,
@@ -247,7 +251,7 @@ def build_save_file() -> bytearray:
     configure_character(
         p1, 2, "Jeff", 42, 310, 0, 75, 70, 38, 20, 30, 31, 55,
         weapon=ITEM_LASER_GUN, body=0, arms=0x47, other=0,
-        inventory=[ITEM_LASER_GUN, ITEM_BAZOOKA, ITEM_BRAIN_FOOD_LUNCH]
+        inventory=[ITEM_LASER_GUN, ITEM_BUS_ANALYZER, ITEM_LOGIC_PROBE, ITEM_BAZOOKA, ITEM_BRAIN_FOOD_LUNCH]
     )
 
     # CoW Flags: All Phases 1-8 dirtied and committed (840..867)
@@ -332,7 +336,7 @@ def build_save_file() -> bytearray:
     configure_character(
         p3, 2, "Jeff", 99, 640, 0, 180, 165, 82, 45, 70, 64, 99,
         weapon=ITEM_GAIA_BEAM, body=ITEM_STAR_PENDANT, arms=ITEM_GODDESS_BAND, other=0,
-        inventory=[ITEM_GAIA_BEAM, ITEM_STAR_PENDANT, ITEM_GODDESS_BAND, ITEM_HEAVY_BAZOOKA, ITEM_CUP_OF_LIFENOODLES]
+        inventory=[ITEM_GAIA_BEAM, ITEM_STAR_PENDANT, ITEM_GODDESS_BAND, ITEM_INTERRUPT_VECTOR, ITEM_HEAVY_BAZOOKA, ITEM_CUP_OF_LIFENOODLES]
     )
     configure_character(
         p3, 3, "Poo", 99, 690, 380, 200, 175, 90, 60, 75, 69, 85,

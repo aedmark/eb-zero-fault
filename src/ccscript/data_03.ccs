@@ -291,6 +291,8 @@ l_0xc54106:
 l_0xc5411c:
     newline
     " <{itemname(89)}>" next
+    "@A portable memory maintenance tool." next
+    "@Flushes dirty sectors, shedding 3 points of local memory pressure." next
     call(data_05.l_0xc56cb5) "24" call(data_05.l_0xc56cd6) end
 
 l_0xc54133:
@@ -538,7 +540,7 @@ l_0xc54a08:
 l_0xc54a3a:
     newline
     " <{itemname(131)}>" next
-    call(data_05.l_0xc56db7) "@Contains the enemy's PSI during a battle." next
+    call(data_05.l_0xc56db7) "@Probes target data structures to reveal defense registers and active buffer states." next
     call(data_05.l_0xc56d9b) end
 
 l_0xc54a6c:

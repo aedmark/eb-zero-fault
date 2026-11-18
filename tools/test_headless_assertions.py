@@ -257,6 +257,20 @@ class HeadlessTestSuite:
             "Rootkit Sprout",
             "Packet Storm Kraken",
             "Root Mutex Lock",
+            # Phase 16 Architectural PSI & Diagnostic Hardware
+            "PSI Fork",
+            "PSI SIGKILL",
+            "PSI SIGBUS",
+            "PSI Defrag",
+            "PSI Flush",
+            "Heap Clean",
+            "Mutex Lock",
+            "Kernel Mutex",
+            "Core Dump",
+            "Bus Analyzer",
+            "Logic Probe",
+            "Interrupt Vector",
+            "Worn Polarized Lens",
         ]
         for s in sample_thematic_strings:
             encoded = encode_eb_text(s, len(s))

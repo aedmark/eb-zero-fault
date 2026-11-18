@@ -50,39 +50,39 @@ l_0xef5152:
     "@It deals about 720 points of damage to each enemy." eob
 
 l_0xef5173:
-    "@Restores 100 HP to one person." eob
+    "@Flushes dirty memory buffers, restoring 100 HP to one person." eob
 
 l_0xef5189:
-    "@Restores 300 HP to one person." eob
+    "@Flushes dirty memory buffers, restoring 300 HP to one person." eob
 
 l_0xef519f:
-    "@Completely restores the HP of one person." eob
+    "@Completely purges memory faults, fully restoring HP to one person." eob
 
 l_0xef51bb:
-    "@Restores 400 HP to everyone." eob
+    "@Flushes dirty buffers across the entire party, restoring 400 HP to all." eob
 
 l_0xef51cf:
-    "@Cures a cold, sunstroke or sleep conditions." eob
+    "@Cleanses volatile registers: cures a cold, sunstroke or sleep conditions." eob
 
 l_0xef51f0:
-    "@In addition to the effects of Healing [8B], this cures poisonings, nausea, feeling strange and uncontrollable crying." eob
+    "@In addition to Heap Clean [8B], purges poisonings, nausea, and disorientation flags." eob
 
 l_0xef5239:
-    "@In addition to the effects of Healing [8C], this cures being diamondized and paralysis." linebreak
-    "@It also revives a friend who has become unconscious, though HP is not maxed out." eob
+    "@In addition to Heap Clean [8C], resolves paralysis and resurrects terminated worker threads." linebreak
+    "@HP is not completely maxed out upon resurrection." eob
 
 l_0xef52a5:
-    "@In addition to the effects of Healing [8D], this revives a friend who has become unconscious, and it completely maxes out that person's HP when revived." eob
+    "@In addition to Heap Clean [8D], completely resurrects a terminated worker thread with full HP." eob
 
 l_0xef5301:
-    "@Protect one person with the shield of light." linebreak
-    "@It reduces the damage caused by an enemy's attack by 50%." linebreak
-    "@Using a different shield will cancel these effects." eob
+    "@Establishes a mutual exclusion lock on one person." linebreak
+    "@Absorbs 50% of damage and prevents interrupt stuns." linebreak
+    "@Using a different mutex will overwrite this lock." eob
 
 l_0xef5361:
-    "@Protect everyone with the shield of light." linebreak
-    "@It reduces the damage caused by an enemy's attack by 50%." linebreak
-    "@Using a different shield will cancel these effects." eob
+    "@Establishes a mutual exclusion lock across the entire party." linebreak
+    "@Absorbs 50% of damage and prevents interrupt stuns." linebreak
+    "@Using a different mutex will overwrite this lock." eob
 
 l_0xef53c0:
     "@Protects one person with a power shield." linebreak

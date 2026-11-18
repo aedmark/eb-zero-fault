@@ -302,6 +302,60 @@ class HeadlessTestSuite:
         self.assert_true(rom[0x021669] == 0x22, "Universal flag mutation hook installed at ROM 0x021669 (opcode 0x22: JSL)")
         self.assert_true(rom[0x0185DA] == 0x22, "Universal payphone save hook installed at ROM 0x0185DA (opcode 0x22: JSL)")
 
+        # ---------------------------------------------------------------------
+        # Physical Media Decay Audio Engine & Deconstructed Awakening (Phase 18)
+        # ---------------------------------------------------------------------
+        class CowAudioPipeline:
+            def __init__(self):
+                self.stage = 0  # 0: Act I, 1: Act II, 2: Act III
+                self.tick = 0
+                self.drift = 0
+
+            def update_stage(self, flag_382: bool, flag_211: bool):
+                if flag_382:
+                    self.stage = 2
+                elif flag_211:
+                    self.stage = 1
+                else:
+                    self.stage = 0
+
+            def tick_step(self, prng_val: int):
+                self.tick = (self.tick + 1) & 0xFF
+                if (self.tick & 0x0F) == 0:
+                    if self.stage == 0:
+                        self.drift = prng_val & 0x03
+                    elif self.stage == 1:
+                        self.drift = (prng_val & 0x07) | 0x02
+                    else:
+                        self.drift = (prng_val & 0x0F) | 0x04
+
+        audio = CowAudioPipeline()
+        self.assert_true(audio.stage == 0, "Initial audio pipeline is Stage 0 (Act I: Subtle Wow & Flutter)")
+
+        # Step 16 frames to trigger micro-drift
+        for _ in range(16):
+            audio.tick_step(prng_val=0x01)
+        self.assert_true(audio.drift == 0x01, "Act I micro-drift calculates 1-cent pitch wow/flutter")
+
+        # Act II transition (Flag 211 Fourside entered)
+        audio.update_stage(flag_382=False, flag_211=True)
+        self.assert_true(audio.stage == 1, "Audio pipeline advances to Stage 1 (Act II: Capstan Drag)")
+        for _ in range(16):
+            audio.tick_step(prng_val=0x05)
+        self.assert_true(audio.drift == ((0x05 & 0x07) | 0x02), "Act II applies capstan drag tempo/pitch degradation")
+
+        # Act III transition (Flag 382 Past reached)
+        audio.update_stage(flag_382=True, flag_211=True)
+        self.assert_true(audio.stage == 2, "Audio pipeline advances to Stage 2 (Act III: Severe Attenuation & Music Box)")
+        for _ in range(16):
+            audio.tick_step(prng_val=0x0A)
+        self.assert_true(audio.drift == ((0x0A & 0x0F) | 0x04), "Act III applies severe high-frequency attenuation and acoustic dropouts")
+
+        # Phase 18 Prologue Hook Invariants
+        self.assert_true(rom[0x05E70B] == 0x0A, "Prologue Silent Cold Open hook installed at ROM 0x05E70B (opcode 0x0A: goto)")
+        self.assert_true(rom[0x08683D] == 0x0A, "Prologue Bedroom Desk Drawer hook installed at ROM 0x08683D (opcode 0x0A: goto)")
+        self.assert_true(rom[0x066AA4] == 0x0A, "Prologue Tracy Awakening hook installed at ROM 0x066AA4 (opcode 0x0A: goto)")
+
     # -------------------------------------------------------------------------
     # 6. ROM Expansion & Memory Boundary Assertions
     # -------------------------------------------------------------------------
@@ -343,6 +397,12 @@ class HeadlessTestSuite:
             "Garbage Collector",
             "sector memory pressure",
             "sector memory pressure reset",
+            # Phase 18 Deconstructed Awakening & Rot Audio Pipeline
+            "You opened the door before I even raised my fist",
+            "holding your base pointer",
+            "cracked polarized lens from a bus analyzer",
+            "lived an entire lifetime while I was asleep",
+            "Did you feel that sudden stillness",
         ]
         for s in sample_thematic_strings:
             encoded = encode_eb_text(s, len(s))

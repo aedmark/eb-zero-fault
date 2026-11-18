@@ -174,3 +174,12 @@ Goal: Implement dynamic memory pressure scaling driven by CoW dirty page accumul
 - [x] P17-02 Install universal flag mutation interception hook at SNES $C21669 and payphone save interception hook at SNES $C185DA (D-024; implemented src/ccscript/cow_pressure.ccs, 2026-11-17).
 - [x] P17-03 Couple visual thrashing effects to overworld movement in dash.ccs and retool Item 111 into Garbage Collector item (D-024; updated src/ccscript/dash.ccs, src/item_configuration_table.yml, and src/ccscript/data_03.ccs, 2026-11-17).
 - [x] P17-04 Update payphone save dialogue in data_17.ccs and hotel morning dialogue in data_44.ccs, expanding test assertions in test_headless_assertions.py and verify_rom.py (D-024; updated src/ccscript/data_17.ccs, data_44.ccs, tools/test_headless_assertions.py, tools/verify_rom.py, 2026-11-17).
+
+## Phase 18: Deconstructed Awakening and Physical Media Decay Audio Pipeline
+
+Goal: Replace the conventional meteor crash opening with an uncanny silent cold open, script bedroom desk inspection for key item 206 (Worn Polarized Lens), author weary motherly and startled Pokey dialogues, and implement the chronological SPC700 physical media decay audio engine.
+
+- [x] P18-01 Script silent cold open bypassing meteor cutscene at SNES $C5E70B, desk drawer relic inspection at SNES $C8683D, and Tracy awakening at SNES $C66AA4 (D-025; implemented src/ccscript/cow_prologue.ccs, 2026-11-17).
+- [x] P18-02 Author tired maternal dialogue sensing Ness's prior lifetime and startled Pokey dialogue opening door before knock (D-025; implemented src/ccscript/cow_onett.ccs overriding C66D3E, C74F56, and C75C33, 2026-11-17).
+- [x] P18-03 Implement chronological physical media audio decay assembly engine with Act I wow/flutter, Act II capstan drag, and Act III attenuation routines hooked into movement loop (D-025; implemented src/ccscript/cow_audio.ccs and src/ccscript/dash.ccs, 2026-11-17).
+- [x] P18-04 Expand headless runtime assertions and binary verification suite for Phase 18 hooks and thematic strings (D-025; updated tools/test_headless_assertions.py and tools/verify_rom.py, 2026-11-17).

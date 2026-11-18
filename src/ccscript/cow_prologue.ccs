@@ -1,0 +1,65 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 18: Deconstructed Awakening & Prologue
+// ==============================================================================
+// 1. Silent Cold Open: Bypasses meteor explosion cutscene; Ness awakens in silence.
+// 2. Bedroom Desk Drawer: Contains the Worn Polarized Lens (Item 206).
+// 3. Hallway Tracy: Discovers eerie silence and stopped time.
+// ==============================================================================
+
+// -----------------------------------------------------------------------------
+// 1. Cold Open Sequence (Overrides 0xC5E70B)
+// -----------------------------------------------------------------------------
+cow_cold_open:
+    "{set(flag 469)}{set(flag 11)}{hide_char(255)}"
+    "{music(0)}" // Silence audio engine completely
+    "{set(flag 477)}{set(flag 532)}{set(flag 749)}" // Flag 749: Pajamas
+    "{warp(10)}" // Warp directly to Ness bedroom in bed
+    "[1F E9 1A 00][1F E9 1B 00]" // Ness sleeping in bed sprite
+    "{pause(60)}"
+    "[1F 1E 1B 00 06]" // Waking sprite
+    "[1F 15 6A 00 24 00 01]" // Step out of bed
+    "{unset(flag 532)}{set(flag 533)}"
+    "{music(0)}"
+    "[1F 61][1F 1E 1A 00 06]{show_party(1)}"
+    "[1F F2 6A 00 72 02][1F EF 6A 00][1F E8 FF][1F 61][1F ED]"
+    "{set(flag 476)}{unset(flag 477)}{unset(flag 469)}{save}" eob
+
+// -----------------------------------------------------------------------------
+// 2. Bedroom Desk Drawer (Overrides 0xC8683D)
+// -----------------------------------------------------------------------------
+cow_desk_drawer:
+    "[19 10 01]{swap}@{name(0)} opened the desk drawer." next
+    "[06 F3 02 {e(cow_desk_empty)}]" // Check flag 755 (already taken)
+    "@Buried beneath old school notes and worn stationery was a weathered optical lens." next
+    "@A cracked polarized lens from a bus analyzer..." next
+    "@It shouldn't be here. It belongs to a brilliant boy in a snowy boarding school you haven't even met yet." next
+    "@And yet, the brass casing is scratched and worn, as if it already survived an entire journey to the end of time..." next
+    "[19 10 01]{swap}@There was a {itemname(206)} in the drawer." next
+    "[1D 03 FF][1B 02 {e(cow_desk_full)}][1D 0E 00 CE]" call(data_33.l_0xc7dccf) "{set(flag 755)}" end
+
+cow_desk_empty:
+    "@The drawer is empty, save for yellowed lined paper." end
+
+cow_desk_full:
+    "@You don't have any room in your backpack." end
+
+// -----------------------------------------------------------------------------
+// 3. Hallway Tracy Awakening (Overrides 0xC66AA4)
+// -----------------------------------------------------------------------------
+cow_tracy_awakening:
+    "[06 49 00 {e(data_28.l_0xc7625e)}]"
+    "[06 B4 02 {e(data_20.l_0xc66bc0)}]"
+    "[06 B5 02 {e(data_20.l_0xc66c7d)}]"
+    "[06 78 02 {e(data_20.l_0xc66b33)}]"
+    "[06 61 00 {e(data_28.l_0xc76112)}]"
+    "[06 D6 01 {e(data_20.l_0xc66afe)}]"
+    "@Hey, bro...{pause(20)} Did you feel that sudden stillness?" next
+    "@The house is dead quiet... It feels like time just stopped moving." next
+    "@Why are you looking at me like you haven't seen me in years?{wait}{set(flag 470)}" eob
+
+// Wire Prologue hooks into ROM addresses
+ROM[0xC5E70B] = goto(cow_cold_open)
+ROM[0xC8683D] = goto(cow_desk_drawer)
+ROM[0xC66AA4] = goto(cow_tracy_awakening)

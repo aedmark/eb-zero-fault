@@ -1,0 +1,134 @@
+import "asm65816.ccs"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 18: Physical Media Decay Audio Engine
+// ==============================================================================
+// SPC700 Audio Wow/Flutter and Chronological Rot Pipeline
+//
+// Chronological Stages:
+//   - Stage 0 (Act I: Onett to Threed): Subtle wow and flutter. Micro-drifts in
+//     SPC pitch registers on sustained notes (tape wow/flutter).
+//   - Stage 1 (Act II: Fourside to Scaraba): Capstan drag. Tape speed slows by 2%,
+//     intermittent pitch degradation and channel attenuation.
+//   - Stage 2 (Act III: Deep Darkness to Past): Severe acoustic attenuation.
+//     High frequencies attenuated, percussion loss, delicate music box timbre.
+//
+// Volatile Memory Pressure Coupling:
+//   - Pressure 7-9 amplifies pitch drift frequency.
+//   - Pressure 10 induces sporadic channel mute and acoustic dropouts.
+// ==============================================================================
+
+define COW_AUDIO_ROT_STAGE = 0x7E9C41 // 0: Act I, 1: Act II, 2: Act III
+define COW_AUDIO_TICK      = 0x7E9C42 // Step / tick counter
+define COW_AUDIO_DRIFT     = 0x7E9C43 // Current pitch drift value
+
+// -----------------------------------------------------------------------------
+// Core Audio Decay Routines
+// -----------------------------------------------------------------------------
+
+CowAudio_Init: {
+    PHP
+    SEP(0x20)
+    LDA_8(0)
+    STA_al(COW_AUDIO_ROT_STAGE)
+    STA_al(COW_AUDIO_TICK)
+    STA_al(COW_AUDIO_DRIFT)
+    PLP
+    RTL
+}
+
+CowAudio_UpdateStage: {
+    PHP
+    SEP(0x20)
+    // Check Act III: Past reached (Flag 382 / 0x017E)
+    // Check WRAM flag bit for flag 382: byte 382/8 = 47, bit 382%8 = 6 (0x7E9C08 + 47 = 0x7E9C37)
+    LDA_al(0x7E9C37)
+    AND_8(0x40)
+    BEQ_a(_check_act2)
+    LDA_8(2) // Stage 2: Act III (Past / Severe Rot)
+    STA_al(COW_AUDIO_ROT_STAGE)
+    PLP
+    RTL
+
+_check_act2:
+    // Check Act II: Fourside entered (Flag 211 / 0x00D3)
+    // byte 211/8 = 26, bit 211%8 = 3 (0x7E9C08 + 26 = 0x7E9C22)
+    LDA_al(0x7E9C22)
+    AND_8(0x08)
+    BEQ_a(_act1)
+    LDA_8(1) // Stage 1: Act II (Fourside / Capstan Drag)
+    STA_al(COW_AUDIO_ROT_STAGE)
+    PLP
+    RTL
+
+_act1:
+    LDA_8(0) // Stage 0: Act I (Onett / Subtle Wow & Flutter)
+    STA_al(COW_AUDIO_ROT_STAGE)
+    PLP
+    RTL
+}
+
+CowAudio_TickRoutine: {
+    PHP
+    SEP(0x20)
+
+    // Update current narrative rot stage
+    JSL(CowAudio_UpdateStage)
+
+    // Increment step tick
+    LDA_al(COW_AUDIO_TICK)
+    CLC
+    ADC_8(1)
+    STA_al(COW_AUDIO_TICK)
+
+    // Evaluate tick rate (every 16 steps)
+    AND_8(0x0F)
+    BNE_a(_audio_exit)
+
+    // Apply micro-drift pitch modulation based on stage & volatile pressure
+    LDA_al(COW_AUDIO_ROT_STAGE)
+    CMP_8(1)
+    BEQ_a(_apply_stage1)
+    BCS_a(_apply_stage2)
+
+    // Stage 0: Act I subtle flutter (1-cent drift)
+    LDA_a(0x00FC) // PRNG scratch
+    AND_8(0x03)
+    STA_al(COW_AUDIO_DRIFT)
+    // Modulate SPC communication port $2141
+    STA_a(0x2141)
+    BRA_a(_audio_exit)
+
+_apply_stage1:
+    // Stage 1: Act II capstan drag (moderate pitch drag)
+    LDA_a(0x00FC)
+    AND_8(0x07)
+    ORA_8(0x02)
+    STA_al(COW_AUDIO_DRIFT)
+    STA_a(0x2141)
+    BRA_a(_audio_exit)
+
+_apply_stage2:
+    // Stage 2: Act III severe attenuation & music box timbre
+    LDA_a(0x00FC)
+    AND_8(0x0F)
+    ORA_8(0x04)
+    STA_al(COW_AUDIO_DRIFT)
+    STA_a(0x2141)
+
+_audio_exit:
+    PLP
+    RTL
+}
+
+CowAudio_GetStage: {
+    SEP(0x20)
+    LDA_al(COW_AUDIO_ROT_STAGE)
+    RTL
+}
+
+CowAudio_GetDrift: {
+    SEP(0x20)
+    LDA_al(COW_AUDIO_DRIFT)
+    RTL
+}

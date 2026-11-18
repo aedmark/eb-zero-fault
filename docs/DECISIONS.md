@@ -271,6 +271,25 @@ removing a fence whose purpose it forgot.
 **Consequences:** Establishes a tangible ludic loop between dirty sector accumulation, perceptual corruption, and regular memory compaction habits.
 **Review trigger:** Playtesting Phase 18 and Phase 19 overworld chapters with volatile memory pressure active.
 
+## D-025 Deconstructed Awakening & Physical Media Decay Audio Pipeline (2026-11-17, status: accepted)
+**Owner:** Gordon (Custodian)
+**Context:** To establish the final loop premise from the first frame of gameplay, the bombastic vanilla meteor crash sequence must be replaced with an uncanny silent cold open, an impossible persistent artifact (*Worn Polarized Lens*) in Ness's starting bedroom desk drawer, weary motherly dialogue acknowledging Ness's prior lifetime, Pokey's astonishment that Ness opens the front door before he raises his fist, and an active chronological physical media audio decay engine.
+**Decision:**
+1. Script `cow_cold_open` in `src/ccscript/cow_prologue.ccs` hooked at SNES `$C5E70B` (ROM offset `0x05E70B`), muting the audio engine and warping Ness directly to his bedroom in complete silence without the meteor explosion cutscene.
+2. Script `cow_desk_drawer` hooked at SNES `$C8683D` (ROM offset `0x08683D`), granting key item 206 (*Worn Polarized Lens*) with dialogue conveying an impossible relic from a past journey.
+3. Script `cow_tracy_awakening` hooked at SNES `$C66AA4` (ROM offset `0x066AA4`), with Tracy perceiving the eerie stillness and halted time.
+4. Update `cow_mom_initial_awakening` and `cow_mom_awakening` in `src/ccscript/cow_onett.ccs` with weary, tender dialogue as Mom recognizes her son's ancient eyes and promises to hold his base pointer.
+5. Update `cow_pokey_burst` in `src/ccscript/cow_onett.ccs`, having Pokey react in shock that Ness opened the door before he could knock and looks through him like a dead process.
+6. Author assembly audio decay engine in `src/ccscript/cow_audio.ccs`:
+   - Stage 0 (Act I: Onett to Threed): Subtle wow and flutter via 1-cent SPC pitch micro-drift.
+   - Stage 1 (Act II: Fourside to Scaraba): Capstan drag with tempo/pitch degradation.
+   - Stage 2 (Act III: Deep Darkness to Past): Severe high-frequency attenuation and music box timbre.
+   - Dispatched per-step inside `InRunMode` in `src/ccscript/dash.ccs`.
+7. Expand `tools/verify_rom.py` to 271 assertions and `tools/test_headless_assertions.py` to 120 assertions.
+**Alternatives:** Retaining vanilla meteor crash sequence and conventional soundtrack (fails to establish the final loop ludonarrative framing from the outset).
+**Consequences:** Sets an immediate, haunting atmosphere from the initial boot, establishing that the 30-year cartridge substrate has reached its final cycle.
+**Review trigger:** Implementing Phase 19 memory leak dungeons and superboss encounters.
+
 ---
 
 ## Held tensions

@@ -29,6 +29,10 @@ HOOKS = [
     # Phase 17: Volatile Memory Pressure & Flush Loop Hooks
     (0x021669, b"\x22", "CoW Flag Mutation Pressure Hook ($C21669)"),
     (0x0185DA, b"\x22", "Payphone Save Pressure Relief Hook ($C185DA)"),
+    # Phase 18: Deconstructed Awakening & Rot Audio Pipeline Hooks
+    (0x05E70B, b"\x0A", "CoW Prologue Silent Cold Open Hook ($C5E70B)"),
+    (0x08683D, b"\x0A", "CoW Prologue Bedroom Desk Drawer Hook ($C8683D)"),
+    (0x066AA4, b"\x0A", "CoW Prologue Tracy Awakening Hook ($C66AA4)"),
     # Phase 4: CoW Narrative & MMU Hooks
     (0x066D3E, b"\x0A", "CoW Mom Initial Awakening Hook (0xC66D3E)"),
     (0x074F56, b"\x0A", "CoW Mom Awakening Script Hook (0xC74F56)"),
@@ -323,6 +327,12 @@ THEMATIC_NAMES = [
     "Garbage Collector",
     "sector memory pressure",
     "sector memory pressure reset",
+    # Phase 18: Deconstructed Awakening & Rot Audio Pipeline
+    "You opened the door before I even raised my fist",
+    "holding your base pointer",
+    "cracked polarized lens from a bus analyzer",
+    "lived an entire lifetime while I was asleep",
+    "Did you feel that sudden stillness",
 ]
 
 

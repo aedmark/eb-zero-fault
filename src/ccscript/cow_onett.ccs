@@ -13,10 +13,13 @@ cow_mom_initial_awakening:
     "{sound(11)}{pause(15)}"
     "{set(flag 850)}{set(flag 870)}{set(flag 840)}" // FLAG_DIRTY_NESS_HOUSE, FLAG_MUT_MOM, FLAG_COW_ACTIVE
     "{window_open(1)}@{name(1)}?{pause(20)} ...Wait." next
-    "@Why does looking at you feel like dereferencing an uninitialized pointer?" next
-    "@That deafening shudder on the northern ridge...{pause(15)} it sounded like a catastrophic page fault echoing across Onett." next
+    "@Come here for a second." next
+    "@Why do you look so exhausted? You just woke up, but your eyes..." next
+    "@You look like you've lived an entire lifetime while I was asleep." next
+    "@That silent shudder through the floorboards... it felt like an unhandled page fault tearing through the valley." next
     "@The entire valley is behaving like a copy-on-write memory segment waiting for the first write." next
-    "@And you want to go inspect the crash site?" next
+    "@And you want to go inspect the ridge?" next
+    "@...I know that look. Nothing I say is going to stop you, is it?" next
     "@At least change out of your jammies before you corrupt your stack frame![03]{window_closeall}{pause(1)}{set(flag 471)}{unset(flag 749)}{warp(196)}" eob
 
 cow_mom_initial_changed:
@@ -28,13 +31,12 @@ cow_mom_awakening:
     "[06 52 03 {e(cow_mom_already_dirty)}]" // Check flag 850 (FLAG_DIRTY_NESS_HOUSE)
     "{sound(11)}{pause(15)}"
     "{set(flag 850)}{set(flag 870)}{set(flag 840)}"
-    "{window_open(1)}@{name(1)}?{pause(20)} ...Wait." next
-    "@Why does looking at you feel like dereferencing a dangling pointer?" next
-    "@That violent impact on the hilltop...{pause(15)} it felt like an unhandled page fault echoing through the valley." next
-    "@Everything outside this room feels uncommitted...{pause(15)} like a shared memory segment waiting for the first write." next
+    "{window_open(1)}@{name(1)}...{pause(20)}" next
+    "@You look a bit more steady in those clothes, but that distant look in your eyes hasn't left." next
     "@Someone is hammering on the front door at an impossible clock frequency." next
+    "@Everything outside this room feels uncommitted... like a shared memory segment waiting for the first write." next
     "@If you're going out there,{pause(15)} grab the Cracked Bat from Tracy's room." next
-    "@You're going to need hardware-level collision detection.{wait}{window_closeall}" eob
+    "@No matter what happens tonight, {name(1)}... remember that I'm always here holding your base pointer.{wait}{window_closeall}" eob
 
 cow_mom_already_dirty:
     "[06 60 00 {e(cow_mom_bat_reminder)}]@Pokey is still hammering on the door, generating CPU interrupts!" next
@@ -47,7 +49,11 @@ cow_mom_bat_reminder:
 // P4-01: Pokey Bursting In
 cow_pokey_burst:
     "{sound(11)}[1F 61]{pause(20)}{music(177)}{pause(60)}{music_resume}"
-    "{window_open(1)}@{name(1)}!{pause(15)} Hey,{pause(10)} {name(1)}!{pause(15)} Listen to this--{pause(15)}it's a critical system exception!" next
+    "{window_open(1)}@{name(1)}!{pause(15)} Hey,{pause(10)} {name(1)}!" next
+    "@Wait... why are you staring at me like that?" next
+    "@You opened the door before I even raised my fist... Did your mom tell you I was coming?" next
+    "@You look right through me, like I'm already a dead process..." next
+    "@Anyway! Listen to this--{pause(15)}it's a critical system exception!" next
     "@I took Picky up to where that anomaly crashed on the hilltop,{pause(15)} and the entire coordinate table began corrupting!" next
     "[19 23 11 00 02 0E 00][1F 16 11 00 00]@Oh!{pause(20)} Good evening ma'am.{pause(20)} Your texture coordinates look remarkably coherent tonight. *snicker*" next
     "[19 23 11 00 01 01 00][1F 16 11 00 00]@Anyway,{pause(15)} as I was executing," next

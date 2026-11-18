@@ -14,6 +14,7 @@ InRunMode: {
     JSL(cow_pressure.CowPressure_ScanlineJitter)
     JSL(cow_pressure.CowPressure_PaletteShift)
     JSL(cow_pressure.CowPressure_WavyOffset)
+    JSL(cow_audio.CowAudio_TickRoutine)
     PLY
     PLX
 

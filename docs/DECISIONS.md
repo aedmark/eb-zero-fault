@@ -253,6 +253,24 @@ removing a fence whose purpose it forgot.
 **Consequences:** Seamlessly unifies active battle mechanics and equipment menus with the core systems architecture premise without breaking existing game balance or damage algorithms.
 **Review trigger:** Implementing Phase 17 memory pressure flush loop and status fault triggers.
 
+## D-024 Volatile Sector Memory Pressure Engine, Flush Hooks, and Visual Compaction (2026-11-17, status: accepted)
+**Owner:** Gordon (Custodian)
+**Context:** To mechanically tie the Copy-on-Write memory narrative to gameplay without punishing players, accumulated sector mutations must create mounting volatile memory pressure that manifests in dynamic overworld glitch effects and a combat hazard, while providing intuitive release valves (saving at payphones, resting at hotels, using garbage collectors).
+**Decision:**
+1. Author assembly memory pressure engine in `src/ccscript/cow_pressure.ccs` operating on RAM `$7E9C40`:
+   - Clamped pressure scale: 0 to 10.
+   - Increment routines: `CowPressure_Inc1`, `CowPressure_Inc2`.
+   - Relief routines: `CowPressure_Half` (50% reduction via bitwise right shift), `CowPressure_Reset` (cleared to 0), `CowPressure_Shed3` (reduction by 3).
+2. Install universal event flag interception hook at SNES `$C21669` (ROM offset `0x021669`) in `SET_EVENT_FLAG`, incrementing pressure (+2) when mutating CoW sector flags 850..938, and clearing pressure to 0 when resting at hotels (flag 169).
+3. Install universal payphone save interception hook at SNES `$C185DA` (ROM offset `0x0185DA`), intercepting `{save}` (`[1F B0]`) and cutting volatile pressure in half on every record commit.
+4. Retool Item 111 into *Garbage Collector* (cost: $35) to manually shed 3 pressure units.
+5. Couple visual thrashing to overworld movement via `src/ccscript/dash.ccs` (`InRunMode`): scanline jitter (pressure >= 4), palette shift (pressure >= 7), and wavy distortion (pressure == 10).
+6. Install combat hazard in battle loop at pressure 10 (10% Page Fault Latency).
+7. Update Dad's save dialogue (`src/ccscript/data_17.ccs`) and hotel morning dialogue (`src/ccscript/data_44.ccs`).
+**Alternatives:** Permanent memory degradation that bricks saves or softlocks gameplay (hostile player friction).
+**Consequences:** Establishes a tangible ludic loop between dirty sector accumulation, perceptual corruption, and regular memory compaction habits.
+**Review trigger:** Playtesting Phase 18 and Phase 19 overworld chapters with volatile memory pressure active.
+
 ---
 
 ## Held tensions

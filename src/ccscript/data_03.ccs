@@ -428,7 +428,8 @@ l_0xc54733:
 l_0xc5475a:
     newline
     " <{itemname(111)}>" next
-    "@This is the most effective thing to take when you catch a cold." end
+    "@A specialized runtime memory compaction utility." next
+    "@Sweeps unreferenced heap allocations and relieves 3 points of local sector memory pressure." end
 
 l_0xc54789:
     newline

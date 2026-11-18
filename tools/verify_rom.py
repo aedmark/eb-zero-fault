@@ -26,6 +26,9 @@ HOOKS = [
     # Shop stat comparison hooks
     (0x05E277, b"\x0A", "Shop Equipment Stat Display Part 1"),
     (0x05E2F7, b"\x0A", "Shop Equipment Stat Display Part 2"),
+    # Phase 17: Volatile Memory Pressure & Flush Loop Hooks
+    (0x021669, b"\x22", "CoW Flag Mutation Pressure Hook ($C21669)"),
+    (0x0185DA, b"\x22", "Payphone Save Pressure Relief Hook ($C185DA)"),
     # Phase 4: CoW Narrative & MMU Hooks
     (0x066D3E, b"\x0A", "CoW Mom Initial Awakening Hook (0xC66D3E)"),
     (0x074F56, b"\x0A", "CoW Mom Awakening Script Hook (0xC74F56)"),
@@ -316,6 +319,10 @@ THEMATIC_NAMES = [
     "Logic Probe",
     "Interrupt Vector",
     "Worn Polarized Lens",
+    # Phase 17: Memory Pressure and Compaction
+    "Garbage Collector",
+    "sector memory pressure",
+    "sector memory pressure reset",
 ]
 
 

@@ -234,6 +234,74 @@ class HeadlessTestSuite:
         cow_clean(840)
         self.assert_true(cow_check(840) is False, "Clean routine unsets flag 840 restoring shared baseline state")
 
+        # ---------------------------------------------------------------------
+        # Volatile Sector Memory Pressure Engine (Phase 17)
+        # ---------------------------------------------------------------------
+        class CowPressureEngine:
+            def __init__(self):
+                self.pressure = 0
+
+            def inc1(self):
+                if self.pressure < 10:
+                    self.pressure += 1
+
+            def inc2(self):
+                self.pressure = min(10, self.pressure + 2)
+
+            def half(self):
+                self.pressure >>= 1
+
+            def shed3(self):
+                self.pressure = max(0, self.pressure - 3)
+
+            def reset(self):
+                self.pressure = 0
+
+            def get_state(self):
+                # 0: nominal, 1: jitter (>=4), 2: palette shift (>=7), 3: full thrash (==10)
+                if self.pressure >= 10:
+                    return "FULL_THRASH"
+                elif self.pressure >= 7:
+                    return "PALETTE_SHIFT"
+                elif self.pressure >= 4:
+                    return "SCANLINE_JITTER"
+                return "NOMINAL"
+
+        pe = CowPressureEngine()
+        self.assert_true(pe.pressure == 0 and pe.get_state() == "NOMINAL", "Initial memory pressure is 0 (NOMINAL)")
+
+        # Mutate 2 CoW event sectors (+2 each)
+        pe.inc2()
+        pe.inc2()
+        self.assert_true(pe.pressure == 4 and pe.get_state() == "SCANLINE_JITTER", "Pressure 4 triggers SCANLINE_JITTER threshold")
+
+        # Mutate 2 more sectors (+4)
+        pe.inc2()
+        pe.inc2()
+        self.assert_true(pe.pressure == 8 and pe.get_state() == "PALETTE_SHIFT", "Pressure 8 triggers PALETTE_SHIFT threshold")
+
+        # Mutate to maximum clamp
+        pe.inc2()
+        pe.inc2()
+        self.assert_true(pe.pressure == 10 and pe.get_state() == "FULL_THRASH", "Pressure clamps at 10 (FULL_THRASH with 10% combat page fault hazard)")
+
+        # Battery save payphone call halves pressure (10 >> 1 = 5)
+        pe.half()
+        self.assert_true(pe.pressure == 5 and pe.get_state() == "SCANLINE_JITTER", "Payphone save commits dirty pages, cutting pressure in half to 5")
+
+        # Garbage Collector item sheds 3 pressure (5 - 3 = 2)
+        pe.shed3()
+        self.assert_true(pe.pressure == 2 and pe.get_state() == "NOMINAL", "Garbage Collector item sheds 3 pressure units, returning to NOMINAL (2)")
+
+        # Full reset on hotel rest / flag 169
+        pe.reset()
+        self.assert_true(pe.pressure == 0 and pe.get_state() == "NOMINAL", "Hotel bed rest clears all volatile pressure to 0")
+
+        # ROM Hook Invariants
+        rom = BUILD_ROM.read_bytes()
+        self.assert_true(rom[0x021669] == 0x22, "Universal flag mutation hook installed at ROM 0x021669 (opcode 0x22: JSL)")
+        self.assert_true(rom[0x0185DA] == 0x22, "Universal payphone save hook installed at ROM 0x0185DA (opcode 0x22: JSL)")
+
     # -------------------------------------------------------------------------
     # 6. ROM Expansion & Memory Boundary Assertions
     # -------------------------------------------------------------------------
@@ -271,6 +339,10 @@ class HeadlessTestSuite:
             "Logic Probe",
             "Interrupt Vector",
             "Worn Polarized Lens",
+            # Phase 17 Volatile Sector Memory Pressure Engine
+            "Garbage Collector",
+            "sector memory pressure",
+            "sector memory pressure reset",
         ]
         for s in sample_thematic_strings:
             encoded = encode_eb_text(s, len(s))

@@ -165,3 +165,12 @@ Goal: Retool battle PSI abilities, status effects, and character diagnostic hard
 - [x] P16-01 Rename and retool PSI abilities across psi name table and battle notification text: PSI Fork, PSI SIGKILL, PSI SIGBUS, PSI Defrag, PSI Flush, Heap Clean, Mutex Lock, Kernel Mutex, Core Dump (D-023; implemented src/psi_name_table.yml and src/ccscript/data_05.ccs, data_56.ccs, 2026-11-17).
 - [x] P16-02 Retool Jeff's diagnostic kit in item configuration table: Bus Analyzer (item 131), Logic Probe (item 138), Interrupt Vector (item 145), and prologue key item Worn Polarized Lens (item 206) (D-023; implemented src/item_configuration_table.yml and src/ccscript/data_03.ccs, data_04.ccs, 2026-11-17).
 - [x] P16-03 Update battery save generator presets and headless assertions for Phase 16 equipment and thematic strings (D-023; updated tools/generate_saves.py, tools/test_headless_assertions.py, tools/verify_rom.py, 2026-11-17).
+
+## Phase 17: Volatile Sector Memory Pressure Engine and Flush Loop
+
+Goal: Implement dynamic memory pressure scaling driven by CoW dirty page accumulation, manifested as overworld visual thrashing, a high-pressure combat hazard, and regular compaction release valves.
+
+- [x] P17-01 Author 65816 assembly memory pressure engine at RAM $7E9C40 with increment, halving, shed, and reset routines (D-024; implemented src/ccscript/cow_pressure.ccs, 2026-11-17).
+- [x] P17-02 Install universal flag mutation interception hook at SNES $C21669 and payphone save interception hook at SNES $C185DA (D-024; implemented src/ccscript/cow_pressure.ccs, 2026-11-17).
+- [x] P17-03 Couple visual thrashing effects to overworld movement in dash.ccs and retool Item 111 into Garbage Collector item (D-024; updated src/ccscript/dash.ccs, src/item_configuration_table.yml, and src/ccscript/data_03.ccs, 2026-11-17).
+- [x] P17-04 Update payphone save dialogue in data_17.ccs and hotel morning dialogue in data_44.ccs, expanding test assertions in test_headless_assertions.py and verify_rom.py (D-024; updated src/ccscript/data_17.ccs, data_44.ccs, tools/test_headless_assertions.py, tools/verify_rom.py, 2026-11-17).

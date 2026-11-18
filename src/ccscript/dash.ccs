@@ -8,6 +8,15 @@ import "asm65816.ccs"
 define CHECK_BICYCLE_COLLISION_FLAGS = 0xC03C4B
 
 InRunMode: {
+    // Dispatch volatile memory pressure visual thrashing checks
+    PHX
+    PHY
+    JSL(cow_pressure.CowPressure_ScanlineJitter)
+    JSL(cow_pressure.CowPressure_PaletteShift)
+    JSL(cow_pressure.CowPressure_WavyOffset)
+    PLY
+    PLX
+
     // Check if Skip Sandwich status is active ($9840 == 3)
     LDA_a   (0x9840)
     AND_i   (0x00FF)

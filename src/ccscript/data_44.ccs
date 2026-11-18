@@ -388,7 +388,7 @@ l_0xc90fbe:
 
 l_0xc90fd4:
     "@Good morning." linebreak
-    "  Did you sleep well?" end
+    "  Did you sleep well? Buffers flushed and sector memory pressure reset to 0." end
 
 l_0xc90fec:
     "{ctoarg}{store_registers}@I can examine each one of you for $[1C 0A 00 00 00 00]." linebreak

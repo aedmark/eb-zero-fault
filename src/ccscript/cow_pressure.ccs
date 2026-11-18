@@ -1,0 +1,246 @@
+import "asm65816.ccs"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 17: Volatile Sector Memory Pressure Engine
+// ==============================================================================
+// Memory Pressure Counter: Volatile 8-bit counter at $7E9C40 (0 to 10 scale).
+// Instability Manifestations:
+//   - 0-3 (Nominal State): Crisp visual rendering, baseline execution.
+//   - 4-6 (Elevated Thrashing): Scanline flutter, sporadic text garble.
+//   - 7-9 (Critical Contention): Audio clock desync/flutter, palette corruption.
+//   - 10 (Thrashing Breakdown): Mode 7 wavy offset, glitched present boxes, battle hazards.
+//
+// Release Valves:
+//   - Hotel / Bed rest: Reset to 0 (CowPressure_Reset).
+//   - Payphone to Dad: Half pressure / 50% cut (CowPressure_Half).
+//   - Garbage Collector: Shed 3 points on demand (CowPressure_Shed3).
+//   - PSI Flush: Clear local sector pressure (CowPressure_Reset).
+// ==============================================================================
+
+define COW_PRESSURE_RAM = 0x7E9C40
+
+// -----------------------------------------------------------------------------
+// 1. Core Memory Pressure Assembly Routines
+// -----------------------------------------------------------------------------
+
+CowPressure_Inc1: {
+    PHP
+    SEP(0x20)
+    LDA_al(COW_PRESSURE_RAM)
+    CLC
+    ADC_8(1)
+    CMP_8(10)
+    BCC_a(_store_inc1)
+    LDA_8(10)
+_store_inc1:
+    STA_al(COW_PRESSURE_RAM)
+    PLP
+    RTL
+}
+
+CowPressure_Inc2: {
+    PHP
+    SEP(0x20)
+    LDA_al(COW_PRESSURE_RAM)
+    CLC
+    ADC_8(2)
+    CMP_8(10)
+    BCC_a(_store_inc2)
+    LDA_8(10)
+_store_inc2:
+    STA_al(COW_PRESSURE_RAM)
+    PLP
+    RTL
+}
+
+CowPressure_Reset: {
+    PHP
+    SEP(0x20)
+    LDA_8(0)
+    STA_al(COW_PRESSURE_RAM)
+    PLP
+    RTL
+}
+
+CowPressure_Half: {
+    PHP
+    SEP(0x20)
+    LDA_al(COW_PRESSURE_RAM)
+    LSR
+    STA_al(COW_PRESSURE_RAM)
+    PLP
+    RTL
+}
+
+CowPressure_Shed3: {
+    PHP
+    SEP(0x20)
+    LDA_al(COW_PRESSURE_RAM)
+    CMP_8(3)
+    BCS_a(_sub_shed3)
+    LDA_8(0)
+    BRA_a(_store_shed3)
+_sub_shed3:
+    SEC
+    SBC_8(3)
+_store_shed3:
+    STA_al(COW_PRESSURE_RAM)
+    PLP
+    RTL
+}
+
+CowPressure_Get: {
+    SEP(0x20)
+    LDA_al(COW_PRESSURE_RAM)
+    RTL
+}
+
+CowPressure_EvaluateState: {
+    PHP
+    SEP(0x20)
+    LDA_al(COW_PRESSURE_RAM)
+    CMP_8(4)
+    BCC_a(_state_nominal)
+    CMP_8(7)
+    BCC_a(_state_thrashing)
+    CMP_8(10)
+    BCC_a(_state_critical)
+    LDA_8(3) // 3: Breakdown (10)
+    PLP
+    RTL
+_state_critical:
+    LDA_8(2) // 2: Critical Contention (7-9)
+    PLP
+    RTL
+_state_thrashing:
+    LDA_8(1) // 1: Elevated Thrashing (4-6)
+    PLP
+    RTL
+_state_nominal:
+    LDA_8(0) // 0: Nominal (0-3)
+    PLP
+    RTL
+}
+
+// -----------------------------------------------------------------------------
+// 2. Visual / Audio Instability & Thrashing Dispatch Routines
+// -----------------------------------------------------------------------------
+
+CowPressure_ScanlineJitter: {
+    PHP
+    SEP(0x20)
+    LDA_al(COW_PRESSURE_RAM)
+    CMP_8(4)
+    BCC_a(_jitter_exit)
+    // Jitter low bit of horizontal scroll offset
+    LDA_a(0x00FC) // RNG scratch byte
+    AND_8(0x01)
+    STA_a(0x210D) // BG1 horizontal scroll register
+_jitter_exit:
+    PLP
+    RTL
+}
+
+CowPressure_PaletteShift: {
+    PHP
+    SEP(0x20)
+    LDA_al(COW_PRESSURE_RAM)
+    CMP_8(7)
+    BCC_a(_palette_exit)
+    // Invert secondary color math sub-screen register when critical
+    LDA_8(0x20)
+    STA_a(0x2131) // Color math control register
+_palette_exit:
+    PLP
+    RTL
+}
+
+CowPressure_WavyOffset: {
+    PHP
+    SEP(0x20)
+    LDA_al(COW_PRESSURE_RAM)
+    CMP_8(10)
+    BCC_a(_wavy_exit)
+    // Mode 7 / BG wavy displacement offset
+    LDA_a(0x00FC)
+    AND_8(0x03)
+    STA_a(0x210E) // BG1 vertical scroll register
+_wavy_exit:
+    PLP
+    RTL
+}
+
+CowPressure_BattleHazard: {
+    PHP
+    SEP(0x20)
+    LDA_al(COW_PRESSURE_RAM)
+    CMP_8(10)
+    BNE_a(_no_hazard)
+    // 10% hazard check using PRNG
+    LDA_a(0x00FC)
+    AND_8(0x0F)
+    CMP_8(1)
+    BNE_a(_no_hazard)
+    // Page Fault Latency active (returns A=1)
+    LDA_8(1)
+    PLP
+    RTL
+_no_hazard:
+    LDA_8(0)
+    PLP
+    RTL
+}
+
+// -----------------------------------------------------------------------------
+// 3. System Hooks: CoW Page Commits, Hotel Flushes, Payphone Saves
+// -----------------------------------------------------------------------------
+
+HookFlagMutation: {
+    // Replaced instructions from $C21669:
+    STY_d(0x12)
+    TAX
+    DEC
+    STA_d(0x10)
+
+    // Evaluate mutation
+    CPY_i(1)
+    BNE_a(_check_unset)
+
+    // Flag is being SET! Check if in CoW sector range 850..938
+    TXA
+    CMP_i(850)
+    BCC_a(_mutation_done)
+    CMP_i(939)
+    BCS_a(_mutation_done)
+    JSL(CowPressure_Inc2)
+    BRA_a(_mutation_done)
+
+_check_unset:
+    CPY_i(0)
+    BNE_a(_mutation_done)
+
+    // Flag is being UNSET! Check if flag 169 (hotel/bed rest)
+    TXA
+    CMP_i(169)
+    BNE_a(_mutation_done)
+    JSL(CowPressure_Reset)
+
+_mutation_done:
+    RTL
+}
+
+// Hook at $C21669 (6 bytes replaced: STY $12, TAX, DEC, STA $10)
+ROM[0xC21669] = {
+    JSL(HookFlagMutation)
+    NOP
+    NOP
+}
+
+SaveWithPressureHalf: {
+    JSL(0xC22A2C)         // Native SRAM save routine
+    JSL(CowPressure_Half) // Relieve volatile pressure by 50%
+    RTL
+}
+
+// Hook at $C185DA (4 bytes replaced: JSL $C22A2C in {save} control code)
+ROM[0xC185DA] = JSL(SaveWithPressureHalf)

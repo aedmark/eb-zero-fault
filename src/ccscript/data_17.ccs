@@ -298,8 +298,9 @@ l_0xc63407:
 
 l_0xc63415:
     "[1B 06][19 26 00]{save}@All done." next
+    "@Committed active dirty pages to disk, relieving sector memory pressure by 50%!" next
     "@Your dear old dad was also thinking about hitting the hay for the night." next
-    "@I have created a record of your adventure to this point." next
+    "@I have created a verified record of your adventure to this point." next
     "@Good night, sleep tight." linebreak
     "[19 10 01]{result_is(1)}[1B 02 {e(l_0xc63494)}]{isset(flag 372)}[1F C0 01 {e(l_0xc63593)}]" goto(l_0xc63494)
 

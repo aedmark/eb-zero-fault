@@ -1685,7 +1685,7 @@
   - 0
   - 0
   - 0
-  Cost: 22
+  Cost: 35
   Help Text Pointer: data_03.l_0xc5475a
   Misc Flags:
   - item disappears when used
@@ -1693,7 +1693,7 @@
   - ness can use
   - paula can use
   - poo can use
-  Name: Cold remedy
+  Name: Garbage Collector
   Type: 36
 112:
   Action: 249

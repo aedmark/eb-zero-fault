@@ -1,10 +1,12 @@
+import "asm65816.ccs"
+
 command e(label) "{long label}"
 
 // ==============================================================================
 // EarthBound: Zero Fault - Phase 18: Deconstructed Awakening & Prologue
 // ==============================================================================
 // 1. Silent Cold Open: Bypasses meteor explosion cutscene; Ness awakens in silence.
-// 2. Bedroom Desk Drawer: Contains the Worn Polarized Lens (Item 206).
+// 2. Bedroom Desk Drawer: Contains the Logic Probe (Item 138) and Worn Polarized Lens (Item 206).
 // 3. Hallway Tracy: Discovers eerie silence and stopped time.
 // ==============================================================================
 
@@ -12,10 +14,9 @@ command e(label) "{long label}"
 // 1. Cold Open Sequence (Overrides 0xC5E70B)
 // -----------------------------------------------------------------------------
 cow_cold_open:
-    "{set(flag 469)}{set(flag 11)}{hide_char(255)}"
+    "{set(flag 469)}{set(flag 11)}"
     "{music(0)}" // Silence audio engine completely
     "{set(flag 477)}{set(flag 532)}{set(flag 749)}" // Flag 749: Pajamas
-    "{warp(10)}" // Warp directly to Ness bedroom in bed
     "[1F E9 1A 00][1F E9 1B 00]" // Ness sleeping in bed sprite
     "{pause(60)}"
     "[1F 1E 1B 00 06]" // Waking sprite
@@ -66,3 +67,15 @@ cow_tracy_awakening:
 ROM[0xC5E70B] = goto(cow_cold_open)
 ROM[0xC8683D] = goto(cow_desk_drawer)
 ROM[0xC66AA4] = goto(cow_tracy_awakening)
+
+// Eliminate vanilla street spawn override at 0xC1FE9A (10 bytes)
+ROM[0xC1FE9A] = {
+    NOP NOP NOP NOP NOP
+    NOP NOP NOP NOP NOP
+}
+
+// Eliminate intro cutscene screen shake ($4A66 = 0) at 0xC1FEBC (6 bytes)
+ROM[0xC1FEBC] = {
+    STZ_a(0x4A66)
+    NOP NOP NOP
+}

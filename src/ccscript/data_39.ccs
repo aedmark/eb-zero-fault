@@ -92,9 +92,7 @@ l_cow_bedside_lamp:
     goto(cow_epilogue.cow_bedside_lamp)
 
 l_0xc8683d:
-    "[19 10 01]{swap}@{name(0)} checked the drawers." next
-    "[06 F3 02 {e(l_0xc8688e)}][19 10 01]{swap}@There was a {itemname(206)} in the drawer." next
-    "[1D 03 FF][1B 02 {e(l_0xc8689c)}][1D 0E 00 CE]" call(data_33.l_0xc7dccf) "{set(flag 755)}" end
+    goto(cow_prologue.cow_desk_drawer)
 
 l_0xc8688e:
     "@But there was nothing." end

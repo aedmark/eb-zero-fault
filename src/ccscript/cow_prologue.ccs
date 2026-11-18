@@ -32,12 +32,15 @@ cow_cold_open:
 cow_desk_drawer:
     "[19 10 01]{swap}@{name(0)} opened the desk drawer." next
     "[06 F3 02 {e(cow_desk_empty)}]" // Check flag 755 (already taken)
-    "@Buried beneath old school notes and worn stationery was a weathered optical lens." next
-    "@A cracked polarized lens from a bus analyzer..." next
-    "@It shouldn't be here. It belongs to a brilliant boy in a snowy boarding school you haven't even met yet." next
-    "@And yet, the brass casing is scratched and worn, as if it already survived an entire journey to the end of time..." next
-    "[19 10 01]{swap}@There was a {itemname(206)} in the drawer." next
-    "[1D 03 FF][1B 02 {e(cow_desk_full)}][1D 0E 00 CE]" call(data_33.l_0xc7dccf) "{set(flag 755)}" end
+    "@Buried beneath old school notes and worn stationery was a hardware diagnostic instrument." next
+    "@A ring-0 Logic Probe..." next
+    "@And beside it, a cracked polarized lens from a bus analyzer." next
+    "@They shouldn't be here. Relics from prior loops that survived the reboot." next
+    "[19 10 01]{swap}@There was a {itemname(138)} in the drawer." next
+    "[1D 03 FF][1B 02 {e(cow_desk_full)}][1D 0E 00 8A]" call(data_33.l_0xc7dccf)
+    "[19 10 01]{swap}@There was also a {itemname(206)} in the drawer." next
+    "[1D 03 FF][1B 02 {e(cow_desk_full)}][1D 0E 00 CE]" call(data_33.l_0xc7dccf)
+    "{set(flag 755)}" end
 
 cow_desk_empty:
     "@The drawer is empty, save for yellowed lined paper." end

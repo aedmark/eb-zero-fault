@@ -160,8 +160,7 @@ l_0xc66a83:
     "@(The Golden Statue is glowing strangely...){sound(113)}" end
 
 l_0xc66aa4:
-    "[06 49 00 {e(data_28.l_0xc7625e)}][06 B4 02 {e(l_0xc66bc0)}][06 B5 02 {e(l_0xc66c7d)}][06 78 02 {e(l_0xc66b33)}][06 61 00 {e(data_28.l_0xc76112)}][06 D6 01 {e(l_0xc66afe)}]@Hey,{pause(10)} bro.{pause(20)}  Did the sound wake you up?" next
-    "@Were you freaked out?{wait}{set(flag 470)}" eob
+    goto(cow_prologue.cow_tracy_awakening)
 
 l_0xc66afe:
     "@Do you think Mom will let me stay up late tonight?" next

@@ -378,7 +378,15 @@ class HeadlessTestSuite:
             self.assert_true(cow_check(flag_id) is True, f"Phase 20 flag {flag_id} successfully commits to CoW bitfield")
 
         # Phase 20 65816 CPU Graceful Shutdown (STP Opcode) Machine Code Verification
-        stp_offset = 0x38D248
+        summary_file = REPO_ROOT / "src" / "ccscript" / "summary.txt"
+        stp_offset = 0x38D0FC
+        if summary_file.exists():
+            for line in summary_file.read_text().splitlines():
+                if line.startswith("GracefulShutdown_STP"):
+                    parts = line.split()
+                    if len(parts) >= 2 and parts[1].startswith("$"):
+                        stp_offset = int(parts[1][1:], 16) - 0xC00000
+                        break
         stp_chunk = rom[stp_offset : stp_offset + 32]
         self.assert_true(stp_chunk[0] == 0x78, f"Graceful shutdown starts with SEI (0x78) to disable interrupts (actual: 0x{stp_chunk[0]:02X})")
         self.assert_true(0xDB in stp_chunk, "Graceful shutdown contains STP instruction (0xDB) to stop 65816 CPU clock")

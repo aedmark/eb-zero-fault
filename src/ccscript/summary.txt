@@ -6,8 +6,8 @@ CCScript Compilation Summary
 Compilation statistics
 =================================================================
 Compilation start:           $f10000
-Compilation end:             $f8d55c
-Total compiled size:         513372 bytes
+Compilation end:             $f8d52b
+Total compiled size:         513323 bytes
 Fragmented space:            251 bytes
 -----------------------------------------------------------------
 
@@ -17,8 +17,8 @@ Module information
 Name                         Address     Size
 -----------------------------------------------------------------
 data_12                      $f84fac      2217   bytes
-cow_magnet                   $f8ce5e      391    bytes
-cow_audio                    $f8d46c      171    bytes
+cow_magnet                   $f8ce2d      391    bytes
+cow_audio                    $f8d43b      171    bytes
 cow_winters                  $f887ea      1811   bytes
 data_31                      $f13d56      12941  bytes
 cow_sea                      $f8b915      925    bytes
@@ -29,17 +29,17 @@ data_16                      $f44986      9153   bytes
 data_10                      $f70000      5335   bytes
 data_01                      $f73d50      5089   bytes
 cow_phasedistorter           $f1f92d      1714   bytes
-cow_resync                   $f8ccb7      423    bytes
+cow_resync                   $f8cc86      423    bytes
 data_61                      $f773fe      4268   bytes
 data_53                      $f56161      7685   bytes
 cow_happy                    $f4f9c0      1557   bytes
 data_47                      $f40000      9426   bytes
-cow_moonside                 $f8c5ba      641    bytes
+cow_moonside                 $f8c589      641    bytes
 data_02                      $f714d7      5241   bytes
 data_41                      $f3c479      9599   bytes
 data_11                      $f762be      4416   bytes
 cow_desert                   $f880cc      1822   bytes
-cow_saturn                   $f8bfea      760    bytes
+cow_saturn                   $f8bfb9      760    bytes
 cow_giygas                   $f8469c      2320   bytes
 data_13                      $f6f398      3146   bytes
 cow_threed                   $f88efd      1773   bytes
@@ -50,7 +50,7 @@ cow_tenda                    $f83d77      2341   bytes
 cow_summers                  $f8a23d      1484   bytes
 cow_prayer                   $f80000      2882   bytes
 data_33                      $f784aa      4268   bytes
-cow_caveofpast               $f8c2e2      728    bytes
+cow_caveofpast               $f8c2b1      728    bytes
 data_54                      $f3e9f8      5625   bytes
 data_21                      $f82ad0      2402   bytes
 data_48                      $f3521a      10026  bytes
@@ -63,33 +63,33 @@ cow_onett_night              $f8a809      1254   bytes
 cow_police                   $f8acef      1118   bytes
 data_08                      $f6c925      5437   bytes
 data_36                      $f2d894      10058  bytes
-dash                         $f8d517      69     bytes
-cow_deepdark                 $f8ca7a      573    bytes
+dash                         $f8d4e6      69     bytes
+cow_deepdark                 $f8ca49      573    bytes
 data_42                      $f490fa      9081   bytes
 data_37                      $f6512d      6459   bytes
 data_57                      $f7b37b      3486   bytes
 data_51                      $f7a5d2      3497   bytes
 data_40                      $f22c3c      11264  bytes
 data_24                      $f20000      11324  bytes
-cow_prologue                 $f8bcb2      824    bytes
+cow_prologue                 $f8bcb2      775    bytes
 data_58                      $f7dbb8      3272   bytes
 data_22                      $f1cbbf      11630  bytes
 data_35                      $f30000      10576  bytes
 data_04                      $f46d47      9139   bytes
 data_06                      $f72950      5120   bytes
 cow_dungeonman               $f87191      1993   bytes
-cow_engine                   $f8d154      279    bytes
+cow_engine                   $f8d123      279    bytes
 data_38                      $f424d2      9396   bytes
 data_05                      $f5b949      7062   bytes
 data_20                      $f16fe3      11811  bytes
 data_34                      $f5f049      3989   bytes
-shop_stats                   $f8d26b      257    bytes
+shop_stats                   $f8d23a      257    bytes
 cow_seaofeden                $f89c50      1517   bytes
-cow_pressure                 $f8cfe5      367    bytes
+cow_pressure                 $f8cfb4      367    bytes
 data_62                      $f1ffdf      0      bytes
 data_03                      $f6b2cb      5722   bytes
 data_09                      $f54354      7693   bytes
-fast_text                    $f8d36c      256    bytes
+fast_text                    $f8d33b      256    bytes
 data_07                      $f860d5      2152   bytes
 cow_underworld               $f8795a      1906   bytes
 cow_fourside                 $f7ce9b      3357   bytes
@@ -116,7 +116,7 @@ cow_onett                    $f75131      4493   bytes
 data_28                      $f37944      9653   bytes
 data_14                      $f820a0      2608   bytes
 cow_scaraba                  $f895ea      1638   bytes
-cow_firespring               $f8c83b      575    bytes
+cow_firespring               $f8c80a      575    bytes
 data_44                      $f69ae2      6121   bytes
 data_56                      $f4b473      8939   bytes
 data_23                      $f2842a      10907  bytes
@@ -238,19 +238,19 @@ l_0xc5d7ad                   $f85851
 Labels in module cow_magnet
 Name                         Address
 -----------------------------------------------------------------
-cow_magnet_hill_commit       $f8ce5e
-cow_magnet_hill_msg          $f8cf1a
+cow_magnet_hill_commit       $f8ce2d
+cow_magnet_hill_msg          $f8cee9
 -----------------------------------------------------------------
 
 
 Labels in module cow_audio
 Name                         Address
 -----------------------------------------------------------------
-CowAudio_GetDrift            $f8d510
-CowAudio_GetStage            $f8d509
-CowAudio_Init                $f8d46c
-CowAudio_TickRoutine         $f8d4b0
-CowAudio_UpdateStage         $f8d47f
+CowAudio_GetDrift            $f8d4df
+CowAudio_GetStage            $f8d4d8
+CowAudio_Init                $f8d43b
+CowAudio_TickRoutine         $f8d47f
+CowAudio_UpdateStage         $f8d44e
 -----------------------------------------------------------------
 
 
@@ -1034,7 +1034,7 @@ cow_phasedistorter_test      $f1f92d
 Labels in module cow_resync
 Name                         Address
 -----------------------------------------------------------------
-cow_magicant_resync          $f8ccb7
+cow_magicant_resync          $f8cc86
 -----------------------------------------------------------------
 
 
@@ -1328,10 +1328,10 @@ l_0xc94f88                   $f42437
 Labels in module cow_moonside
 Name                         Address
 -----------------------------------------------------------------
-cow_mani_mani                $f8c6cd
-cow_mani_mani_destroyed      $f8c79d
-cow_moonside_greeter         $f8c5ba
-cow_moonside_yesno           $f8c614
+cow_mani_mani                $f8c69c
+cow_mani_mani_destroyed      $f8c76c
+cow_moonside_greeter         $f8c589
+cow_moonside_yesno           $f8c5e3
 -----------------------------------------------------------------
 
 
@@ -1673,10 +1673,10 @@ cow_teleport_monkey_learn    $f8870d
 Labels in module cow_saturn
 Name                         Address
 -----------------------------------------------------------------
-cow_milky_well_commit        $f8c18f
-cow_milky_well_msg           $f8c225
-cow_saturn_valley            $f8bfea
-cow_trillionage_sprout       $f8c09f
+cow_milky_well_commit        $f8c15e
+cow_milky_well_msg           $f8c1f4
+cow_saturn_valley            $f8bfb9
+cow_trillionage_sprout       $f8c06e
 -----------------------------------------------------------------
 
 
@@ -2216,11 +2216,11 @@ l_0xc7e66e                   $f79540
 Labels in module cow_caveofpast
 Name                         Address
 -----------------------------------------------------------------
-cow_caveofpast_saturn_1      $f8c4c4
-cow_caveofpast_saturn_2      $f8c55a
-cow_caveofpast_wreckage      $f8c2e2
-cow_caveofpast_wreckage_empty $f8c47c
-cow_caveofpast_wreckage_full $f8c436
+cow_caveofpast_saturn_1      $f8c493
+cow_caveofpast_saturn_2      $f8c529
+cow_caveofpast_wreckage      $f8c2b1
+cow_caveofpast_wreckage_empty $f8c44b
+cow_caveofpast_wreckage_full $f8c405
 -----------------------------------------------------------------
 
 
@@ -3048,14 +3048,14 @@ l_0xc833b1                   $f2fee4
 Labels in module dash
 Name                         Address
 -----------------------------------------------------------------
-InRunMode                    $f8d517
+InRunMode                    $f8d4e6
 -----------------------------------------------------------------
 
 
 Labels in module cow_deepdark
 Name                         Address
 -----------------------------------------------------------------
-cow_master_barf              $f8ca7a
+cow_master_barf              $f8ca49
 -----------------------------------------------------------------
 
 
@@ -3699,10 +3699,10 @@ Labels in module cow_prologue
 Name                         Address
 -----------------------------------------------------------------
 cow_cold_open                $f8bcb2
-cow_desk_drawer              $f8bcfe
-cow_desk_empty               $f8bea3
-cow_desk_full                $f8bed9
-cow_tracy_awakening          $f8bf05
+cow_desk_drawer              $f8bccd
+cow_desk_empty               $f8be72
+cow_desk_full                $f8bea8
+cow_tracy_awakening          $f8bed4
 -----------------------------------------------------------------
 
 
@@ -4255,37 +4255,37 @@ cow_jeff_repair_submarine    $f878d8
 Labels in module cow_engine
 Name                         Address
 -----------------------------------------------------------------
-cow_fault_commit_belch       $f8d193
-cow_fault_commit_caveofpast  $f8d259
-cow_fault_commit_dalaam      $f8d1db
-cow_fault_commit_deepdark    $f8d208
-cow_fault_commit_desert      $f8d1ae
-cow_fault_commit_downtown    $f8d166
-cow_fault_commit_dungeonman  $f8d1ff
-cow_fault_commit_epilogue    $f8d262
-cow_fault_commit_firespring  $f8d22c
-cow_fault_commit_fourside    $f8d1b7
-cow_fault_commit_giantstep   $f8d178
-cow_fault_commit_hilltop     $f8d15d
-cow_fault_commit_house       $f8d154
-cow_fault_commit_lumine      $f8d21a
-cow_fault_commit_magicant    $f8d235
-cow_fault_commit_magnethill  $f8d1c9
-cow_fault_commit_milkywell   $f8d1a5
-cow_fault_commit_moonside    $f8d1c0
-cow_fault_commit_mu          $f8d1e4
-cow_fault_commit_onett_night $f8d250
-cow_fault_commit_phasedistorter $f8d247
-cow_fault_commit_saturn      $f8d19c
-cow_fault_commit_scaraba     $f8d1f6
-cow_fault_commit_sea         $f8d1ed
-cow_fault_commit_seaofeden   $f8d23e
-cow_fault_commit_summers     $f8d1d2
-cow_fault_commit_tenda       $f8d211
-cow_fault_commit_threed      $f8d181
-cow_fault_commit_townhall    $f8d16f
-cow_fault_commit_underworld  $f8d223
-cow_fault_commit_winters     $f8d18a
+cow_fault_commit_belch       $f8d162
+cow_fault_commit_caveofpast  $f8d228
+cow_fault_commit_dalaam      $f8d1aa
+cow_fault_commit_deepdark    $f8d1d7
+cow_fault_commit_desert      $f8d17d
+cow_fault_commit_downtown    $f8d135
+cow_fault_commit_dungeonman  $f8d1ce
+cow_fault_commit_epilogue    $f8d231
+cow_fault_commit_firespring  $f8d1fb
+cow_fault_commit_fourside    $f8d186
+cow_fault_commit_giantstep   $f8d147
+cow_fault_commit_hilltop     $f8d12c
+cow_fault_commit_house       $f8d123
+cow_fault_commit_lumine      $f8d1e9
+cow_fault_commit_magicant    $f8d204
+cow_fault_commit_magnethill  $f8d198
+cow_fault_commit_milkywell   $f8d174
+cow_fault_commit_moonside    $f8d18f
+cow_fault_commit_mu          $f8d1b3
+cow_fault_commit_onett_night $f8d21f
+cow_fault_commit_phasedistorter $f8d216
+cow_fault_commit_saturn      $f8d16b
+cow_fault_commit_scaraba     $f8d1c5
+cow_fault_commit_sea         $f8d1bc
+cow_fault_commit_seaofeden   $f8d20d
+cow_fault_commit_summers     $f8d1a1
+cow_fault_commit_tenda       $f8d1e0
+cow_fault_commit_threed      $f8d150
+cow_fault_commit_townhall    $f8d13e
+cow_fault_commit_underworld  $f8d1f2
+cow_fault_commit_winters     $f8d159
 -----------------------------------------------------------------
 
 
@@ -4715,26 +4715,26 @@ l_0xc7fbec                   $f5ffa4
 Labels in module shop_stats
 Name                         Address
 -----------------------------------------------------------------
-def_jeff_from                $f8d2b4
-def_jeff_to                  $f8d32b
-def_ness_from                $f8d2ac
-def_ness_to                  $f8d31d
-def_paula_from               $f8d2b0
-def_paula_to                 $f8d324
-def_poo_from                 $f8d2b8
-def_poo_to                   $f8d332
-off_jeff_from                $f8d2f3
-off_jeff_to                  $f8d35e
-off_ness_from                $f8d2eb
-off_ness_to                  $f8d350
-off_paula_from               $f8d2ef
-off_paula_to                 $f8d357
-off_poo_from                 $f8d2f7
-off_poo_to                   $f8d365
-shop_equip_offense_from      $f8d2bc
-shop_equip_offense_to        $f8d339
-shop_equip_part_1            $f8d26b
-shop_equip_part_2            $f8d2fb
+def_jeff_from                $f8d283
+def_jeff_to                  $f8d2fa
+def_ness_from                $f8d27b
+def_ness_to                  $f8d2ec
+def_paula_from               $f8d27f
+def_paula_to                 $f8d2f3
+def_poo_from                 $f8d287
+def_poo_to                   $f8d301
+off_jeff_from                $f8d2c2
+off_jeff_to                  $f8d32d
+off_ness_from                $f8d2ba
+off_ness_to                  $f8d31f
+off_paula_from               $f8d2be
+off_paula_to                 $f8d326
+off_poo_from                 $f8d2c6
+off_poo_to                   $f8d334
+shop_equip_offense_from      $f8d28b
+shop_equip_offense_to        $f8d308
+shop_equip_part_1            $f8d23a
+shop_equip_part_2            $f8d2ca
 -----------------------------------------------------------------
 
 
@@ -4750,20 +4750,20 @@ cow_seaofeden_guide          $f89d3b
 Labels in module cow_pressure
 Name                         Address
 -----------------------------------------------------------------
-CowPressure_BattleHazard     $f8d0c4
-CowPressure_EvaluateState    $f8d053
-CowPressure_Get              $f8d04c
-CowPressure_Half             $f8d022
-CowPressure_Inc1             $f8cfe5
-CowPressure_Inc2             $f8cffe
-CowPressure_PaletteShift     $f8d097
-CowPressure_Reset            $f8d017
-CowPressure_ScanlineJitter   $f8d07f
-CowPressure_Shed3            $f8d030
-CowPressure_WavyOffset       $f8d0ac
-GracefulShutdown_STP         $f8d0e6
-HookFlagMutation             $f8d100
-SaveWithPressureHalf         $f8d14b
+CowPressure_BattleHazard     $f8d093
+CowPressure_EvaluateState    $f8d022
+CowPressure_Get              $f8d01b
+CowPressure_Half             $f8cff1
+CowPressure_Inc1             $f8cfb4
+CowPressure_Inc2             $f8cfcd
+CowPressure_PaletteShift     $f8d066
+CowPressure_Reset            $f8cfe6
+CowPressure_ScanlineJitter   $f8d04e
+CowPressure_Shed3            $f8cfff
+CowPressure_WavyOffset       $f8d07b
+GracefulShutdown_STP         $f8d0b5
+HookFlagMutation             $f8d0cf
+SaveWithPressureHalf         $f8d11a
 -----------------------------------------------------------------
 
 
@@ -4988,15 +4988,15 @@ l_0xc5bbf2                   $f5614b
 Labels in module fast_text
 Name                         Address
 -----------------------------------------------------------------
-HijackBg3Upload              $f8d41b
-SetTextSpeed                 $f8d39a
-SetTextSpeedFromGameState    $f8d394
-TextSpeedData                $f8d36c
-TextSpeedData_framesForNextInBattle $f8d372
-TextSpeedData_framesPerChar  $f8d370
-TextSpeedData_hpPpRollerRate_hi $f8d36e
-TextSpeedData_hpPpRollerRate_lo $f8d36c
-WaitTextOneTick              $f8d3e1
+HijackBg3Upload              $f8d3ea
+SetTextSpeed                 $f8d369
+SetTextSpeedFromGameState    $f8d363
+TextSpeedData                $f8d33b
+TextSpeedData_framesForNextInBattle $f8d341
+TextSpeedData_framesPerChar  $f8d33f
+TextSpeedData_hpPpRollerRate_hi $f8d33d
+TextSpeedData_hpPpRollerRate_lo $f8d33b
+WaitTextOneTick              $f8d3b0
 -----------------------------------------------------------------
 
 
@@ -6922,11 +6922,11 @@ cow_star_master_explain      $f89921
 Labels in module cow_firespring
 Name                         Address
 -----------------------------------------------------------------
-cow_firespring_boss          $f8c83b
-cow_firespring_flag_548      $f8ca76
-cow_firespring_melody        $f8c969
-cow_firespring_melody_end    $f8ca69
-cow_firespring_melody_record $f8c9bc
+cow_firespring_boss          $f8c80a
+cow_firespring_flag_548      $f8ca45
+cow_firespring_melody        $f8c938
+cow_firespring_melody_end    $f8ca38
+cow_firespring_melody_record $f8c98b
 -----------------------------------------------------------------
 
 

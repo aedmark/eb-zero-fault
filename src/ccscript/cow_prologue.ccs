@@ -14,20 +14,14 @@ command e(label) "{long label}"
 // 1. Cold Open Sequence (Overrides 0xC5E70B)
 // -----------------------------------------------------------------------------
 cow_cold_open:
-    "{set(flag 469)}{hide_char(255)}"
     "{music(0)}" // Silence audio engine completely
-    "{set(flag 477)}{set(flag 749)}" // Flag 749: Pajamas, Flag 477: Bed sprites
-    "{warp(10)}" // Warp directly to Ness bedroom in bed
-    "[1F E9 1A 00][1F E9 1B 00]" // Ness sleeping in bed sprite
-    "{pause(120)}" // Smooth 2-second stillness while room fades in from black
-    "[1F 1E 1B 00 06]" // Waking sprite: despawn sleeping head
-    "{pause(30)}"
-    "[1F 1E 1A 00 06]" // Despawn bed sheet
-    "{show_party(1)}" // Reveal Ness in pajamas
-    "[1F F2 6A 00 72 02]" // Step out of bed onto the floor
-    "{pause(35)}" // Safe timer for step out animation
-    "[1F E8 FF][1F 61][1F ED]" // Release movement locks
-    "{set(flag 476)}{unset(flag 477)}{unset(flag 469)}{unset(flag 11)}{save}" eob
+    "{set(flag 749)}" // Flag 749: Pajamas
+    "{set(flag 476)}" // Flag 476: Ness is out of bed
+    "{unset(flag 477)}" // Ensure bed sleeping sprites (NPC 26/27) are hidden
+    "{unset(flag 469)}" // Ensure player sprite is visible
+    "{warp(10)}" // Smooth fade-in directly to the bedroom floor beside the bed (tile 1015, 138)
+    "{pause(40)}" // Brief moment of eerie silence as room fades in
+    "{unset(flag 11)}{save}" eob
 
 // -----------------------------------------------------------------------------
 // 2. Bedroom Desk Drawer (Overrides 0xC8683D)
@@ -70,10 +64,10 @@ ROM[0xC5E70B] = goto(cow_cold_open)
 ROM[0xC8683D] = goto(cow_desk_drawer)
 ROM[0xC66AA4] = goto(cow_tracy_awakening)
 
-// Initialize engine camera and player position directly to Ness's bedroom (X=8136, Y=1096 pixels = tile 1017, 137)
+// Initialize engine camera directly to Ness's bedroom floor (Camera X=8120, Camera Y=1104 = tile 1015, 138)
 ROM[0xC1FE9A] = {
-    LDX_i(0x1FC8)
-    LDA_i(0x0448)
+    LDA_i(0x1FB8)
+    LDX_i(0x0450)
     JSL(0xC0B65F)
 }
 

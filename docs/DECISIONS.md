@@ -326,6 +326,19 @@ removing a fence whose purpose it forgot.
 **Consequences:** Provides an emotionally resonant, authentic hardware conclusion where the SNES processor ceases execution, symbolizing total rest.
 **Review trigger:** Full regression verification during Phase 21.
 
+## D-028 Full Verification, Regression Integrity & Project Delivery (2026-11-17, status: accepted)
+**Owner:** Gordon (Custodian)
+**Context:** With all 20 development phases implemented—ranging from toolchain decompilation and QoL mechanics through Copy-on-Write state mutation, narrative overhaul, memory leak dungeons, and the graceful terminal unmount epilogue—Phase 21 provides exhaustive regression testing, companion re-indexing, doc checking, and final repository synchronization.
+**Decision:**
+1. Execute full binary verification via `tools/verify_rom.py`, verifying all 299 assertions covering ROM header integrity, 131 low-level hooks, 3 ATM debug vectors, 56 dynamic active NPC pointers, 97 encoded thematic entities, and the `GracefulShutdown_STP` machine code block (SEI `$78` and STP `$DB`).
+2. Execute full headless assertion suite via `tools/test_headless_assertions.py`, verifying all 156 assertions covering SRAM 3-slot checksums and coordinates, B-button dash speed normalization, fast-text subframe delay bypassing, shop stat differential arithmetic, CoW dirty-page bitfield invariants (flags 836..1023), volatile memory pressure scaling and compaction release valves, SPC700 physical media decay audio drift calculations, prologue hooks, superboss dungeon cleared flags (901..903), and terminal shutdown flags (939..940).
+3. Re-index all game data, decompiled scripts, and table configurations into the self-contained Zero Fault Companion single-file HTML application (`tools/zero_fault_companion.html`, 5.0 MB) and synchronize with the persistent conversation artifact directory.
+4. Verify documentation integrity via `tools/check_docs.py`, guaranteeing zero errors and zero warnings across all 14 project documents and archived session logs.
+5. Deploy all source changes, tests, and documentation cleanly to GitHub (`aedmark/eb-zero-fault.git`) on branch `main`.
+**Alternatives:** Manual spot checking on an emulator (insufficient to catch boundary overflows, corrupted pointers, or regression failures across 20 phases).
+**Consequences:** Assures complete binary, engine, and documentation integrity across the entire project with zero regressions.
+**Review trigger:** Future community contributions or packaging for physical SNES cartridge flashing.
+
 ---
 
 ## Held tensions

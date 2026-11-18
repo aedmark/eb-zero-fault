@@ -206,6 +206,6 @@ Goal: Author the quiet post-credits epilogue allowing an unhurried twilight walk
 
 Goal: Execute exhaustive regression suites across all 20 phases, rebuild the interactive Zero Fault Companion HTML application, verify complete documentation integrity, and deploy cleanly to GitHub.
 
-- [ ] P21-01 Execute full suite of headless runtime assertions and binary verification covering all engine modifications and hooks (2026-11-17).
-- [ ] P21-02 Re-index all game data and compile self-contained Zero Fault Companion web application and IDE widget (2026-11-17).
-- [ ] P21-03 Verify documentation integrity with zero errors or warnings via check_docs.py and finalize git deployment (2026-11-17).
+- [x] P21-01 Execute full suite of headless runtime assertions and binary verification covering all engine modifications and hooks (D-028; executed tools/verify_rom.py across 299 assertions and tools/test_headless_assertions.py across 156 assertions, 2026-11-17).
+- [x] P21-02 Re-index all game data and compile self-contained Zero Fault Companion web application and IDE widget (D-028; built tools/zero_fault_companion.html and synchronized to artifact directory, 2026-11-17).
+- [x] P21-03 Verify documentation integrity with zero errors or warnings via check_docs.py and finalize git deployment (D-028; verified 0 errors, 0 warnings across all documentation and pushed to GitHub main, 2026-11-17).

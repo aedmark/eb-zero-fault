@@ -44,8 +44,8 @@ l_0xc54c6d:
 l_0xc54ceb:
     newline
     " <{itemname(140)}>" next
-    "@You can even use this during battle!" next
-    call(data_05.l_0xc56d9b) end
+    "@A shielded arm band forged from hardened non-volatile solid state cells." next
+    "@Increases Defense by 45 and protects against environmental latency and status faults." end
 
 l_0xc54d10:
     newline
@@ -65,8 +65,8 @@ l_0xc54d99:
 l_0xc54ddc:
     newline
     " <{itemname(143)}>" next
-    "@You can even use this during battle!" next
-    call(data_05.l_0xc56d9b) end
+    "@A handheld heap compaction device." next
+    "@Reusable in battle. Realigns fragmented psychic registers, restoring 50 PP." end
 
 l_0xc54e01:
     newline
@@ -144,8 +144,8 @@ l_0xc5509e:
 l_0xc550e3:
     newline
     " <{itemname(154)}>" next
-    "@Can be used during battle." next
-    call(data_05.l_0xc56dab) end
+    "@An iridescent ring inscribed with root kernel privilege credentials." next
+    "@Increases Offense and Guts. Guarantees maximum smash power when execution state is critical." end
 
 l_0xc55105:
     newline

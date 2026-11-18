@@ -2138,21 +2138,18 @@
   Name: Yogurt dispenser
   Type: 52
 140:
-  Action: 186
+  Action: 0
   Argument:
+  - 45
+  - 216
   - 0
-  - 0
-  - 0
-  - 0
-  Cost: 2
+  - 255
+  Cost: 3500
   Help Text Pointer: data_04.l_0xc54ceb
   Misc Flags:
   - jeff can use
-  - ness can use
-  - paula can use
-  - poo can use
-  Name: Ruler
-  Type: 48
+  Name: Solid State Band
+  Type: 24
 141:
   Action: 171
   Argument:
@@ -2187,20 +2184,20 @@
   Name: Mummy wrap
   Type: 52
 143:
-  Action: 187
+  Action: 249
   Argument:
+  - 1
+  - 50
+  - 50
   - 0
-  - 0
-  - 0
-  - 0
-  Cost: 2
+  Cost: 4500
   Help Text Pointer: data_04.l_0xc54ddc
   Misc Flags:
   - jeff can use
   - ness can use
   - paula can use
   - poo can use
-  Name: Protractor
+  Name: Heap Compactor
   Type: 48
 144:
   Action: 163
@@ -2364,22 +2361,18 @@
   Name: Stag beetle
   Type: 52
 154:
-  Action: 174
+  Action: 0
   Argument:
+  - 30
+  - 216
+  - 50
   - 0
-  - 0
-  - 0
-  - 0
-  Cost: 3
+  Cost: 5000
   Help Text Pointer: data_04.l_0xc550e3
   Misc Flags:
-  - item disappears when used
-  - jeff can use
   - ness can use
-  - paula can use
-  - poo can use
-  Name: Toothbrush
-  Type: 52
+  Name: Kernel Privilege Ring
+  Type: 28
 155:
   Action: 166
   Argument:

@@ -183,3 +183,29 @@ Goal: Replace the conventional meteor crash opening with an uncanny silent cold 
 - [x] P18-02 Author tired maternal dialogue sensing Ness's prior lifetime and startled Pokey dialogue opening door before knock (D-025; implemented src/ccscript/cow_onett.ccs overriding C66D3E, C74F56, and C75C33, 2026-11-17).
 - [x] P18-03 Implement chronological physical media audio decay assembly engine with Act I wow/flutter, Act II capstan drag, and Act III attenuation routines hooked into movement loop (D-025; implemented src/ccscript/cow_audio.ccs and src/ccscript/dash.ccs, 2026-11-17).
 - [x] P18-04 Expand headless runtime assertions and binary verification suite for Phase 18 hooks and thematic strings (D-025; updated tools/test_headless_assertions.py and tools/verify_rom.py, 2026-11-17).
+
+## Phase 19: Memory Leak Dungeons and Superboss Encounters
+
+Goal: Design and inject three optional endgame memory leak dungeons guarded by architectural superboss encounters (Thrashing Hypervisor, Garbage Collector Prime, Monolithic BIOS Kernel) awarding tier-5 hardware artifacts.
+
+- [x] P19-01 Retool endgame accessories and usable hardware items in item configuration table: Solid State Band (item 140), Heap Compactor (item 143), and Kernel Privilege Ring (item 154) with custom help descriptions (D-026; implemented src/item_configuration_table.yml and src/ccscript/data_04.ccs, 2026-11-17).
+- [x] P19-02 Configure superboss stats, elemental resistances, and drop tables in enemy configuration table and enemy groups for Thrashing Hypervisor (enemy 198), Garbage Collector Prime (enemy 217), and Monolithic BIOS Kernel (enemy 230) (D-026; implemented src/enemy_configuration_table.yml and src/enemy_groups.yml, 2026-11-17).
+- [x] P19-03 Author dungeon entrance scripts, ring-0 ground clearance checks, and boss trigger routines in cow_dungeons.ccs with dual bindings across NPC config table and ROM goto vectors (D-026; implemented src/ccscript/cow_dungeons.ccs, src/npc_config_table.yml, 2026-11-17).
+- [x] P19-04 Expand headless runtime assertions and binary verification suite for Phase 19 dungeon cleared flags 901, 902, 903, ROM hooks, and thematic entities (D-026; updated tools/test_headless_assertions.py and tools/verify_rom.py, 2026-11-17).
+
+## Phase 20: Interactive Terminal Unmount Epilogue and Final Graceful Shutdown
+
+Goal: Author the quiet post-credits epilogue allowing an unhurried twilight walk through Eagleland, culminating in Ness returning to his bedroom to extinguish the lamp and executing an authentic 65816 CPU graceful halt (`STP` opcode).
+
+- [ ] P20-01 Author quiet twilight epilogue overworld scripts for Onett, Paula's farewell in Twoson, and homecoming (2026-11-17).
+- [ ] P20-02 Script bedroom lamp interaction prompt ("Turn off the light and go to sleep?") in cow_epilogue.ccs (2026-11-17).
+- [ ] P20-03 Author 65816 assembly graceful system unmount routine halting the CPU via STP opcode ($DB) (2026-11-17).
+- [ ] P20-04 Expand binary verification and headless assertion suites for Phase 20 terminal unmount hooks and shutdown assembly (2026-11-17).
+
+## Phase 21: Full Verification and Companion Synchronization
+
+Goal: Execute exhaustive regression suites across all 20 phases, rebuild the interactive Zero Fault Companion HTML application, verify complete documentation integrity, and deploy cleanly to GitHub.
+
+- [ ] P21-01 Execute full suite of headless runtime assertions and binary verification covering all engine modifications and hooks (2026-11-17).
+- [ ] P21-02 Re-index all game data and compile self-contained Zero Fault Companion web application and IDE widget (2026-11-17).
+- [ ] P21-03 Verify documentation integrity with zero errors or warnings via check_docs.py and finalize git deployment (2026-11-17).

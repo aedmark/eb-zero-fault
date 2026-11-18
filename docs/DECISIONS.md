@@ -290,6 +290,28 @@ removing a fence whose purpose it forgot.
 **Consequences:** Sets an immediate, haunting atmosphere from the initial boot, establishing that the 30-year cartridge substrate has reached its final cycle.
 **Review trigger:** Implementing Phase 19 memory leak dungeons and superboss encounters.
 
+## D-026 Memory Leak Dungeons & Architectural Superboss Encounters (2026-11-17, status: accepted)
+**Owner:** Gordon (Custodian)
+**Context:** To provide ultimate endgame challenges that mechanically exercise the memory architecture and provide late-game utility before the Cave of the Past, three optional memory leak dungeons are introduced: Abandoned Swap Space, Unallocated Heap, and Legacy Boot ROM. Each dungeon features high-threat superboss encounters guarding tier-5 hardware artifacts.
+**Decision:**
+1. Configure three endgame hardware artifacts in `src/item_configuration_table.yml` and `src/ccscript/data_04.ccs`:
+   - Item 140 (*Solid State Band*): Jeff-exclusive arm gear granting +45 Defense and elemental/status resistances.
+   - Item 143 (*Heap Compactor*): Battle usable item restoring 50 PP.
+   - Item 154 (*Kernel Privilege Ring*): Ness-exclusive accessory granting +30 Defense and +50 Guts.
+2. Configure three superboss encounters in `src/enemy_configuration_table.yml` and `src/enemy_groups.yml`:
+   - Enemy 198 (*Thrashing Hypervisor*, Group 460): 8400 HP, 650 PP, 185 Offense, 160 Defense, 1 Speed, drops Item 140.
+   - Enemy 217 (*Garbage Collector Prime*, Group 461): 11200 HP, 900 PP, 210 Offense, 195 Defense, 60 Speed, drops Item 143.
+   - Enemy 230 (*Monolithic BIOS Kernel*, Group 462): 14000 HP, 1200 PP, 240 Offense, 255 Defense, 40 Speed, drops Item 154.
+3. Author dungeon interaction scripts in `src/ccscript/cow_dungeons.ccs`:
+   - Abandoned Swap Space (SNES `$C8F75E`, ROM offset `0x08F75E`, NPC 481): Clears Flag 901 upon defeat.
+   - Unallocated Heap (SNES `$C9ED3C`, ROM offset `0x09ED3C`, NPC 1238): Clears Flag 902 upon defeat.
+   - Legacy Boot ROM (SNES `$EF6084`, ROM offset `0x2F6084`, NPC 1294): Enforces ring-0 privilege verification requiring Item 138 (*Logic Probe*) before granting execution clearance, setting Flag 903 upon defeat.
+4. Establish dual bindings via both `src/npc_config_table.yml` text pointer reassignments and direct ROM label vector hooks (`ROM[...] = goto(...)`).
+5. Expand `tools/verify_rom.py` to 286 binary assertions and `tools/test_headless_assertions.py` to 138 headless runtime assertions.
+**Alternatives:** Reusing vanilla Sanctuary boss encounters without thematic memory corruption or hardware requirements.
+**Consequences:** Introduces high-tier post-game content that organically integrates with the OS corruption narrative and tests endgame party loadouts.
+**Review trigger:** Playtesting superboss difficulty tuning and item balance during Phase 21 full verification.
+
 ---
 
 ## Held tensions

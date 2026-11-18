@@ -356,6 +356,17 @@ class HeadlessTestSuite:
         self.assert_true(rom[0x08683D] == 0x0A, "Prologue Bedroom Desk Drawer hook installed at ROM 0x08683D (opcode 0x0A: goto)")
         self.assert_true(rom[0x066AA4] == 0x0A, "Prologue Tracy Awakening hook installed at ROM 0x066AA4 (opcode 0x0A: goto)")
 
+        # Phase 19 Memory Leak Dungeons & Superboss Hook Invariants
+        self.assert_true(rom[0x08F75E] == 0x0A, "Abandoned Swap Space dungeon hook installed at ROM 0x08F75E (opcode 0x0A: goto)")
+        self.assert_true(rom[0x09ED3C] == 0x0A, "Unallocated Heap dungeon hook installed at ROM 0x09ED3C (opcode 0x0A: goto)")
+        self.assert_true(rom[0x2F6084] == 0x0A, "Legacy Boot ROM dungeon hook installed at ROM 0x2F6084 (opcode 0x0A: goto)")
+
+        # Superboss Flag Invariants (Flags 901, 902, 903)
+        for flag_id in (901, 902, 903):
+            self.assert_true(836 <= flag_id <= 1023, f"Superboss dungeon cleared flag {flag_id} resides in safe SRAM range (836..1023)")
+            cow_touch(flag_id)
+            self.assert_true(cow_check(flag_id) is True, f"Dungeon cleared flag {flag_id} successfully commits to CoW bitfield")
+
     # -------------------------------------------------------------------------
     # 6. ROM Expansion & Memory Boundary Assertions
     # -------------------------------------------------------------------------
@@ -403,6 +414,16 @@ class HeadlessTestSuite:
             "cracked polarized lens from a bus analyzer",
             "lived an entire lifetime while I was asleep",
             "Did you feel that sudden stillness",
+            # Phase 19 Memory Leak Dungeons & Superboss Encounters
+            "Solid State Band",
+            "Heap Compactor",
+            "Kernel Privilege Ring",
+            "Thrashing Hypervisor",
+            "Garbage Collector Prime",
+            "Monolithic BIOS Kernel",
+            "Abandoned Swap Space",
+            "Unallocated Heap",
+            "Legacy Boot ROM",
         ]
         for s in sample_thematic_strings:
             encoded = encode_eb_text(s, len(s))

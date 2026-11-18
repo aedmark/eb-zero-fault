@@ -9306,51 +9306,51 @@
   Unknown: 3
 198:
   '"The" Flag': 'true'
-  Action 1: 0
-  Action 1 Argument: 0
-  Action 2: 0
+  Action 1: 59
+  Action 1 Argument: 50
+  Action 2: 68
   Action 2 Argument: 0
-  Action 3: 0
-  Action 3 Argument: 0
-  Action 4: 0
+  Action 3: 57
+  Action 3 Argument: 48
+  Action 4: 4
   Action 4 Argument: 0
-  Action Order: 0
-  Boss Flag: 'false'
-  Death Sound: normal
+  Action Order: 1
+  Boss Flag: 'true'
+  Death Sound: boss
   Death Text Pointer: data_57.l_0xef6d71
-  Defense: 192
-  Encounter Text Pointer: data_58.l_0xef789c
-  Experience points: 48311
+  Defense: 160
+  Encounter Text Pointer: data_58.l_0xef7858
+  Experience points: 65000
   Final Action: 0
   Final Action Argument: 0
-  Fire vulnerability: 100%
-  Flash vulnerability: 70%
-  Freeze vulnerability: 5%
+  Fire vulnerability: 40%
+  Flash vulnerability: 5%
+  Freeze vulnerability: 40%
   Gender: neutral
-  Guts: 25
-  HP: 774
+  Guts: 35
+  HP: 8400
   Hypnosis/Brainshock vulnerability: 10%
   Initial Status: normal
-  Item Dropped: 130
-  Item Rarity: 2/128
-  Level: 69
-  Luck: 32
+  Item Dropped: 140
+  Item Rarity: 128/128
+  Level: 75
+  Luck: 30
   Max Call: 0
-  Mirror Success Rate: 50
-  Miss Rate: 1
-  Money: 897
-  Movement pattern: 23
-  Music: 102
-  Name: Squatter Demon
-  Offense: 158
+  Mirror Success Rate: 0
+  Miss Rate: 0
+  Money: 2500
+  Movement pattern: 0
+  Music: 148
+  Name: Thrashing Hypervisor
+  Offense: 185
   Overworld Sprite: 306
-  PP: 60
-  Paralysis vulnerability: 0%
-  Row: 0
+  PP: 650
+  Paralysis vulnerability: 10%
+  Row: 1
   Run Flag: 'true'
-  Speed: 45
-  Type: normal
-  Unknown: 3
+  Speed: 1
+  Type: metal
+  Unknown: 1
 199:
   '"The" Flag': 'false'
   Action 1: 4
@@ -10199,50 +10199,51 @@
   Unknown: 0
 217:
   '"The" Flag': 'false'
-  Action 1: 273
+  Action 1: 64
   Action 1 Argument: 0
-  Action 2: 276
-  Action 2 Argument: 0
-  Action 3: 226
+  Action 2: 59
+  Action 2 Argument: 50
+  Action 3: 4
   Action 3 Argument: 0
-  Action 4: 110
+  Action 4: 232
   Action 4 Argument: 0
   Action Order: 0
-  Boss Flag: 'false'
-  Death Sound: normal
-  Death Text Pointer: data_30.l_0xc77eff
-  Defense: 274
+  Boss Flag: 'true'
+  Death Sound: boss
+  Death Text Pointer: data_57.l_0xef6d71
+  Defense: 195
   Encounter Text Pointer: data_58.l_0xef7858
-  Experience points: 0
+  Experience points: 85000
   Final Action: 0
   Final Action Argument: 0
   Fire vulnerability: 40%
-  Flash vulnerability: 40%
+  Flash vulnerability: 5%
   Freeze vulnerability: 40%
-  Gender: male
+  Gender: neutral
   Guts: 45
-  HP: 1746
-  Hypnosis/Brainshock vulnerability: 50%
+  HP: 11200
+  Hypnosis/Brainshock vulnerability: 0%
   Initial Status: normal
-  Item Dropped: 0
-  Item Rarity: 1/128
-  Level: 72
-  Luck: 55
+  Item Dropped: 143
+  Item Rarity: 128/128
+  Level: 85
+  Luck: 40
   Max Call: 0
-  Mirror Success Rate: 95
+  Mirror Success Rate: 0
   Miss Rate: 0
-  Money: 0
+  Money: 3500
   Movement pattern: 0
-  Music: 72
-  Name: Rootkit Pokey
-  Offense: 150
-  Overworld Sprite: 44
-  PP: 999
+  Music: 99
+  Name: Garbage Collector Prime
+  Offense: 210
+  Overworld Sprite: 315
+  PP: 900
   Paralysis vulnerability: 0%
-  Row: 0
+  Row: 1
   Run Flag: 'true'
-  Speed: 51
+  Speed: 60
   Type: metal
+  Unknown: 3
   Unknown: 0
 218:
   '"The" Flag': 'false'
@@ -10809,49 +10810,49 @@
   Type: normal
   Unknown: 3
 230:
-  '"The" Flag': 'false'
-  Action 1: 129
-  Action 1 Argument: 0
-  Action 2: 128
+  '"The" Flag': 'true'
+  Action 1: 59
+  Action 1 Argument: 50
+  Action 2: 68
   Action 2 Argument: 0
-  Action 3: 317
+  Action 3: 129
   Action 3 Argument: 0
-  Action 4: 245
-  Action 4 Argument: 146
-  Action Order: 3
+  Action 4: 317
+  Action 4 Argument: 0
+  Action Order: 2
   Boss Flag: 'true'
   Death Sound: boss
   Death Text Pointer: data_57.l_0xef6d83
-  Defense: 137
+  Defense: 255
   Encounter Text Pointer: data_58.l_0xef7866
-  Experience points: 32378
+  Experience points: 100000
   Final Action: 243
   Final Action Argument: 0
-  Fire vulnerability: 40%
-  Flash vulnerability: 40%
-  Freeze vulnerability: 40%
+  Fire vulnerability: 5%
+  Flash vulnerability: 5%
+  Freeze vulnerability: 5%
   Gender: neutral
-  Guts: 30
-  HP: 962
-  Hypnosis/Brainshock vulnerability: 10%
+  Guts: 50
+  HP: 14000
+  Hypnosis/Brainshock vulnerability: 0%
   Initial Status: normal
-  Item Dropped: 0
-  Item Rarity: 1/128
-  Level: 46
-  Luck: 49
+  Item Dropped: 154
+  Item Rarity: 128/128
+  Level: 92
+  Luck: 60
   Max Call: 0
   Mirror Success Rate: 0
-  Miss Rate: 5
-  Money: 2081
-  Movement pattern: 27
-  Music: 148
-  Name: Clumsy Robot
-  Offense: 88
+  Miss Rate: 0
+  Money: 5000
+  Movement pattern: 0
+  Music: 73
+  Name: Monolithic BIOS Kernel
+  Offense: 240
   Overworld Sprite: 275
-  PP: 0
-  Paralysis vulnerability: 50%
+  PP: 1200
+  Paralysis vulnerability: 0%
   Row: 1
   Run Flag: 'true'
-  Speed: 83
+  Speed: 40
   Type: metal
   Unknown: 3

@@ -3913,8 +3913,7 @@
   Background 1: 197
   Background 2: 0
   Enemies:
-  - {Amount: 1, Enemy: 2}
-  - {Amount: 0, Enemy: 1}
+  - {Amount: 1, Enemy: 198}
   Fear event flag: 0
   Fear mode: run away if flag is unset
   Letterbox Size: 0
@@ -3922,7 +3921,7 @@
   Background 1: 302
   Background 2: 0
   Enemies:
-  - {Amount: 1, Enemy: 137}
+  - {Amount: 1, Enemy: 217}
   Fear event flag: 0
   Fear mode: run away if flag is unset
   Letterbox Size: 0
@@ -3930,7 +3929,7 @@
   Background 1: 285
   Background 2: 0
   Enemies:
-  - {Amount: 1, Enemy: 146}
+  - {Amount: 1, Enemy: 230}
   Fear event flag: 0
   Fear mode: run away if flag is unset
   Letterbox Size: 0

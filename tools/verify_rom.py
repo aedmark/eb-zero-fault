@@ -33,6 +33,10 @@ HOOKS = [
     (0x05E70B, b"\x0A", "CoW Prologue Silent Cold Open Hook ($C5E70B)"),
     (0x08683D, b"\x0A", "CoW Prologue Bedroom Desk Drawer Hook ($C8683D)"),
     (0x066AA4, b"\x0A", "CoW Prologue Tracy Awakening Hook ($C66AA4)"),
+    # Phase 19: Memory Leak Dungeons & Superboss Hooks
+    (0x08F75E, b"\x0A", "CoW Abandoned Swap Space Hook ($C8F75E)"),
+    (0x09ED3C, b"\x0A", "CoW Unallocated Heap Hook ($C9ED3C)"),
+    (0x2F6084, b"\x0A", "CoW Legacy Boot ROM Hook ($EF6084)"),
     # Phase 4: CoW Narrative & MMU Hooks
     (0x066D3E, b"\x0A", "CoW Mom Initial Awakening Hook (0xC66D3E)"),
     (0x074F56, b"\x0A", "CoW Mom Awakening Script Hook (0xC74F56)"),
@@ -223,6 +227,10 @@ NPC_BINDINGS = [
     (1271, "cow_caveofpast_saturn_1", "NPC Table Entry 1271 (Cave of Past Saturn 1 Pointer)"),
     (1272, "cow_caveofpast_saturn_2", "NPC Table Entry 1272 (Cave of Past Saturn 2 Pointer)"),
     (1273, "cow_caveofpast_wreckage", "NPC Table Entry 1273 (Cave of Past Wreckage Pointer)"),
+    # Phase 19 NPC bindings
+    (481, "cow_swap_space_entry", "NPC Table Entry 481 (Abandoned Swap Space Entrance Pointer)"),
+    (1238, "cow_heap_entry", "NPC Table Entry 1238 (Unallocated Heap Entrance Pointer)"),
+    (1294, "cow_boot_rom_entry", "NPC Table Entry 1294 (Legacy Boot ROM Entrance Pointer)"),
 ]
 
 # EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
@@ -333,6 +341,16 @@ THEMATIC_NAMES = [
     "cracked polarized lens from a bus analyzer",
     "lived an entire lifetime while I was asleep",
     "Did you feel that sudden stillness",
+    # Phase 19: Memory Leak Dungeons & Superboss Encounters
+    "Solid State Band",
+    "Heap Compactor",
+    "Kernel Privilege Ring",
+    "Thrashing Hypervisor",
+    "Garbage Collector Prime",
+    "Monolithic BIOS Kernel",
+    "Abandoned Swap Space",
+    "Unallocated Heap",
+    "Legacy Boot ROM",
 ]
 
 

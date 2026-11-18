@@ -4333,7 +4333,7 @@
   Movement: 8
   Show Sprite: when event flag set
   Sprite: 240
-  Text Pointer 1: data_43.l_0xc8f75e
+  Text Pointer 1: cow_dungeons.cow_swap_space_entry
   Text Pointer 2: $0
   Type: object
 482:
@@ -11146,7 +11146,7 @@
   Movement: 10
   Show Sprite: always
   Sprite: 160
-  Text Pointer 1: data_54.l_0xc9ed3c
+  Text Pointer 1: cow_dungeons.cow_heap_entry
   Text Pointer 2: $0
   Type: person
 1239:
@@ -11650,7 +11650,7 @@
   Movement: 10
   Show Sprite: always
   Sprite: 398
-  Text Pointer 1: data_56.l_0xef6084
+  Text Pointer 1: cow_dungeons.cow_boot_rom_entry
   Text Pointer 2: $0
   Type: person
 1295:

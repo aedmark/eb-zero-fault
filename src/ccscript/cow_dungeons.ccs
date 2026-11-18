@@ -1,0 +1,144 @@
+command e(label) "{long label}"
+
+// ==============================================================================
+// EarthBound: Zero Fault - Phase 19: Memory Leak Dungeons & Superboss Encounters
+// ==============================================================================
+// 1. The Abandoned Swap Space (Sector 13 drainage shaft behind Threed Cemetery)
+//    - Environmental Hazard: High Bus Latency.
+//    - Superboss: The Thrashing Hypervisor (Enemy 198, Group 460).
+//    - Reward: Solid State Band (Item 140).
+//    - Cleared Flag: 901
+//
+// 2. The Unallocated Heap (Corrupted tar pit in Deep Darkness)
+//    - Environmental Hazard: Dynamic Memory Leak.
+//    - Superboss: Garbage Collector Prime (Enemy 217, Group 461).
+//    - Reward: Heap Compactor (Item 143).
+//    - Cleared Flag: 902
+//
+// 3. The Legacy Boot ROM (Sealed obsidian basalt gate in Lost Underworld)
+//    - Environmental Hazard: Strict Read-Only Environment (Logic Probe check).
+//    - Superboss: The Monolithic BIOS Kernel (Enemy 230, Group 462).
+//    - Reward: Kernel Privilege Ring (Item 154).
+//    - Cleared Flag: 903
+// ==============================================================================
+
+// -----------------------------------------------------------------------------
+// 1. The Abandoned Swap Space
+// -----------------------------------------------------------------------------
+cow_swap_space_entry:
+    "[06 85 03 {e(cow_swap_space_cleared)}]" // Flag 901: Swap Space cleared
+    "{sound(11)}{pause(10)}"
+    "{window_open(1)}@(Beneath the rusted Sky Walker wreckage lies an unmapped drainage shaft.)" next
+    "@(Cold storage pages and discarded threads drift up from the dark abyss.)" next
+    "@Warning: High bus latency detected in this unmapped sector!" next
+    "@Descend into the Abandoned Swap Space?" linebreak
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_swap_space_enter)} {e(cow_dungeon_cancel)}]"
+    goto(cow_dungeon_cancel)
+
+cow_swap_space_enter:
+    "@You slip through the grating into cold disk storage..." next
+    "@A titanic scheduling daemon emerges from the thrashing page frames![03]{window_closeall}"
+    // Initiate battle with Group 460 (0x01CC)
+    "[1F 23 CC 01]"
+    "[1B 03 {e(cow_dungeon_wipe)}]"
+    "{sound(11)}{pause(10)}"
+    "{window_open(1)}@The Thrashing Hypervisor suffered an unhandled kernel panic!" next
+    "@Active thread contention purged.{pause(15)} Sector 13 swap space stabilized!" next
+    "[1D 03 FF][1B 02 {e(cow_swap_space_noroom)}]"
+    "[1D 0E 00 8C]" call(data_33.l_0xc7dccf) // Give Item 140 (Solid State Band: 0x8C = 140)
+    "{set(flag 901)}"
+    end
+
+cow_swap_space_noroom:
+    "@Your backpack is full! Free up storage and return to collect the Solid State Band." end
+
+cow_swap_space_cleared:
+    "@(The drainage tunnel is silent.{pause(15)} Discarded swap pages have been cleanly unmounted.)" end
+
+// -----------------------------------------------------------------------------
+// 2. The Unallocated Heap
+// -----------------------------------------------------------------------------
+cow_heap_entry:
+    "[06 86 03 {e(cow_heap_cleared)}]" // Flag 902: Unallocated Heap cleared
+    "{sound(11)}{pause(10)}"
+    "{window_open(1)}@(The tar pit bubbles violently with corrupt pointers and raw garbage bytes.)" next
+    "@Warning: Dynamic memory leak active!" next
+    "@Unmanaged allocations in this sector will erode psychic registers." next
+    "@Wade into the Unallocated Heap?" linebreak
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_heap_enter)} {e(cow_dungeon_cancel)}]"
+    goto(cow_dungeon_cancel)
+
+cow_heap_enter:
+    "@You step into the churning sludge of raw heap memory..." next
+    "@A monstrous mechanical maw rises from the fragmented data![03]{window_closeall}"
+    // Initiate battle with Group 461 (0x01CD)
+    "[1F 23 CD 01]"
+    "[1B 03 {e(cow_dungeon_wipe)}]"
+    "{sound(11)}{pause(10)}"
+    "{window_open(1)}@Garbage Collector Prime suffered a catastrophic heap overflow!" next
+    "@Dangling pointers dereferenced.{pause(15)} Unallocated heap memory reclaimed!" next
+    "[1D 03 FF][1B 02 {e(cow_heap_noroom)}]"
+    "[1D 0E 00 8F]" call(data_33.l_0xc7dccf) // Give Item 143 (Heap Compactor: 0x8F = 143)
+    "{set(flag 902)}"
+    end
+
+cow_heap_noroom:
+    "@Your backpack is full! Free up storage and return to collect the Heap Compactor." end
+
+cow_heap_cleared:
+    "@(The tar pool is tranquil.{pause(15)} The unallocated heap has been compacted and defragmented.)" end
+
+// -----------------------------------------------------------------------------
+// 3. The Legacy Boot ROM
+// -----------------------------------------------------------------------------
+cow_boot_rom_entry:
+    "[06 87 03 {e(cow_boot_rom_cleared)}]" // Flag 903: Boot ROM cleared
+    "{sound(11)}{pause(10)}"
+    "{window_open(1)}@(A colossal obsidian basalt gate is inscribed with archaic 8-bit BIOS mnemonics.)" next
+    "@Warning: Hardware enclave enforcement active!" next
+    "@This sector is mapped as STRICT READ-ONLY." next
+    "@Inspect the Legacy Boot ROM gate?" linebreak
+    "[19 02]Yes[02] [19 02]No[02][1C 07 02][11]{clearline}[09 02 {e(cow_boot_rom_check_probe)} {e(cow_dungeon_cancel)}]"
+    goto(cow_dungeon_cancel)
+
+cow_boot_rom_check_probe:
+    // Check if party possesses Logic Probe (Item 138: 0x8A)
+    "[19 1F 8A 00][1B 02 {e(cow_boot_rom_need_probe)}]"
+    "@{name(3)} unholstered the Logic Probe and probed the gate's grounding plane..." next
+    "@Ring-0 hardware write-protection temporarily grounded!" next
+    "@The ancient bootstrap architecture awakens with a deafening hum![03]{window_closeall}"
+    // Initiate battle with Group 462 (0x01CE)
+    "[1F 23 CE 01]"
+    "[1B 03 {e(cow_dungeon_wipe)}]"
+    "{sound(11)}{pause(10)}"
+    "{window_open(1)}@The Monolithic BIOS Kernel executed an orderly clean shutdown." next
+    "@Supervisor privileges permanently granted to primary thread!" next
+    "[1D 03 FF][1B 02 {e(cow_boot_rom_noroom)}]"
+    "[1D 0E 00 9A]" call(data_33.l_0xc7dccf) // Give Item 154 (Kernel Privilege Ring: 0x9A = 154)
+    "{set(flag 903)}"
+    end
+
+cow_boot_rom_need_probe:
+    "@Access Denied: Hardware protection violation!" next
+    "@Modern 16-bit instructions cannot penetrate the ring-0 BIOS barrier." next
+    "@You will need a hardware Logic Probe from a diagnostic engineer to bypass the grounding circuit." end
+
+cow_boot_rom_noroom:
+    "@Your backpack is full! Free up storage and return to collect the Kernel Privilege Ring." end
+
+cow_boot_rom_cleared:
+    "@(The basalt gate stands open.{pause(15)} The legacy BIOS kernel has gracefully halted.)" end
+
+// -----------------------------------------------------------------------------
+// Common Dungeon Handlers
+// -----------------------------------------------------------------------------
+cow_dungeon_cancel:
+    "@Wise choice. Uncommitted sectors are lethal without adequate stack allocation." end
+
+cow_dungeon_wipe:
+    eob
+
+// Wire dual-binding hooks
+ROM[0xC8F75E] = goto(cow_swap_space_entry)
+ROM[0xC9ED3C] = goto(cow_heap_entry)
+ROM[0xEF6084] = goto(cow_boot_rom_entry)

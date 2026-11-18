@@ -15,12 +15,11 @@ command e(label) "{long label}"
 // -----------------------------------------------------------------------------
 cow_cold_open:
     "{music(0)}" // Silence audio engine completely
-    "{set(flag 749)}" // Flag 749: Pajamas
-    "{set(flag 476)}" // Flag 476: Ness is out of bed
+    "{set(flag 749)}" // Flag 749: Pajamas (reinforced)
+    "{set(flag 476)}" // Flag 476: Ness is out of bed (reinforced)
     "{unset(flag 477)}" // Ensure bed sleeping sprites (NPC 26/27) are hidden
     "{unset(flag 469)}" // Ensure player sprite is visible
-    "{warp(10)}" // Smooth fade-in directly to the bedroom floor beside the bed (tile 1015, 138)
-    "{pause(40)}" // Brief moment of eerie silence as room fades in
+    "{pause(30)}" // Brief moment of eerie stillness as room fades in
     "{unset(flag 11)}{save}" eob
 
 // -----------------------------------------------------------------------------
@@ -64,11 +63,43 @@ ROM[0xC5E70B] = goto(cow_cold_open)
 ROM[0xC8683D] = goto(cow_desk_drawer)
 ROM[0xC66AA4] = goto(cow_tracy_awakening)
 
-// Initialize engine camera directly to Ness's bedroom floor (Camera X=8120, Camera Y=1104 = tile 1015, 138)
-ROM[0xC1FE9A] = {
+// Direct Engine Boot Initialization:
+// Set camera to bedroom floor, enable pajamas, mark out-of-bed, hide bed sprites, ensure visible leader.
+cow_boot_init: {
+    REP(0x31)
+
+    // Camera X=8120 (0x1FB8), Camera Y=1104 (0x0450) -> Tile 1015, 138
     LDA_i(0x1FB8)
     LDX_i(0x0450)
     JSL(0xC0B65F)
+
+    // Flag 749 (0x02ED): Ness Pajamas
+    LDX_i(1)
+    LDA_i(0x02ED)
+    JSL(0xC2165E)
+
+    // Flag 476 (0x01DC): Ness is out of bed
+    LDX_i(1)
+    LDA_i(0x01DC)
+    JSL(0xC2165E)
+
+    // Flag 477 (0x01DD): Unset bed sleeping sprites (NPC 26/27)
+    LDX_i(0)
+    LDA_i(0x01DD)
+    JSL(0xC2165E)
+
+    // Flag 469 (0x01D5): Unset player sprite hidden (make player visible)
+    LDX_i(0)
+    LDA_i(0x01D5)
+    JSL(0xC2165E)
+
+    RTL
+}
+
+// Hook Engine Boot Sequence at 0xC1FE9A (10 bytes)
+ROM[0xC1FE9A] = {
+    JSL(cow_boot_init)
+    NOP NOP NOP NOP NOP NOP
 }
 
 // Eliminate intro cutscene screen shake ($4A66 = 0) at 0xC1FEBC (6 bytes)

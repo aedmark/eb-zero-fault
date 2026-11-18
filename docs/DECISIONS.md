@@ -363,6 +363,17 @@ removing a fence whose purpose it forgot.
 **Consequences:** Ness awakens smoothly in his dark bedroom wearing pajamas on the floor beside the bed in complete stillness and silence. The player can walk freely immediately, check the desk drawer to receive the Logic Probe and Worn Polarized Lens, and exit into the hallway without meteor crash sound effects or sirens.
 **Review trigger:** Visual and controller verification across playtests.
 
+## D-031 Boot Sequence Pajama Injection and Map Music Table Resolution (2026-11-17, status: accepted)
+**Owner:** Gordon (Custodian)
+**Context:** Playtesting revealed two regressions during the cold open boot: (1) The screen faded in showing Ness in normal clothes facing his bed, faded to black, and faded in again with Ness in pajamas; (2) The background audio played dungeon music rather than complete silence. Investigation revealed that the initial fade-in is performed natively by the SNES engine at boot before CCscript executes, at which point Flag 749 was not yet set. The subsequent `{warp(10)}` triggered a full fade-out and fade-in cycle. Furthermore, setting Sector 159 `Music: 0` in `src/map_sectors.yml` instructed the audio engine to evaluate Entry 0 of `src/map_music.yml`, which is a dungeon music selector table.
+**Decision:**
+1. Boot-Time Assembly Flag Injection: Replaced the 10-byte camera hook at `ROM[0xC1FE9A]` with a far call to `cow_boot_init`. In addition to setting the camera directly to (8120, 1104), `cow_boot_init` invokes `$C2165E` to set Flag 749 (Pajamas) and Flag 476 (Out of bed), and unset Flag 477 (Bed sprites) and Flag 469 (Visible player) before the party sprite loader `$C3EBCA` executes at `$C1FEC5`. Ness is assigned his pajama sprite group (60) before the engine ever fades in.
+2. Warp Elimination from Cold Open: Removed `{warp(10)}` from `cow_cold_open`. The engine executes a single, seamless fade-in from black directly to Ness in pajamas beside his bed without double fades or screen blinking.
+3. Map Music Table Correction: Restored Sector 159 in `src/map_sectors.yml` to `Music: 71` (matching downstairs Sector 158). Configured Entry 71 in `src/map_music.yml` so that when Flag 73 is not set (`0x8049`, nighttime), `Music: 0` (silence) is played. Restored sectors 125, 126, and 127 to their original music entries (65, 79, 79).
+**Alternatives:** Re-triggering party sprite updates via script warps (causes visible double fades and screen flickering).
+**Consequences:** Game boots with a single smooth fade-in directly into Ness's bedroom. Ness is in pajamas from the very first frame in complete silence, player control is restored after 30 frames, and no dungeon music plays.
+**Review trigger:** Playtest verification across cold open transitions.
+
 ---
 
 ## Held tensions

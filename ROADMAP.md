@@ -197,10 +197,10 @@ Goal: Design and inject three optional endgame memory leak dungeons guarded by a
 
 Goal: Author the quiet post-credits epilogue allowing an unhurried twilight walk through Eagleland, culminating in Ness returning to his bedroom to extinguish the lamp and executing an authentic 65816 CPU graceful halt (`STP` opcode).
 
-- [ ] P20-01 Author quiet twilight epilogue overworld scripts for Onett, Paula's farewell in Twoson, and homecoming (2026-11-17).
-- [ ] P20-02 Script bedroom lamp interaction prompt ("Turn off the light and go to sleep?") in cow_epilogue.ccs (2026-11-17).
-- [ ] P20-03 Author 65816 assembly graceful system unmount routine halting the CPU via STP opcode ($DB) (2026-11-17).
-- [ ] P20-04 Expand binary verification and headless assertion suites for Phase 20 terminal unmount hooks and shutdown assembly (2026-11-17).
+- [x] P20-01 Author quiet twilight epilogue overworld scripts for Onett, Paula's farewell in Twoson, and homecoming (D-027; implemented in src/ccscript/cow_epilogue.ccs, data_35.ccs overriding C7FC3E, 2026-11-17).
+- [x] P20-02 Script bedroom lamp interaction prompt ("Turn off the light and go to sleep?") in cow_epilogue.ccs (D-027; implemented in src/ccscript/cow_epilogue.ccs, data_39.ccs, and src/map_doors.yml, 2026-11-17).
+- [x] P20-03 Author 65816 assembly graceful system unmount routine halting the CPU via STP opcode ($DB) (D-027; implemented in src/ccscript/cow_pressure.ccs HookFlagMutation with GracefulShutdown_STP, 2026-11-17).
+- [x] P20-04 Expand binary verification and headless assertion suites for Phase 20 terminal unmount hooks and shutdown assembly (D-027; updated tools/test_headless_assertions.py and tools/verify_rom.py, 2026-11-17).
 
 ## Phase 21: Full Verification and Companion Synchronization
 

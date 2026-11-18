@@ -367,6 +367,22 @@ class HeadlessTestSuite:
             cow_touch(flag_id)
             self.assert_true(cow_check(flag_id) is True, f"Dungeon cleared flag {flag_id} successfully commits to CoW bitfield")
 
+        # Phase 20 Terminal Unmount Epilogue & Graceful Shutdown Hooks
+        self.assert_true(rom[0x07FC3E] == 0x0A, "Paula Farewell hook installed at ROM 0x07FC3E (opcode 0x0A: goto)")
+        self.assert_true(rom[0x09C98A] == 0x0A, "Post-Credits Twilight Return hook installed at ROM 0x09C98A (opcode 0x0A: goto)")
+
+        # Phase 20 Flag Invariants (Flags 939, 940)
+        for flag_id in (939, 940):
+            self.assert_true(836 <= flag_id <= 1023, f"Phase 20 epilogue/halt flag {flag_id} resides in safe SRAM range (836..1023)")
+            cow_touch(flag_id)
+            self.assert_true(cow_check(flag_id) is True, f"Phase 20 flag {flag_id} successfully commits to CoW bitfield")
+
+        # Phase 20 65816 CPU Graceful Shutdown (STP Opcode) Machine Code Verification
+        stp_offset = 0x38D248
+        stp_chunk = rom[stp_offset : stp_offset + 32]
+        self.assert_true(stp_chunk[0] == 0x78, f"Graceful shutdown starts with SEI (0x78) to disable interrupts (actual: 0x{stp_chunk[0]:02X})")
+        self.assert_true(0xDB in stp_chunk, "Graceful shutdown contains STP instruction (0xDB) to stop 65816 CPU clock")
+
     # -------------------------------------------------------------------------
     # 6. ROM Expansion & Memory Boundary Assertions
     # -------------------------------------------------------------------------
@@ -424,6 +440,17 @@ class HeadlessTestSuite:
             "Abandoned Swap Space",
             "Unallocated Heap",
             "Legacy Boot ROM",
+            # Phase 20 Terminal Unmount Epilogue & Graceful Shutdown
+            "Turn off the light and go to sleep?",
+            "Unmounting",
+            "Flushing dirty sectors",
+            "Refcount reached zero",
+            "All threads terminated",
+            "System halted",
+            "Goodnight, Ness",
+            "The network traffic has gone completely quiet",
+            "The hum of the CRT monitor has faded into gentle tape hiss",
+            "Mom will always hold your base pointer",
         ]
         for s in sample_thematic_strings:
             encoded = encode_eb_text(s, len(s))

@@ -192,8 +192,23 @@ _no_hazard:
 }
 
 // -----------------------------------------------------------------------------
-// 3. System Hooks: CoW Page Commits, Hotel Flushes, Payphone Saves
+// 3. System Hooks: CoW Page Commits, Hotel Flushes, Payphone Saves, Graceful Halt
 // -----------------------------------------------------------------------------
+
+GracefulShutdown_STP: {
+    SEI                      // Disable interrupts
+    SEP(0x20)                // 8-bit accumulator
+    LDA_8(0x80)              // Force blanking on PPU (screen pitch black)
+    STA_a(0x2100)            // INIDISP = $80
+    LDA_8(0x00)              // Silence SPC700 audio ports
+    STA_a(0x2140)
+    STA_a(0x2141)
+    STA_a(0x2142)
+    STA_a(0x2143)
+    STP                      // 65816 CPU HALT: Stop the Processor
+_dead_halt:
+    BRA_a(_dead_halt)        // Fallback dead loop if STP is bypassed
+}
 
 HookFlagMutation: {
     // Replaced instructions from $C21669:
@@ -206,8 +221,15 @@ HookFlagMutation: {
     CPY_i(1)
     BNE_a(_check_unset)
 
-    // Flag is being SET! Check if in CoW sector range 850..938
+    // Flag is being SET! Check for Phase 20 shutdown flag 940
     TXA
+    CMP_i(940)
+    BNE_a(_check_cow_range)
+    JSL(GracefulShutdown_STP)
+    BRA_a(_mutation_done)
+
+_check_cow_range:
+    // Check if in CoW sector range 850..938
     CMP_i(850)
     BCC_a(_mutation_done)
     CMP_i(939)

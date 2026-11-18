@@ -14,17 +14,7 @@ l_0xc7fc32:
     "[1F 15 02 00 39 02 01]" goto(l_0xc7fd06)
 
 l_0xc7fc3e:
-    "{lock_movement(255)}{pause(30)}[19 22 01 01 02 00]{char_direction(1, 0)}[19 22 02 01 01 00]{char_direction(2, 0)}{pause(30)}{window_open(1)}@{stat(8)}..." linebreak
-    " Thank you for escorting me home." next
-    "@....." next
-    "@...There was something I wanted to tell you, but I've forgotten it." next
-    "@I'm sure I'll remember by the time I see you again." next
-    "@Well,{pause(15)} I guess this is it..." next
-    "@Good-bye." next
-    "@Uhhh...{pause(20)}" linebreak
-    " ...So long" next
-    "@...See ya." next
-    "@...Bye.{wait}{window_closeall}{hide_char(2)}" eob
+    goto(cow_epilogue.cow_epilogue_paula_farewell)
 
 l_0xc7fd06:
     "[1F 61][1F E7 02 00]{char_direction(1, 1)}{pause(60)}[1F EA 02 00][1F 61]{party_remove(2)}{set(flag 638)}[1F E8 FF]" eob

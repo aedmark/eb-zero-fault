@@ -13079,6 +13079,18 @@
     Type: object
     X: 18
     Y: 8
+  - Text Pointer: data_39.l_cow_bedside_lamp
+    Type: object
+    X: 21
+    Y: 8
+  - Text Pointer: data_39.l_cow_bedside_lamp
+    Type: object
+    X: 22
+    Y: 8
+  - Text Pointer: data_39.l_cow_bedside_lamp
+    Type: object
+    X: 24
+    Y: 8
   - Destination X: 969
     Destination Y: 1244
     Direction: down

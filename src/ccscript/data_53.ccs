@@ -184,7 +184,7 @@ l_0xc9c85d:
     goto(cow_epilogue.cow_epilogue_picky)
 
 l_0xc9c98a:
-    "{pause(1)}" goto(l_0xc9c98a)
+    goto(cow_epilogue.cow_epilogue_post_credits)
 
 l_0xc9c991:
     goto(cow_dalaam.cow_master_dalaam)

@@ -37,6 +37,9 @@ HOOKS = [
     (0x08F75E, b"\x0A", "CoW Abandoned Swap Space Hook ($C8F75E)"),
     (0x09ED3C, b"\x0A", "CoW Unallocated Heap Hook ($C9ED3C)"),
     (0x2F6084, b"\x0A", "CoW Legacy Boot ROM Hook ($EF6084)"),
+    # Phase 20: Terminal Unmount Epilogue & Graceful Shutdown Hooks
+    (0x07FC3E, b"\x0A", "CoW Paula Farewell Polestar Hook ($C7FC3E)"),
+    (0x09C98A, b"\x0A", "CoW Post-Credits Twilight Return Hook ($C9C98A)"),
     # Phase 4: CoW Narrative & MMU Hooks
     (0x066D3E, b"\x0A", "CoW Mom Initial Awakening Hook (0xC66D3E)"),
     (0x074F56, b"\x0A", "CoW Mom Awakening Script Hook (0xC74F56)"),
@@ -233,20 +236,16 @@ NPC_BINDINGS = [
     (1294, "cow_boot_rom_entry", "NPC Table Entry 1294 (Legacy Boot ROM Entrance Pointer)"),
 ]
 
-# EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50)
+# EarthBound standard text byte mappings (A-Z = 0x71-0x8A, a-z = 0x91-0xAA, space = 0x50, ASCII 0x20..0x7F = +0x30)
 def eb_encode(text: str) -> bytes:
     res = bytearray()
     for ch in text:
         if ch == " ":
             res.append(0x50)
-        elif "A" <= ch <= "Z":
-            res.append(ord(ch) + 0x30)
-        elif "a" <= ch <= "z":
-            res.append(ord(ch) + 0x30)
-        elif "0" <= ch <= "9":
-            res.append(ord(ch) + 0x30)
+        elif 0x20 <= ord(ch) < 0x80:
+            res.append((ord(ch) + 0x30) & 0xFF)
         else:
-            res.append(ord(ch))
+            res.append(ord(ch) & 0xFF)
     return bytes(res)
 
 
@@ -351,6 +350,17 @@ THEMATIC_NAMES = [
     "Abandoned Swap Space",
     "Unallocated Heap",
     "Legacy Boot ROM",
+    # Phase 20: Terminal Unmount Epilogue & Graceful Shutdown
+    "Turn off the light and go to sleep?",
+    "Unmounting",
+    "Flushing dirty sectors",
+    "Refcount reached zero",
+    "All threads terminated",
+    "System halted",
+    "Goodnight, Ness",
+    "The network traffic has gone completely quiet",
+    "The hum of the CRT monitor has faded into gentle tape hiss",
+    "Mom will always hold your base pointer",
 ]
 
 
@@ -491,7 +501,21 @@ def main() -> int:
                 print(f"ERROR: Thematic string '{name}' not found in ROM")
                 errors += 1
 
-    total_checks = 1 + len(HOOKS) + 3 + len(NPC_BINDINGS) + len(THEMATIC_NAMES)
+        # Phase 20: 65816 CPU Graceful Shutdown (STP Opcode) Machine Code Verification
+        stp_addr = labels.get("GracefulShutdown_STP")
+        if stp_addr:
+            stp_offset = stp_addr - 0xC00000
+            chunk = rom_data[stp_offset : stp_offset + 32]
+            if chunk[0] == 0x78 and 0xDB in chunk:
+                print(f"OK: GracefulShutdown_STP machine code verified at {hex(stp_offset)} (SEI 0x78 and STP 0xDB present)")
+            else:
+                print(f"ERROR: GracefulShutdown_STP machine code invalid at {hex(stp_offset)}: {chunk.hex()}")
+                errors += 1
+        else:
+            print("ERROR: GracefulShutdown_STP label not found in summary.txt")
+            errors += 1
+
+    total_checks = 1 + len(HOOKS) + 3 + len(NPC_BINDINGS) + len(THEMATIC_NAMES) + 1
     if errors == 0:
         print(f"\nAll {total_checks} binary assertions passed successfully.")
         return 0

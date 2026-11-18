@@ -312,6 +312,20 @@ removing a fence whose purpose it forgot.
 **Consequences:** Introduces high-tier post-game content that organically integrates with the OS corruption narrative and tests endgame party loadouts.
 **Review trigger:** Playtesting superboss difficulty tuning and item balance during Phase 21 full verification.
 
+## D-027 Interactive Terminal Unmount Epilogue & Final Graceful Shutdown (2026-11-17, status: accepted)
+**Owner:** Gordon (Custodian)
+**Context:** The philosophical climax of *EarthBound: Zero Fault* resolves Ness's 30-year recursive loop. Rather than hanging on a static "THE END?" screen, the ending provides a quiet twilight return to Onett, giving the player unhurried freedom to explore a peaceful, static world before returning to Ness's bedroom, extinguishing the nightstand lamp, and executing an authentic 65816 CPU hardware halt (`STP` opcode).
+**Decision:**
+1. Author Paula's farewell sequence in `src/ccscript/cow_epilogue.ccs` (`cow_epilogue_paula_farewell`) hooked at SNES `$C7FC3E` (ROM offset `0x07FC3E`) and `src/ccscript/data_35.ccs`, acknowledging the quiet network bus, the lifting of all race conditions, and urging Ness to rest his registers.
+2. Hook end credits conclusion in `src/ccscript/cow_epilogue.ccs` (`cow_epilogue_post_credits`) at SNES `$C9C98A` (ROM offset `0x09C98A`) and `src/ccscript/data_53.ccs`, setting post-credits twilight Flag 939, muting background music to ambient tape hiss, and warping Ness to his bedroom (`warp 196`).
+3. Author bedtime dialogues for Mom (`cow_mom_post_credits`) and Tracy (`cow_tracy_post_credits`) in `src/ccscript/cow_epilogue.ccs` under Flag 939, comforting Ness that all resident pages are committed and that Mom will hold his base pointer.
+4. Add bedside lamp interaction triggers in `src/map_doors.yml` (sector 36, 27) and `src/ccscript/data_39.ccs` (`l_cow_bedside_lamp`) dispatching `cow_bedside_lamp`, offering the prompt "Turn off the light and go to sleep?". Selecting No keeps the room illuminated; selecting Yes initiates system unmount narration ("Unmounting /dev/snes0... <OK>", "Flushing dirty sectors... <OK>", "Refcount reached zero.", "All threads terminated.", "System halted.", "Goodnight, Ness.") and sets Flag 940.
+5. Author 65816 assembly graceful shutdown routine `GracefulShutdown_STP` in `src/ccscript/cow_pressure.ccs`: disables interrupts (`SEI`), blanks screen via PPU forced blanking (`INIDISP = $80`), silences audio ports (`$2140..$2143`), and stops CPU instruction fetching via `STP` opcode (`$DB`) with a fallback branch loop. Intercept Flag 940 in `HookFlagMutation` at SNES `$C21669`.
+6. Expand `tools/verify_rom.py` to 299 binary assertions and `tools/test_headless_assertions.py` to 156 headless runtime assertions.
+**Alternatives:** Endless loop on final picture screen (vanilla behavior that leaves the CPU running indefinitely without narrative closure).
+**Consequences:** Provides an emotionally resonant, authentic hardware conclusion where the SNES processor ceases execution, symbolizing total rest.
+**Review trigger:** Full regression verification during Phase 21.
+
 ---
 
 ## Held tensions

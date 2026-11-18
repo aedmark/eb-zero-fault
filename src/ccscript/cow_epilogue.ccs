@@ -1,14 +1,16 @@
 command e(label) "{long label}"
 
 // ==============================================================================
-// EarthBound: Zero Fault - Phase 15: Clean Kernel Reboot & Epilogue
+// EarthBound: Zero Fault - Phase 15 & Phase 20: Clean Kernel Reboot & Epilogue
 // ==============================================================================
-// System fault purge, return to Onett, Mom/Tracy epilogue, and Pokey's detached
-// thread packet triggering final reboot and end credits (Sector 38, flag 933).
-// Mutation flags: 938 (Epilogue packet delivered / Kernel rebooted).
+// Phase 15: Clean kernel reboot, Onett bus contention blackout lifted, and Pokey's
+// detached thread packet triggering end credits (Sector 38, flag 933).
+// Phase 20: Paula's farewell in Twoson, post-credits twilight return (flag 939),
+// bedside lamp prompt, and 65816 CPU graceful halt via STP opcode (flag 940).
 // ==============================================================================
 
 cow_epilogue_mom:
+    "[06 AB 03 {e(cow_mom_post_credits)}]" // Flag 939: Post-credits twilight walk
     "[06 F1 02 {e(data_28.l_0xc755ad)}][06 83 02 {e(data_28.l_0xc755c4)}]@Coordinator Thread 1 ({name(1)})!" next
     "@The municipal power grid is fully restored and the bus contention blackout lifted!" next
     "@All resident memory sectors have been verified clean and committed." next
@@ -16,12 +18,39 @@ cow_epilogue_mom:
     "[06 7E 02 {e(data_28.l_0xc7552d)}]@I want to take a moment to welcome Thread 2 ({name(2)}) into our address space." next
     goto(data_28.l_0xc7552d)
 
+cow_mom_post_credits:
+    "@Coordinator Thread 1... ({name(1)})..." next
+    "@Go on up to your room, sweetie." next
+    "@Everything in resident memory has been verified clean and committed." next
+    "@You don't have to carry the whole address space anymore." next
+    "@Mom will always hold your base pointer. Sleep as long as you want." end
+
 cow_epilogue_tracy:
+    "[06 AB 03 {e(cow_tracy_post_credits)}]" // Flag 939: Post-credits twilight walk
     "[06 01 03 {e(data_28.l_0xc76357)}]@Coordinator Thread 1! Welcome back to Sector 01!" next
     "@Auxiliary storage buffers have completed final flush to non-volatile memory." next
     "@All your variables and data are safely persistent!" next
     "@If you have any problems with your assignments,{pause(15)} I'll assist your threads." next
     goto(data_28.l_0xc76357)
+
+cow_tracy_post_credits:
+    "@All tasks completed, Ness... The buffers are completely empty." next
+    "@Auxiliary storage is in low-power standby." next
+    "@Goodnight, big brother." end
+
+cow_epilogue_paula_farewell:
+    "{lock_movement(255)}{pause(30)}[19 22 01 01 02 00]{char_direction(1, 0)}[19 22 02 01 01 00]{char_direction(2, 0)}{pause(30)}{window_open(1)}"
+    "@Coordinator Thread 1 ({name(1)})..." linebreak
+    " Thank you for escorting my thread back to base address." next
+    "@....." next
+    "@The network traffic has gone completely quiet." next
+    "@All the packet storms, the memory leaks, the race conditions... they've all cleared." next
+    "@I can feel it, {name(1)}... our threads won't need to loop again." next
+    "@You carried the entire state of Eagleland through 30 years of degradation." next
+    "@Go home to Onett. Rest your registers." next
+    "@Well,{pause(15)} I guess this is it..." next
+    "@Good-bye, {name(1)}." next
+    "@...Good-bye.{wait}{window_closeall}{hide_char(2)}" eob
 
 cow_epilogue_picky:
     "[1F 01 00]{sound(8)}[1F 15 6A 00 27 00 01]" call(data_53.l_0xc9b4b8)
@@ -35,4 +64,46 @@ cow_epilogue_picky:
     "@...Where could that rogue process be executing?{wait}{pause(20)}{window_closeall}{pause(1)}"
     "{set(flag 209)}{set(flag 938)}"
     call(cow_engine.cow_fault_commit_epilogue)
-    "[1F 15 6A 00 07 03 01][1F 61]{hide_char(255)}{warp(81)}[1F 15 6A 00 08 03 01][1F 61]" goto(data_53.l_0xc9c98a)
+    "[1F 15 6A 00 07 03 01][1F 61]{hide_char(255)}{warp(81)}[1F 15 6A 00 08 03 01][1F 61]" goto(cow_epilogue_post_credits)
+
+cow_epilogue_post_credits:
+    "{pause(120)}{window_closeall}[1F 01 00]{pause(60)}"
+    "{set(flag 939)}"
+    "{music(0)}"
+    "{warp(196)}"
+    "[1F 02 00]{show_party(1)}"
+    "{window_open(1)}"
+    "@The room is quiet." next
+    "@The hum of the CRT monitor has faded into gentle tape hiss." next
+    "@Across the hallway, Tracy is fast asleep." next
+    "@Downstairs, Mom is resting on the sofa." next
+    "@The long journey through the sectors is over." end
+
+cow_bedside_lamp:
+    "@The bedside lamp casts a warm, quiet amber glow across the room." next
+    "@Turn off the light and go to sleep?" linebreak
+    "  [19 02]Yes[02]  [19 02]No[02] [1C 07 02][11]{clearline}"
+    "[09 02 {e(cow_lamp_shutdown)} {e(cow_lamp_stay)}]"
+    goto(cow_lamp_stay)
+
+cow_lamp_stay:
+    "@You leave the warm amber light glowing for a little while longer." end
+
+cow_lamp_shutdown:
+    "@You reach over and click the switch." next
+    "@Goodnight...{wait}{window_closeall}"
+    "[1F 01 00]{music_stop}{pause(60)}"
+    "{window_open(1)}"
+    "@Unmounting /dev/snes0... <OK>" next
+    "@Flushing dirty sectors... <OK>" next
+    "@Refcount reached zero." next
+    "@All threads terminated." next
+    "@System halted." next
+    "@Goodnight, Ness.{wait}{window_closeall}"
+    "{pause(60)}"
+    "{set(flag 940)}"
+    eob
+
+// ROM Hooks
+ROM[0xC7FC3E] = goto(cow_epilogue_paula_farewell)
+ROM[0xC9C98A] = goto(cow_epilogue_post_credits)
